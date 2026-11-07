@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:23+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../02-architecture.md:36 ec4bbac7bf8e48429d8e0b828041d85d
+msgid "02. Architecture"
+msgstr "02. 架构"
+
+#: ../../02-architecture.md:40 3bd687d4a5434abc93431508bc970b42
+msgid ""
+"This page has two layers. The first describes **this repository** - a Sphinx"
+" knowledge base (the \"system\" you are looking at). The second documents "
+"the **OpenResty/ngx_lua runtime**, with a C4 view of the DNS-resolution path"
+" that is verified against nginx 1.31.1 / ngx_lua 0.10.31rc5 in this tree."
+msgstr ""
+"本页分两层。第一层介绍**本仓库**——一个 Sphinx 知识库（也就是你正在看的这套“系统”）。第二层记录**OpenResty/ngx_lua "
+"运行时**，并给出本源码树中与 nginx 1.31.1 / ngx_lua 0.10.31rc5 核对过的 DNS 解析路径的 C4 视图。"
+
+#: ../../02-architecture.md:45 53f0f67e296d450b9dc3bd3a381aead8
+msgid "This Repository (the PKB site)"
+msgstr "本仓库（知识库站点）"
+
+#: ../../02-architecture.md:47 ../../02-architecture.md:83
+#: 8696617c4a3e4c6e9b0a54b09a0cfb37
+msgid "Context"
+msgstr "上下文"
+
+#: ../../02-architecture.md:49 8cd3421c08234a01b13a69d9eb6dfc53
+msgid ""
+"**Actors**: human engineers and AI assistants reading OpenResty/ngx_lua "
+"documentation; maintainers editing `doc/*.md`."
+msgstr "**参与者**：阅读 OpenResty/ngx_lua 文档的人类工程师和 AI 助手；编辑 `doc/*.md` 的维护者。"
+
+#: ../../02-architecture.md:51 e34556b2d3ec4d278b156702190c10b1
+msgid ""
+"**External systems**: GitHub Pages serves the built site; no runtime backend"
+" is involved."
+msgstr "**外部系统**：GitHub Pages 托管构建后的站点；不涉及运行时后端。"
+
+#: ../../02-architecture.md:54 ../../02-architecture.md:103
+#: b3712c247bec422f9a7c1826e79c7d37
+msgid "Container View"
+msgstr "容器视图"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: c21a683b9200417c8f80228238d42b07
+msgid "Container"
+msgstr "容器"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: 941dfb2081c74ecd88eb58982679d3e1
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: 6144d49634df43c9adc60383d4567a51
+msgid "Technology"
+msgstr "技术"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: 3ab03d93f0f543db84f0ccd887313596
+msgid "Depends on"
+msgstr "依赖"
+
+#: ../../02-architecture.md 6065976f2dfc4d40bf0bffef89e075e0
+msgid "Docs source"
+msgstr "文档源码"
+
+#: ../../02-architecture.md 7d9fa14f50304c1b868115fb2a12e54d
+msgid "English source of truth + `zh_CN` catalogs"
+msgstr "英文事实来源 + `zh_CN` 翻译目录"
+
+#: ../../02-architecture.md 50c28880c6b34b5b818e581517331886
+msgid "Markdown/MyST + `.po`/`.mo`"
+msgstr "Markdown/MyST + `.po`/`.mo`"
+
+#: ../../02-architecture.md 5199fddef272403984559af4e3ef925b
+msgid "`doc/*.md`, `locale/zh_CN/LC_MESSAGES/`"
+msgstr "`doc/*.md`、`locale/zh_CN/LC_MESSAGES/`"
+
+#: ../../02-architecture.md 76def0ac5bfd4ce78ca8a5cd9d6e0613
+msgid "Docs build"
+msgstr "文档构建"
+
+#: ../../02-architecture.md e81d33d5cf6542d5969f46604005658a
+msgid "Extract gettext, compile translations, render HTML"
+msgstr "提取 gettext、编译翻译、渲染 HTML"
+
+#: ../../02-architecture.md 71e466e8b7a745099a51672532eded91
+msgid "Sphinx 8.2.3 + myst-parser + sphinx-intl"
+msgstr "Sphinx 8.2.3 + myst-parser + sphinx-intl"
+
+#: ../../02-architecture.md 235617c44340451c9017e80b415ea93a
+msgid "`uv.lock`, `conf.py`, `Makefile`"
+msgstr "`uv.lock`、`conf.py`、`Makefile`"
+
+#: ../../02-architecture.md c5b94eb792774f4f89060826a2f06090
+msgid "Published site"
+msgstr "已发布的站点"
+
+#: ../../02-architecture.md 72af6f56e3ac48c3ad9a006a4df904b1
+msgid "Bilingual static HTML"
+msgstr "中英双语静态 HTML"
+
+#: ../../02-architecture.md d234cd10fd5545c9b07a8b2fca83b71b
+msgid "Sphinx RTD theme"
+msgstr "Sphinx RTD 主题"
+
+#: ../../02-architecture.md 081f2fff271f4681872c9414d2472703
+#, python-brace-format
+msgid "`_build/site/{en,zh}`, landing `index.html`"
+msgstr "`_build/site/{en,zh}`、落地页 `index.html`"
+
+#: ../../02-architecture.md 6dcb6c1d05994f0b920b9b1887cba86d
+msgid "Publishing"
+msgstr "发布"
+
+#: ../../02-architecture.md 9ff9e6be826843c990bd785f455d258a
+msgid "Push built site to GitHub Pages"
+msgstr "把构建好的站点推送到 GitHub Pages"
+
+#: ../../02-architecture.md 8e5f24302b7c4a0d9d3dfdc15e52dba3
+msgid "`git worktree` -> `gh-pages`"
+msgstr "`git worktree` -> `gh-pages`"
+
+#: ../../02-architecture.md 47ac99539cb04b2797d7cd7935856f32
+msgid "`make publish`"
+msgstr "`make publish`"
+
+#: ../../02-architecture.md:63 bba7409ab9e048e1922d4442ccb0dc31
+msgid "Component View (key pieces)"
+msgstr "组件视图（关键部分）"
+
+#: ../../02-architecture.md:65 5d14449c04c14b8db3b1620c0b2a83f4
+msgid ""
+"`conf.py`: Sphinx config, MyST extensions, i18n routing "
+"(`available_languages`), the language-switcher context, the title-"
+"translation hook, and the metadata-footer hook."
+msgstr ""
+"`conf.py`：Sphinx 配置、MyST 扩展、i18n "
+"路由（`available_languages`）、语言切换器上下文、标题翻译钩子以及元数据页脚钩子。"
+
+#: ../../02-architecture.md:68 d043eaf9a26a4b09803db1f626d4c1da
+msgid ""
+"`scripts/pkb_metadata_footer.py`: appends the compact one/two-line metadata "
+"footer rendered from each page's YAML frontmatter."
+msgstr ""
+"`scripts/pkb_metadata_footer.py`：根据每页的 YAML frontmatter 渲染紧凑的一至两行元数据页脚。"
+
+#: ../../02-architecture.md:70 4a6dfbe59f33482692fe5b74086f52b4
+msgid ""
+"`scripts/` helpers: `pkb_frontmatter.py`, `check_pkb_staleness.py`, "
+"`check_translation_sync.py`, `gen_index.py`, `pkb_query.py`."
+msgstr ""
+"`scripts/` "
+"辅助脚本：`pkb_frontmatter.py`、`check_pkb_staleness.py`、`check_translation_sync.py`、`gen_index.py`、`pkb_query.py`。"
+
+#: ../../02-architecture.md:73 ../../02-architecture.md:125
+#: 3234d9a34e1b4bd1ab6a496c82b73ef5
+msgid "Code-Level View"
+msgstr "代码级视图"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: c2c882c4cd3b4db1a66404c4656eb75e
+msgid "Area"
+msgstr "领域"
+
+#: ../../02-architecture.md dcbb1105d100461aa379dd70b89038f5
+msgid "Important files"
+msgstr "重要文件"
+
+#: ../../02-architecture.md ../../02-architecture.md:96
+#: 3867d900017547c2b9fba3b302cda756
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../02-architecture.md 4a0154fc434b4fe082da822bae22b41e
+msgid "Metadata render"
+msgstr "元数据渲染"
+
+#: ../../02-architecture.md db48bf641b984232a1c0837466725ac6
+msgid "`scripts/pkb_metadata_footer.py`"
+msgstr "`scripts/pkb_metadata_footer.py`"
+
+#: ../../02-architecture.md b852a9b081a64b87a1de0e37ec02e09f
+msgid "Compact footer shows owners/commit/TTL"
+msgstr "紧凑页脚显示属主/提交/TTL"
+
+#: ../../02-architecture.md e9b22ddb1dd1432c801be14405a22274
+msgid "Title i18n"
+msgstr "标题国际化"
+
+#: ../../02-architecture.md cef5ce1eb38240308ebb19b9bd01fc7f
+msgid "`conf.py:_translate_titles`"
+msgstr "`conf.py:_translate_titles`"
+
+#: ../../02-architecture.md e1d0cf49b539427ba1f17b5ac1c0fe2b
+msgid "Translates the H1 and nav titles in zh_CN"
+msgstr "在 zh_CN 中翻译 H1 和导航标题"
+
+#: ../../02-architecture.md 0631db8be1e84d568feb64e2c32fd71f
+msgid "Language switcher"
+msgstr "语言切换器"
+
+#: ../../02-architecture.md 779bbd73ed1240fbbcc410e512ad23ec
+msgid "`_templates/layout.html`"
+msgstr "`_templates/layout.html`"
+
+#: ../../02-architecture.md bd1609c31c0243eea2526c493980c96f
+msgid "Amber bar under \"openresty\" in the sidebar"
+msgstr "侧边栏 “openresty” 标题下的琥珀色横条"
+
+#: ../../02-architecture.md:81 797d71d560b64c16bbd9d4d0f72e0a17
+msgid "Documented Runtime (OpenResty/ngx_lua)"
+msgstr "所记录的运行时（OpenResty/ngx_lua）"
+
+#: ../../02-architecture.md:85 2f575f682c594cce941ff358b0c51d3c
+msgid ""
+"Who runs this OpenResty: each reader or operator installs and runs OpenResty"
+" per [Quick Start](01-quick-start.md); this tree documents the behavior but "
+"does not run a server itself. External systems a typical OpenResty app may "
+"call are backends such as MySQL, PostgreSQL, Redis, Memcached, DNS, or "
+"upstream HTTP services, accessed non-blockingly through cosockets."
+msgstr ""
+"谁运行这套 OpenResty：每位读者或运维人员按[快速上手](01-quick-start.md)安装并运行 "
+"OpenResty；本源码树记录其行为，本身并不运行服务器。典型的 OpenResty 应用可能调用的外部系统是 "
+"MySQL、PostgreSQL、Redis、Memcached、DNS 或上游 HTTP 服务等后端，全部通过 cosocket 非阻塞访问。"
+
+#: ../../02-architecture.md:91 bbdaa469bb5649fb8ef9dd3b5d7dd51f
+msgid ""
+"What this tree does contain (as documented facts): nginx 1.31.1 plus the "
+"OpenResty Lua modules under `openresty/bundle/`. Hostname connects from Lua "
+"do not use the system resolver. They use Nginx `ngx_resolver` and the "
+"nameservers from the `resolver` directive."
+msgstr ""
+"本源码树记录的事实：nginx 1.31.1 以及 `openresty/bundle/` 下的 OpenResty Lua 模块。来自 Lua "
+"的主机名连接不使用系统解析器，而是使用 Nginx `ngx_resolver` 和 `resolver` 指令指定的域名服务器。"
+
+#: ../../02-architecture.md:96 a3f674da7a6d464ab6120b75849bb307
+msgid "Worker process"
+msgstr "工作进程"
+
+#: ../../02-architecture.md:96 5366bf34eb7947bfa142626b6c174251
+msgid "Runs the request and the resolver state machine"
+msgstr "运行请求和解析器状态机"
+
+#: ../../02-architecture.md:96 696c1be633c94f1692472c8423f9ba50
+msgid "nginx 1.31.1 event loop"
+msgstr "nginx 1.31.1 事件循环"
+
+#: ../../02-architecture.md:96 65a8a894a52643458944898b23477a27
+msgid "`resolver` addresses, UDP/TCP port 53"
+msgstr "`resolver` 地址，UDP/TCP 53 端口"
+
+#: ../../02-architecture.md:96 e0071067c89f40c1b2f38fa9d565a17e
+msgid "Lua request"
+msgstr "Lua 请求"
+
+#: ../../02-architecture.md:96 1cf2b628c6a44cfab27374e8e12b7851
+msgid "Starts `connect()` and reads `nil, err`"
+msgstr "启动 `connect()` 并读取 `nil, err`"
+
+#: ../../02-architecture.md:96 83a22b8694e1465fb8dc1841c199f97c
+msgid "ngx_lua 0.10.31rc5 cosocket"
+msgstr "ngx_lua 0.10.31rc5 cosocket"
+
+#: ../../02-architecture.md:96 522f4e2645b94843a2f2e61e3aba8887
+msgid "Location `resolver` and `resolver_timeout`"
+msgstr "位置指令 `resolver` 和 `resolver_timeout`"
+
+#: ../../02-architecture.md:110 b53d1860d0604804ba80e3f77211f376
+msgid ""
+"There are no other deployable containers in this tree; the PKB ships only "
+"the documentation. Operators may add the usual OpenResty containers (Nginx "
+"workers, Redis/MySQL backends) at run time."
+msgstr ""
+"本源码树没有其他可部署容器；知识库只随附文档。运维人员可在运行时自行添加常见的 OpenResty 容器（Nginx "
+"worker、Redis/MySQL 后端）。"
+
+#: ../../02-architecture.md:114 909238633140469e89c2ce520dd12768
+msgid "Component View"
+msgstr "组件视图"
+
+#: ../../02-architecture.md:116 1faa4540cd4a4d6488b6a8b2193317cb
+msgid "Resolver and cosocket"
+msgstr "解析器与 cosocket"
+
+#: ../../02-architecture.md:118 6e71daa34ba844c0b03f4b439d3606d2
+msgid ""
+"**Responsibilities**: Map a hostname to addresses, cache successful answers "
+"in per-resolver red-black trees, and fail or resume every request waiting on"
+" that name."
+msgstr "**职责**：将主机名映射为地址，在每个解析器的红黑树中缓存成功应答，并让所有等待该名字的请求失败或恢复。"
+
+#: ../../02-architecture.md:119 c70cd1a475cb4b5a8c74bfa7d263091a
+msgid ""
+"**Key entry points**: `ngx_http_lua_socket_tcp_connect`, "
+"`ngx_resolve_start`, `ngx_resolve_name`, `ngx_resolver_process_response`, "
+"`ngx_http_lua_socket_resolve_handler`, `ngx_http_upstream_resolve_handler`."
+msgstr ""
+"**关键入口**：`ngx_http_lua_socket_tcp_connect`、`ngx_resolve_start`、`ngx_resolve_name`、`ngx_resolver_process_response`、`ngx_http_lua_socket_resolve_handler`、`ngx_http_upstream_resolve_handler`。"
+
+#: ../../02-architecture.md:120 e8bce91552c7462f84eae1306682023c
+msgid ""
+"**Important dependencies**: The `resolver` directive on the location or "
+"upstream. IPv6 queries are on unless `ipv6=off` (`r->ipv6` defaults to 1). A"
+" second nameserver is only a failover target for send failure and for the "
+"5-second resend timer, not for SERVFAIL."
+msgstr ""
+"**重要依赖**：位于 location 或 upstream 上的 `resolver` 指令。除非设置 `ipv6=off`（`r->ipv6` "
+"默认为 1），否则 IPv6 查询开启。第二个域名服务器仅是发送失败和 5 秒重发定时器时的故障转移目标，而不是 SERVFAIL 时的目标。"
+
+#: ../../02-architecture.md:121 8c3baad9f4f0469da562c86c1c50b421
+msgid ""
+"**Failure modes**: Missing resolver, query timeout, non-zero RCODE, CNAME "
+"chain longer than 50, or a dropped malformed packet that later hits "
+"`resolver_timeout`. See [Workflows](06-workflows.md)."
+msgstr ""
+"**失败模式**：缺少 resolver、查询超时、非零 RCODE、超过 50 的 CNAME 链，或丢弃了格式错误的报文后最终触发 "
+"`resolver_timeout`。参见[工作流](06-workflows.md)。"
+
+#: ../../02-architecture.md:123 51baf7b6f0934b3d9806e91f34e7a7e2
+msgid ""
+"`openresty/bundle/lua-resty-dns-0.23/` is a separate cosocket DNS client. It"
+" does not replace `ngx_resolver` unless Lua calls it and then connects to "
+"the resulting address itself."
+msgstr ""
+"`openresty/bundle/lua-resty-dns-0.23/` 是一个独立的 cosocket DNS 客户端。除非 Lua "
+"调用它并自行连接解析出的地址，否则它不替代 `ngx_resolver`。"
+
+#: ../../02-architecture.md:96 dcbb1105d100461aa379dd70b89038f5
+msgid "Important files or symbols"
+msgstr "重要文件或符号"
+
+#: ../../02-architecture.md:96 b923531fbaa047a99a6d8f1d953a3cd9
+msgid "Cosocket resolve"
+msgstr "Cosocket 解析"
+
+#: ../../02-architecture.md:96 5ae6467966dd4f08b45371f846cd198a
+msgid "`ngx_http_lua_socket_tcp.c` `ngx_resolve_start`, resolve handler"
+msgstr "`ngx_http_lua_socket_tcp.c` `ngx_resolve_start`、解析处理器"
+
+#: ../../02-architecture.md:96 8d694db9245b499ca242d0a5b0a413a0
+msgid "Produces the Lua error strings"
+msgstr "生成 Lua 错误字符串"
+
+#: ../../02-architecture.md:96 1377dcceba6a48459514c2cf78dc618a
+msgid "Resolver core"
+msgstr "解析器核心"
+
+#: ../../02-architecture.md:96 29d7351a155c42dba9a0a54e52b94150
+msgid ""
+"`ngx_resolver.c` `ngx_resolver_process_a`, `ngx_resolver_resend`, "
+"`ngx_resolver_timeout_handler`, `ngx_resolver_strerror`"
+msgstr ""
+"`ngx_resolver.c` "
+"`ngx_resolver_process_a`、`ngx_resolver_resend`、`ngx_resolver_timeout_handler`、`ngx_resolver_strerror`"
+
+#: ../../02-architecture.md:96 f3f9aa392e454e6c8db9f3eb786a26ae
+msgid "RCODE handling, nameserver rotation, timeout"
+msgstr "RCODE 处理、域名服务器轮换、超时"
+
+#: ../../02-architecture.md:96 5899b60f7c6d4d378f1e1e2217fdad54
+msgid "Upstream resolve"
+msgstr "上游解析"
+
+#: ../../02-architecture.md:96 3374d22b76e34f38b931f81f6e0699c9
+msgid "`ngx_http_upstream.c` `ngx_http_upstream_resolve_handler`"
+msgstr "`ngx_http_upstream.c` `ngx_http_upstream_resolve_handler`"
+
+#: ../../02-architecture.md:96 334b8f4870884fb7b55516e26b2150b6
+msgid "Maps every resolve failure to 502"
+msgstr "将所有解析失败映射为 502"
+
+#: ../../02-architecture.md:96 b154a04f6ce346ff98c16344502d910d
+msgid "Limits"
+msgstr "限制"
+
+#: ../../02-architecture.md:96 ce4ae164912e4b4fa1535844f394bf6b
+msgid "`ngx_resolver.h` `NGX_RESOLVER_MAX_RECURSION` 50"
+msgstr "`ngx_resolver.h` `NGX_RESOLVER_MAX_RECURSION` 50"
+
+#: ../../02-architecture.md:96 f9a9d6459128484e88ccb7e44bebad9d
+msgid "CNAME chase cap"
+msgstr "CNAME 追踪上限"
+
+#: ../../02-architecture.md:134 67c5bbb55ad94a55888151fef9fa5412
+msgid "Key Runtime Flows"
+msgstr "关键运行时流程"
+
+#: ../../02-architecture.md:136 75847dcd4f3d487393cec0bae84712b8
+msgid ""
+"Success and failure steps are in [Workflows](06-workflows.md). Retry and "
+"HTTP status guidance for callers is in [Conventions](07-conventions.md)."
+msgstr ""
+"成功和失败的步骤见[工作流](06-workflows.md)。调用方的重试和 HTTP "
+"状态码指引见[开发规范](07-conventions.md)。"
+
+#: ../../02-architecture.md:139 6a9c7cb3bf62477d95d5146268fde786
+msgid "Cross-Cutting Concerns"
+msgstr "横切关注点"
+
+#: ../../02-architecture.md:141 de806351e2e04c2daa990fea26365c4e
+msgid ""
+"**Authentication and authorization**: not applicable to this static PKB; in "
+"the documented runtime, access control is implemented in Lua (usually in "
+"`access_by_lua*`) rather than in the resolver path."
+msgstr ""
+"**认证与授权**：不适用于这个静态知识库；在所记录的运行时中，访问控制由 Lua 实现（通常在 `access_by_lua*` "
+"中），而不是在解析器路径中。"
+
+#: ../../02-architecture.md:144 062a05ef51af4683b01b35456e2a36f1
+msgid ""
+"**Error handling**: Cosocket returns the error to Lua. Upstream turns "
+"resolve failure into 502. See [Data and API](05-data-and-api.md)."
+msgstr ""
+"**错误处理**：Cosocket 将错误返回给 Lua。上游将解析失败转为 502。参见[数据与 API](05-data-and-api.md)。"
+
+#: ../../02-architecture.md:146 4d800c68d1744dd19971a5134b85d4de
+msgid ""
+"**Logging and tracing**: Error-log lines are listed in "
+"[Observability](11-observability.md). `lua_socket_log_errors` defaults to "
+"`on`."
+msgstr ""
+"**日志与追踪**：错误日志行列于[可观测性](11-observability.md)。`lua_socket_log_errors` 默认为 "
+"`on`。"
+
+#: ../../02-architecture.md:149 7348ab8b18874fdd817eaaaee8935c7f
+msgid ""
+"**Caching**: Successful answers stay in the name rbtree until `valid=` or "
+"the record TTL. A failed RCODE deletes that node. `resolver_timeout` does "
+"not control the resend interval."
+msgstr ""
+"**缓存**：成功应答会保留在名称红黑树中，直到 `valid=` 或记录 TTL 到期。失败的 RCODE "
+"会删除该节点。`resolver_timeout` 不控制重发间隔。"
+
+#: ../../02-architecture.md:152 c9c1e841f5b64537a1ad7b8f69e84cbf
+msgid ""
+"**Configuration and secrets**: Nameserver addresses belong in `nginx.conf`, "
+"not in source; secrets belong in environment variables or a secrets store "
+"(see [Conventions](07-conventions.md))."
+msgstr ""
+"**配置与密钥**：域名服务器地址应放在 `nginx.conf` "
+"中而非源码中；密钥应放在环境变量或密钥存储中（参见[开发规范](07-conventions.md)）。"
+
+#: ../../02-architecture.md:156 e72a43053ee84dfd841bf1a62a5f62e6
+msgid "Deployment and Scaling Notes"
+msgstr "部署与扩容说明"
+
+#: ../../02-architecture.md:158 db330c8ad93c4bcd8073ebd5091d9877
+msgid ""
+"**Environments**: this PKB does not publish resolver addresses for dev, "
+"staging, or production; operators confirm the `resolver` and "
+"`resolver_timeout` values for each environment (see the example in "
+"[Conventions](07-conventions.md))."
+msgstr ""
+"**环境**：本知识库不为开发、预发或生产发布 resolver 地址；由运维人员为每个环境确认 `resolver` 和 "
+"`resolver_timeout` 的值（示例见[开发规范](07-conventions.md)）。"
+
+#: ../../02-architecture.md:161 2cc39430f1494891b7df37956280a2dd
+msgid ""
+"**Scaling model**: Each worker has its own resolver trees and in-flight "
+"queries."
+msgstr "**扩容模型**：每个 worker 拥有自己的解析器树和进行中的查询。"
+
+#: ../../02-architecture.md:162 e31db6a43a7746ebbb42448d3323de01
+msgid ""
+"**Recovery considerations**: A single nameserver is a single point of "
+"failure for queries that get no UDP reply. SERVFAIL from that server still "
+"fails the request without trying the next server."
+msgstr ""
+"**恢复考量**：对于得不到 UDP 应答的查询，单一域名服务器是单点故障。来自该服务器的 SERVFAIL 仍会使请求失败，而不会尝试下一个服务器。"
+
+#: ../../02-architecture.md:166 274a3f613942438893f39b44be75e01e
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../02-architecture.md:168 acf2aa66f2b54ec2a5aa8972aec5782d
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../02-architecture.md:169 9b381dbb600e4f11bb5c67765ad19c56
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../02-architecture.md:170 44c9d9e94f884dce9263543c03e9eb99
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../02-architecture.md:171 48c47482220c4c88a67d1eee3dd09833
+msgid "[Repository Map](04-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#~ msgid ""
+#~ "This page records the DNS path used by HTTP cosockets and upstreams. The "
+#~ "rest of the product C4 model is not filled in yet."
+#~ msgstr "本页记录 HTTP cosocket 和上游所使用的 DNS 路径。产品其余部分的 C4 模型尚未填充。"
+
+#~ msgid ""
+#~ "[NEEDS INPUT: who runs this OpenResty build, and which external systems it "
+#~ "is allowed to call]"
+#~ msgstr "[需要补充：谁运行此 OpenResty 构建，以及允许它调用哪些外部系统]"
+
+#~ msgid "[NEEDS INPUT: other deployable containers in this repository]"
+#~ msgstr "[需要补充：本仓库中的其他可部署容器]"
+
+#~ msgid ""
+#~ "**Authentication and authorization**: [NEEDS INPUT: not part of the DNS "
+#~ "failure note]"
+#~ msgstr "**认证与授权**：[需要补充：不属于 DNS 失败笔记的范围]"
+
+#~ msgid ""
+#~ "**Environments**: [NEEDS INPUT: dev, staging, and production resolver "
+#~ "addresses]"
+#~ msgstr "**环境**：[需要补充：开发、预发和生产环境的 resolver 地址]"

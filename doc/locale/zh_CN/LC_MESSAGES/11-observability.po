@@ -1,0 +1,499 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:29+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../11-observability.md:34 d5858cb9e99546d7a0b320259646a395
+msgid "11. Observability"
+msgstr "11. 可观测性"
+
+#: ../../11-observability.md:38 5b9a6a967e4544bdaea889e1147ed812
+msgid ""
+"The primary signal for OpenResty is the Nginx error log plus `ngx.log` lines"
+" from Lua; the runtime ships no per-request metrics by default. This page "
+"documents what to log, how to correlate, and which counters to build - with "
+"the DNS-failure signals as the worked example (verified against nginx 1.31.1"
+" / ngx_lua 0.10.31rc5 in this tree)."
+msgstr ""
+"OpenResty 的主要信号是 Nginx 错误日志加上来自 Lua 的 `ngx.log` "
+"行；运行时默认不提供按请求的指标。本页说明要记录什么、如何关联，以及要构建哪些计数器——并以 DNS 失败信号作为完整示例（已对照本源码树中的 "
+"nginx 1.31.1 / ngx_lua 0.10.31rc5 核实）。"
+
+#: ../../11-observability.md:44 c34e9acdcabe4d84984a804c2559a743
+msgid "Logging"
+msgstr "日志"
+
+#: ../../11-observability.md 28ba981d0a4e42d89d18966eabe0bc19
+msgid "Aspect"
+msgstr "方面"
+
+#: ../../11-observability.md a273a04941554859b3fafae10ee32b78
+msgid "Approach"
+msgstr "做法"
+
+#: ../../11-observability.md fed48e2c84ed40a0988d80ccedfe189e
+msgid "Library or framework"
+msgstr "库或框架"
+
+#: ../../11-observability.md 9086c50604da484ea2ec369dd9528e6c
+msgid "Nginx error log, plus `ngx.log` in Lua"
+msgstr "Nginx 错误日志，以及 Lua 中的 `ngx.log`"
+
+#: ../../11-observability.md 9144af0df9454d1cb2c884bddc2d6b0e
+msgid "Levels"
+msgstr "级别"
+
+#: ../../11-observability.md 765d633861b24ec58ce667688338c0e1
+msgid ""
+"`ngx.ERR` for the final failure, `ngx.WARN` for a retry, `ngx.INFO`/`DEBUG` "
+"for detail"
+msgstr "最终失败用 `ngx.ERR`，重试用 `ngx.WARN`，细节用 `ngx.INFO`/`DEBUG`"
+
+#: ../../11-observability.md ea5ba3d8993f43e988cbe8e26ab46245
+msgid "Format"
+msgstr "格式"
+
+#: ../../11-observability.md 21ecbe00e6ba4b49a0ce5b438b7ffdd8
+msgid ""
+"Text lines, not JSON. Use `log_format` for access log with `$request_id`, "
+"timing, and status"
+msgstr "文本行，而非 JSON。访问日志用 `log_format` 记录 `$request_id`、耗时和状态码"
+
+#: ../../11-observability.md 01db903b04f442c7a7e594eda05d9ebc
+msgid "Output location"
+msgstr "输出位置"
+
+#: ../../11-observability.md aa535bd0d1d0466bbf61b1e92b3433d2
+msgid "The `error_log` path. Lua lines go to the same log."
+msgstr "`error_log` 路径。Lua 日志进入同一日志。"
+
+#: ../../11-observability.md 85b9fc1957934fa4906ea0e9eb5b2746
+msgid "Request correlation"
+msgstr "请求关联"
+
+#: ../../11-observability.md 5478b427e53b46aca700fd99ca6d3b13
+msgid ""
+"Add `$request_id` (and upstream `X-Request-ID`) to the `log_format`; echo it"
+" in errors"
+msgstr "把 `$request_id`（和上游 `X-Request-ID`）加进 `log_format`；并在错误中回显它"
+
+#: ../../11-observability.md:54 f57225a0f5844c628d6622360a19729e
+msgid ""
+"Log the hostname or resource involved, not credentials or query payloads."
+msgstr "记录涉及的主机名或资源，而不要记录凭据或查询负载。"
+
+#: ../../11-observability.md:56 59900dd75201418085f1697e7e54fa90
+msgid "DNS lines to alert on"
+msgstr "需要告警的 DNS 日志行"
+
+#: ../../11-observability.md 02453d07252b4fc1a66b6f8b28e93609
+#: ddb1259bc69c4912a83cc48b93149fd7
+msgid "Pattern"
+msgstr "模式"
+
+#: ../../11-observability.md 19833a420fd94172a45127511b17168b
+#: aa089cd839ff49bdad3f1f89df7fe5f3
+msgid "Meaning"
+msgstr "含义"
+
+#: ../../11-observability.md f0c18902530d4600aa4d26568adc98de
+msgid "`no resolver defined to resolve`"
+msgstr "`no resolver defined to resolve`"
+
+#: ../../11-observability.md 789c31f6277f40ada111dae6507c9005
+msgid "Configuration bug. Page immediately."
+msgstr "配置错误。立即分页告警。"
+
+#: ../../11-observability.md e840773967b742239038b8ce9b61602c
+msgid "`could not be resolved (3: Host not found)`"
+msgstr "`could not be resolved (3: Host not found)`"
+
+#: ../../11-observability.md e3ff9325f9f34567b2478a5f30fe50cf
+msgid "NXDOMAIN"
+msgstr "NXDOMAIN"
+
+#: ../../11-observability.md 52ba8eba4c364b75ac0f41b5ea0e154e
+msgid "`could not be resolved (2: Server failure)`"
+msgstr "`could not be resolved (2: Server failure)`"
+
+#: ../../11-observability.md d8382c7232854cea968b5bf2dbff6208
+msgid "SERVFAIL"
+msgstr "SERVFAIL"
+
+#: ../../11-observability.md ebf79b8e7811432589bfc8fd64167365
+msgid "`could not be resolved (5: Operation refused)`"
+msgstr "`could not be resolved (5: Operation refused)`"
+
+#: ../../11-observability.md 03e80bddece54dfc9c142a2fa18d7981
+msgid "REFUSED"
+msgstr "REFUSED"
+
+#: ../../11-observability.md b9f888bf9a0e436fb4e35f454d122e92
+msgid "`could not be resolved (` and `Operation timed out`"
+msgstr "`could not be resolved (` 和 `Operation timed out`"
+
+#: ../../11-observability.md 45f8d654abf14c928d78fe9365d23eb9
+msgid "`resolver_timeout` elapsed"
+msgstr "`resolver_timeout` 已到"
+
+#: ../../11-observability.md 7e421f7bdda24abc8824e9bfbe117997
+msgid "`wrong ident` in a debug or the resolver log level"
+msgstr "调试或解析器日志级别中的 `wrong ident`"
+
+#: ../../11-observability.md 1780704a8dc441dea0f1766d7600b917
+msgid "Spoofed or late response, ignored"
+msgstr "伪造或迟到的响应，已忽略"
+
+#: ../../11-observability.md 5adece56c1114f669e72cbd7dcd254e8
+msgid "`compression pointers loop in DNS response`"
+msgstr "`compression pointers loop in DNS response`"
+
+#: ../../11-observability.md 93252c789bc349c586628b41d4fd56c6
+msgid "Malformed packet, ignored"
+msgstr "格式错误的报文，已忽略"
+
+#: ../../11-observability.md:68 7a5b9101710a4b81bffb2386b92163e1
+msgid ""
+"`lua_socket_log_errors on` (the default) also logs cosocket errors that Lua "
+"already handled. Turn it off only where Lua logs the same `err` itself."
+msgstr ""
+"`lua_socket_log_errors on`（默认值）还会记录 Lua 已处理的 cosocket 错误。仅在 Lua 自行记录相同 `err`"
+" 的地方关闭它。"
+
+#: ../../11-observability.md:71 f9d5d51cd83646fd8e196a85ddde4886
+msgid "Lua / cosocket lines to watch"
+msgstr "需要关注的 Lua / cosocket 日志行"
+
+#: ../../11-observability.md bab287ec50ad498288eec264e4fe25b6
+msgid "`failed to load Lua inlined code` or `bad byte-code header`"
+msgstr "`failed to load Lua inlined code` 或 `bad byte-code header`"
+
+#: ../../11-observability.md eb3f289afd8e46f5b91b5967cde11d5b
+msgid "Wrong/unexpected LuaJIT bytecode in a `*_by_lua_file`"
+msgstr "`*_by_lua_file` 中出现错误/意外的 LuaJIT 字节码"
+
+#: ../../11-observability.md 61a05684d02846f3a7e6976b7ce408bd
+msgid "`attempt to yield across C-call boundary`"
+msgstr "`attempt to yield across C-call boundary`"
+
+#: ../../11-observability.md 4023b546728546f4a73c9e191ee428b9
+msgid "Yielding API in a non-yielding context"
+msgstr "在不允许让出的上下文中调用会让出的 API"
+
+#: ../../11-observability.md d275d9087fa1463585dea10ecff20d2f
+msgid "`socket busy reading` / `socket busy writing`"
+msgstr "`socket busy reading` / `socket busy writing`"
+
+#: ../../11-observability.md 21570551f69443938c82abc02261a86f
+msgid "Two light threads fighting over one cosocket"
+msgstr "两个 light thread 争用同一个 cosocket"
+
+#: ../../11-observability.md b5311c33c29448ccb630d97369cabcdc
+msgid "`lua_` abort / `stack traceback`"
+msgstr "`lua_` abort / `stack traceback`"
+
+#: ../../11-observability.md 6e02b79112ab48f29d6fc27a9fada9aa
+msgid "Lua panic or an unhandled error from a handler"
+msgstr "Lua panic 或处理器抛出的未处理错误"
+
+#: ../../11-observability.md:80 a4ed57c04dd944ba95e56af46cb88fd3
+msgid "Metrics"
+msgstr "指标"
+
+#: ../../11-observability.md:82 93f6a638cdbb4ed79c2a5593a0742467
+msgid ""
+"OpenResty does not export application metrics by default. Decide a pipeline "
+"(e.g. `lua-resty-prometheus` beside Nginx `stub_status`/`vts`), then wire "
+"the counters below; until then, parse the error log as described above."
+msgstr ""
+"OpenResty 默认不导出应用指标。选定管线（例如 `lua-resty-prometheus` 配合 Nginx 的 "
+"`stub_status`/`vts`）后，接入下面的计数器；在此之前，如上所述解析错误日志。"
+
+#: ../../11-observability.md aeb59e26afee42c7a8bbb686050c0af3
+msgid "Metric"
+msgstr "指标"
+
+#: ../../11-observability.md ed47b30c7592459eb20e632e547509f6
+msgid "Type"
+msgstr "类型"
+
+#: ../../11-observability.md 0dc9117603aa4813871b5e01334bd094
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../11-observability.md 96de0e89091f4031aeedd1489bdc5d54
+msgid "DNS failures by the strerror text"
+msgstr "按 strerror 文本划分的 DNS 失败"
+
+#: ../../11-observability.md 01b704ff3bb442578227328a3096148c
+#: 81f67206a56a4ff19770aae5d5a8c66c b232133359af415f93bf458fa91baa47
+#: c8d0d49ace43440e9314af4587f574f2
+msgid "counter"
+msgstr "计数器"
+
+#: ../../11-observability.md d4536b0f6298437baaa4e0e662caf32e
+msgid "Separates NXDOMAIN from timeouts"
+msgstr "区分 NXDOMAIN 与超时"
+
+#: ../../11-observability.md 400b266899fe4d10bd46340ef88dfdb9
+msgid "Time from `ngx_resolve_name` to the handler"
+msgstr "从 `ngx_resolve_name` 到处理器的耗时"
+
+#: ../../11-observability.md 7a9a617523284d5c901e54c3d42c0a97
+msgid "histogram"
+msgstr "直方图"
+
+#: ../../11-observability.md 5b8a7c98e2be441da0e80628f1e49336
+msgid "Shows nameserver latency versus `resolver_timeout`"
+msgstr "展示域名服务器延迟与 `resolver_timeout` 的对比"
+
+#: ../../11-observability.md 27fbcf82ca0742a394f6603834ef0f2c
+msgid "Connects that reuse a pooled fd after a DNS change"
+msgstr "DNS 变化后复用池中 fd 的连接"
+
+#: ../../11-observability.md 4b4e484bbbe947fab37a388fc939211f
+msgid "Stale address after failover"
+msgstr "故障转移后的陈旧地址"
+
+#: ../../11-observability.md c583b7a8bc274eadbdb86bc766522561
+msgid "Cosocket connect/read/send timeouts"
+msgstr "Cosocket 连接/读取/发送超时"
+
+#: ../../11-observability.md cfc4b9a0054f48bf97777d47ec3d9ac0
+msgid "Backend availability signal"
+msgstr "后端可用性信号"
+
+#: ../../11-observability.md e97190c2f5a44be4b3028b54f921eb1d
+msgid "Lua handler errors by phase"
+msgstr "按阶段划分的 Lua 处理器错误"
+
+#: ../../11-observability.md a3faf231b682432f88fd56bc1830ee1d
+msgid "Configuration/regression detection"
+msgstr "配置/回归检测"
+
+#: ../../11-observability.md:94 4985193f2e0e4d2c86cf52b26bdaaf5a
+msgid ""
+"Do not add an \"NXDOMAIN negative-cache hit\" metric for this tree. A failed"
+" RCODE frees the name node, so the next lookup sends a new query."
+msgstr "不要为本源码树添加“NXDOMAIN 负缓存命中”指标。失败的 RCODE 会释放名称节点，因此下一次查询会发送新查询。"
+
+#: ../../11-observability.md:97 f2791f66a0b14009b22df50b70e5d2bb
+msgid "Tracing or Correlation"
+msgstr "追踪或关联"
+
+#: ../../11-observability.md:99 7b0f7811cf2047529dfdf92306b1e52c
+msgid ""
+"**Request identifier**: use Nginx's built-in `$request_id` (or an upstream "
+"`X-Request-ID` echoed via `log_format`) and correlate in Lua through "
+"`ngx.var.request_id`; include it in the access log and your own error lines."
+msgstr ""
+"**请求标识**：使用 Nginx 内建的 `$request_id`（或通过 `log_format` 回显上游 `X-Request-ID`），并在"
+" Lua 中通过 `ngx.var.request_id` 关联；把它放进访问日志和自己写的错误行。"
+
+#: ../../11-observability.md:102 d7c363b57ebf42e686fb0348e3237953
+msgid ""
+"**Cross-service visibility**: carry the same id into backend calls where the"
+" protocol allows (headers for HTTP, or in-band for other protocols)."
+msgstr "**跨服务可见性**：在协议允许的地方把同一标识带进后端调用（HTTP 用请求头，其他协议用带内方式）。"
+
+#: ../../11-observability.md:104 3d070c45434545fb8b7a5e30ae4161ad
+msgid ""
+"**Diagnostic value**: pair the Lua `err` with `dig` against the same "
+"`resolver` address from the worker network for DNS issues; pair a Lua "
+"traceback with the request id for code issues."
+msgstr ""
+"**诊断价值**：DNS 问题把 Lua `err` 与从 worker 网络对同一 `resolver` 地址执行的 `dig` 对照；代码问题把 "
+"Lua traceback 与请求标识配对。"
+
+#: ../../11-observability.md:108 617901dac74d4b4185723936f8fd6b81
+msgid "Alerts and Health Signals"
+msgstr "告警与健康信号"
+
+#: ../../11-observability.md 755d83c2f19e47fcbe51bc7ccf24c150
+msgid "Condition"
+msgstr "条件"
+
+#: ../../11-observability.md e8c23e446b6d4a1e8c90d218c2936bef
+msgid "Signal"
+msgstr "信号"
+
+#: ../../11-observability.md 1a4f65adb0284c8fb265a779524d8b92
+msgid "Expected action"
+msgstr "预期动作"
+
+#: ../../11-observability.md 37846451b208452ea28d1aaa8f8d5e02
+msgid "Any `no resolver defined`"
+msgstr "任何 `no resolver defined`"
+
+#: ../../11-observability.md 493a85d3f13f403fac6c87212931f40b
+#: e8c9f9f02d3a4254acdc8f5291e944b9
+msgid "error log"
+msgstr "错误日志"
+
+#: ../../11-observability.md ad7b8bf34b604d6c91e313730b5ffec6
+msgid "Add `resolver` and reload"
+msgstr "添加 `resolver` 并重载"
+
+#: ../../11-observability.md 02283b049daa49dba3c206ac78502792
+msgid "Timeout rate rising, NXDOMAIN flat"
+msgstr "超时率上升，NXDOMAIN 平稳"
+
+#: ../../11-observability.md b90c7d70785641b084e39a73df9351e6
+msgid "`Operation timed out`"
+msgstr "`Operation timed out`"
+
+#: ../../11-observability.md 7310eae358654099a0b8398229ecba92
+msgid "Check UDP 53 and nameserver health"
+msgstr "检查 UDP 53 和域名服务器健康"
+
+#: ../../11-observability.md 35103b0c119f4c80b9565ab5cdbd8d09
+msgid "SERVFAIL spike"
+msgstr "SERVFAIL 激增"
+
+#: ../../11-observability.md 4a485775a0024e09b2e21e5e86f9958a
+msgid "`Server failure`"
+msgstr "`Server failure`"
+
+#: ../../11-observability.md e768504caebe4d1a9948392bef7313d0
+msgid "Check that nameserver. Do not expect automatic failover on this RCODE."
+msgstr "检查该域名服务器。不要期望此 RCODE 上发生自动故障转移。"
+
+#: ../../11-observability.md 8b3b8a916598479ea9521559a7365ee6
+msgid "`Operation refused`"
+msgstr "`Operation refused`"
+
+#: ../../11-observability.md c3e12224d518480aac2511c1a9742fa0
+msgid "Fix the nameserver ACL"
+msgstr "修复域名服务器 ACL"
+
+#: ../../11-observability.md dbe9d13b0460441598002d6986de5ecf
+msgid "Lua error rate rising"
+msgstr "Lua 错误率上升"
+
+#: ../../11-observability.md 0a8a98c29d9844169ce5a6058c841b66
+msgid "`stack traceback` in error log"
+msgstr "错误日志中的 `stack traceback`"
+
+#: ../../11-observability.md fa113875eeed4bc1be680ed925691de6
+msgid "Correlate by `$request_id`; fix the handler/regression"
+msgstr "按 `$request_id` 关联；修复处理器/回归"
+
+#: ../../11-observability.md 075e5e0e3b8546ab96e6dc895ebc44d1
+msgid "Worker CPU pegged with Lua on top"
+msgstr "worker CPU 打满且 Lua 位居榜首"
+
+#: ../../11-observability.md c00233596cde4a0cb740d1670297e118
+msgid "profiler (XRay / flamegraph)"
+msgstr "剖析器（XRay / flamegraph）"
+
+#: ../../11-observability.md e5d1f7fc0c14465a87724cd48eeb3db4
+msgid "Profile hot Lua; look for blocking calls in request path"
+msgstr "剖析热点 Lua；查找请求路径中的阻塞调用"
+
+#: ../../11-observability.md:119 966b656bb4fa48d58200243074f47c48
+msgid "Operational Checklist"
+msgstr "运维检查清单"
+
+#: ../../11-observability.md:121 bc724ff00a18447f83f962dd80ae60b4
+msgid ""
+"Error log is searchable for `could not be resolved` (DNS) and `stack "
+"traceback` (Lua)."
+msgstr "错误日志可搜索 `could not be resolved`（DNS）和 `stack traceback`（Lua）。"
+
+#: ../../11-observability.md:123 6447e93a1cd44dcfab58b3fd1d68bf67
+msgid "`no resolver defined` pages a human."
+msgstr "`no resolver defined` 能呼叫到人。"
+
+#: ../../11-observability.md:124 1e4080a7368e4319b53147437c5d6f1e
+msgid "Timeout and NXDOMAIN are counted separately."
+msgstr "超时与 NXDOMAIN 被分别计数。"
+
+#: ../../11-observability.md:125 0329cf61f2934eb885479bde9fd59510
+msgid "`$request_id` appears in the access log and application error lines."
+msgstr "`$request_id` 出现在访问日志和应用错误行中。"
+
+#: ../../11-observability.md:126 e1e1979c1dff47d8b4e5191dd82608f5
+msgid ""
+"`valid=` and keepalive are both known for services that change addresses."
+msgstr "对于会变更地址的服务，`valid=` 和 keepalive 均已知。"
+
+#: ../../11-observability.md:128 b8033836b6834d5c83d3734bb0c27d67
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../11-observability.md:130 a819e8dfc83e4de28416102f142e1b54
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../11-observability.md:131 5c8b1ddf0aaa4a5b92649e9bc30d5b54
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../11-observability.md:132 31da187f17f0409aa7ab43ae21d7fe57
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#~ msgid ""
+#~ "These are not implemented in this repository. [NEEDS INPUT: which stats "
+#~ "pipeline should own them]"
+#~ msgstr "这些在本仓库中尚未实现。[需要补充：应由哪个统计管线负责]"
+
+#~ msgid ""
+#~ "**Trace or request identifier**: [NEEDS INPUT: request id header used in "
+#~ "this deployment]"
+#~ msgstr "**追踪或请求标识**：[需要补充：本部署使用的请求 id 头]"
+
+#~ msgid ""
+#~ "Signals for DNS failures on the HTTP connect path. This tree does not define"
+#~ " a metrics exporter for these events. Counters below are what to parse from "
+#~ "the error log until a metric exists."
+#~ msgstr ""
+#~ "HTTP 连接路径上 DNS 失败的可观测信号。本源码树并未为这些事件定义指标导出器。在指标出现之前，下面的计数器就是从错误日志中解析出来的内容。"
+
+#~ msgid "Philosophy"
+#~ msgstr "原则"
+
+#~ msgid ""
+#~ "A DNS failure should be distinguishable from a backend TCP failure within "
+#~ "one error-log line. The hostname and the resolver error text are enough to "
+#~ "route the incident. They are not credentials."
+#~ msgstr "单行错误日志就应能区分 DNS 失败与后端 TCP 失败。主机名和解析器错误文本足以定位事件，它们不是凭据。"
+
+#~ msgid "Text lines, not JSON"
+#~ msgstr "文本行，而非 JSON"
+
+#~ msgid ""
+#~ "**Cross-service visibility**: The error line includes the hostname. It does "
+#~ "not include which nameserver answered unless the resolver connection log is "
+#~ "enabled."
+#~ msgstr "**跨服务可见性**：错误行包含主机名。除非启用了解析器连接日志，否则不包含是哪个域名服务器应答的。"
+
+#~ msgid "Diagnostic Tools"
+#~ msgstr "诊断工具"
+
+#~ msgid "`dig @<resolver-ip> <name> A` from the worker network namespace"
+#~ msgstr "从 worker 网络命名空间执行 `dig @<resolver-ip> <name> A`"
+
+#~ msgid "The decision tree in [Runbook](10-runbook.md)"
+#~ msgstr "[运维手册](10-runbook.md)中的判定树"
+
+#~ msgid ""
+#~ "`openresty/bundle/lua-resty-dns-0.23/` only when the built-in resolver "
+#~ "cannot express the query"
+#~ msgstr "仅在内置解析器无法表达查询时使用 `openresty/bundle/lua-resty-dns-0.23/`"

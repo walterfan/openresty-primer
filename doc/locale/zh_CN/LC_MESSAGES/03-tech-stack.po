@@ -1,0 +1,479 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 09:17+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../03-tech-stack.md:39 61a1fe54b3d94bcebd02c78b7e47a19f
+msgid "03. Tech Stack"
+msgstr "03. 技术栈"
+
+#: ../../03-tech-stack.md:43 80752fb6ac96415097f564dd976b6ad4
+msgid ""
+"This page covers two things: the **runtime stack** that this knowledge "
+"base documents (OpenResty) and the **docs toolchain** that builds the PKB"
+" site itself. Versions below are verified in this tree."
+msgstr "本页涵盖两件事：本知识库所记录的**运行时技术栈**（OpenResty），以及构建知识库站点本身的**文档工具链**。以下版本均在本源码树中核实。"
+
+#: ../../03-tech-stack.md:47 14af0e67869a4979955394799c127e83
+msgid "System View"
+msgstr "系统视图"
+
+#: ../../03-tech-stack.md b34828227a11402594119f82ffb48686
+msgid "Layer"
+msgstr "分层"
+
+#: ../../03-tech-stack.md 93bc1d2f98d44a2ca9664c0e13463b9c
+msgid "Main technology"
+msgstr "主要技术"
+
+#: ../../03-tech-stack.md f04b60a6c8854445b672a6e78c535153
+msgid "Why it exists in this repo"
+msgstr "为何存在于本仓库"
+
+#: ../../03-tech-stack.md b0888546dd5f43de8517788f68928b08
+msgid "Interface (documented runtime)"
+msgstr "接口（所记录的运行时）"
+
+#: ../../03-tech-stack.md 2646d42853e7480e9e1b6f26bc4758b1
+#: d87caf0c4a2142f389e8efa89e628d8a
+msgid "Nginx 1.31.1"
+msgstr "Nginx 1.31.1"
+
+#: ../../03-tech-stack.md 15ca2f2184ee4e58a5940660c15008b2
+msgid "Enhanced Nginx core; request phases that Lua hooks into"
+msgstr "增强版 Nginx 内核；Lua 挂接的请求阶段"
+
+#: ../../03-tech-stack.md 76dcd203913a48948e57b7b2a98f4090
+msgid "Runtime (documented subject)"
+msgstr "运行时（记录对象）"
+
+#: ../../03-tech-stack.md 27767778eb704aa38bb9f2d13db54891
+msgid "LuaJIT 2.1 + `lua-nginx-module` (ngx_lua)"
+msgstr "LuaJIT 2.1 + `lua-nginx-module`（ngx_lua）"
+
+#: ../../03-tech-stack.md 1460da00f4244e44979b5ed3b02c8c8b
+msgid "Embeds Lua coroutines into the Nginx event model; 100% non-blocking"
+msgstr "把 Lua 协程嵌入 Nginx 事件模型；100% 非阻塞"
+
+#: ../../03-tech-stack.md 816c64a5f8034377b4be0213012f8c85
+msgid "Backend access (documented subject)"
+msgstr "后端访问（记录对象）"
+
+#: ../../03-tech-stack.md 81e48c32155648298875b007d2177396
+msgid "Cosockets + `lua-resty-*` libraries"
+msgstr "Cosocket + `lua-resty-*` 库"
+
+#: ../../03-tech-stack.md 646038c31d9c49d4afaac5260a8a1746
+msgid "Non-blocking access to Redis/MySQL/Memcached/DNS/HTTP"
+msgstr "对 Redis/MySQL/Memcached/DNS/HTTP 的非阻塞访问"
+
+#: ../../03-tech-stack.md c896b2034caf4216bee35690805fe3f0
+msgid "Docs interface (this repo)"
+msgstr "文档接口（本仓库）"
+
+#: ../../03-tech-stack.md fc9de116003d444192d84505ce722e32
+msgid "Sphinx + Sphinx RTD theme + sphinx-design"
+msgstr "Sphinx + Sphinx RTD 主题 + sphinx-design"
+
+#: ../../03-tech-stack.md b84bca103a5e46b298b6611507dbb155
+msgid "Renders the MyST knowledge base into a browsable site"
+msgstr "把 MyST 知识库渲染成可浏览的站点"
+
+#: ../../03-tech-stack.md 46a340b87999412ea0005f0e696eba83
+msgid "Docs content"
+msgstr "文档内容"
+
+#: ../../03-tech-stack.md dacaefae3c984c2bafe5c29584c58476
+msgid "MyST (myst-parser 4.0.1)"
+msgstr "MyST（myst-parser 4.0.1）"
+
+#: ../../03-tech-stack.md aa6da86912c84119a9287988bcf07323
+msgid "Markdown with Sphinx directives, admonitions, Mermaid"
+msgstr "带 Sphinx 指令、提示框和 Mermaid 的 Markdown"
+
+#: ../../03-tech-stack.md f306454a569e451db392c5b077e18f16
+msgid "Docs i18n"
+msgstr "文档国际化"
+
+#: ../../03-tech-stack.md c1fcf6296ecf40929e42d796a062022d
+msgid "sphinx-intl 2.3.2 + gettext (`.pot`/`.po`/`.mo`)"
+msgstr "sphinx-intl 2.3.2 + gettext（`.pot`/`.po`/`.mo`）"
+
+#: ../../03-tech-stack.md b1b837a849934850b75c9b3d9f4daa6f
+msgid "English single source of truth; zh_CN via catalogs"
+msgstr "英文为唯一事实来源；zh_CN 通过翻译目录实现"
+
+#: ../../03-tech-stack.md e5a411a2a024403ea8110de21bf46339
+msgid "Build and packaging (this repo)"
+msgstr "构建与打包（本仓库）"
+
+#: ../../03-tech-stack.md 40004d53c5104c20a3c915fc574c868e
+msgid "`uv` (uv.lock) + Makefile"
+msgstr "`uv`（uv.lock）+ Makefile"
+
+#: ../../03-tech-stack.md c9817a20fe7242dbbd23c7832bb8c91d
+msgid "Locked, reproducible env; `make deps` / `make build` / `make publish`"
+msgstr "锁定、可复现的环境；`make deps` / `make build` / `make publish`"
+
+#: ../../03-tech-stack.md 6ca6ef955d894eb9b3adad2976f8afcc
+msgid "Deployment (this repo)"
+msgstr "部署（本仓库）"
+
+#: ../../03-tech-stack.md db39303e9e114e538b06f08eae838b3e
+msgid "GitHub Pages (`gh-pages`), optional AgentBox"
+msgstr "GitHub Pages（`gh-pages`）、可选 AgentBox"
+
+#: ../../03-tech-stack.md 97496186cbbc477fb7405064e3770f29
+msgid "`make publish` pushes `doc/_build/site` to Pages"
+msgstr "`make publish` 把 `doc/_build/site` 推送到 Pages"
+
+#: ../../03-tech-stack.md:60 0df5aa6e337449948682500d0555fd19
+msgid "Main Languages and Frameworks"
+msgstr "主要语言与框架"
+
+#: ../../03-tech-stack.md:62 edd15ad42a2744d7b0b4ad51db4ffe05
+msgid ""
+"**Primary language (documented runtime)**: Lua, compiled by LuaJIT 2.1. "
+"Since ngx_lua `v0.10.16` the standard PUC-Rio Lua interpreter is no "
+"longer supported."
+msgstr ""
+"**主要语言（所记录的运行时）**：Lua，由 LuaJIT 2.1 编译。自 ngx_lua `v0.10.16` 起，标准的 PUC-Rio "
+"Lua 解释器不再受支持。"
+
+#: ../../03-tech-stack.md:65 2bc02f8d298d408d8fce04c9645b54ad
+msgid ""
+"**Secondary language (this repo)**: Python 3.11 for the Sphinx build, the"
+" `scripts/` helpers, and the metadata footer renderer."
+msgstr "**次要语言（本仓库）**：Python 3.11，用于 Sphinx 构建、`scripts/` 辅助脚本和元数据页脚渲染。"
+
+#: ../../03-tech-stack.md:67 9bbdf9d3770747d1afd502f316f1442a
+msgid ""
+"**Primary framework (documented runtime)**: `lua-nginx-module` (ngx_lua),"
+" the core component of OpenResty."
+msgstr "**主要框架（所记录的运行时）**：`lua-nginx-module`（ngx_lua），OpenResty 的核心组件。"
+
+#: ../../03-tech-stack.md:71 114047e9543748d58e28be793c65a068
+msgid "Key Dependencies"
+msgstr "关键依赖"
+
+#: ../../03-tech-stack.md a50b6880e7d14a78801c53e43b8964b4
+msgid "Package or crate"
+msgstr "包或 crate"
+
+#: ../../03-tech-stack.md 47bc74e476e4498d90d2920962bb54aa
+msgid "Area"
+msgstr "领域"
+
+#: ../../03-tech-stack.md eb7c6d1787634da7a2d78a86c29b7f88
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../03-tech-stack.md 08f3cdcef89d4c09a5b41a83bed9c07c
+#: 2ab53777b3f74c3d8fb90c6f3f59164a 6f2d9fddaa09425aba895b894fb4c912
+#: bdc023dd58de41fd8ae7d35e630252ad
+msgid "runtime"
+msgstr "运行时"
+
+#: ../../03-tech-stack.md f39911e7b1a44b55a51fc41bfd0474c1
+msgid "`ngx_resolver`, event loop, upstream machinery (documented, not vendored)"
+msgstr "`ngx_resolver`、事件循环、上游机制（仅记录，未随仓库提供）"
+
+#: ../../03-tech-stack.md 9d28ce238a9e454f9bc8d1e21f656a47
+msgid "LuaJIT 2.1"
+msgstr "LuaJIT 2.1"
+
+#: ../../03-tech-stack.md 5efca6fae3d940fdaec6fa97bf0899bb
+msgid "JIT compilation; coroutines; bytecode loading for `*_by_lua_file`"
+msgstr "JIT 编译；协程；`*_by_lua_file` 的字节码加载"
+
+#: ../../03-tech-stack.md 237ad002f2674b8db5707f11844470f5
+msgid "`lua-nginx-module`"
+msgstr "`lua-nginx-module`"
+
+#: ../../03-tech-stack.md 0b01b80e95a64015bcba15bd35b053c0
+msgid "phase directives; cosockets; light threads; Nginx API for Lua"
+msgstr "阶段指令；cosocket；light thread；Nginx API for Lua"
+
+#: ../../03-tech-stack.md 02de4f5f13fe439094c6a5514cfa3865
+msgid "`lua-resty-*` (redis, mysql, dns, lock, lrucache)"
+msgstr "`lua-resty-*`（redis、mysql、dns、lock、lrucache）"
+
+#: ../../03-tech-stack.md 8e135407ab974420b810e7ca15d2033f
+msgid "non-blocking backend clients used in typical OpenResty apps"
+msgstr "典型 OpenResty 应用使用的非阻塞后端客户端"
+
+#: ../../03-tech-stack.md:81 fcc58e6f8f6e4c5e9e1817931be4891d
+msgid "Runtime Interaction Model"
+msgstr "运行时交互模型"
+
+#: ../../03-tech-stack.md:83 174d4228bb274e3cb1e1ea1b4c9e6bb5
+msgid ""
+"For the **documented runtime**: a client request enters the Nginx event "
+"loop and the `content_by_lua*`-style handler runs as a Lua coroutine; any"
+" backend talk happens over cosockets (which yield the coroutine back to "
+"the event loop) rather than blocking. See "
+"[Architecture](02-architecture.md) and [Workflows](06-workflows.md)."
+msgstr ""
+"对于**所记录的运行时**：客户端请求进入 Nginx 事件循环，`content_by_lua*` 风格的处理器以 Lua "
+"协程运行；任何后端通信都通过 "
+"cosocket（它会把协程让回事件循环）而非阻塞完成。参见[架构](02-architecture.md)和[工作流](06-workflows.md)。"
+
+#: ../../03-tech-stack.md:92 dffda62446a04a72a1cd45c97b25ec87
+msgid "Common Misconceptions"
+msgstr "常见误解"
+
+#: ../../03-tech-stack.md 8ff826fa0931458ea7b6d4bbdf9f14ff
+msgid "Misconception"
+msgstr "误解"
+
+#: ../../03-tech-stack.md 4f0a37019e2c44d28c70e3158788f990
+msgid "Reality in this repo"
+msgstr "本仓库中的实际情况"
+
+#: ../../03-tech-stack.md 4c5650f0e093431aa23e8a7806877996
+msgid "\"OpenResty is a fork of Nginx\""
+msgstr "“OpenResty 是 Nginx 的分支”"
+
+#: ../../03-tech-stack.md ba1919a839a74d94ba0b9cabf2e6a6b2
+msgid ""
+"It is a higher-level platform that uses Nginx as a component; standard "
+"Nginx config knowledge carries over"
+msgstr "它是一个以 Nginx 作为组件的更高层平台；标准的 Nginx 配置知识可以沿用"
+
+#: ../../03-tech-stack.md 40effecf96994e05a84f89298d22584b
+msgid "\"Lua here is PUC-Rio Lua 5.1\""
+msgstr "“这里的 Lua 是 PUC-Rio Lua 5.1”"
+
+#: ../../03-tech-stack.md be221612016b4435ae85407bf41575ea
+msgid "Since ngx_lua v0.10.16 it is LuaJIT only"
+msgstr "自 ngx_lua v0.10.16 起仅支持 LuaJIT"
+
+#: ../../03-tech-stack.md fe27b234ad584ca7ad59986b50a4d893
+msgid "\"Hostname connects use the system resolver\""
+msgstr "“主机名连接使用系统解析器”"
+
+#: ../../03-tech-stack.md a8efa5a877b14d4990bc27703782e679
+msgid ""
+"They use Nginx `ngx_resolver` and the `resolver` directive; no "
+"`getaddrinfo` fallback"
+msgstr "它们使用 Nginx `ngx_resolver` 和 `resolver` 指令；没有 `getaddrinfo` 回退"
+
+#: ../../03-tech-stack.md 4c392e01d1a045958d07534d262099b7
+msgid "\"All Lua is 100% non-blocking\""
+msgstr "“所有 Lua 都 100% 非阻塞”"
+
+#: ../../03-tech-stack.md db4231b34f5546a3ab8592aebe075435
+msgid ""
+"Only when using cosockets / the Nginx API for Lua; blocking calls stall "
+"the worker"
+msgstr "只有使用 cosocket / Nginx API for Lua 时才如此；阻塞调用会卡住 worker"
+
+#: ../../03-tech-stack.md:101 0a407f1b81414a1aa7399d1d76bd2ccc
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../03-tech-stack.md:103 984c30b9e52e4c178e0fa44e419c0100
+msgid "[Architecture](02-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../03-tech-stack.md:104 04c094b6a3b848d798faa853e92e2454
+msgid "[Repository Map](04-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../03-tech-stack.md:105 f3fbb84e1aa74e46b5811a920bcb9aee
+msgid "[lua-nginx-module Directive Reference](08-lua-nginx-module.md)"
+msgstr "[lua-nginx-module 指令参考](08-lua-nginx-module.md)"
+
+#~ msgid ""
+#~ "**Template note**: Use real versions and"
+#~ " real package names from manifests or"
+#~ " lockfiles. Explain why each major "
+#~ "technology exists in this repo."
+#~ msgstr "**模板说明**：使用清单或锁文件中真实的版本和包名。解释本仓库中每项主要技术存在的原因。"
+
+#~ msgid "Purpose"
+#~ msgstr "目的"
+
+#~ msgid ""
+#~ "Summarize the main technologies used in"
+#~ " the project and how they fit "
+#~ "together at runtime."
+#~ msgstr "总结项目中使用的主要技术，以及它们在运行时如何协同工作。"
+
+#~ msgid "Stack Summary"
+#~ msgstr "技术栈概览"
+
+#~ msgid "Interface"
+#~ msgstr "接口"
+
+#~ msgid "[framework or SDK]"
+#~ msgstr "[框架或 SDK]"
+
+#~ msgid "[reason]"
+#~ msgstr "[原因]"
+
+#~ msgid "[language or framework]"
+#~ msgstr "[语言或框架]"
+
+#~ msgid "Storage"
+#~ msgstr "存储"
+
+#~ msgid "[database or persistence]"
+#~ msgstr "[数据库或持久化]"
+
+#~ msgid "Testing"
+#~ msgstr "测试"
+
+#~ msgid "[frameworks]"
+#~ msgstr "[测试框架]"
+
+#~ msgid "**Primary language**: [name and version]"
+#~ msgstr "**主要语言**：[名称和版本]"
+
+#~ msgid "**Secondary languages**: [name and version]"
+#~ msgstr "**次要语言**：[名称和版本]"
+
+#~ msgid "**Primary framework**: [name and role]"
+#~ msgstr "**主要框架**：[名称和职责]"
+
+#~ msgid "**Build tool**: [name and role]"
+#~ msgstr "**构建工具**：[名称和职责]"
+
+#~ msgid "[dependency 1]"
+#~ msgstr "[依赖 1]"
+
+#~ msgid "[layer]"
+#~ msgstr "[分层]"
+
+#~ msgid "[dependency 2]"
+#~ msgstr "[依赖 2]"
+
+#~ msgid "[dependency 3]"
+#~ msgstr "[依赖 3]"
+
+#~ msgid "Describe how the major layers interact. For example:"
+#~ msgstr "描述主要分层如何交互。例如："
+
+#~ msgid "[UI or caller] sends input"
+#~ msgstr "[UI 或调用方]发送输入"
+
+#~ msgid "[runtime or service] validates and processes it"
+#~ msgstr "[运行时或服务]校验并处理它"
+
+#~ msgid "[storage or external system] persists or enriches it"
+#~ msgstr "[存储或外部系统]持久化或丰富它"
+
+#~ msgid "[result path] returns the outcome"
+#~ msgstr "[结果路径]返回结果"
+
+#~ msgid "**Local development**: [dev command or tool]"
+#~ msgstr "**本地开发**：[开发命令或工具]"
+
+#~ msgid "**Production build**: [build command or tool]"
+#~ msgstr "**生产构建**：[构建命令或工具]"
+
+#~ msgid "**Release packaging**: [bundler, CI, or release action]"
+#~ msgstr "**发布打包**：[打包器、CI 或发布动作]"
+
+#~ msgid "[Misconception 1]"
+#~ msgstr "[误解 1]"
+
+#~ msgid "[Correction]"
+#~ msgstr "[纠正]"
+
+#~ msgid "[Misconception 2]"
+#~ msgstr "[误解 2]"
+
+#~ msgid ""
+#~ "**Primary framework (this repo)**: Sphinx "
+#~ "8.2.3 with `sphinx_rtd_theme` and `myst-"
+#~ "parser`; bilingual builds via `sphinx-"
+#~ "intl`."
+#~ msgstr ""
+#~ "**主要框架（本仓库）**：Sphinx 8.2.3 + `sphinx_rtd_theme` "
+#~ "+ `myst-parser`；通过 `sphinx-intl` 做双语构建。"
+
+#~ msgid "Sphinx 8.2.3, myst-parser 4.0.1"
+#~ msgstr "Sphinx 8.2.3、myst-parser 4.0.1"
+
+#~ msgid "docs build"
+#~ msgstr "文档构建"
+
+#~ msgid "strict (`-W`) MyST rendering"
+#~ msgstr "严格（`-W`）MyST 渲染"
+
+#~ msgid "sphinx-rtd-theme 3.0.2, sphinx-design 0.6.1"
+#~ msgstr "sphinx-rtd-theme 3.0.2、sphinx-design 0.6.1"
+
+#~ msgid "Read-the-Docs layout, cards/admonitions"
+#~ msgstr "Read-the-Docs 布局、卡片/提示框"
+
+#~ msgid "sphinxcontrib-mermaid 1.0.0"
+#~ msgstr "sphinxcontrib-mermaid 1.0.0"
+
+#~ msgid "Mermaid diagrams in the docs"
+#~ msgstr "文档中的 Mermaid 图表"
+
+#~ msgid "sphinx-intl 2.3.2, polib 1.2.0"
+#~ msgstr "sphinx-intl 2.3.2、polib 1.2.0"
+
+#~ msgid "docs i18n"
+#~ msgstr "文档国际化"
+
+#~ msgid "gettext catalog extraction/compilation"
+#~ msgstr "gettext 目录提取/编译"
+
+#~ msgid "uv 0.11.x"
+#~ msgstr "uv 0.11.x"
+
+#~ msgid "tooling"
+#~ msgstr "工具"
+
+#~ msgid "`uv sync --locked` per `uv.lock`; no pip drift"
+#~ msgstr "按 `uv.lock` 执行 `uv sync --locked`；避免 pip 漂移"
+
+#~ msgid ""
+#~ "For **this repo**: `doc/*.md` (English "
+#~ "source of truth) -> gettext extraction"
+#~ " (`.pot`) -> `zh_CN` catalogs (`.po`/`.mo`)"
+#~ " -> Sphinx -> `_build/site/{en,zh}` -> "
+#~ "GitHub Pages."
+#~ msgstr ""
+#~ "对于**本仓库**：`doc/*.md`（英文事实来源）-> gettext 提取（`.pot`）-> "
+#~ "`zh_CN` 翻译目录（`.po`/`.mo`）-> Sphinx -> "
+#~ "`_build/site/{en,zh}` -> GitHub Pages。"
+
+#~ msgid "Build and Packaging Notes"
+#~ msgstr "构建与打包说明"
+
+#~ msgid ""
+#~ "**Local development**: `make deps` (uv "
+#~ "sync), `make serve` / `make serve-"
+#~ "en`."
+#~ msgstr "**本地开发**：`make deps`（uv sync）、`make serve` / `make serve-en`。"
+
+#~ msgid "**Production build**: `make build` (bilingual strict Sphinx build)."
+#~ msgstr "**生产构建**：`make build`（双语严格 Sphinx 构建）。"
+
+#~ msgid ""
+#~ "**Release packaging**: `make publish` (builds"
+#~ " and pushes `_build/site` to the "
+#~ "`gh-pages` branch)."
+#~ msgstr "**发布打包**：`make publish`（构建并把 `_build/site` 推送到 `gh-pages` 分支）。"
+

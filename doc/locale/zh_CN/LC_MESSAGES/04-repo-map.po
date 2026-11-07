@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:27+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../04-repo-map.md:33 9cf7326b1c564be4ae66e8b87d2b4d1f
+msgid "04. Repository Map"
+msgstr "04. 仓库地图"
+
+#: ../../04-repo-map.md:37 8a85e5066b9d4f03a72f0a3a6a6f8036
+msgid ""
+"This page maps the repository layout. The repository is a documentation "
+"knowledge base: the `doc/` tree is the product, and the `openresty/bundle/` "
+"paths used throughout the PKB are references to upstream source (not "
+"vendored here)."
+msgstr ""
+"本页展示仓库布局。本仓库是一个文档知识库：`doc/` 目录树就是产品本身，而知识库中使用的 `openresty/bundle/` "
+"路径是对上游源码的引用（并未随仓库提供）。"
+
+#: ../../04-repo-map.md:42 c25c43a6eff7437ab9cd8703519a515c
+msgid "Directory Structure"
+msgstr "目录结构"
+
+#: ../../04-repo-map.md:68 7a86fd4be9cb4170a6754d71c339507e
+msgid "Upstream source paths cited by this PKB (not in this repo):"
+msgstr "本知识库引用的上游源码路径（不在本仓库中）："
+
+#: ../../04-repo-map.md:70 ce9c4f6b5eab4d3d9b0171120570e0f9
+msgid "`openresty/bundle/nginx-1.31.1/...`"
+msgstr "`openresty/bundle/nginx-1.31.1/...`"
+
+#: ../../04-repo-map.md:71 ac6837d44ff542ae8a5dc18663bb1d59
+msgid "`openresty/bundle/ngx_lua-0.10.31rc5/...`"
+msgstr "`openresty/bundle/ngx_lua-0.10.31rc5/...`"
+
+#: ../../04-repo-map.md:72 b3f2747c968040f58d0282a9a8f0991b
+msgid "`openresty/bundle/lua-resty-dns-0.23/...`"
+msgstr "`openresty/bundle/lua-resty-dns-0.23/...`"
+
+#: ../../04-repo-map.md:74 210591e9a0f444299c73bc004eecbfc4
+msgid "Directory Responsibilities"
+msgstr "目录职责"
+
+#: ../../04-repo-map.md ff59567eed2f44ddadd631c736ed5d8c
+msgid "Path"
+msgstr "路径"
+
+#: ../../04-repo-map.md c359c5d3b2da49d585d0f53a2e49908d
+msgid "Responsibility"
+msgstr "职责"
+
+#: ../../04-repo-map.md 3895d5897b134e4996f07da21a522a1e
+msgid "Notes"
+msgstr "说明"
+
+#: ../../04-repo-map.md f1c20d2aeeab46188169a75de79d82ec
+msgid "`doc/*.md`"
+msgstr "`doc/*.md`"
+
+#: ../../04-repo-map.md eb150ac16acf4b6bb72ed037712ff432
+msgid "Numbered knowledge pages (English source of truth)"
+msgstr "编号的知识页面（英文事实来源）"
+
+#: ../../04-repo-map.md ad9bd405e3e5476baf51ddf4e8458ec5
+msgid ""
+"Frontmatter per the metadata contract; see [12-document](12-document.md)"
+msgstr "按元数据契约使用 frontmatter；参见[文档流程](12-document.md)"
+
+#: ../../04-repo-map.md 1187b3c6139042e291b13638163604ec
+#: 9f88a9d46f924e858bd2f4ed02812b44
+msgid "`doc/index.md`"
+msgstr "`doc/index.md`"
+
+#: ../../04-repo-map.md 2ac64beac92047e890a10a350fbbe1de
+msgid "Sphinx root and toctree"
+msgstr "Sphinx 根文档与目录树"
+
+#: ../../04-repo-map.md fed066aad21b441ead0e1e53e460727e
+msgid "Register every page once here and in `scripts/gen_index.py`"
+msgstr "在 `index.md` 和 `scripts/gen_index.py` 中各注册一次"
+
+#: ../../04-repo-map.md 1fe86df75a464b77823a5d5d7dfbaf25
+msgid "`doc/locale/`"
+msgstr "`doc/locale/`"
+
+#: ../../04-repo-map.md 95e94572504a48fa93d03e16c32bda8f
+msgid "zh_CN gettext catalogs"
+msgstr "zh_CN gettext 翻译目录"
+
+#: ../../04-repo-map.md 30a0293c088b472c89cdf50a1873151e
+msgid "`sphinx-intl update` merges from `_build/gettext` `.pot` files"
+msgstr "`sphinx-intl update` 从 `_build/gettext` 的 `.pot` 文件合并"
+
+#: ../../04-repo-map.md c1889e7fb1cb4b20ae3814acf54f9af2
+msgid "`doc/scripts/`"
+msgstr "`doc/scripts/`"
+
+#: ../../04-repo-map.md 97fc92f3d1ff4cb18871b048f80283a3
+msgid "Deterministic PKB helpers"
+msgstr "确定性知识库辅助脚本"
+
+#: ../../04-repo-map.md 9c0816cc49554d08a78f2a0ad18f3451
+msgid ""
+"`pkb_frontmatter.py`, `check_pkb_staleness.py`, `check_translation_sync.py`,"
+" `pkb_query.py`, ..."
+msgstr ""
+"`pkb_frontmatter.py`、`check_pkb_staleness.py`、`check_translation_sync.py`、`pkb_query.py`"
+" 等"
+
+#: ../../04-repo-map.md edcd4572a68f4d49acabad37b31a914e
+msgid "`doc/_build/`, `doc/_generated/`"
+msgstr "`doc/_build/`、`doc/_generated/`"
+
+#: ../../04-repo-map.md 00c64ee21a904daa96bf9e7e8465373b
+msgid "Build output / sidecar artifacts"
+msgstr "构建输出 / 侧车产物"
+
+#: ../../04-repo-map.md 6f924d9d5b374eadb53254c1f697fd32
+msgid "Gitignored; safe to delete"
+msgstr "已加入 gitignore；可安全删除"
+
+#: ../../04-repo-map.md ac6837d44ff542ae8a5dc18663bb1d59
+msgid "(documented only) `openresty/bundle/ngx_lua-0.10.31rc5/src/`"
+msgstr "（仅记录）`openresty/bundle/ngx_lua-0.10.31rc5/src/`"
+
+#: ../../04-repo-map.md 72d937034b1d4e34b9ab5f5c4d0f5529
+msgid "HTTP cosocket connect and Lua DNS errors"
+msgstr "HTTP cosocket 连接与 Lua DNS 错误"
+
+#: ../../04-repo-map.md 6e0da642c3f1438fb56c9b02441ea562
+msgid "`ngx_http_lua_socket_tcp.c`"
+msgstr "`ngx_http_lua_socket_tcp.c`"
+
+#: ../../04-repo-map.md ce9c4f6b5eab4d3d9b0171120570e0f9
+msgid "(documented only) `openresty/bundle/nginx-1.31.1/src/core/`"
+msgstr "（仅记录）`openresty/bundle/nginx-1.31.1/src/core/`"
+
+#: ../../04-repo-map.md 2b06206969824b1abda4ed639458ad94
+msgid "`ngx_resolver` query, cache, and timeout"
+msgstr "`ngx_resolver` 查询、缓存与超时"
+
+#: ../../04-repo-map.md 3d723de01b5049a0bb5a61f45b7880df
+msgid "`ngx_resolver.c`, `ngx_resolver.h`"
+msgstr "`ngx_resolver.c`、`ngx_resolver.h`"
+
+#: ../../04-repo-map.md b3f2747c968040f58d0282a9a8f0991b
+msgid "(documented only) `openresty/bundle/lua-resty-dns-0.23/`"
+msgstr "（仅记录）`openresty/bundle/lua-resty-dns-0.23/`"
+
+#: ../../04-repo-map.md 742092d8b1fa43e690fba746b636fb07
+msgid "Optional Lua DNS client"
+msgstr "可选的 Lua DNS 客户端"
+
+#: ../../04-repo-map.md 29161010ca0c46b9a5c4a1af2bf4b313
+msgid "Does not replace `ngx_resolver` unless called explicitly"
+msgstr "除非显式调用，否则不替代 `ngx_resolver`"
+
+#: ../../04-repo-map.md:87 4b70960baa4e4580a8656abaf2c51bc7
+msgid "Key Entry Points"
+msgstr "关键入口"
+
+#: ../../04-repo-map.md fb16560800ab4595861dce8b8b015462
+msgid "Area"
+msgstr "领域"
+
+#: ../../04-repo-map.md 5da84a3f2c04484fbf59c8d7abad4af6
+msgid "File or directory"
+msgstr "文件或目录"
+
+#: ../../04-repo-map.md 77be167e145347b6a247da9cae5d7c93
+msgid "Why it matters"
+msgstr "为何重要"
+
+#: ../../04-repo-map.md 77be167e145347b6a247da9cae5d7c93
+msgid "Docs master"
+msgstr "文档主入口"
+
+#: ../../04-repo-map.md 79d33f86d9cf47ae869d9d973411e929
+msgid "Toctree; add new pages here"
+msgstr "目录树；新页面在此登记"
+
+#: ../../04-repo-map.md 5850c6cce6544504902191542bc0dbd0
+msgid "Docs build"
+msgstr "文档构建"
+
+#: ../../04-repo-map.md 27567d2634294eb3819925671db2ba00
+msgid "`doc/Makefile`, `doc/conf.py`"
+msgstr "`doc/Makefile`、`doc/conf.py`"
+
+#: ../../04-repo-map.md 1c5e4158b18543a4ac6fd4748264b849
+msgid "`make deps` / `make build` / `make publish`, i18n and hooks"
+msgstr "`make deps` / `make build` / `make publish`、i18n 与钩子"
+
+#: ../../04-repo-map.md f8b4d72e4af64b29baca7c6c4a8678f8
+msgid "Build CI gate"
+msgstr "构建 CI 关卡"
+
+#: ../../04-repo-map.md babac1ff69854350b1c3d1bc11bd8c4b
+msgid "`make build` (Sphinx `-W -n`)"
+msgstr "`make build`（Sphinx `-W -n`）"
+
+#: ../../04-repo-map.md 39dd0c080d59489da3e64930eaf246b5
+msgid "Warnings become errors"
+msgstr "警告视为错误"
+
+#: ../../04-repo-map.md b3758ee3f15f47c59ed20aead40925b1
+msgid "Cosocket DNS (documented)"
+msgstr "Cosocket DNS（仅记录）"
+
+#: ../../04-repo-map.md 49bc915ef448490d821ed3aeae02ec1d
+msgid "`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c`"
+msgstr "`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c`"
+
+#: ../../04-repo-map.md 79cb5847a7544ff08cd935a8df3916a3
+msgid "`connect()` starts resolve and formats `err`"
+msgstr "`connect()` 启动解析并格式化 `err`"
+
+#: ../../04-repo-map.md f0f265b26a084f8b9b85ff1054940831
+msgid "Resolver (documented)"
+msgstr "解析器（仅记录）"
+
+#: ../../04-repo-map.md 111ee85ae8d7479fabfdfbcac7431908
+msgid "`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.c`"
+msgstr "`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.c`"
+
+#: ../../04-repo-map.md 9c84c8af1df24935b831d07d1ab62148
+msgid "RCODE, resend, CNAME limit, timeout"
+msgstr "RCODE、重发、CNAME 限制、超时"
+
+#: ../../04-repo-map.md af37fcc070554709aa3a41de5697131d
+msgid "Upstream DNS (documented)"
+msgstr "上游 DNS（仅记录）"
+
+#: ../../04-repo-map.md ef0a49438ac446c4ba3b044e30cc0bfc
+msgid "`openresty/bundle/nginx-1.31.1/src/http/ngx_http_upstream.c`"
+msgstr "`openresty/bundle/nginx-1.31.1/src/http/ngx_http_upstream.c`"
+
+#: ../../04-repo-map.md 6954c956e41345178fb3a8962d42139e
+msgid "Resolve failure becomes 502"
+msgstr "解析失败转为 502"
+
+#: ../../04-repo-map.md:98 3e55f02dcff54d049d0f923a99edfe0e
+msgid "Organization Rules"
+msgstr "组织规则"
+
+#: ../../04-repo-map.md:100 69c16376ba154bf88bc83b07887227c9
+msgid ""
+"**Naming**: knowledge pages use `NN-slug.md` (stable numbering); helper "
+"scripts use `snake_case.py`; catalogs mirror page slugs (`00-overview.po`, "
+"`08-lua-nginx-module.po`)."
+msgstr ""
+"**命名**：知识页面使用 `NN-slug.md`（编号保持稳定）；辅助脚本使用 `snake_case.py`；翻译目录与页面 slug "
+"对应（`00-overview.po`、`08-lua-nginx-module.po`）。"
+
+#: ../../04-repo-map.md:103 e91f2f35f3124d36b70c4fec5a5a33d4
+msgid ""
+"**Layering**: Lua and `proxy_pass` call `ngx_resolver`. `lua-resty-dns` is a"
+" separate client that uses cosockets to talk to DNS itself (documented "
+"only)."
+msgstr ""
+"**分层**：Lua 和 `proxy_pass` 调用 `ngx_resolver`。`lua-resty-dns` 是独立的客户端，它自行使用 "
+"cosocket 与 DNS 通信（仅记录）。"
+
+#: ../../04-repo-map.md:105 35455ef840d34efb8f7b383d06afa47f
+msgid ""
+"**Module boundaries**: Resolver state stays in `ngx_resolver.c`. Lua only "
+"sees `nil, err` from the cosocket."
+msgstr "**模块边界**：解析器状态保留在 `ngx_resolver.c` 中。Lua 只能从 cosocket 看到 `nil, err`。"
+
+#: ../../04-repo-map.md:107 16f2358f7eb54719937ede5f84000396
+msgid ""
+"**Scripts and tooling**: everything under `doc/scripts/` is run via `uv run "
+"--locked`; CI-intended checks are `make build`, `make pkb-check`, `make pkb-"
+"check-i18n`."
+msgstr ""
+"**脚本与工具**：`doc/scripts/` 下的脚本均通过 `uv run --locked` 运行；面向 CI 的检查是 `make "
+"build`、`make pkb-check`、`make pkb-check-i18n`。"
+
+#: ../../04-repo-map.md:111 a721554526224dd98c95fd4ebe355759
+msgid "Things New Contributors Usually Need First"
+msgstr "新贡献者通常首先需要的内容"
+
+#: ../../04-repo-map.md:113 6333c26baeb9472d81f410f670b46744
+msgid "`doc/index.md` (navigation) and `doc/00-overview.md` (scope)"
+msgstr "`doc/index.md`（导航）和 `doc/00-overview.md`（范围）"
+
+#: ../../04-repo-map.md:114 cfe11de2d7c44308835798836587092c
+msgid "`doc/Makefile` + `doc/conf.py` (how docs build)"
+msgstr "`doc/Makefile` + `doc/conf.py`（文档如何构建）"
+
+#: ../../04-repo-map.md:115 834e744a3f194b53869fd609b285caf0
+msgid "`doc/scripts/pkb_frontmatter.py` (metadata contract gate)"
+msgstr "`doc/scripts/pkb_frontmatter.py`（元数据契约关卡）"
+
+#: ../../04-repo-map.md:116 e2132483a79945259ffa50cfe3d72bad
+msgid ""
+"(documented, for the DNS path) `ngx_resolver.c`, "
+"`ngx_http_lua_socket_tcp.c`, `ngx_http_upstream.c`"
+msgstr ""
+"（记录用，关于 DNS "
+"路径）`ngx_resolver.c`、`ngx_http_lua_socket_tcp.c`、`ngx_http_upstream.c`"
+
+#: ../../04-repo-map.md:119 f0f265b26a084f8b9b85ff1054940831
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../04-repo-map.md:121 c95f42883be94f1fa7b614d58f2caf39
+msgid "[Architecture](02-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../04-repo-map.md:122 1491d362149747088e9582078c1c0d5c
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../04-repo-map.md:123 db3ecd5b3ee6408da203294604041c91
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#: ../../04-repo-map.md:124 e2e136d3457f4d1e8c534324d68a7f13
+msgid "[Documentation Process](12-document.md)"
+msgstr "[文档流程](12-document.md)"
+
+#~ msgid ""
+#~ "**Template note**: Prefer generated directory trees and verified entry "
+#~ "points over prose copied from the README."
+#~ msgstr "**模板说明**：优先使用生成的目录树和经过验证的入口点，而不是从 README 复制的文字。"
+
+#~ msgid ""
+#~ "[NEEDS INPUT: full tree. The rows below are only the DNS-failure path "
+#~ "checked for this ingest.]"
+#~ msgstr "[需要补充：完整目录树。下表仅包含本次摄取所核对的 DNS 失败路径。]"
+
+#~ msgid "Upstream hostname resolve, including `proxy_pass`"
+#~ msgstr "上游主机名解析，包括 `proxy_pass`"
+
+#~ msgid "`ngx_http_upstream.c`"
+#~ msgstr "`ngx_http_upstream.c`"
+
+#~ msgid "`workspace/`"
+#~ msgstr "`workspace/`"
+
+#~ msgid "Local copy of the cosocket sources"
+#~ msgstr "cosocket 源码的本地副本"
+
+#~ msgid "Same `no resolver defined` string as the bundle file"
+#~ msgstr "与 bundle 文件相同的 `no resolver defined` 字符串"
+
+#~ msgid "Resolver"
+#~ msgstr "解析器"
+
+#~ msgid "Timeout default"
+#~ msgstr "超时默认值"
+
+#~ msgid "`openresty/bundle/nginx-1.31.1/src/http/ngx_http_core_module.c`"
+#~ msgstr "`openresty/bundle/nginx-1.31.1/src/http/ngx_http_core_module.c`"
+
+#~ msgid "`resolver_timeout` merges to 30000 ms"
+#~ msgstr "`resolver_timeout` 合并后的默认值为 30000 ms"
+
+#~ msgid "Lua DNS library"
+#~ msgstr "Lua DNS 库"
+
+#~ msgid "Custom resolve when the built-in client is not enough"
+#~ msgstr "内置客户端不够用时进行自定义解析"
+
+#~ msgid "**Naming**: [NEEDS INPUT: repository-wide naming rules]"
+#~ msgstr "**命名**：[需要补充：仓库级命名规则]"
+
+#~ msgid "**Scripts and tooling**: [NEEDS INPUT: dev and CI script locations]"
+#~ msgstr "**脚本与工具**：[需要补充：开发和 CI 脚本位置]"
+
+#~ msgid "`make deps"
+#~ msgstr ""

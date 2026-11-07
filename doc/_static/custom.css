@@ -1,0 +1,206 @@
+/* Custom CSS for Project Knowledge Base documentation */
+
+/* Code blocks */
+.highlight {
+    border-radius: 4px;
+}
+
+/* Admonitions */
+.admonition {
+    border-radius: 4px;
+    margin: 1em 0;
+}
+
+/* Tables */
+table.docutils {
+    border-collapse: collapse;
+    border: none;
+}
+
+table.docutils td,
+table.docutils th {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+}
+
+table.docutils th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* Navigation */
+.wy-nav-content {
+    max-width: 1200px;
+}
+
+/* Custom classes for PKB */
+.PKB-capability {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.PKB-capability.locate {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.PKB-capability.understand {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.PKB-capability.execute {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.PKB-capability.verify {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+/* Code references with line numbers */
+.code-ref {
+    font-family: monospace;
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.status-badge.proposed {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.accepted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.deprecated {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Language switcher in the left sidebar, under the project title */
+.language-switcher {
+    background-color: #fff8e1; /* amber tint */
+    border: 1px solid #ffd54f;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 8px 0 4px;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.lang-label {
+    color: #7a6200;
+    font-weight: bold;
+}
+.lang-current {
+    background-color: #ffb300; /* amber highlight for the current language */
+    color: #333333;
+    font-weight: bold;
+    padding: 1px 7px;
+    border-radius: 3px;
+}
+.lang-link {
+    color: #8a6d00;
+    text-decoration: none;
+    padding: 1px 7px;
+}
+.lang-link:hover {
+    text-decoration: underline;
+    background-color: #ffecb3;
+}
+
+/* PKB metadata footer — compact one / two line version info at page bottom */
+.pkb-metadata-footer {
+    margin-top: 2em;
+    padding: 6px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 0.82em;
+    color: #495057;
+}
+
+.pkb-metadata-footer > p {
+    margin: 2px 0;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.pkb-metadata-footer > p:first-child {
+    font-weight: bold;
+}
+
+.pkb-status-pending {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    background-color: #fff3cd;
+    color: #856404;
+    font-weight: bold;
+    font-size: 0.92em;
+}
+
+.pkb-status-approved {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    background-color: #d4edda;
+    color: #155724;
+    font-weight: bold;
+    font-size: 0.92em;
+}
+
+/* Confidentiality level badges (L1 Public .. L5 Top Secret) */
+.pkb-level {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 0.92em;
+}
+
+.pkb-level-l1 {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.pkb-level-l2 {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.pkb-level-l3 {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.pkb-level-l4 {
+    background-color: #ffe0b2;
+    color: #bf360c;
+}
+
+.pkb-level-l5 {
+    background-color: #f8d7da;
+    color: #721c24;
+}

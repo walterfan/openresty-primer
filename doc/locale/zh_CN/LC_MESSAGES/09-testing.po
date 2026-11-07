@@ -1,0 +1,449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:27+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../09-testing.md:39 e95811991ee5464989114312347b58be
+msgid "09. Testing Strategy"
+msgstr "09. 测试策略"
+
+#: ../../09-testing.md:43 58028f744ea04597a2ad47a682a37d6c
+msgid ""
+"The primary product of this repo is documentation, so \"testing\" is about "
+"proving the docs (and any Lua they contain) are correct and stay fresh. The "
+"rules below are verified against the Makefile and scripts in this tree."
+msgstr ""
+"本仓库的主要产物是文档，因此“测试”的目的是证明文档（及其中的任何 Lua）正确且保持新鲜。以下规则已对照本源码树中的 Makefile 和脚本核实。"
+
+#: ../../09-testing.md:47 2fe497f66b0e4326a664c38013df3215
+msgid "Test Layers"
+msgstr "测试分层"
+
+#: ../../09-testing.md a35439225c144286ba2b4ac2d1e432de
+msgid "Layer"
+msgstr "分层"
+
+#: ../../09-testing.md 18f7c49cc6ac4f6982086098a0052878
+msgid "Primary checks"
+msgstr "主要检查"
+
+#: ../../09-testing.md 1dcf8a4fd7e0440a9f7d869567341c9a
+msgid "Notes"
+msgstr "说明"
+
+#: ../../09-testing.md 9ea91d0e2dbf42d499b6e908076646d2
+msgid "Docs build (gate)"
+msgstr "文档构建（关卡）"
+
+#: ../../09-testing.md 1cd0c09860f74f82995ab43ba363d1b5
+msgid "`make build` (Sphinx `-W -n` for en and zh_CN)"
+msgstr "`make build`（Sphinx `-W -n`，英文和 zh_CN）"
+
+#: ../../09-testing.md 99d5557e53dc458b84fa9bb226186094
+msgid "Warnings are errors; a broken page fails the build"
+msgstr "警告即错误；出错的页面会使构建失败"
+
+#: ../../09-testing.md 6eca5b158661499a9a3082c204b2cb5b
+msgid "Metadata contract"
+msgstr "元数据契约"
+
+#: ../../09-testing.md 6a44c8beffb24c459395fa71b13c34c1
+msgid "`pkb_frontmatter.py validate <page>.md`"
+msgstr "`pkb_frontmatter.py validate <page>.md`"
+
+#: ../../09-testing.md 998e8b515ec34ef3bd71a084436b5158
+msgid "Blocking on every page created/changed"
+msgstr "对每个新建/变更页面阻塞式校验"
+
+#: ../../09-testing.md d6495505eba14acebb0eba61f45093da
+msgid "Staleness"
+msgstr "时效性"
+
+#: ../../09-testing.md f506424915c842bebf950175cc73cdb2
+msgid "`scripts/check_pkb_staleness.py`"
+msgstr "`scripts/check_pkb_staleness.py`"
+
+#: ../../09-testing.md 44720771fd354112b5765ac0bd880c4d
+msgid "Zero-token freshness report before LLM passes"
+msgstr "在 LLM 处理前给出零 token 的新鲜度报告"
+
+#: ../../09-testing.md 4117d827402445f79385936f118bfb3b
+msgid "Translation sync"
+msgstr "翻译同步"
+
+#: ../../09-testing.md f0b336c357de492c875f33774277746f
+msgid "`make pkb-check-i18n` (`check_translation_sync.py`)"
+msgstr "`make pkb-check-i18n`（`check_translation_sync.py`）"
+
+#: ../../09-testing.md 4bf2f59ffa1743beaab6aeec0b3064b4
+msgid "Catches zh_CN drift vs English sources"
+msgstr "发现 zh_CN 与英文源之间的漂移"
+
+#: ../../09-testing.md 2f8d6594168f457aad2412c69f413f74
+msgid "Link / diagram"
+msgstr "链接 / 图表"
+
+#: ../../09-testing.md 99e2ef33a88944d3b5b648e9769a1b58
+msgid "Sphinx nitpicky `-n` + `validate_template_links.py`"
+msgstr "Sphinx 挑剔模式 `-n` + `validate_template_links.py`"
+
+#: ../../09-testing.md 8701a695f90944aea2a2a71cdbb8d26a
+msgid "Missing targets and broken template links fail"
+msgstr "缺失目标和损坏的模板链接会失败"
+
+#: ../../09-testing.md a12956443a3041a59b8d9a20d71bf0e0
+msgid "Lua style (any Lua in repo)"
+msgstr "Lua 风格（仓库中的任何 Lua）"
+
+#: ../../09-testing.md 98d170c05b4d4b16b1b19f760c46ce7e
+msgid "`luacheck -q lua` and `lj-releng lua/*.lua`"
+msgstr "`luacheck -q lua` 和 `lj-releng lua/*.lua`"
+
+#: ../../09-testing.md 3049e6808f2c44739efba0ca3b79c174
+msgid "Globals, line length, basic style"
+msgstr "全局变量、行长、基本风格"
+
+#: ../../09-testing.md 7465f1a57875424d8002c8b576773377
+msgid "Runtime behavior (Lua/ngx_lua)"
+msgstr "运行时行为（Lua/ngx_lua）"
+
+#: ../../09-testing.md 8ab61cc411334bca85be7042730d7545
+msgid "`prove -r t/` with **Test::Nginx** (`.t` files)"
+msgstr "使用 **Test::Nginx** 运行 `prove -r t/`（`.t` 文件）"
+
+#: ../../09-testing.md 5c394cfad9954ffd81be13264e1477c7
+msgid ""
+"Drives a real nginx from `PATH`, rooted at `t/servroot/` (default port 1984)"
+msgstr "从 `PATH` 启动一个真实的 nginx，以 `t/servroot/` 为根（默认端口 1984）"
+
+#: ../../09-testing.md ddc4c43abf0c4b99904ec6a566c474a8
+msgid "Slow-network robustness"
+msgstr "慢网络健壮性"
+
+#: ../../09-testing.md f28a0a64380342bdaa0a0eccd8c38eff
+msgid "**mockeagain** `MOCKEAGAIN=w`/`r` via `LD_PRELOAD`"
+msgstr "通过 `LD_PRELOAD` 使用 **mockeagain** `MOCKEAGAIN=w`/`r`"
+
+#: ../../09-testing.md d7b2941d73eb42b88e1bc43232684c11
+msgid ""
+"Exposes output-filter, parser, and cosocket bugs by mocking one-byte "
+"reads/writes"
+msgstr "通过模拟每次只读/写一个字节来暴露输出过滤器、解析器和 cosocket 的缺陷"
+
+#: ../../09-testing.md:60 39a7736060754f288da993b358174db6
+msgid "Runtime Function Testing (OpenResty Lua)"
+msgstr "运行时功能测试（OpenResty Lua）"
+
+#: ../../09-testing.md:62 c34d9ef87eb34586b5b85a677c64366b
+msgid ""
+"The official way to test `ngx_lua` handlers, cosockets, and phase behavior "
+"is the [**Test::Nginx**](https://github.com/openresty/test-nginx) scaffold "
+"(data-driven `.t` files built on `Test::Base`). It is the same harness "
+"upstream `lua-nginx-module` tests are written in."
+msgstr ""
+"测试 `ngx_lua` 处理器、cosocket 和阶段行为的官方方式是使用 "
+"[**Test::Nginx**](https://github.com/openresty/test-nginx) 脚手架（基于 "
+"`Test::Base` 的数据驱动 `.t` 文件）。上游 `lua-nginx-module` 的测试就是用它写的。"
+
+#: ../../09-testing.md:67 b2ac42260a504c8a812ebf038444f834
+msgid ""
+"Write a `.t` file under `t/` with `--- config` (nginx.conf block) and `--- "
+"request` / `--- response_body` sections."
+msgstr ""
+"在 `t/` 下编写 `.t` 文件，内含 `--- config`（nginx.conf 块）以及 `--- request` / `--- "
+"response_body` 小节。"
+
+#: ../../09-testing.md:69 3105ca1aedf040a09886525a3cb52e7e
+msgid ""
+"Run it with `prove -r t/` (or `prove -v t/foo.t`). `Test::Nginx::Socket` "
+"starts an nginx instance rooted at `t/servroot/`, listening by default on "
+"port `1984` (override with the `TEST_NGINX_PORT` environment variable)."
+msgstr ""
+"用 `prove -r t/`（或 `prove -v t/foo.t`）运行它。`Test::Nginx::Socket` 会启动一个以 "
+"`t/servroot/` 为根的 nginx 实例，默认监听 `1984` 端口（可用 `TEST_NGINX_PORT` 环境变量覆盖）。"
+
+#: ../../09-testing.md:72 b43feb3dbd6c41378fbffafe8c46c4eb
+msgid ""
+"Use the `Test::Nginx::Socket::Lua` subclass for Lua-phase tests; the Stream "
+"and Dgram subclasses cover stream/TCP-UDP cases."
+msgstr ""
+"Lua 阶段测试使用 `Test::Nginx::Socket::Lua` 子类；Stream 和 Dgram 子类覆盖 stream/TCP-UDP "
+"场景。"
+
+#: ../../09-testing.md:75 24e794af54e248eea1544d6a9357f32d
+msgid ""
+"For slow and hostile networks, preload "
+"[**mockeagain**](https://github.com/openresty/mockeagain), an `LD_PRELOAD` "
+"library that mocks the glibc `poll`/`read`/`writev`/`send`/ `recv` syscalls "
+"so only one byte is read or written at a time (returning `EAGAIN`), exposing"
+" the same \"connection hang\" bugs that only showed up on slow links:"
+msgstr ""
+"对于缓慢或恶劣的网络，可预加载 [**mockeagain**](https://github.com/openresty/mockeagain) ——"
+" 一个 `LD_PRELOAD` 库，它模拟 glibc 的 `poll`/`read`/`writev`/`send`/`recv` "
+"系统调用，使每次只读或写一个字节（返回 `EAGAIN`），从而暴露只在慢链路上出现的“连接挂起”类问题："
+
+#: ../../09-testing.md:86 835121d41f3749c3bba3d622ea67c436
+msgid ""
+"`MOCKEAGAIN=w` mocks writes, `MOCKEAGAIN=r` mocks reads, `MOCKEAGAIN=wr` "
+"both."
+msgstr "`MOCKEAGAIN=w` 模拟写、`MOCKEAGAIN=r` 模拟读、`MOCKEAGAIN=wr` 两者都模拟。"
+
+#: ../../09-testing.md:87 4be2e1ea7ca04209859597542c4938a7
+msgid "`MOCKEAGAIN_VERBOSE=1` adds diagnostic lines to `error.log`."
+msgstr "`MOCKEAGAIN_VERBOSE=1` 会向 `error.log` 输出诊断信息。"
+
+#: ../../09-testing.md:88 6ab15d3dab7d41bfb6d0dbac2c50f830
+msgid ""
+"`MOCKEAGAIN_WRITE_TIMEOUT_PATTERN=\"...\"` triggers an indefinite write "
+"timeout when the pattern appears in the output stream."
+msgstr "当输出流中出现指定模式时，`MOCKEAGAIN_WRITE_TIMEOUT_PATTERN=\"...\"` 会触发一个无限期的写超时。"
+
+#: ../../09-testing.md:90 adcfaf69c7be477992eef26a0a5fea9d
+msgid ""
+"When running under **Test::Nginx**, the required `env` directives (`env "
+"LD_PRELOAD;`, `env MOCKEAGAIN;`, ...) are configured automatically."
+msgstr ""
+"在 **Test::Nginx** 下运行时，所需的 `env` 指令（`env LD_PRELOAD;`、`env MOCKEAGAIN;` "
+"等）会自动配置。"
+
+#: ../../09-testing.md:93 c2913b5703624896992f848b13abc7d7
+msgid ""
+"This is exactly the class of regression this PKB cares about for its [Data "
+"and API](05-data-and-api.md) DNS contract and cosocket behavior: a wrong "
+"`err` on a timed-out or half-written I/O only appears under such conditions."
+msgstr ""
+"这正是本知识库在[数据与 API](05-data-and-api.md) 的 DNS 契约和 cosocket "
+"行为中所关心的回归类型：超时或只写了一半的 I/O 上的错误 `err`，只会在这种条件下出现。"
+
+#: ../../09-testing.md:97 2e92260a40984cacb1a323b7aca25cb7
+msgid "Core Regression Areas"
+msgstr "核心回归领域"
+
+#: ../../09-testing.md:99 b7f30d1768a940eba8841a78c6f793c1
+msgid ""
+"**DNS failure contract**: the Lua `err` strings and HTTP status mapping in "
+"[Data and API](05-data-and-api.md) and [Workflows](06-workflows.md) must "
+"stay exact against nginx 1.31.1 / ngx_lua 0.10.31rc5. Any wording change in "
+"the source is a regression to re-verify."
+msgstr ""
+"**DNS 失败契约**：[数据与 API](05-data-and-api.md)和[工作流](06-workflows.md)中的 Lua "
+"`err` 字符串与 HTTP 状态码映射必须与 nginx 1.31.1 / ngx_lua 0.10.31rc5 "
+"保持一致。源码中任何措辞变化都构成需要重新验证的回归。"
+
+#: ../../09-testing.md:103 c0422664c038476588cf912fe64023b9
+msgid ""
+"**Directive reference fidelity**: [08-lua-nginx-module](08-lua-nginx-"
+"module.md) is a verbatim ingest of the README at commit `9661d95b`; re-"
+"verify when the upstream README advances (record the new commit in "
+"`source`)."
+msgstr ""
+"**指令参考保真度**：[08-lua-nginx-module](08-lua-nginx-module.md) 是在 commit "
+"`9661d95b` 上对 README 的逐字摄取；上游 README 前进时需重新验证（并在 `source` 中记录新提交）。"
+
+#: ../../09-testing.md:106 cb46261fad4544169e411f10bbf7bcf0
+msgid ""
+"**Bilingual parity**: every English page has a synced `zh_CN` catalog; a "
+"page added to `index.md` must also be registered in `scripts/gen_index.py` "
+"and get its `.po` catalog generated."
+msgstr ""
+"**双语对等**：每个英文页面都有同步的 `zh_CN` 目录；添加到 `index.md` 的页面也必须登记到 "
+"`scripts/gen_index.py` 并生成对应的 `.po` 目录。"
+
+#: ../../09-testing.md:110 b074c95e402a4d5199998a9ae3270085
+msgid "Test Data and Environments"
+msgstr "测试数据与环境"
+
+#: ../../09-testing.md:112 5c3a13a879df471e81932fa54edf26dc
+msgid ""
+"**Fixtures or seeds**: the ingested README snapshot in [08-lua-nginx-"
+"module](08-lua-nginx-module.md) and the pinned source URLs in each page's "
+"`source`."
+msgstr ""
+"**夹具或种子数据**：[08-lua-nginx-module](08-lua-nginx-module.md) 中摄取的 README "
+"快照，以及每页 `source` 中固定的源 URL。"
+
+#: ../../09-testing.md:115 43d5d2e24d1e4d98966a654d10b9bb16
+msgid ""
+"**State isolation**: Sphinx `_build/` and `_generated/` are gitignored; each"
+" build is reproducible from sources + `uv.lock`."
+msgstr ""
+"**状态隔离**：Sphinx 的 `_build/` 和 `_generated/` 已被 gitignore；每次构建都可从源码 + "
+"`uv.lock` 复现。"
+
+#: ../../09-testing.md:117 480f61567e694bcb9084a6e324d0ab9c
+msgid ""
+"**External dependency strategy**: none at build time (offline-capable); the "
+"docs site itself is served as static HTML."
+msgstr "**外部依赖策略**：构建期无外部依赖（支持离线）；文档站点本身以静态 HTML 提供服务。"
+
+#: ../../09-testing.md:120 4117d827402445f79385936f118bfb3b
+msgid "Validation Commands"
+msgstr "验证命令"
+
+#: ../../09-testing.md:129 33e6364860704e3bb08cf8a0daaef726
+msgid "Per-page after an edit:"
+msgstr "每次编辑后的逐页校验："
+
+#: ../../09-testing.md:135 bd62bf8503424f1893f7585b8ec55ede
+msgid "Manual Smoke Checks"
+msgstr "手动冒烟检查"
+
+#: ../../09-testing.md:137 52f2fc13b90a463ea2f0f509848c3edc
+msgid ""
+"`make serve` and open http://127.0.0.1:8000/ - landing page redirects by "
+"browser language to `/en/` or `/zh/`."
+msgstr ""
+"`make serve` 并打开 http://127.0.0.1:8000/ —— 落地页按浏览器语言重定向到 `/en/` 或 `/zh/`。"
+
+#: ../../09-testing.md:139 1966112c3ac44bf7844476062bd9b261
+msgid ""
+"Spot-check the [lua-nginx-module page](08-lua-nginx-module.md) for rendered "
+"directives and anchored links."
+msgstr "抽查 [lua-nginx-module 页面](08-lua-nginx-module.md)的指令渲染和锚点链接。"
+
+#: ../../09-testing.md:141 5eed7565d4a54068836bf447aaca765d
+msgid ""
+"From [Quick Start](01-quick-start.md): `resty -e 'print(\"hello, world\")'` "
+"and the `curl` hello-world server check the OpenResty runtime the docs "
+"describe."
+msgstr ""
+"按[快速上手](01-quick-start.md)：用 `resty -e 'print(\"hello, world\")'` 和 `curl` "
+"hello-world 服务器验证文档所描述的 OpenResty 运行时。"
+
+#: ../../09-testing.md:144 16e1013198614e55923f04034af82471
+msgid "Documentation Verification"
+msgstr "文档验证"
+
+#: ../../09-testing.md:146 7ed3c92f7068416cb771e03404c2ad51
+msgid ""
+"Because this PKB is published docs, the build gate above is the main "
+"verification. Additionally, before a release: run `make pkb-review-status` "
+"to audit confidentiality/review state and `make pkb-check-i18n` to confirm "
+"translations are in sync."
+msgstr ""
+"因为本知识库是发布的文档，上面的构建关卡是主要验证。此外，发布前：运行 `make pkb-review-status` 审计保密等级/评审状态，并运行"
+" `make pkb-check-i18n` 确认翻译同步。"
+
+#: ../../09-testing.md:151 c7426426d96549d8b4b31e6c877e6dea
+msgid "Regression Additions"
+msgstr "回归补充"
+
+#: ../../09-testing.md:153 fd446444d00b4fe0b4b47abbe7d3a31c
+msgid ""
+"When a claim in the PKB is corrected (for example a DNS error string that "
+"did not match the code), record here:"
+msgstr "当知识库中的论断被纠正时（例如某个与代码不符的 DNS 错误字符串），在此记录："
+
+#: ../../09-testing.md:156 bf2794cb25884c8ca5677e55abc0d78d
+msgid "the original (wrong) claim and the corrected one"
+msgstr "原始的（错误）论断和更正后的论断"
+
+#: ../../09-testing.md:157 4b1de668f7234489bbe5f2f38ebbbb43
+msgid "the source (file or commit) that proves the fix"
+msgstr "证明修复的源（文件或提交）"
+
+#: ../../09-testing.md:158 25138fa85f2c4bf59e61760a04dd5ede
+msgid ""
+"the smallest check that catches it next time (usually a grep against the "
+"expected `err` substring in [Data and API](05-data-and-api.md))"
+msgstr "下次能捕获它的最小检查（通常是在[数据与 API](05-data-and-api.md)中按预期的 `err` 子串做 grep）"
+
+#: ../../09-testing.md:161 ff7b96a38f2643acb45aee4cf216bce6
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../09-testing.md:163 de1f247bb28245c9a957e5764f4ab6b6
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../09-testing.md:164 a7f4d1303ca54444a714a7075b19cee3
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../09-testing.md:165 5a5f5648d3e5492b85f7d8a3679362b5
+msgid "[Documentation Process](12-document.md)"
+msgstr "[文档流程](12-document.md)"
+
+#~ msgid ""
+#~ "**Template note**: This page should describe how to validate the project in "
+#~ "practice, not just list test tools."
+#~ msgstr "**模板说明**：本页应描述如何在实际中验证项目，而不仅仅是罗列测试工具。"
+
+#~ msgid "[Layer 1]"
+#~ msgstr "[第一层]"
+
+#~ msgid "`[command]`"
+#~ msgstr "`[命令]`"
+
+#~ msgid "[what it validates]"
+#~ msgstr "[它验证什么]"
+
+#~ msgid "[Layer 2]"
+#~ msgstr "[第二层]"
+
+#~ msgid "[Layer 3]"
+#~ msgstr "[第三层]"
+
+#~ msgid "[manual or automated check]"
+#~ msgstr "[手动或自动化检查]"
+
+#~ msgid "[Critical area 1]"
+#~ msgstr "[关键领域 1]"
+
+#~ msgid "[Critical area 2]"
+#~ msgstr "[关键领域 2]"
+
+#~ msgid "[Critical area 3]"
+#~ msgstr "[关键领域 3]"
+
+#~ msgid "**Fixtures or seeds**: [where they live]"
+#~ msgstr "**夹具或种子数据**：[所在位置]"
+
+#~ msgid "**State isolation**: [how tests avoid leaking state]"
+#~ msgstr "**状态隔离**：[测试如何避免状态泄漏]"
+
+#~ msgid "**External dependency strategy**: [mock, fake, sandbox, or real]"
+#~ msgstr "**外部依赖策略**：[mock、fake、沙箱或真实]"
+
+#~ msgid "[Smoke check 1]"
+#~ msgstr "[冒烟检查 1]"
+
+#~ msgid "[Smoke check 2]"
+#~ msgstr "[冒烟检查 2]"
+
+#~ msgid "[Smoke check 3]"
+#~ msgstr "[冒烟检查 3]"
+
+#~ msgid "If the PKB is published docs, include the verification steps here:"
+#~ msgstr "如果知识库是发布的文档，请在此包含验证步骤："
+
+#~ msgid "When a bug is fixed, add a regression scenario here covering:"
+#~ msgstr "修复 bug 时，在此添加回归场景，覆盖："
+
+#~ msgid "the original failure"
+#~ msgstr "原始失败"
+
+#~ msgid "the expected behavior after the fix"
+#~ msgstr "修复后的预期行为"
+
+#~ msgid "the smallest useful automated or manual check"
+#~ msgstr "最小有用且可自动或手动执行的检查"
+
+#~ msgid "[Observability](11-observability.md)"
+#~ msgstr "[可观测性](11-observability.md)"

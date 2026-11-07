@@ -1,0 +1,4 @@
+functions:
+  - name: openresty-doc
+    slug: openresty-doc
+    main: functions/openresty-doc/index.ts

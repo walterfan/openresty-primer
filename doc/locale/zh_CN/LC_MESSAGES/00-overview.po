@@ -1,0 +1,737 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 09:17+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../00-overview.md:40 c1c97c10f8ce418499fa830f2b7b4c55
+msgid "00. Project Overview"
+msgstr "00. 项目概述"
+
+#: ../../00-overview.md:44 5496570cafe5402a8907bf0ca572400e
+msgid ""
+"OpenResty is an open-source web platform that integrates an enhanced "
+"Nginx core with LuaJIT, turning the Nginx event model into an application"
+" runtime where Lua scripts drive HTTP processing and non-blocking I/O to "
+"remote backends. It is a higher-level application and gateway platform "
+"that uses Nginx as a component, **not** an Nginx fork. See the [Akamai "
+"\"Using OpenResty\" guide](https://www.akamai.com/cloud/guides/using-"
+"openresty/) and [openresty.org](https://openresty.org/en/)."
+msgstr ""
+"OpenResty 是一个开源 Web 平台，它将增强版的 Nginx 内核与 LuaJIT 集成在一起，把 Nginx "
+"的事件模型变成一个应用运行时：由 Lua 脚本驱动 HTTP 处理以及与远端后端之间的非阻塞 I/O。它是以 Nginx "
+"作为组件的更高层应用与网关平台，**而不是** Nginx 的分支。参见 [Akamai “Using OpenResty” "
+"指南](https://www.akamai.com/cloud/guides/using-openresty/) 和 "
+"[openresty.org](https://openresty.org/en/)。"
+
+#: ../../00-overview.md:52 412cc40b8a29418cbcb12cea1b3dd275
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../00-overview.md:54 401cf34fc3604306a6c54741c796f19d
+msgid ""
+"This repository is an **OpenResty Primer**: a Project Knowledge Base and "
+"reading companion for working with OpenResty - Nginx plus LuaJIT "
+"(ngx_lua). It serves both human engineers and AI assistants who need to"
+msgstr ""
+"本仓库是一本 **OpenResty 入门手册**：面向 OpenResty（Nginx 加 LuaJIT，即 "
+"ngx_lua）的项目知识库与源码阅读伴侣。它同时服务于人类工程师和 AI 助手，帮助他们："
+
+#: ../../00-overview.md:58 1363f61d120a40e08c18955191e6e817
+msgid "**locate** how OpenResty/ngx_lua behaves in the source tree,"
+msgstr "**定位** OpenResty/ngx_lua 在源码树中的行为，"
+
+#: ../../00-overview.md:59 b0649ede1cac4ff69a29ec7988de8f96
+msgid "**understand** the architecture around HTTP cosockets and DNS resolution,"
+msgstr "**理解** HTTP cosocket 与 DNS 解析相关的架构，"
+
+#: ../../00-overview.md:60 d9a0a55f8a1b4ce192f2aa8cb122c51e
+msgid "**execute** build, runbook, and debugging workflows, and"
+msgstr "**执行**构建、运维手册和调试工作流，以及"
+
+#: ../../00-overview.md:61 efc214bd7b9f4c56979b33593eb04a3d
+msgid ""
+"**verify** behavior against the real nginx 1.31.1 / ngx_lua 0.10.31rc5 "
+"code and the `lua-nginx-module` documentation."
+msgstr ""
+"**验证**行为是否与真实的 nginx 1.31.1 / ngx_lua 0.10.31rc5 代码以及 `lua-nginx-module` "
+"文档一致。"
+
+#: ../../00-overview.md:64 c64b6f8e0e654a64b88cb9976b645404
+msgid ""
+"The current focus is the **DNS-resolution failure path**: how a hostname "
+"lookup fails through `ngx_resolver`, HTTP cosockets, and upstreams, plus "
+"the `content`-phase directives of `lua-nginx-module` (e.g. "
+"`content_by_lua_file`)."
+msgstr ""
+"当前重点是 **DNS 解析失败路径**：主机名查询如何经由 `ngx_resolver`、HTTP cosocket 和上游失败，以及 "
+"`lua-nginx-module` 的 `content` 阶段指令（例如 `content_by_lua_file`）。"
+
+#: ../../00-overview.md:68 b77f2141ea6742908a4996d5d1ae1ff7
+msgid "What OpenResty Is"
+msgstr "OpenResty 是什么"
+
+#: ../../00-overview.md:70 312c1b5f23ae4477a1ad3fa92f16aed4
+msgid ""
+"OpenResty is a web platform that **embeds LuaJIT 2.0/2.1 into Nginx**. "
+"`lua-nginx-module` (ngx_lua) is its core component - \"if you are using "
+"this module, then you are essentially using OpenResty\". Since ngx_lua "
+"`v0.10.16` the standard PUC-Rio Lua interpreter is no longer supported; "
+"\"Lua\" here always means LuaJIT."
+msgstr ""
+"OpenResty 是一个**把 LuaJIT 2.0/2.1 嵌入 Nginx** 的 Web 平台。`lua-nginx-"
+"module`（ngx_lua）是它的核心组件——“如果你在使用这个模块，那你本质上就是在使用 OpenResty”。自 ngx_lua "
+"`v0.10.16` 起，标准的 PUC-Rio Lua 解释器不再受支持；本文中的 “Lua” 始终指 LuaJIT。"
+
+#: ../../00-overview.md:76 1d1f046aa6b44490b1b8f703dca9da96
+msgid ""
+"The design intent is to run the server-side application *inside* the "
+"Nginx worker, so a request never leaves the event loop to reach a "
+"backend. Typical uses include access control and security checks before a"
+" request reaches the upstream, mashing up several upstreams, choosing an "
+"upstream on the fly from data in Redis/MySQL, complex URL dispatch at the"
+" rewrite phase, arbitrary response-header manipulation, and custom "
+"caching for subrequests."
+msgstr ""
+"其设计意图是让服务端应用直接运行在 Nginx worker "
+"*内部*，使请求无需离开事件循环即可访问后端。典型用途包括：在请求到达上游之前做访问控制与安全检查、聚合多个上游的输出、根据 "
+"Redis/MySQL 中的数据动态选择上游、在 rewrite 阶段做复杂的 URL 分发、任意修改响应头，以及为子请求实现自定义缓存。"
+
+#: ../../00-overview.md:83 500579c5f9b74b7f9334b13c564950fd
+msgid "Strengths and Limitations"
+msgstr "优点与局限"
+
+#: ../../00-overview.md:85 40992f7f4b26494fa7aff20d53c2684a
+#, fuzzy
+msgid "strength"
+msgstr "优点"
+
+#: ../../00-overview.md:86 4d094632fc3b481394d59aacb8be9bdd
+#, fuzzy
+msgid ""
+"Lua code can be **100% non-blocking** on network traffic, as long as the "
+"Nginx API for Lua is used for upstream access (MySQL, PostgreSQL, "
+"Memcached, Redis, HTTP)."
+msgstr ""
+"只要使用 Nginx API for Lua 访问上游（MySQL、PostgreSQL、Memcached、Redis、HTTP），Lua "
+"代码在网络 I/O 上可以做到 **100% 非阻塞**"
+
+#: ../../00-overview.md:87 5cd7029d5f274412a16e89b4905c553c
+#, fuzzy
+msgid ""
+"Performance is \"comparable with native C programs\" in CPU time and "
+"memory footprint, thanks to LuaJIT 2.x."
+msgstr "得益于 LuaJIT 2.x，在 CPU 时间和内存占用上的性能“可与原生 C 程序相媲美”"
+
+#: ../../00-overview.md:88 58c02a43dac7420b96a00e4e2c6f6e28
+#, fuzzy
+msgid ""
+"One Lua VM per worker is shared by all requests, with request isolation "
+"via lightweight coroutines, resulting in a small memory footprint under "
+"heavy load."
+msgstr "每个 worker 一个 Lua VM 并由所有请求共享，通过轻量协程实现请求隔离——高负载下内存占用依然很小"
+
+#: ../../00-overview.md:89 a630dbeb82104da387accb2e1dec03e5
+#, fuzzy
+msgid "Loaded Lua modules persist at worker level, so hot code is compiled once."
+msgstr "已加载的 Lua 模块在 worker 级别常驻，热点代码只编译一次"
+
+#: ../../00-overview.md:90 1afd5b9c2d48434da66d1b3815f4bec7
+#, fuzzy
+msgid ""
+"A rich `lua-resty-*` ecosystem (redis, mysql, memcached, dns, lock, "
+"lrucache, upload, websocket) provides access to almost any Nginx module "
+"via `ngx.location.capture`."
+msgstr ""
+"丰富的 `lua-resty-*` "
+"生态（redis、mysql、memcached、dns、lock、lrucache、upload、websocket），并可通过 "
+"`ngx.location.capture` 访问几乎任何 Nginx 模块"
+
+#: ../../00-overview.md:91 70ae614c2ba34d1480d83172da912e61
+#, fuzzy
+msgid ""
+"Edit-and-refresh development is possible by switching `lua_code_cache "
+"off`."
+msgstr "通过设置 `lua_code_cache off` 获得“改完即刷新”的开发体验"
+
+#: ../../00-overview.md:92 4f67be13a4e74d12addb911b4430da08
+#, fuzzy
+msgid "The upstream is mature and declared **production ready**."
+msgstr "上游项目成熟，并已声明 **production ready**"
+
+#: ../../00-overview.md:94 4ef85ead845149d6baae38864a0b046e
+#, fuzzy
+msgid "limitation"
+msgstr "局限"
+
+#: ../../00-overview.md:95 ddde7147c2a844e8b55a33f304fd98b0
+#, fuzzy
+msgid ""
+"Blocking the worker is easy to do by accident: any library that is not "
+"cosocket-based (plain `io.*`, LuaSocket, `os.execute`) stalls every "
+"request on that worker."
+msgstr ""
+"很容易不小心阻塞 worker：任何非基于 cosocket 的库（裸 `io.*`、LuaSocket、`os.execute`）都会卡住该 "
+"worker 上的所有请求"
+
+#: ../../00-overview.md:96 b761c027608b4b35bb505bcb1d879847
+#, fuzzy
+msgid ""
+"Only the **HTTP subsystem** is addressed downstream (HTTP "
+"0.9/1.0/1.1/2.0, WebSocket); generic downstream TCP needs the separate "
+"`ngx_stream_lua` module."
+msgstr ""
+"对下游只覆盖 **HTTP 子系统**（HTTP 0.9/1.0/1.1/2.0、WebSocket）；通用的下游 TCP 需要独立的 "
+"`ngx_stream_lua` 模块"
+
+#: ../../00-overview.md:97 8f05b06d395e41fd9a40d6643d41404f
+#, fuzzy
+msgid ""
+"Lua **global** variables are per-request and cleared at request end; "
+"misusing them causes cross-request surprises, table lookups, and hard-to-"
+"debug typos. Always `local x = require('x')`."
+msgstr ""
+"Lua **全局**变量是按请求隔离的，并在请求结束时被清除；误用会带来跨请求的意外、额外的表查找以及难以排查的拼写错误。请始终使用 `local"
+" x = require('x')`"
+
+#: ../../00-overview.md:98 708e786f7ebb4f91b77d04815eb85711
+#, fuzzy
+msgid ""
+"`dofile`/`require` are C functions in LuaJIT, so calling a yielding API "
+"(`ngx.location.capture`, `ngx.exit`, ...) at a Lua file's *top-level* "
+"scope raises \"attempt to yield across C-call boundary\"."
+msgstr ""
+"`dofile`/`require` 在 LuaJIT 中是 C 函数，因此在 Lua 文件的*顶层*作用域调用会让出的 "
+"API（`ngx.location.capture`、`ngx.exit` 等）会抛出 “attempt to yield across "
+"C-call boundary”"
+
+#: ../../00-overview.md:99 14495ca06c7c42afaea5fd8f7079d22c
+#, fuzzy
+msgid ""
+"Not every phase can yield: directives injected into "
+"`ngx_http_rewrite_module` (e.g. `set_by_lua`) cannot use cosockets, "
+"sleeping, or light threads."
+msgstr ""
+"并非所有阶段都能让出：注入到 `ngx_http_rewrite_module` 的指令（如 `set_by_lua`）无法使用 "
+"cosocket、sleep 或 light thread"
+
+#: ../../00-overview.md:100 4e4b25b43ed84adeb53b11f7bcee7649
+#, fuzzy
+msgid ""
+"`lua_code_cache off` runs every request in a **separate Lua VM**; it is "
+"dev-only and can drop \"hello world\" throughput by an order of "
+"magnitude."
+msgstr ""
+"`lua_code_cache off` 会让每个请求运行在**独立的 Lua VM** 中；它仅适用于开发环境，可能让 “hello "
+"world” 的吞吐下降一个数量级"
+
+#: ../../00-overview.md:101 60267a795098402d81586d2f35e2170d
+#, fuzzy
+msgid ""
+"Platform wart: on macOS `tcpsock:connect` may report success even for "
+"`Connection Refused`; the real error only surfaces on the next cosocket "
+"operation."
+msgstr ""
+"平台瑕疵：在 macOS 上，即使是 `Connection Refused`，`tcpsock:connect` "
+"也可能报告成功；真正的错误要到下一次 cosocket 操作时才暴露"
+
+#: ../../00-overview.md:103 69a39b5449a1481ba717843a83d3c6b3
+msgid "Programming Model: Synchronous Code, Non-blocking I/O"
+msgstr "编程模型：同步写法，非阻塞 I/O"
+
+#: ../../00-overview.md:105 fc659db44f914a9298639daeed36c28b
+msgid ""
+"The defining property of ngx_lua is that application code **reads like "
+"blocking code but executes without blocking the worker**: you write "
+"\"synchronous but still non-blocking access to the database backends and "
+"other storage\"."
+msgstr ""
+"ngx_lua 最本质的特性是：应用代码**读起来像阻塞代码，执行时却不会阻塞 "
+"worker**——也就是“以同步方式但仍然非阻塞地访问数据库后端和其他存储”。"
+
+#: ../../00-overview.md:109 3ae5c7de7f0b47a49e84b10ccdd2e628
+msgid ""
+"**Coroutines as the request context.** Nginx's event model is callback-"
+"driven; ngx_lua integrates Lua coroutines into it so each request handler"
+" is a coroutine. The Lua VM is shared across all requests of a worker to "
+"minimise memory, and \"request contexts are segregated using lightweight "
+"Lua coroutines\". Each `*_by_lua*` handler runs as a newly spawned "
+"coroutine in an independent global environment (a sandbox)."
+msgstr ""
+"**以协程承载请求上下文。** Nginx 的事件模型是回调驱动的；ngx_lua 把 Lua 协程集成进来，使每个请求处理器都是一个协程。Lua"
+" VM 在一个 worker 的所有请求之间共享以最小化内存，而“请求上下文通过轻量级 Lua 协程相互隔离”。每个 `*_by_lua*` "
+"处理器都作为新派生的协程运行在独立的全局环境（沙箱）中。"
+
+#: ../../00-overview.md:115 6811432468f34125bf3f3e92bc690993
+msgid ""
+"**Light threads.** `ngx.thread.spawn` creates a \"light thread\" - a "
+"special Lua coroutine scheduled by ngx_lua - to run work concurrently "
+"within one request. The handler body itself is a boilerplate light thread"
+" called the *entry thread*. Scheduling is cooperative, not preemptive: a "
+"light thread runs exclusively until it yields on I/O, so CPU-bound Lua "
+"still blocks its worker."
+msgstr ""
+"**Light thread（轻线程）。** `ngx.thread.spawn` 会创建一个 “light thread”——由 ngx_lua"
+" 调度的特殊 Lua 协程——以便在同一个请求内并发执行任务。处理器主体本身就是一个样板 light thread，称为 *entry "
+"thread*。调度是协作式而非抢占式的：light thread 会独占运行直到在 I/O 上让出，因此 CPU 密集型 Lua 仍会阻塞其 "
+"worker。"
+
+#: ../../00-overview.md:120 8136f2a64a104a35a373d70bcdf530fd
+msgid ""
+"**Cosockets.** `ngx.socket.tcp()` returns a *cosocket*: an API "
+"intentionally compatible with LuaSocket's TCP API but \"100% nonblocking "
+"out of the box\". Under the hood a `connect`/`receive`/`send` yields the "
+"coroutine back to the Nginx event loop and resumes it when the event "
+"fires. Cosockets support timeouts, TLS handshakes, connection pooling "
+"(`setkeepalive`), and since `0.9.9` full-duplex use by one reader and one"
+" writer light thread. A cosocket has **exactly the lifetime of the "
+"handler that created it** - it must never be shared across requests or "
+"passed into a timer callback."
+msgstr ""
+"**Cosocket。** `ngx.socket.tcp()` 返回一个 *cosocket*：其 API 有意与 LuaSocket 的 "
+"TCP API 保持兼容，但“开箱即用地 100% 非阻塞”。在底层，`connect`/`receive`/`send` 会把协程让回 "
+"Nginx 事件循环，并在事件触发时恢复。Cosocket 支持超时、TLS 握手、连接池（`setkeepalive`），并自 `0.9.9` "
+"起支持由一个读 light thread 和一个写 light thread 进行全双工操作。cosocket "
+"的**生命周期与创建它的处理器完全一致**——绝不能跨请求共享，也不能传入定时器回调。"
+
+#: ../../00-overview.md:128 27a630dbb3fc45cb88c0ef48314da435
+msgid ""
+"**Hostname resolution is part of this model.** A cosocket `connect()` to "
+"a name does not call `getaddrinfo()`; it drives Nginx's own "
+"`ngx_resolver` and yields while the DNS query is in flight - which is "
+"precisely the failure path this PKB documents in "
+"[Workflows](06-workflows.md)."
+msgstr ""
+"**主机名解析也是该模型的一部分。** cosocket 对名称执行 `connect()` 时不会调用 `getaddrinfo()`；它驱动 "
+"Nginx 自己的 `ngx_resolver`，并在 DNS "
+"查询进行期间让出——这正是本知识库在[工作流](06-workflows.md)中记录的失败路径。"
+
+#: ../../00-overview.md:132 0674257615d84dac88c4a9592c8aafd7
+msgid ""
+"**Dynamic behaviour.** Lua is loaded at runtime, so routing, access "
+"rules, and upstream selection can be computed per request. "
+"`*_by_lua_file` paths may contain Nginx variables for dynamic dispatch "
+"(with the matching injection risk), files may hold precompiled LuaJIT "
+"bytecode, and `lua_code_cache off` gives an edit-and-refresh loop during "
+"development. See [lua-nginx-module Directive Reference](08-lua-nginx-"
+"module.md)."
+msgstr ""
+"**动态特性。** Lua 在运行时加载，因此路由、访问规则和上游选择都可以按请求计算。`*_by_lua_file` 的路径中可以包含 "
+"Nginx 变量以实现动态分发（同时也带来相应的注入风险），文件中可以存放预编译的 LuaJIT 字节码，而 `lua_code_cache "
+"off` 则在开发期提供“改完即刷新”的循环。参见 [lua-nginx-module 指令参考](08-lua-nginx-"
+"module.md)。"
+
+#: ../../00-overview.md:139 9a03e21df5934ecc87782b2031f32c59
+msgid "How Nginx and LuaJIT Fit Together"
+msgstr "Nginx 与 LuaJIT 如何丝滑结合"
+
+#: ../../00-overview.md:141 624f1eeb4c564283b39709992e0ca7d9
+msgid ""
+"The integration is deliberately seamless rather than a bolt-on scripting "
+"layer:"
+msgstr "这种集成是刻意做到无缝的，而不是外挂一层脚本："
+
+#: ../../00-overview.md:143 87a326e698f5493ba10415943fede119
+msgid ""
+"**LuaJIT lives inside the worker process**, not in an external "
+"interpreter or a FastCGI sidecar, so there is no IPC on the request path "
+"and the JIT keeps hot handlers close to C speed."
+msgstr ""
+"**LuaJIT 运行在 worker 进程内部**，而不是外部解释器或 FastCGI 边车进程，因此请求路径上没有 IPC，JIT "
+"让热点处理器的速度接近 C。"
+
+#: ../../00-overview.md:146 5b46fbe774a34fcb8089021cdd1254b5
+msgid ""
+"**Lua hooks onto Nginx's request phases.** Handler directives map onto "
+"the existing phase machinery (`set_by_lua*`, `rewrite_by_lua*`, "
+"`access_by_lua*`, `content_by_lua*`, `header_filter_by_lua*`, "
+"`body_filter_by_lua*`, `log_by_lua*`, plus `init_by_lua*` and "
+"`ngx.timer.*`), so Lua extends the pipeline instead of replacing it."
+msgstr ""
+"**Lua 挂接到 Nginx 的请求阶段上。** "
+"处理器指令映射到既有的阶段机制（`set_by_lua*`、`rewrite_by_lua*`、`access_by_lua*`、`content_by_lua*`、`header_filter_by_lua*`、`body_filter_by_lua*`、`log_by_lua*`，以及"
+" `init_by_lua*` 和 `ngx.timer.*`），因此 Lua 是在扩展流水线而非替换它。"
+
+#: ../../00-overview.md:151 1ae01bba6db54574954b37caa7df3b2c
+msgid ""
+"**Lua reuses the Nginx runtime**, not its own: the same event loop, the "
+"same `resolver`, the same upstream/proxy machinery, SSL stack, shared "
+"memory zones (`lua_shared_dict`), logging, and timers."
+msgstr ""
+"**Lua 复用 Nginx 的运行时**而非自建一套：相同的事件循环、相同的 `resolver`、相同的上游/代理机制、SSL "
+"栈、共享内存区（`lua_shared_dict`）、日志与定时器。"
+
+#: ../../00-overview.md:154 5ffe662c08e941b4a639d962852e9172
+msgid ""
+"**Nginx C modules remain reachable** from Lua through "
+"`ngx.location.capture` subrequests, although the `lua-resty-*` libraries "
+"are usually preferred as more flexible and memory-efficient."
+msgstr ""
+"**Nginx 的 C 模块依然可从 Lua 访问**，通过 `ngx.location.capture` 子请求即可，尽管通常更推荐 `lua-"
+"resty-*` 库，因为它们更灵活、更省内存。"
+
+#: ../../00-overview.md:157 b986046d9da346b09c6f95a31404534a
+msgid ""
+"**OpenResty is not an Nginx fork.** It is a higher-level platform that "
+"bundles an enhanced Nginx core, an enhanced LuaJIT, vetted Lua libraries,"
+" and third-party C modules, so the standard Nginx configuration knowledge"
+" carries over unchanged."
+msgstr ""
+"**OpenResty 不是 Nginx 的分支。** 它是一个更高层的平台，打包了增强版 Nginx 内核、增强版 LuaJIT、经过甄选的 "
+"Lua 库以及第三方 C 模块，因此标准的 Nginx 配置知识可以原封不动地沿用。"
+
+#: ../../00-overview.md:162 518e0bcc0a1745fc9519252adbc7420b
+msgid "Scope Boundaries"
+msgstr "范围边界"
+
+#: ../../00-overview.md 1ef3cfe2b9374fcea02d0289e05dd73a
+msgid "In scope"
+msgstr "范围内"
+
+#: ../../00-overview.md 04995795b31a4466a52c8136ee2938ad
+msgid "Out of scope"
+msgstr "范围外"
+
+#: ../../00-overview.md f1d35a2580ce4812a5fe505c98673a60
+msgid ""
+"OpenResty/ngx_lua source reading: DNS failure path in cosocket connect "
+"and upstream"
+msgstr "OpenResty/ngx_lua 源码阅读：cosocket 连接与上游中的 DNS 失败路径"
+
+#: ../../00-overview.md 8eaecca4edb74331a86ed1a0ff19286a
+msgid "FreeSWITCH, OpenSIPS, and other SIP components"
+msgstr "FreeSWITCH、OpenSIPS 及其他 SIP 组件"
+
+#: ../../00-overview.md cb2438a55ab245228d555e658d84bb35
+msgid ""
+"`lua-nginx-module` directive reference (content-phase directives, LuaJIT "
+"bytecode)"
+msgstr "`lua-nginx-module` 指令参考（content 阶段指令、LuaJIT 字节码）"
+
+#: ../../00-overview.md 435d3ac071fa4e85b279d856fbbed3e6
+msgid "Company-internal build/deploy procedures for OpenResty microservices"
+msgstr "OpenResty 微服务的公司内部构建/部署流程"
+
+#: ../../00-overview.md 863f44d5e70a467882d5fe513928e133
+msgid ""
+"Build, runbook, observability, and testing guidance for this OpenResty "
+"tree"
+msgstr "针对本 OpenResty 源码树的构建、运维手册、可观测性与测试指引"
+
+#: ../../00-overview.md 4f526079e04e4f4aa389412279c6e08a
+msgid "Non-software assets and unread source"
+msgstr "非软件资产与未阅读的源码"
+
+#: ../../00-overview.md 331bf40d47034024aee86b1d7f94fde2
+msgid "Bilingual (en/zh_CN) Sphinx documentation"
+msgstr "中英双语（en/zh_CN）Sphinx 文档"
+
+#: ../../00-overview.md 7ef9eecca202465c8a579d4f56855278
+msgid ""
+"Authoring a full Chinese rewrite of the ingested upstream README "
+"(delegated: the ingest page falls back to English in zh_CN)"
+msgstr "完整重写所摄取的上游 README 的中文版（部分委托：整页摄取在 zh_CN 中回退为英文）"
+
+#: ../../00-overview.md:171 c3659e3054f14ab790f44f98e6195e6b
+msgid "Key Users and Use Cases"
+msgstr "关键用户与使用场景"
+
+#: ../../00-overview.md:173 8067b89962d946ca9f35110d03dbdcb2
+msgid ""
+"**Engineers debugging DNS failures**: reproduce and fix `no resolver "
+"defined`, `Operation timed out`, NXDOMAIN, and SERVFAIL errors via the "
+"runbook and conventions."
+msgstr ""
+"**排查 DNS 失败的工程师**：借助运维手册与开发规范复现并修复 `no resolver defined`、`Operation timed"
+" out`、NXDOMAIN 和 SERVFAIL 等错误。"
+
+#: ../../00-overview.md:176 6f9ebeb4df6d43089cd3e751f9863349
+msgid ""
+"**Engineers learning OpenResty/ngx_lua**: follow the architecture, repo-"
+"map, and the lua-nginx-module directive pages."
+msgstr "**学习 OpenResty/ngx_lua 的工程师**：按照架构、仓库地图和 lua-nginx-module 指令页面逐步阅读。"
+
+#: ../../00-overview.md:178 9b2be190368f4111ba12279e65dda6a7
+msgid ""
+"**AI assistants / coding agents**: use the layered reading order in [How "
+"to Use This Documentation for AI](ai-guide.md) and the retrieval helpers "
+"(`scripts/pkb_query.py`) to stay on-path."
+msgstr ""
+"**AI 助手 / 编码代理**：使用[如何为 AI 使用本文档](ai-"
+"guide.md)中的分层阅读顺序以及检索辅助工具（`scripts/pkb_query.py`）以保持聚焦。"
+
+#: ../../00-overview.md:181 26922c90d00c46b29f48a8ec75e49d51
+msgid ""
+"**Documentation maintainers**: refresh pages per the [Documentation "
+"Process](12-document.md)."
+msgstr "**文档维护者**：按照[文档流程](12-document.md)刷新页面。"
+
+#: ../../00-overview.md:184 dfb0e94973bb4e99a19c2fbaa98374f3
+msgid "System Snapshot"
+msgstr "系统快照"
+
+#: ../../00-overview.md:186 f483f8c2fca241209ff2803cb7b23e67
+msgid ""
+"**Deployment model**: documentation knowledge base (not a deployable "
+"application). There is no server to run to \"use\" the PKB itself."
+msgstr "**部署模型**：文档知识库（并非可部署的应用）。使用本知识库本身不需要运行任何服务。"
+
+#: ../../00-overview.md:188 f217f395465a4f1fb92dfaf4a7bb7213
+msgid ""
+"**Core runtime shape**: Sphinx + MyST bilingual site; the documented "
+"subject is the OpenResty runtime (Nginx event loop + LuaJIT coroutines)."
+msgstr ""
+"**核心运行时形态**：Sphinx + MyST 双语站点；所记录的对象是 OpenResty 运行时（Nginx 事件循环 + LuaJIT "
+"协程）。"
+
+#: ../../00-overview.md:190 d8ecb51cc1dd4a3695b12cfc9bfedba2
+msgid ""
+"**Primary data path**: request -> `ngx_lua` cosocket or upstream -> "
+"`ngx_resolver` -> configured nameservers (see "
+"[Workflows](06-workflows.md))."
+msgstr ""
+"**主要数据路径**：请求 -> `ngx_lua` cosocket 或上游 -> `ngx_resolver` -> "
+"所配置的域名服务器（参见[工作流](06-workflows.md)）。"
+
+#: ../../00-overview.md:192 790bcd3770184863b632a1acbe713f10
+msgid ""
+"**Top risk or constraint**: facts must stay locked to verified source "
+"versions (nginx 1.31.1, ngx_lua 0.10.31rc5, lua-nginx-module README); "
+"drift in upstream code can silently invalidate the docs."
+msgstr ""
+"**首要风险或约束**：事实必须锁定在已验证的源码版本上（nginx 1.31.1、ngx_lua 0.10.31rc5、lua-nginx-"
+"module README）；上游代码的漂移会悄无声息地让文档失效。"
+
+#: ../../00-overview.md:196 abfd4d20ca8a42e8a6d8dbc1ba185485
+msgid "Quality Targets"
+msgstr "质量目标"
+
+#: ../../00-overview.md 9c097ca02c5e46488921a59ff086d45a
+msgid "Area"
+msgstr "领域"
+
+#: ../../00-overview.md a1e46a7ae41d4682b4d710b8b634c7cd
+msgid "Target"
+msgstr "目标"
+
+#: ../../00-overview.md 1bd8c3a7be0146ad9cc911c46243e85e
+msgid "Notes"
+msgstr "说明"
+
+#: ../../00-overview.md eb75d4915d5147aca01253be9a4a2b9d
+msgid "Performance"
+msgstr "性能"
+
+#: ../../00-overview.md b898d25ef0da44c3b3be53263782af99
+msgid ""
+"Docs build fast and token-cheap: rule-based freshness checks before LLM "
+"passes"
+msgstr "文档构建快速且 token 成本低：在 LLM 处理前先做基于规则的时效性检查"
+
+#: ../../00-overview.md be816c635bca4084a561ec45881d0e1d
+msgid "`make build` strict (`-W`)"
+msgstr "`make build` 采用严格模式（`-W`）"
+
+#: ../../00-overview.md f6dddd024fd94538bd78772eb5f5cfea
+msgid "Availability"
+msgstr "可用性"
+
+#: ../../00-overview.md 7f57fe629f604af49037745018d65198
+msgid "Bilingual site builds and serves on GitHub Pages (`make publish`)"
+msgstr "双语站点可构建并发布到 GitHub Pages（`make publish`）"
+
+#: ../../00-overview.md dd81f0d091c844519b76f8dde2dcfaa9
+msgid "en + zh_CN"
+msgstr "en + zh_CN"
+
+#: ../../00-overview.md 0452e8d9ef214737877779493f4dbc61
+msgid "Correctness"
+msgstr "正确性"
+
+#: ../../00-overview.md afbefb4d59904532955042c9ae770c85
+msgid "Every claim cites verified paths/URLs in `source`"
+msgstr "每条论断都在 `source` 中引用了已验证的路径/URL"
+
+#: ../../00-overview.md 8eb4abba2d06423aa17087fdbc210722
+msgid "`source-verified` is the AI ceiling"
+msgstr "`source-verified` 是 AI 的上限"
+
+#: ../../00-overview.md 63d95d4736904f3eb4cc549d19d8ab26
+msgid "Security"
+msgstr "安全"
+
+#: ../../00-overview.md d71bd76d43de45859b44412c1637c81a
+msgid "Public content is `L1`; no credentials or internal hosts"
+msgstr "公开内容为 `L1`；不含凭据或内部主机"
+
+#: ../../00-overview.md 2530c42a9493463eaf8a5c2a50b38e78
+msgid "Confidentiality policy"
+msgstr "保密等级策略"
+
+#: ../../00-overview.md:205 33790e9a4eab4656b49605c4b5b0b769
+msgid "Key Project Facts"
+msgstr "关键项目事实"
+
+#: ../../00-overview.md:207 f3e0057908ba48a6b197e0f99eeb31ce
+msgid ""
+"**Code roots**: upstream OpenResty sources are referenced (not vendored):"
+" `openresty/bundle/nginx-1.31.1`, `openresty/bundle/ngx_lua-0.10.31rc5`."
+msgstr ""
+"**代码根目录**：引用上游 OpenResty 源码（未随仓库 "
+"vendored）：`openresty/bundle/nginx-1.31.1`、`openresty/bundle/ngx_lua-0.10.31rc5`。"
+
+#: ../../00-overview.md:209 225e222a7a8b4217a0c012f655bc89e9
+msgid ""
+"**Primary interfaces**: Sphinx/MyST docs (`doc/`), the Makefile targets "
+"(`make deps|build|publish`), and `scripts/pkb_query.py`."
+msgstr ""
+"**主要接口**：Sphinx/MyST 文档（`doc/`）、Makefile 目标（`make deps|build|publish`）以及 "
+"`scripts/pkb_query.py`。"
+
+#: ../../00-overview.md:211 07f49d6d1220465c9060ebf3d6947520
+msgid ""
+"**Sources of truth docs**: nginx / ngx_lua source in the tree, the [lua-"
+"nginx-module README](https://github.com/openresty/lua-nginx-module), and "
+"the [Akamai \"Using OpenResty\" "
+"guide](https://www.akamai.com/cloud/guides/using-openresty/)."
+msgstr ""
+"**事实来源文档**：源码树中的 nginx / ngx_lua 源码、[lua-nginx-module "
+"README](https://github.com/openresty/lua-nginx-module)，以及 [Akamai “Using "
+"OpenResty” 指南](https://www.akamai.com/cloud/guides/using-openresty/)。"
+
+#: ../../00-overview.md:215 8e2a7ca423b54f0eb03a86d5ce8203ba
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../00-overview.md:217 ebe434797f3f4f65a6f0d5fdb465cbfc
+msgid "[Quick Start](01-quick-start.md)"
+msgstr "[快速上手](01-quick-start.md)"
+
+#: ../../00-overview.md:218 41e380ae5ae546a2b206544af0ce6897
+msgid "[Architecture](02-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../00-overview.md:219 d2fe00f320ce45df9623254b9fd204fc
+msgid "[Tech Stack](03-tech-stack.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../00-overview.md:220 963e1795bb1f487bb662dca2a56c16c1
+msgid "[Repository Map](04-repo-map.md)"
+msgstr "[仓库地图](04-repo-map.md)"
+
+#: ../../00-overview.md:221 b89212f39fb54c8085970183ac9dc215
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../00-overview.md:222 4776ab5523d845688365384ea895bfd4
+msgid "[lua-nginx-module Directive Reference](08-lua-nginx-module.md)"
+msgstr "[lua-nginx-module 指令参考](08-lua-nginx-module.md)"
+
+#~ msgid ""
+#~ "**Template note**: Replace placeholders with"
+#~ " verified project facts. Remove sections"
+#~ " that do not apply rather than "
+#~ "filling them with guesses."
+#~ msgstr "**模板说明**：用经过验证的项目事实替换占位符。删除不适用的章节，而不要用猜测填充。"
+
+#~ msgid "Describe what the project does, who it serves, and why it exists."
+#~ msgstr "描述项目做什么、为谁服务以及为什么存在。"
+
+#~ msgid "[Core capability 1]"
+#~ msgstr "[核心能力 1]"
+
+#~ msgid "[Explicit non-goal 1]"
+#~ msgstr "[明确非目标 1]"
+
+#~ msgid "[Core capability 2]"
+#~ msgstr "[核心能力 2]"
+
+#~ msgid "[Explicit non-goal 2]"
+#~ msgstr "[明确非目标 2]"
+
+#~ msgid "[Core capability 3]"
+#~ msgstr "[核心能力 3]"
+
+#~ msgid "**[User role 1]**: [primary goal]"
+#~ msgstr "**[用户角色 1]**：[主要目标]"
+
+#~ msgid "**[User role 2]**: [primary goal]"
+#~ msgstr "**[用户角色 2]**：[主要目标]"
+
+#~ msgid "**[User role 3]**: [primary goal]"
+#~ msgstr "**[用户角色 3]**：[主要目标]"
+
+#~ msgid ""
+#~ "**Deployment model**: [monolith / "
+#~ "microservices / desktop app / CLI "
+#~ "/ library / mixed]"
+#~ msgstr "**部署模型**：[单体 / 微服务 / 桌面应用 / CLI / 库 / 混合]"
+
+#~ msgid ""
+#~ "**Core runtime shape**: [frontend + "
+#~ "backend, worker fleet, local-only app,"
+#~ " etc.]"
+#~ msgstr "**核心运行时形态**：[前端 + 后端、worker 集群、纯本地应用等]"
+
+#~ msgid "**Primary data path**: [request -> service -> storage summary]"
+#~ msgstr "**主要数据路径**：[请求 -> 服务 -> 存储概述]"
+
+#~ msgid ""
+#~ "**Top risk or constraint**: [latency, "
+#~ "consistency, offline support, compliance, "
+#~ "etc.]"
+#~ msgstr "**首要风险或约束**：[延迟、一致性、离线支持、合规等]"
+
+#~ msgid "[p95 latency / throughput target]"
+#~ msgstr "[p95 延迟 / 吞吐目标]"
+
+#~ msgid "[Where it matters most]"
+#~ msgstr "[最关键的场景]"
+
+#~ msgid "[uptime or recovery target]"
+#~ msgstr "[运行时间或恢复目标]"
+
+#~ msgid "[RTO / RPO if relevant]"
+#~ msgstr "[如适用，RTO / RPO]"
+
+#~ msgid "[data or workflow guarantee]"
+#~ msgstr "[数据或工作流保证]"
+
+#~ msgid "[Consistency or validation expectation]"
+#~ msgstr "[一致性或校验预期]"
+
+#~ msgid "[auth / secret / compliance expectation]"
+#~ msgstr "[认证 / 密钥 / 合规预期]"
+
+#~ msgid "[Special constraints]"
+#~ msgstr "[特殊约束]"
+
+#~ msgid "**Code roots**: [for example: `src/`, `server/`, `cmd/`, `pkg/`]"
+#~ msgstr "**代码根目录**：[例如：`src/`、`server/`、`cmd/`、`pkg/`]"
+
+#~ msgid "**Primary interfaces**: [HTTP API, message queue, CLI, local UI, SDK]"
+#~ msgstr "**主要接口**：[HTTP API、消息队列、CLI、本地 UI、SDK]"
+
+#~ msgid ""
+#~ "**Source of truth docs**: [where design"
+#~ " or product intent is documented]"
+#~ msgstr "**事实来源文档**：[设计或产品意图被记录的位置]"
+
+#~ msgid "[NEEDS INPUT: other explicitly non-goal item]"
+#~ msgstr "[需要补充：其他明确的非目标项]"
+

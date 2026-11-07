@@ -1,0 +1,11 @@
+# Optional pip fallback; uv.lock is the canonical dependency lock.
+sphinx==8.2.3
+myst-parser==4.0.1
+sphinx-rtd-theme==3.0.2
+sphinx-copybutton==0.5.2
+sphinx-design==0.6.1
+sphinxcontrib-mermaid==1.0.0
+linkify-it-py==2.2.0
+sphinx-autobuild==2024.10.3
+sphinx-intl==2.3.2
+polib==1.2.0

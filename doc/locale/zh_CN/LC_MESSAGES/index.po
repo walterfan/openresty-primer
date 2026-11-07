@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 11:47+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language: zh_CN\n"
+"Language-Team: Chinese (Simplified)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../index.md:45
+msgid "Getting Started"
+msgstr "入门"
+
+#: ../../index.md:53
+msgid "Design & Structure"
+msgstr "设计与结构"
+
+#: ../../index.md:64
+msgid "Development"
+msgstr "开发"
+
+#: ../../index.md:72
+msgid "lua-nginx-module"
+msgstr "lua-nginx-module"
+
+#: ../../index.md:79
+msgid "OpenResty FFI"
+msgstr ""
+
+#: ../../index.md:86
+msgid "Operations"
+msgstr "运维"
+
+#: ../../index.md:95
+msgid "Appendix"
+msgstr "附录"
+
+#: ../../index.md:25 4acae69a56db49cd8281cbdea6cc3612
+msgid "Project Knowledge Base"
+msgstr "项目知识库（PKB）"
+
+#: ../../index.md:29 e6d8617efb054c57be708080b504f2d8
+msgid ""
+"This documentation is the Project Knowledge Base for the repository. It "
+"is designed to help both humans and AI locate code, understand "
+"architecture, execute workflows, and verify changes."
+msgstr "本文档是本仓库的项目知识库（Project Knowledge Base）。它旨在帮助人类工程师和 AI 定位代码、理解架构、执行工作流并验证变更。"
+
+#: ../../index.md:31 fdf4ae5835414a629920ca488e550114
+msgid "Overview"
+msgstr "概述"
+
+#: ../../index.md:33 9c19bca9f3084354b70a860d611825c0
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../index.md:36 5f8379a628c14f10814d1038d3dce6bd
+msgid "This PKB should help readers:"
+msgstr "本知识库旨在帮助读者："
+
+#: ../../index.md:37 a8e3dc88b527463d946d1eec6324c75e
+msgid "**Locate** code, configs, scripts, and entry points"
+msgstr "**定位**代码、配置、脚本和入口"
+
+#: ../../index.md:38 bbd4311d77dc495a8b500d710fe55ffb
+msgid "**Understand** architecture, stack choices, and workflows"
+msgstr "**理解**架构、技术选型和工作流"
+
+#: ../../index.md:39 b8e678ed0efd4ef98cb669e262db793e
+msgid "**Execute** setup, build, release, and debugging tasks"
+msgstr "**执行**搭建、构建、发布和调试任务"
+
+#: ../../index.md:40 73eb5b30aa504f46a803526c674ea82e
+msgid "**Verify** behavior with tests, observability, and documentation checks"
+msgstr "**验证**测试、可观测性和文档检查所覆盖的行为"
+
+#: ../../index.md:43 ffd4be9c18f547a3b77bb95d5f96f6c3
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../index.md:108 e94b8cdcbcbd4712a4e14e40bac0f8e5
+msgid "Quick Start"
+msgstr "快速上手"
+
+#: ../../index.md:110 77a0eb3de0da4a4ca2ba0e921265dfd1
+msgid "For New Developers"
+msgstr "面向新开发者"
+
+#: ../../index.md:112 3646d3aaf7dd4389bf7df499edc43a1d
+msgid ""
+"Read [Project Overview](00-overview.md) to understand purpose, users, and"
+" scope."
+msgstr "阅读[项目概述](00-overview.md)以了解目的、用户和范围。"
+
+#: ../../index.md:113 6699e63eded84cc1910467fdfe0905b6
+msgid ""
+"Follow [Quick Start](01-quick-start.md) to get the project running "
+"locally."
+msgstr "按照[快速上手](01-quick-start.md)在本地运行项目。"
+
+#: ../../index.md:114 95230f2df3074bcf927d3b42908b7e6f
+msgid ""
+"Study [Repository Map](04-repo-map.md) to locate entry points and major "
+"directories."
+msgstr "研究[仓库地图](04-repo-map.md)以定位入口和主要目录。"
+
+#: ../../index.md:115 ff29e7f0b23e485fb58f8cd5bd2c6b53
+msgid ""
+"Review [Runbook](10-runbook.md) and [Conventions](07-conventions.md) "
+"before making changes."
+msgstr "在改动之前先阅读[运维手册](10-runbook.md)和[开发规范](07-conventions.md)。"
+
+#: ../../index.md:117 88f60d6a94994fe88f7221e4790723ea
+msgid "For AI Assistants"
+msgstr "面向 AI 助手"
+
+#: ../../index.md:119 2ffdcdc296c143e281cefd28d56eec50
+msgid "Use a layered reading order:"
+msgstr "采用分层的阅读顺序："
+
+#: ../../index.md:121 1477be64230a4d0d8e8841aa170bb09d
+msgid "**Round 1**: read `00-overview`, `02-architecture`, and `04-repo-map`"
+msgstr "**第一轮**：阅读 `00-overview`、`02-architecture` 和 `04-repo-map`"
+
+#: ../../index.md:122 3fa8596178d74fd98d6b669d08fc0c1e
+msgid "**Round 2**: read `05-data-and-api` and `06-workflows`"
+msgstr "**第二轮**：阅读 `05-data-and-api` 和 `06-workflows`"
+
+#: ../../index.md:123 f92ea8e4a59b48d99e9512ca80615b08
+msgid ""
+"**Round 3**: read `09-testing`, `10-runbook`, `11-observability`, and "
+"`12-document`"
+msgstr "**第三轮**：阅读 `09-testing`、`10-runbook`、`11-observability` 和 `12-document`"
+
+#: ../../index.md:125 010de1fde61b41a4ae89120aa2e075d1
+msgid ""
+"See [How to Use This Documentation for AI](ai-guide.md) for the detailed "
+"workflow."
+msgstr "详细工作流请见[如何为 AI 使用本文档](ai-guide.md)。"
+
+#: ../../index.md:127 ed44467cecd349c6acce2b6fdf06bdf1
+msgid "Key Concepts"
+msgstr "核心概念"
+
+#: ../../index.md:133 86f64a47bc8042f5850bf554c9e4340c
+msgid "Navigation"
+msgstr "导航"
+
+#: ../../index.md:137 1a18b1b5663940bf97dc59d59ffa1293
+msgid "Find the project structure, startup files, and major module boundaries."
+msgstr "查找项目结构、启动文件和主要模块边界。"
+
+#: ../../index.md:140 50c85a1861a046e68cbe45a60ff730d8
+msgid "Architecture"
+msgstr "架构"
+
+#: ../../index.md:144 f0627ef6eea64a83b66960ad4cbdaa07
+msgid "Learn how the system is decomposed and how the main pieces interact."
+msgstr "了解系统如何分解以及主要组件如何交互。"
+
+#: ../../index.md:147 ca644367ebbc4583aabe805e541be1d3
+msgid "Workflows"
+msgstr "工作流"
+
+#: ../../index.md:151 5b280cf3925140b488f3d1799b3ac620
+msgid "Explore critical request, event, and business flows with code references."
+msgstr "结合代码引用探索关键请求、事件和业务流。"
+
+#: ../../index.md:154 c5790df28c86434ab795e895bf88a156
+msgid "Testing"
+msgstr "测试"
+
+#: ../../index.md:158 03ca50dd2a24432788021c5a286c97e6
+msgid "Review the test layers, critical regressions, and validation commands."
+msgstr "回顾测试分层、关键回归和验证命令。"
+
+#: ../../index.md:162 b5e426aadf1f4f799fdc4288fc73b7c0
+msgid "Documentation Maintenance"
+msgstr "文档维护"
+
+#: ../../index.md:164 d2cce79b6d8f4615bd1cc2a73a39d002
+msgid "Living Documentation"
+msgstr "活的文档"
+
+#: ../../index.md:167 dc8a7a3ce83d4a93ba9836ef11f14774
+msgid "Keep the PKB fresh without wasting tokens:"
+msgstr "在不浪费 token 的前提下保持知识库常新："
+
+#: ../../index.md:168 5d23fb4b4a054b9280650944d79e6fb3
+msgid "run rule-based freshness checks before LLM-heavy doc work"
+msgstr "在重 LLM 文档工作之前先运行基于规则的时效性检查"
+
+#: ../../index.md:169 9b5eb3d65211440080136ad1e9034dbf
+msgid "apply mechanical Level 1 updates first"
+msgstr "先应用机械式的 Level 1 更新"
+
+#: ../../index.md:170 f4d2273de0554c9dbef6f21e6bda2508
+msgid "batch Level 2 refreshes by PR, sprint, or milestone"
+msgstr "按 PR、冲刺或里程碑批量进行 Level 2 刷新"
+
+#: ../../index.md:171 49236f4a41a844e6ba49f5dd801e7c90
+msgid "keep ADRs and product rationale human-led"
+msgstr "将 ADR 和产品决策由人主导"
+
+#: ../../index.md:174 b1727abf4fcf4dc3bba3e9e6503a8446
+msgid "Contributing"
+msgstr "参与贡献"
+
+#: ../../index.md:176 accec52283e84e149baa18727d78a605
+msgid ""
+"See [Conventions](07-conventions.md) for coding standards and "
+"[Documentation Process](12-document.md) for PKB maintenance rules."
+msgstr "编码规范请见[开发规范](07-conventions.md)，知识库维护规则请见[文档流程](12-document.md)。"
+
+#: ../../index.md:178 87c67c6622204b7881bb2f0670709843
+msgid "Indices and tables"
+msgstr "索引与表格"
+
+#: ../../index.md:180 05853c4d32054b79b9ccb1538976039c
+#, python-brace-format
+msgid "{ref}`genindex`"
+msgstr "{ref}`genindex`"
+
+#: ../../index.md:181 ac22a8aa9ec64315ade2006b480e04fd
+#, python-brace-format
+msgid "{ref}`search`"
+msgstr "{ref}`search`"
+
+#: ../../index.md:185 1ca62e94d3fd43c6b0ec90424adb4294
+#, python-brace-format
+msgid "**Version**: {sub-ref}`release` **Last Updated**: {sub-ref}`today`"
+msgstr "**版本**：{sub-ref}`release` **最后更新**：{sub-ref}`today`"
+

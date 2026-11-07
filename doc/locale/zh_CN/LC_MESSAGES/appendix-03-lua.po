@@ -1,0 +1,767 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 09:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../appendix-03-lua.md:33 80124f2c1b7b4c17bc6b727733b4553b
+msgid "Appendix-03: Lua and LuaJIT Key Points"
+msgstr "附录-03：Lua 与 LuaJIT 要点"
+
+#: ../../appendix-03-lua.md:37 b2e204d839e540bda6f457ded290115e
+msgid ""
+"This appendix is a guided review of the Lua language and LuaJIT runtime used"
+" by OpenResty. It focuses on concepts that influence everyday application "
+"code, debugging, and performance. OpenResty uses LuaJIT 2.1 with Lua 5.1 "
+"language semantics; advice for a newer standalone Lua release may not apply "
+"directly."
+msgstr ""
+"本附录对 OpenResty 所使用的 Lua 语言和 LuaJIT "
+"运行时做一次导览式梳理，聚焦于影响日常应用代码、调试和性能的概念。OpenResty 使用 LuaJIT 2.1，语言语义为 Lua "
+"5.1；针对更新版独立 Lua 发行版的建议不一定直接适用。"
+
+#: ../../appendix-03-lua.md:42 9c174e7f9b4e40afb31e8deef796bda7
+msgid "1. Lua at a Glance"
+msgstr "1. Lua 概览"
+
+#: ../../appendix-03-lua.md:44 072f4c7e4959442ca987d2d948a02816
+msgid ""
+"Lua is a small, embeddable, dynamically typed language. The host application"
+" creates a Lua VM, exposes APIs to it, and decides when Lua code runs. In "
+"OpenResty, `lua-nginx-module` embeds LuaJIT in each Nginx worker and exposes"
+" Nginx request APIs such as `ngx`."
+msgstr ""
+"Lua 是一种小巧、可嵌入、动态类型的语言。宿主应用创建 Lua VM、向其暴露 API，并决定何时运行 Lua 代码。在 OpenResty "
+"中，`lua-nginx-module` 在每个 Nginx worker 里嵌入 LuaJIT，并暴露诸如 `ngx` 之类的 Nginx 请求 "
+"API。"
+
+#: ../../appendix-03-lua.md:49 2b3e50ac830344fea84a464321fae9b9
+msgid "The language is built around a few simple ideas:"
+msgstr "这门语言建立在几个简单的理念之上："
+
+#: ../../appendix-03-lua.md:51 027abfa991f642dabde2764a464d20bc
+msgid "Values have types; variables do not have declared types."
+msgstr "值有类型，变量没有声明的类型。"
+
+#: ../../appendix-03-lua.md:52 49efef4c7ec343fc84846349f19f5a45
+msgid "Tables are the main general-purpose data structure."
+msgstr "表是主要的通用数据结构。"
+
+#: ../../appendix-03-lua.md:53 58bd83f7790343e69b3bf4cbc7f2ba4a
+msgid "Functions are values and can be stored, passed, and returned."
+msgstr "函数是值，可以存储、传递和返回。"
+
+#: ../../appendix-03-lua.md:54 606e760cc4b94077b8a734eb87b09bd5
+msgid "Lexical scoping and closures make local state explicit and reusable."
+msgstr "词法作用域和闭包让局部状态显式且可复用。"
+
+#: ../../appendix-03-lua.md:55 959e36b6b83f49e0a56f3f286e258f15
+msgid "Coroutines let a program suspend and resume execution cooperatively."
+msgstr "协程让程序能协作式地挂起和恢复执行。"
+
+#: ../../appendix-03-lua.md:56 664e9f990e9e48c3b8d51c351a1afb0a
+msgid "Metatables let tables and userdata define selected operations."
+msgstr "元表让表和 userdata 定义选定的操作。"
+
+#: ../../appendix-03-lua.md:58 001dcdfe47b74bce99e077d8067aabd8
+msgid "2. Values, Types, and Truthiness"
+msgstr "2. 值、类型与真值判定"
+
+#: ../../appendix-03-lua.md:60 2d97194b6aab4dda8d6056090a8445ec
+msgid ""
+"Lua 5.1 has eight basic types: `nil`, `boolean`, `number`, `string`, "
+"`function`, `userdata`, `thread`, and `table`. A variable that has not been "
+"assigned has the value `nil`. Assigning `nil` to a table field removes that "
+"field."
+msgstr ""
+"Lua 5.1 "
+"有八种基本类型：`nil`、`boolean`、`number`、`string`、`function`、`userdata`、`thread` 和 "
+"`table`。未被赋值的变量其值为 `nil`。给表字段赋 `nil` 会删除该字段。"
+
+#: ../../appendix-03-lua.md:64 779d72cfb8c94cfabdeed700ac7c99f2
+msgid ""
+"Only `false` and `nil` are false in a condition. In particular, `0` and "
+"`\"\"` are true. Code ported from languages where zero or an empty string is"
+" false can therefore behave unexpectedly."
+msgstr ""
+"条件判断中只有 `false` 和 `nil` 为假。特别注意 `0` 和 `\"\"` "
+"都为真。因此从“零或空字符串为假”的语言移植过来的代码会表现得和预期不符。"
+
+#: ../../appendix-03-lua.md:74 deca744017a34e7c903c5aa8098fb0db
+msgid ""
+"LuaJIT normally represents Lua numbers as double-precision floating-point "
+"values. This is convenient for ordinary arithmetic, but very large integers "
+"cannot all be represented exactly as Lua numbers. LuaJIT's FFI offers C "
+"integer types when exact-width integer arithmetic or C data layouts are "
+"needed."
+msgstr ""
+"LuaJIT 通常用双精度浮点表示 Lua 数字。这对普通算术很方便，但非常大的整数无法全部精确地用 Lua 数字表示。当需要定宽整数运算或 C "
+"数据结构布局时，LuaJIT 的 FFI 提供 C 整数类型。"
+
+#: ../../appendix-03-lua.md:80 017c7bc248034bc3a0a09be894c7fe3b
+msgid ""
+"Strings are immutable byte sequences. Lua string operations do not assume "
+"UTF-8; applications that need Unicode-aware operations must handle encoding "
+"explicitly. The length operator `#` returns a string's byte length."
+msgstr ""
+"字符串是不可变的字节序列。Lua 的字符串操作不假设 UTF-8；需要 Unicode 感知操作的应用程序必须显式处理编码。长度运算符 `#` "
+"返回字符串的字节长度。"
+
+#: ../../appendix-03-lua.md:84 1a1f0728dc8043e4b9816ffe9a96ccb4
+msgid "3. Tables: Arrays, Maps, and Objects"
+msgstr "3. 表：数组、映射与对象"
+
+#: ../../appendix-03-lua.md:86 02ef41657883492383ce4210fc31524d
+msgid ""
+"A table is an associative container. It can be used as a sequence, a map, a "
+"record, a module namespace, or the backing data for an object. Keys can be "
+"almost any Lua value except `nil` and NaN. A field whose value is `nil` is "
+"absent."
+msgstr ""
+"表是关联容器，可以充当序列、映射、记录、模块命名空间，或对象的底层数据。键可以是除 `nil` 和 NaN 之外的几乎任何 Lua 值。值为 `nil`"
+" 的字段视为不存在。"
+
+#: ../../appendix-03-lua.md:101 7310c85d210248acaa069c35383edfa3
+msgid ""
+"The `#t` operator is reliable for a sequence with no holes. When integer "
+"keys have gaps, the table has no unique sequence boundary, so `#t` can "
+"return one of several border positions. Use an explicit count or keep "
+"sequences dense when the length matters."
+msgstr ""
+"对于没有空洞的序列，`#t` 运算符结果是可靠的。当整数键存在间隙时，表没有唯一的序列边界，因此 `#t` "
+"可能返回多个边界位置之一。当长度很重要时，请使用显式计数或保持序列密集。"
+
+#: ../../appendix-03-lua.md:106 272eb173381043c7aedbe2b2a6abb268
+msgid ""
+"`pairs(t)` visits key/value pairs; its order is unspecified. `ipairs(t)` "
+"walks integer keys from 1 and stops at the first missing value. Do not "
+"depend on either traversal order for sorting or stable output."
+msgstr ""
+"`pairs(t)` 遍历键值对，顺序不保证。`ipairs(t)` 从 1 "
+"开始遍历整数键，遇到第一个缺失值即停止。排序或稳定输出时不要依赖任何一种遍历顺序。"
+
+#: ../../appendix-03-lua.md:110 3c6be4726c94479499242e5d838dd86e
+msgid ""
+"Tables are reference values. Assigning a table to another variable copies "
+"the reference, not the contents. A shallow copy also leaves nested tables "
+"shared."
+msgstr "表是引用值。把表赋给另一个变量复制的是引用，而非内容。浅拷贝同样会让嵌套表保持共享。"
+
+#: ../../appendix-03-lua.md:113 aa427714abfb42028c06af60ff14fa51
+msgid "4. Expressions and Control Flow"
+msgstr "4. 表达式与控制流"
+
+#: ../../appendix-03-lua.md:115 eee564cf72f74dc8a0e03a57d48192bf
+msgid ""
+"Lua has `if`, `while`, `repeat ... until`, numeric `for`, and generic `for`."
+" There is no built-in `switch` statement. The common `and` / `or` operators "
+"short-circuit and return one of their operands, not necessarily a boolean."
+msgstr ""
+"Lua 有 `if`、`while`、`repeat ... until`、数值型 `for` 和泛型 `for`。没有内建的 `switch` "
+"语句。常见的 `and` / `or` 运算符会短路，并返回其中一个操作数，而不一定是布尔值。"
+
+#: ../../appendix-03-lua.md:131 2916594148e8420190bd1d9faafe209c
+msgid ""
+"The expression `a and b or c` is not a full conditional expression: if `b` "
+"is `false` or `nil`, the result is `c`. Use an explicit `if` when that case "
+"matters."
+msgstr ""
+"表达式 `a and b or c` 并不是完整的三目表达式：若 `b` 为 `false` 或 `nil`，结果就是 "
+"`c`。当该情形重要时请使用显式的 `if`。"
+
+#: ../../appendix-03-lua.md:135 f73385a4062f4f048e3cb20c07add15e
+msgid ""
+"Concatenation uses `..`. Repeatedly concatenating a large number of strings "
+"can create unnecessary intermediate values; collect pieces in a table and "
+"use `table.concat` when assembling larger output."
+msgstr "字符串拼接用 `..`。反复拼接大量字符串会产生不必要的中间值；构建较大输出时，把片段收集到表里再用 `table.concat`。"
+
+#: ../../appendix-03-lua.md:139 68ecfd15567540afa079a22e4bbce1fe
+msgid "5. Functions, Scope, and Modules"
+msgstr "5. 函数、作用域与模块"
+
+#: ../../appendix-03-lua.md:141 6aa9b8f369104420b22ecb6d8d0183ac
+msgid ""
+"Functions are first-class values. Lua supports multiple return values, and a"
+" function can return another function. A nested function can capture local "
+"variables from its enclosing scope; this is a closure."
+msgstr "函数是一等值。Lua 支持多返回值，函数还可以返回另一个函数。嵌套函数能捕获其外层作用域的局部变量，这就是闭包。"
+
+#: ../../appendix-03-lua.md:157 47ab8f55c8124b729ff1ae557cf47288
+msgid ""
+"Declare locals deliberately. An undeclared assignment creates or changes a "
+"global in the current environment, which is easy to do accidentally with a "
+"misspelled name. Prefer `local` for variables and `local function` for "
+"private helpers."
+msgstr ""
+"刻意地用 `local` 声明局部变量。未声明的赋值会在当前环境中创建或修改全局变量，拼写错误很容易造成这种事。变量用 `local`，私有辅助函数用 "
+"`local function`。"
+
+#: ../../appendix-03-lua.md:162 bd59b5e0df2f40e597ab3106d955d976
+msgid ""
+"In Lua 5.1, a module is commonly loaded with `require`. The module file "
+"typically returns a table of functions. `require` caches the returned value "
+"in `package.loaded`, so later calls in the same VM reuse the module. In "
+"OpenResty, that VM is shared by requests handled by one worker: module-level"
+" tables and upvalues persist between requests. Store immutable configuration"
+" or worker-local caches there; do not store request-specific data in shared "
+"module state. ngx_lua isolates Lua global variables by request and clears "
+"them when the request ends, but an accidental global is still a bug-prone "
+"substitute for a correctly scoped local or module field."
+msgstr ""
+"在 Lua 5.1 中，模块通常用 `require` 加载。模块文件通常返回一个函数表。`require` 会把返回值缓存在 "
+"`package.loaded` 中，因此同一 VM 内的后续调用会复用该模块。在 OpenResty 中，这个 VM 由同一个 worker "
+"处理的请求共享：模块级表和 upvalue 会在请求之间持久存在。可在其中存放不可变的配置或 worker "
+"本地缓存；不要把请求特有的数据放进共享的模块状态。ngx_lua 按请求隔离 Lua "
+"全局变量并在请求结束时清空，但意外产生的全局变量仍然是“作用域正确的局部变量或模块字段”的一种易出错的替代品。"
+
+#: ../../appendix-03-lua.md:172 3a6a1f19327d47fa9c19c27de3cd9a64
+msgid "6. Metatables and Object-Like Patterns"
+msgstr "6. 元表与类对象模式"
+
+#: ../../appendix-03-lua.md:174 f1ea111145be4922be91846d08e7d25e
+msgid ""
+"A metatable can customize a limited set of operations. The most common "
+"metamethod is `__index`, which provides fallback lookup; `__newindex` can "
+"intercept writes. Metatables also support operations such as `__tostring` "
+"and arithmetic operator overloading."
+msgstr ""
+"元表可以定制一组有限的操作。最常见的元方法是 `__index`，提供回退查找；`__newindex` 可以拦截写入。元表还支持如 "
+"`__tostring` 和算术运算符重载等操作。"
+
+#: ../../appendix-03-lua.md:179 38d62c1acc4e4607a9147d75270ac7df
+msgid ""
+"Metatables are a mechanism, not a requirement for object-oriented design. "
+"Many Lua modules use plain tables with functions and explicit state because "
+"that is easier to inspect and maintain."
+msgstr "元表是一种机制，并非面向对象设计的必需。许多 Lua 模块用普通表搭配函数和显式状态，因为这样更易阅读和维护。"
+
+#: ../../appendix-03-lua.md:196 8cf9455424c64e88a997dbfd2d0b8984
+msgid ""
+"The colon syntax is shorthand: `object:greet()` passes `object` as the first"
+" argument, equivalent to `object.greet(object)`."
+msgstr ""
+"冒号语法是简写：`object:greet()` 把 `object` 作为第一个参数传入，等价于 `object.greet(object)`。"
+
+#: ../../appendix-03-lua.md:199 6b026e6d32714bfdaca1600cbc2f2a57
+msgid "7. Errors, Cleanup, and Coroutines"
+msgstr "7. 错误、清理与协程"
+
+#: ../../appendix-03-lua.md:201 32353e17beeb4736ab180480a7c687aa
+msgid ""
+"`error()` raises an error. `pcall()` runs a function in protected mode and "
+"returns a success flag plus its results or error value. Use protected calls "
+"at deliberate boundaries; wrapping every line can hide the original failure "
+"and make error handling harder to follow."
+msgstr ""
+"`error()` 抛出一个错误。`pcall()` "
+"以保护模式运行函数，返回成功标志以及其结果或错误值。请在刻意选择的边界处使用保护调用；如果每一行都被包起来，会掩盖最初的失败，让错误处理更难追踪。"
+
+#: ../../appendix-03-lua.md:206 7c034291fc2a41e488d448a8c021d7cb
+msgid ""
+"Lua 5.1 has no built-in `try/finally`. When cleanup must happen after a "
+"failure, structure the operation so cleanup is explicit, or use a carefully "
+"scoped protected call and then rethrow the error."
+msgstr ""
+"Lua 5.1 没有内建的 `try/finally`。当失败后必须做清理时，要让清理显式可循，或使用作用域小心受限的保护调用，然后再重新抛出错误。"
+
+#: ../../appendix-03-lua.md:210 a2d6ab0536c2430fa3c9d3f5e041e3d5
+msgid ""
+"Coroutines are cooperative execution contexts, not operating-system threads."
+" They yield only when code explicitly yields or when the host integrates a "
+"yielding operation. OpenResty integrates Lua coroutines with Nginx's event "
+"loop: a cosocket operation can suspend the current request coroutine while "
+"the worker handles other events. A blocking library call does not yield to "
+"that event loop and can stall the worker."
+msgstr ""
+"协程是协作式执行上下文，不是操作系统线程。只有在代码显式让出、或宿主集成了让出型操作时，协程才会让出。OpenResty 把 Lua 协程与 Nginx"
+" 的事件循环整合在一起：cosocket 操作可以在 worker 处理其他事件的同时挂起当前请求协程。阻塞式的库调用不会向这个事件循环让出，会卡住 "
+"worker。"
+
+#: ../../appendix-03-lua.md:217 2f8e8e7c769a4dedb88f79c1801327bd
+msgid ""
+"Yielding is allowed only in supported ngx_lua phases and call contexts. For "
+"example, module top-level code runs while a file is being loaded, not inside"
+" a request handler; calling a yielding API there is invalid. Check the [lua-"
+"nginx-module phase and context rules](08-lua-nginx-module.md) before moving "
+"an API call into initialization code."
+msgstr ""
+"只有受支持的 ngx_lua 阶段和调用上下文才允许让出。例如，模块顶层代码在文件被加载时执行，并不在请求处理器内；在那里调用会让出的 API "
+"是无效的。在把某个 API 调用挪进初始化代码之前，请先查看 [lua-nginx-module 阶段与上下文规则](08-lua-nginx-"
+"module.md)。"
+
+#: ../../appendix-03-lua.md:223 ad2fdfeadece48c3a0c42d2d8e6df5ad
+msgid "8. LuaJIT: Interpreter, JIT, and Extensions"
+msgstr "8. LuaJIT：解释器、JIT 与扩展"
+
+#: ../../appendix-03-lua.md:225 c213e4a26f0045c6b7f8419e53d4a803
+msgid ""
+"LuaJIT is a Lua 5.1-compatible implementation with a fast interpreter and a "
+"tracing just-in-time compiler. The JIT observes frequently executed paths, "
+"records traces, and compiles eligible traces to machine code. It can improve"
+" CPU-heavy hot paths, but it does not make blocking I/O non-blocking and "
+"does not guarantee every function will be compiled."
+msgstr ""
+"LuaJIT 是兼容 Lua 5.1 的实现，带有快速解释器和基于追踪的即时编译器。JIT 观察高频执行路径、记录 trace，并把符合条件的 "
+"trace 编译为机器码。它能改善 CPU 密集的热路径，但不会把阻塞式 I/O 变成非阻塞，也不保证每个函数都会被编译。"
+
+#: ../../appendix-03-lua.md:231 4fbc09d34df545c3b24425623ea3f0d7
+msgid "Practical implications:"
+msgstr "实际影响："
+
+#: ../../appendix-03-lua.md:233 caca1a5593d0492fae346de079b6b45e
+msgid ""
+"Keep hot code predictable and measure before optimizing. A simple, well-"
+"profiled implementation is often the best starting point."
+msgstr "让热代码保持可预测，并在优化之前先测量。简单且经过充分剖析的实现往往是最好的起点。"
+
+#: ../../appendix-03-lua.md:235 8d8f0a7310174f10aa232a9b905b14cf
+msgid ""
+"Avoid assuming that a microbenchmark predicts application throughput; "
+"allocation, table shape, I/O, and Nginx phase behavior also matter."
+msgstr "不要以为微基准能预测应用吞吐；分配、表的形态、I/O 以及 Nginx 阶段行为同样重要。"
+
+#: ../../appendix-03-lua.md:237 9ccbd8373c6f495581a33901acdc07e2
+msgid ""
+"LuaJIT can fall back to interpretation when a path is not suitable for a "
+"compiled trace. That is normal; use LuaJIT's diagnostic options when "
+"investigating a measured hot path."
+msgstr "当某条路径不适合编译成 trace 时，LuaJIT 会回退到解释执行。这很正常；调查已测出的热路径时，请使用 LuaJIT 的诊断选项。"
+
+#: ../../appendix-03-lua.md:240 679e379277d04bf9820f37d9958fb880
+msgid ""
+"`jit.*` controls JIT behavior and exposes status and diagnostics. Changing "
+"JIT settings should be based on evidence and the deployed LuaJIT build."
+msgstr "`jit.*` 控制 JIT 行为并提供状态与诊断。修改 JIT 设置应基于证据和所部署的 LuaJIT 构建版本。"
+
+#: ../../appendix-03-lua.md:243 809341c0d8994fbe8e4e8a7070726dc5
+msgid "LuaJIT also includes useful extensions:"
+msgstr "LuaJIT 还包含有用的扩展："
+
+#: ../../appendix-03-lua.md:245 0cc2803c5891474990e72489bd2296fb
+msgid "`bit` provides 32-bit bitwise operations in Lua 5.1 syntax."
+msgstr "`bit` 以 Lua 5.1 语法提供 32 位按位运算。"
+
+#: ../../appendix-03-lua.md:246 a114100fa89540d89e1d25c2509908dd
+msgid ""
+"`ffi` declares and calls C functions and describes C data structures from "
+"Lua. It can be fast and expressive, but it crosses the C boundary and "
+"requires correct declarations, ownership, and lifetime handling."
+msgstr ""
+"`ffi` 从 Lua 中声明并调用 C 函数、描述 C 数据结构。它既快又富有表现力，但要跨越 C 边界，需要正确的声明、所有权和生命周期处理。"
+
+#: ../../appendix-03-lua.md:249 ab811c3a5d984f15a161f30a92c9279f
+msgid ""
+"`string`, `table`, and other standard libraries are available alongside "
+"LuaJIT-specific modules such as `jit` and `ffi`."
+msgstr "`string`、`table` 等标准库与 LuaJIT 特有的模块（如 `jit`、`ffi`）一起可用。"
+
+#: ../../appendix-03-lua.md:252 c7c5b8eec8a849768b20c46603f6b837
+msgid ""
+"Use FFI when a stable C API or data layout makes it appropriate. For "
+"ordinary network and database access in OpenResty, prefer the supported "
+"Nginx APIs and `lua-resty-*` libraries, which integrate with the event loop."
+msgstr ""
+"当存在稳定的 C API 或数据结构布局时适合用 FFI。在 OpenResty 中做普通的网络和数据库访问时，优先使用受支持的 Nginx API 和"
+" `lua-resty-*` 库，它们与事件循环集成。"
+
+#: ../../appendix-03-lua.md:256 d4c32161d0784a4e905ef0e7a1dd41db
+msgid "9. Lua 5.1 Details to Remember in OpenResty"
+msgstr "9. 在 OpenResty 中要牢记的 Lua 5.1 细节"
+
+#: ../../appendix-03-lua.md:258 3fbfe6ce598a4d0ea4446e45f1775ea4
+msgid ""
+"OpenResty code targets LuaJIT's Lua 5.1 behavior. Keep these differences in "
+"mind when reading examples written for newer Lua versions:"
+msgstr "OpenResty 代码面向 LuaJIT 的 Lua 5.1 行为。阅读为更新 Lua 版本编写的示例时，请记住这些差异："
+
+#: ../../appendix-03-lua.md:261 37f69627a898418d8c9a245e1382bc17
+msgid ""
+"The Lua 5.1 baseline has no `//` integer-division operator or bitwise "
+"operator syntax. Some recent LuaJIT 2.1 builds add bitwise syntax as an "
+"extension; check the exact bundled version before relying on it."
+msgstr ""
+"Lua 5.1 基线没有 `//` 整除运算符或按位运算符的语法。一些较新的 LuaJIT 2.1 "
+"构建把按位语法作为扩展加入；依赖之前请确认所捆绑的确切版本。"
+
+#: ../../appendix-03-lua.md:264 45fc7c0490c04de1898ad88aa1327863
+msgid ""
+"The module system uses `require` and `package.loaded`; newer examples may "
+"use newer module-loading conventions."
+msgstr "模块系统使用 `require` 和 `package.loaded`；更新的示例可能采用更新的模块加载约定。"
+
+#: ../../appendix-03-lua.md:266 1f61e8b916514c5d971d19d1f37299ad
+msgid ""
+"`unpack` is the usual global function in Lua 5.1. Do not assume newer "
+"standard-library names are present unless the runtime explicitly provides "
+"them."
+msgstr "`unpack` 是 Lua 5.1 中常用的全局函数。除非运行时显式提供，否则不要假定更新的标准库函数名存在。"
+
+#: ../../appendix-03-lua.md:269 ee95852ada2b4003b0cdf0861482ad40
+msgid ""
+"LuaJIT adds selected extensions, but it is not a drop-in runtime for every "
+"feature introduced in later PUC-Rio Lua versions."
+msgstr "LuaJIT 加入了若干扩展，但它并不是后续 PUC-Rio Lua 版本所有特性的即插即用运行时。"
+
+#: ../../appendix-03-lua.md:271 e682e13f8aba41ccb5e1fd544ccdd0e9
+msgid ""
+"OpenResty APIs add their own rules about request phases, yielding, worker "
+"lifetime, and shared state; Lua language knowledge alone does not define "
+"those rules."
+msgstr "OpenResty API 自带关于请求阶段、让出、worker 生命周期和共享状态的规则；仅凭 Lua 语言知识无法定义这些规则。"
+
+#: ../../appendix-03-lua.md:275 e9a7eb421abb4fe0bcfeb027b594bc17
+msgid ""
+"For OpenResty, the practical model is: Lua code runs in a worker-local VM, "
+"request handlers have coroutine context, and only APIs designed to cooperate"
+" with Nginx can yield safely."
+msgstr ""
+"对 OpenResty 来说，实用的模型是：Lua 代码运行在 worker 本地 VM 中，请求处理器具有协程上下文，只有为与 Nginx "
+"协作而设计的 API 才能安全地让出。"
+
+#: ../../appendix-03-lua.md:279 7e72ef0388404f24836be27a2f0d7fb6
+msgid "10. Thirty Common Mistakes, Adapted for OpenResty"
+msgstr "10. 三十个常见错误（适配 OpenResty）"
+
+#: ../../appendix-03-lua.md:281 5012e25f1ba64e59ab2293805bd19e98
+msgid ""
+"The companion article [Lua Programming: 30 Common Mistakes, from Beginner to"
+" Advanced](https://www.fanyamin.com/articles/2026-10-22-lua-"
+"top-10-mistakes-4e024200/) is organized in three levels and its examples "
+"target Lua 5.5. The list below retains its 30 topics while calling out where"
+" LuaJIT 2.1 / Lua 5.1 behavior differs. Check the runtime version before "
+"copying an example: LuaJIT is not Lua 5.5, and OpenResty adds its own phase "
+"and yielding rules."
+msgstr ""
+"配套文章 [Lua 编程：30 "
+"个常见错误，从入门到进阶](https://www.fanyamin.com/articles/2026-10-22-lua-"
+"top-10-mistakes-4e024200/) 分为三个层次，示例面向 Lua 5.5。下面的清单保留其全部 30 个主题，并指出其中 "
+"LuaJIT 2.1 / Lua 5.1 行为不同的地方。照抄示例前请先确认运行时版本：LuaJIT 不是 Lua 5.5，OpenResty "
+"还有自己的阶段与让出规则。"
+
+#: ../../appendix-03-lua.md:288 d5fed80fdb60429daf307ae2056eae4e
+msgid "Beginner: Core Syntax and Data Model"
+msgstr "入门：核心语法与数据模型"
+
+#: ../../appendix-03-lua.md:290 045dc7bdd6164d28af81a9d3e83c516a
+msgid ""
+"**Index sequences from 1.** Lua's conventional first sequence element is "
+"`t[1]`; translate zero-based loop bounds carefully."
+msgstr "**序列从 1 开始索引。** Lua 惯例的第一个序列元素是 `t[1]`；转换从 0 开始的循环边界时要小心。"
+
+#: ../../appendix-03-lua.md:292 5503d77ca4264af7a13b552a9c2ab8a9
+msgid ""
+"**Remember that `nil` removes a table field.** Use `false` or a dedicated "
+"sentinel when the distinction between “absent” and “present but empty” "
+"matters."
+msgstr "**记住 `nil` 会删除表字段。** 当“不存在”与“存在但为空”的区别很重要时，请用 `false` 或专用哨兵值。"
+
+#: ../../appendix-03-lua.md:295 676669b36d4b41ec83e33e069fecd7fd
+msgid ""
+"**Do not use `#t` to count a sparse table.** The length operator is well-"
+"defined for dense sequences; keep an explicit count if holes are possible."
+msgstr "**不要用 `#t` 统计稀疏表。** 长度运算符只对密集序列有明确定义；若可能存在空洞，请保留显式计数。"
+
+#: ../../appendix-03-lua.md:298 721b5ae0a02b4dda8fd27761d6e32221
+msgid ""
+"**Check division syntax against the runtime.** Lua 5.1 / LuaJIT uses `/` and"
+" has no `//`; `//` is available in PUC-Lua 5.3 and later."
+msgstr ""
+"**按运行时核对除法语法。** Lua 5.1 / LuaJIT 用 `/`，没有 `//`；`//` 自 PUC-Lua 5.3 起才可用。"
+
+#: ../../appendix-03-lua.md:300 b3bb890abf894318996a68506b048227
+msgid ""
+"**Know when parentheses collapse multiple returns.** In Lua, a function call"
+" in a parenthesized expression yields one result; remove the extra "
+"parentheses when all results are intended."
+msgstr "**明白括号何时会把多返回值折叠成一个。** 在 Lua 中，括号表达式里的函数调用只产生一个结果；需要全部结果时请去掉多余括号。"
+
+#: ../../appendix-03-lua.md:303 2561418ab260482fb682ddf5d32ed7f9
+msgid ""
+"**Concatenate with `..`, not `+`.** For many fragments, collect them and "
+"call `table.concat` instead of repeatedly copying a growing string."
+msgstr ""
+"**用 `..` 拼接，而不是 `+`。** 片段很多时，先把它们收集起来再用 `table.concat`，避免反复复制不断增长的字符串。"
+
+#: ../../appendix-03-lua.md:305 7e9173d45e044a939ceafe0d1a69bf1d
+msgid ""
+"**Compare tables by identity unless you implement content comparison.** Two "
+"separate tables with equal fields are not equal with `==`."
+msgstr "**除非你实现了内容比较，否则按身份比较表。** 两个字段相等但彼此独立的表，用 `==` 比较并不相等。"
+
+#: ../../appendix-03-lua.md:307 6a9aa4761df04692944a16ed99fd5213
+msgid ""
+"**Declare variables `local` by default.** An undeclared assignment writes to"
+" the current global environment; typos can create accidental globals."
+msgstr "**默认用 `local` 声明变量。** 未声明的赋值会写入当前全局环境；拼写错误可能意外创建全局变量。"
+
+#: ../../appendix-03-lua.md:309 f641b27863424d779d9f93f964dbbdc6
+msgid ""
+"**Understand closure capture and lifetime.** Closures retain captured "
+"variables, and closures created around shared mutable state can observe each"
+" other's updates. Capture a per-iteration local when each closure needs an "
+"independent value."
+msgstr ""
+"**理解闭包捕获与生命周期。** "
+"闭包会保留所捕获的变量；围绕共享可变状态创建的多个闭包能观察到彼此的更新。当每个闭包需要独立的值时，捕获一个每轮迭代的局部变量。"
+
+#: ../../appendix-03-lua.md:313 75eab8b2c1b44487b840dca6ff96394a
+msgid ""
+"**Match colon definitions and calls.** `obj:method(x)` passes `obj` as the "
+"first argument; it is shorthand for `obj.method(obj, x)`."
+msgstr ""
+"**冒号定义与调用要匹配。** `obj:method(x)` 把 `obj` 作为第一个参数传入；它是 `obj.method(obj, x)` "
+"的简写。"
+
+#: ../../appendix-03-lua.md:316 94745431abd7474abd5f7f45f56ce10b
+msgid "Intermediate: Libraries and Everyday Behavior"
+msgstr "进阶：库与日常行为"
+
+#: ../../appendix-03-lua.md:318 d093f8b60b8e4ea7af534f8cfe1db073
+msgid ""
+"**`ipairs` stops at the first missing integer key.** It will not skip a hole"
+" to find later values; `pairs` sees present keys but has no ordering "
+"guarantee."
+msgstr "**`ipairs` 在第一个缺失的整数键处停止。** 它不会跳过空洞去找后面的值；`pairs` 能看到存在的键，但不保证顺序。"
+
+#: ../../appendix-03-lua.md:321 d3f945a4c43a46a3a0646398404f80cf
+msgid ""
+"**Strings are immutable.** Repeated concatenation can copy increasingly "
+"large strings; use a fragment table plus `table.concat` for bulk output."
+msgstr "**字符串不可变。** 反复拼接会复制越来越大的字符串；批量输出时用片段表加 `table.concat`。"
+
+#: ../../appendix-03-lua.md:323 fc11958f452d4541b1b9fac493c23feb
+msgid ""
+"**Choose metatable hooks for the behavior you need.** `__index` handles "
+"missing-key reads; `__newindex` handles writes to missing keys. Existing raw"
+" fields bypass these hooks, which matters for proxies and validation."
+msgstr ""
+"**按需要的行为选择元表钩子。** `__index` 处理缺失键的读取；`__newindex` "
+"处理对缺失键的写入。已有的原始字段绕过这些钩子，这点对代理和校验很重要。"
+
+#: ../../appendix-03-lua.md:326 6a50fe89b64f485586911da4b06be93a
+msgid ""
+"**Do not use `a or default` when `false` is a valid value.** Test `a == nil`"
+" explicitly when “unset” differs from “disabled”."
+msgstr ""
+"**当 `false` 是合法值时，不要用 `a or default`。** 当“未设置”与“被禁用”不同时，请显式判断 `a == nil`。"
+
+#: ../../appendix-03-lua.md:328 589db5ea16214b00b46dbee0bca5e3ad
+msgid ""
+"**Distinguish removing a sequence item from clearing a key.** "
+"`table.remove(t, i)` shifts following items; `t[i] = nil` leaves a hole."
+msgstr ""
+"**区分“删除序列元素”与“清空一个键”。** `table.remove(t, i)` 会移动后面的元素；`t[i] = nil` 会留下空洞。"
+
+#: ../../appendix-03-lua.md:330 f9820072c8fd405697326268a9586d6d
+#, python-format
+msgid ""
+"**Validate types passed to `string.format`.** `%d` and `%x` expect numbers; "
+"convert or validate input before formatting."
+msgstr "**校验传给 `string.format` 的类型。** `%d` 和 `%x` 期望数字；格式化前先转换或校验输入。"
+
+#: ../../appendix-03-lua.md:332 b7cbae93bb084724a2cc4cefe5614025
+msgid ""
+"**Add a traceback when protected errors need context.** `pcall` returns the "
+"error value; `xpcall(fn, debug.traceback)` can attach a stack trace."
+msgstr ""
+"**保护错误需要上下文时补上 traceback。** `pcall` 返回错误值；`xpcall(fn, debug.traceback)` "
+"可以附带栈回溯。"
+
+#: ../../appendix-03-lua.md:334 c090d0309b294195866c32c6fca90380
+msgid ""
+"**Capture varargs before using them in nested functions.** The Lua 5.1 "
+"standard library has no `table.pack` (some LuaJIT builds enable it through "
+"Lua 5.2 compatibility); use a pack helper that records `select('#', ...)` if"
+" nil-bearing argument lists must be preserved."
+msgstr ""
+"**在嵌套函数中使用可变参数前先捕获它们。** Lua 5.1 标准库没有 `table.pack`（部分 LuaJIT 构建通过 Lua 5.2 "
+"兼容性启用它）；如果必须保留含 nil 的参数列表，请使用记录 `select('#', ...)` 的打包辅助函数。"
+
+#: ../../appendix-03-lua.md:338 b22472de1e5f4eca9da7854bfd88f1e4
+msgid ""
+"**Choose `require` or `dofile` deliberately.** `require` caches modules in "
+"`package.loaded`; `dofile` executes the file on each call. In OpenResty, "
+"module state persists for the worker lifetime."
+msgstr ""
+"**有目的地选择 `require` 或 `dofile`。** `require` 把模块缓存在 `package.loaded`；`dofile` "
+"每次调用都执行文件。在 OpenResty 中，模块状态在 worker 的整个生命周期内持续存在。"
+
+#: ../../appendix-03-lua.md:341 76de35f052fb4d1aa6e8d8e24ee13b44
+msgid ""
+"**Know whether a copy is shallow or deep.** Copying a table's fields copies "
+"nested table references unless you recursively copy them."
+msgstr "**搞清楚是浅拷贝还是深拷贝。** 复制表的字段只会复制嵌套表的引用，除非你递归地复制它们。"
+
+#: ../../appendix-03-lua.md:344 69c70decd8d04eb7a1d900617937f272
+msgid "Advanced: Runtime, Memory, and Version Boundaries"
+msgstr "进阶（高级）：运行时、内存与版本边界"
+
+#: ../../appendix-03-lua.md:346 5c0de0b24a8a4d43a54a80a1bac60dd0
+msgid ""
+"**Track shared upvalues.** Closures returned by one factory can share "
+"mutable state; call the factory separately when each closure needs its own "
+"state."
+msgstr "**留意共享的 upvalue。** 同一个工厂返回的闭包可能共享可变状态；当每个闭包需要自己的状态时，请分别调用工厂。"
+
+#: ../../appendix-03-lua.md:349 0f634e6e2d3540e5adde79caa02e618c
+msgid ""
+"**Treat weak tables as GC-assisted references, not deterministic caches.** "
+"Collection timing is not immediate or predictable; a strongly referenced "
+"value can also keep related data reachable."
+msgstr "**把弱表当作 GC 辅助的引用，而不是确定性的缓存。** 回收时机既不立即也不可预测；强引用的值还可能让相关数据保持可达。"
+
+#: ../../appendix-03-lua.md:352 1890c9c0b92249e0941a41c5bea0a9a3
+msgid ""
+"**Do not assume table finalizers work in LuaJIT.** PUC-Lua added table "
+"`__gc` finalizers in 5.2; LuaJIT follows Lua 5.1 semantics, where `__gc` is "
+"for full userdata. Where supported, the finalizer must be present when the "
+"metatable is assigned. Prefer explicit cleanup for deterministic resource "
+"handling."
+msgstr ""
+"**不要假定表的终结器在 LuaJIT 中生效。** PUC-Lua 在 5.2 才加入表的 `__gc` 终结器；LuaJIT 遵循 Lua 5.1 "
+"语义，其中 `__gc` 用于完整 userdata。在支持的地方，终结器必须在设置元表时就存在。为获得确定性的资源处理，优先使用显式清理。"
+
+#: ../../appendix-03-lua.md:357 063f5f848f8346829dade29086ebca26
+msgid ""
+"**Read coroutine values in the correct direction.** Arguments to "
+"`coroutine.resume` enter the coroutine; values from `coroutine.yield` return"
+" to the resumer, and the next `resume` supplies the values returned by "
+"`yield`."
+msgstr ""
+"**以正确的方向理解协程返回值。** `coroutine.resume` 的参数进入协程；`coroutine.yield` 返回的值回到 "
+"resume 调用方，下一次 `resume` 提供 `yield` 返回的值。"
+
+#: ../../appendix-03-lua.md:361 deeb5236625a40da8b4060aa34e58fee
+msgid ""
+"**Treat `goto` as a runtime extension.** OpenResty LuaJIT supports `goto` "
+"and labels, although they are not part of PUC-Lua 5.1. Keep portability in "
+"mind when sharing code with a stock Lua 5.1 interpreter."
+msgstr ""
+"**把 `goto` 当作运行时扩展。** OpenResty 的 LuaJIT 支持 `goto` 和标签，尽管它们不属于 PUC-Lua "
+"5.1。当与标准 Lua 5.1 解释器共享代码时请考虑可移植性。"
+
+#: ../../appendix-03-lua.md:364 b341b16de9b544aea2538912290a9706
+msgid ""
+"**Use the bitwise API provided by the runtime.** LuaJIT provides the `bit` "
+"library (for example, `bit.band`); some recent LuaJIT 2.1 builds also "
+"backport native bitwise syntax. PUC-Lua adds native bitwise operators in "
+"5.3. Check the exact runtime before using syntax extensions."
+msgstr ""
+"**使用运行时提供的按位 API。** LuaJIT 提供 `bit` 库（例如 `bit.band`）；部分较新的 LuaJIT 2.1 "
+"构建还移植了原生按位语法。PUC-Lua 在 5.3 加入原生按位运算符。使用语法扩展前请确认确切运行时。"
+
+#: ../../appendix-03-lua.md:368 02cf1b7eed9d44fab771205394200441
+msgid ""
+"**Give callable tables a `__call` metamethod.** Without it, calling a table "
+"value raises an error."
+msgstr "**给可调用的表一个 `__call` 元方法。** 没有它，调用表值会报错。"
+
+#: ../../appendix-03-lua.md:370 40a19582ad4b47a19a5efd37c89fa2d9
+msgid ""
+"**Handle both results from dynamic compilation.** `load` may return `nil` "
+"and an error message; check compilation before calling the result. Lua 5.1 "
+"code may use `loadstring`, which is not the same API as newer PUC-Lua's "
+"`load`."
+msgstr ""
+"**处理动态编译的两个返回值。** `load` 可能返回 `nil` 和错误信息；调用结果前先检查编译是否成功。Lua 5.1 代码可能使用 "
+"`loadstring`，它与新版 PUC-Lua 的 `load` 并非同一 API。"
+
+#: ../../appendix-03-lua.md:374 916cd2ef306243ed86b8f2376c2106e5
+#, python-format
+msgid ""
+"**Use `%q` only when producing a quoted Lua literal.** It escapes a string "
+"for source representation; use `%s` for ordinary human-facing text."
+msgstr "**只有生成带引号的 Lua 字面量时才用 `%q`。** 它把字符串转义成源码表示；面向普通读者的文本请用 `%s`。"
+
+#: ../../appendix-03-lua.md:376 977fe9ecc3584009865860ea3346b6b0
+msgid ""
+"**Profile before applying micro-optimizations.** Localizing hot globals may "
+"help interpreter-heavy code, but LuaJIT's optimizer and workload affect the "
+"result. Benchmark the deployed runtime; never assume `#t` on a sparse "
+"sequence gives a count or a stable cost."
+msgstr ""
+"**应用微优化前先剖析。** 把热路径全局变量本地化可能有助于解释器繁重的代码，但结果还受 LuaJIT "
+"优化器和负载影响。请对部署的运行时做基准测试；永远不要假定对稀疏序列使用 `#t` 会得到计数或稳定的开销。"
+
+#: ../../appendix-03-lua.md:381 f3a76b0cdf1d4b8fa4d57736f1d550da
+msgid ""
+"For an OpenResty review, pair this language checklist with checks for "
+"request-specific versus worker-level state, legal yielding phases, and "
+"cosocket-based I/O. These runtime rules are covered in "
+"[Conventions](07-conventions.md) and the [lua-nginx-module "
+"reference](08-lua-nginx-module.md)."
+msgstr ""
+"做 OpenResty 评审时，请把这份语言清单与“请求特有 vs worker 级状态”“合法让出阶段”“基于 cosocket 的 "
+"I/O”等检查配在一起。这些运行时规则见[开发规范](07-conventions.md)和 [lua-nginx-module 参考](08-lua-"
+"nginx-module.md)。"
+
+#: ../../appendix-03-lua.md:386 cb9ceb567c694c499c73304ec9d4554a
+msgid "Further Reading"
+msgstr "进一步阅读"
+
+#: ../../appendix-03-lua.md:388 efb0e899c02f4d489574258e232302bf
+msgid "[Lua 5.1 Reference Manual](https://www.lua.org/manual/5.1/manual.html)"
+msgstr "[Lua 5.1 参考手册](https://www.lua.org/manual/5.1/manual.html)"
+
+#: ../../appendix-03-lua.md:389 f90904bc00b24229bf60ee6db0ee3ba7
+msgid "[LuaJIT overview](https://luajit.org/luajit.html)"
+msgstr "[LuaJIT 概述](https://luajit.org/luajit.html)"
+
+#: ../../appendix-03-lua.md:390 be610f8477cc4c7fbe4f288c5c379a71
+msgid "[LuaJIT extensions](https://luajit.org/extensions.html)"
+msgstr "[LuaJIT 扩展](https://luajit.org/extensions.html)"
+
+#: ../../appendix-03-lua.md:391 1f8ae3a26e2e4a699e62129574ef066c
+msgid "[LuaJIT FFI library](https://luajit.org/ext_ffi.html)"
+msgstr "[LuaJIT FFI 库](https://luajit.org/ext_ffi.html)"
+
+#: ../../appendix-03-lua.md:392 db301453426e482eaafde19f638de9d2
+msgid ""
+"[Lua Programming: 30 Common Mistakes, from Beginner to "
+"Advanced](https://www.fanyamin.com/articles/2026-10-22-lua-"
+"top-10-mistakes-4e024200/)"
+msgstr ""
+"[Lua 编程：30 个常见错误，从入门到进阶](https://www.fanyamin.com/articles/2026-10-22-lua-"
+"top-10-mistakes-4e024200/)"
+
+#: ../../appendix-03-lua.md:393 484b79224521410e9026095f9f7ab97b
+msgid ""
+"[OpenResty LuaJIT extensions and compatibility "
+"notes](https://github.com/openresty/luajit2/blob/v2.1-agentzh/doc/extensions.html)"
+msgstr ""
+"[OpenResty LuaJIT "
+"扩展与兼容性说明](https://github.com/openresty/luajit2/blob/v2.1-agentzh/doc/extensions.html)"
+
+#: ../../appendix-03-lua.md:394 aa988ebd7adc4d79b69d1936b28cdb22
+msgid ""
+"Local source: `../../lazy-rabbit-"
+"blog/content/public/articles/blog/journal/tech_20261022_lua-"
+"top-10-mistakes.md` (version 1.1, updated 2026-10-25)"
+msgstr ""
+"本地来源：`../../lazy-rabbit-"
+"blog/content/public/articles/blog/journal/tech_20261022_lua-"
+"top-10-mistakes.md`（版本 1.1，更新于 2026-10-25）"
+
+#: ../../appendix-03-lua.md:395 56c845261a824cc6894e242292c0d587
+msgid "[OpenResty Tech Stack](03-tech-stack.md)"
+msgstr "[OpenResty 技术栈](03-tech-stack.md)"
+
+#: ../../appendix-03-lua.md:396 3ffa27c5de2845d9812d650532ad0ae3
+msgid "[Lua Nginx Module](08-lua-nginx-module.md)"
+msgstr "[Lua Nginx 模块](08-lua-nginx-module.md)"

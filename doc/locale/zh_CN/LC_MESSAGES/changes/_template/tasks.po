@@ -1,0 +1,767 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 21:44+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../changes/_template/tasks.md:1 cea92ff76b36454793f506719ac2d6a5
+msgid "Implementation Tasks: [Title]"
+msgstr "实现任务：[标题]"
+
+#: ../../changes/_template/tasks.md:5 dd3a9dad6e1a41eb95f234e779fa4d3f
+msgid "Metadata"
+msgstr "元数据"
+
+#: ../../changes/_template/tasks.md:7 233e601e22cb410d8f06a7545aa5600d
+msgid "**Change ID**: `[change-id]`"
+msgstr "**变更 ID**：`[change-id]`"
+
+#: ../../changes/_template/tasks.md:8 26b0a47ed1b7458391ddcfda3fd1cce9
+msgid "**Owner**: [Name/Email]"
+msgstr "**负责人**：[姓名/邮箱]"
+
+#: ../../changes/_template/tasks.md:9 5f1d86ce32c24d19a5b460d75529949e
+msgid "**Status**: `Not Started` | `In Progress` | `Completed`"
+msgstr "**状态**：`未开始` | `进行中` | `已完成`"
+
+#: ../../changes/_template/tasks.md:10 f4a2bfb828ba4aa1882ebb57aec0876a
+msgid "**Target Completion**: [Date]"
+msgstr "**目标完成时间**：[日期]"
+
+#: ../../changes/_template/tasks.md:12 c6637bc78ded47fb93fd5c6f7d2cb805
+msgid "Overview"
+msgstr "概述"
+
+#: ../../changes/_template/tasks.md:14 733a5bd7ef5c4e36b48da7a841a42ff4
+msgid "[Brief summary of what needs to be implemented]"
+msgstr "[需要实现内容的简要总结]"
+
+#: ../../changes/_template/tasks.md:16 74538d6af1534412992e7d928a719389
+msgid "**Related Documents**:"
+msgstr "**相关文档**："
+
+#: ../../changes/_template/tasks.md:17 ../../changes/_template/tasks.md:356
+#: 175cd67df602442f87d4a94128b51de7 c7bdf90e61744106a99555fff794a9d6
+msgid "Proposal: [Link to proposal.md]"
+msgstr "提案：[指向 proposal.md 的链接]"
+
+#: ../../changes/_template/tasks.md:18 ../../changes/_template/tasks.md:357
+#: 52207f1641cc4c4d90843e9a50317740 fb4baa5ba826497b83ec74ad3ed23eec
+msgid "Design: [Link to design.md]"
+msgstr "设计：[指向 design.md 的链接]"
+
+#: ../../changes/_template/tasks.md:20 28ae839a4f8a4b06b72c207413c23935
+msgid "Task Breakdown"
+msgstr "任务分解"
+
+#: ../../changes/_template/tasks.md:22 2838311d5e4d4efea494d3db7cfa5490
+msgid "Phase 1: Preparation"
+msgstr "阶段 1：准备"
+
+#: ../../changes/_template/tasks.md:24 030b57b55efa4399a61d01ba7f08b957
+msgid "Task 1.1: Setup development environment"
+msgstr "任务 1.1：搭建开发环境"
+
+#: ../../changes/_template/tasks.md:26 eb9e0818ff1c49f4ac2c40d2fdc05ac8
+msgid "Create feature branch: `feature/[change-id]`"
+msgstr "创建功能分支：`feature/[change-id]`"
+
+#: ../../changes/_template/tasks.md:27 e50a51908eb5422fa8891888f431b901
+msgid "Set up local development environment"
+msgstr "配置本地开发环境"
+
+#: ../../changes/_template/tasks.md:28 da9de7c522db47fda77b5a835a16ce88
+msgid "Configure test database/services"
+msgstr "配置测试数据库/服务"
+
+#: ../../changes/_template/tasks.md:29 b9794be1a6194c91b484c4191d97cae6
+msgid "Review design document"
+msgstr "评审设计文档"
+
+#: ../../changes/_template/tasks.md:31 ../../changes/_template/tasks.md:41
+#: ../../changes/_template/tasks.md:147 ../../changes/_template/tasks.md:182
+#: ../../changes/_template/tasks.md:195 ../../changes/_template/tasks.md:205
+#: ../../changes/_template/tasks.md:215 ../../changes/_template/tasks.md:228
+#: ../../changes/_template/tasks.md:240 ../../changes/_template/tasks.md:254
+#: ../../changes/_template/tasks.md:267 ../../changes/_template/tasks.md:278
+#: 01638527ee2843a99d27d3cc883082e9 03864e4346934d59933461d6dd55ac12
+#: 66b895825ab543d39dca31e87909f378 682e954f667c4eb39bbc169a9545545d
+#: 7279d260979b434092ad9515f20b04e4 74578a84e48344fbb2dd142bf2448bcb
+#: 971c8222d3c44ab6ab747c12d619c2c4 a8cb849bf2514c71a046bc91220e4eca
+#: a9192c313a1141b89b32577798821da5 b2aacedee70c4809ac6a7cb4e3f318e5
+#: b71d27442db844ca9c04c87c730e7f0d ffa782c0b95b4dd09e2b943de637716a
+msgid "**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date]"
+msgstr "**负责人**：[姓名] **预估**：[X 小时/天] **截止**：[日期]"
+
+#: ../../changes/_template/tasks.md:35 f515f570faa0428aa3b91efee531e9da
+msgid "Task 1.2: Update dependencies"
+msgstr "任务 1.2：更新依赖"
+
+#: ../../changes/_template/tasks.md:37 48413a4fda0d4052bd70ee76d921abe8
+msgid "Add new library: `[library-name@version]`"
+msgstr "新增库：`[library-name@version]`"
+
+#: ../../changes/_template/tasks.md:38 8f81840d6809404eb68240d1550af93f
+msgid "Update existing library: `[library-name]` to `[version]`"
+msgstr "更新现有库：`[library-name]` 到 `[version]`"
+
+#: ../../changes/_template/tasks.md:39 8fa208fb06924e78a2246628ba057c2e
+msgid "Run dependency security scan"
+msgstr "运行依赖安全扫描"
+
+#: ../../changes/_template/tasks.md:45 09ead19759a94092b5d9a9b94107cef7
+msgid "Phase 2: Database Changes"
+msgstr "阶段 2：数据库变更"
+
+#: ../../changes/_template/tasks.md:47 e29718e86f464a528937d1eda04ebdb2
+msgid "Task 2.1: Create migration scripts"
+msgstr "任务 2.1：创建迁移脚本"
+
+#: ../../changes/_template/tasks.md:49 76118b02571f422bb9da359a6dd8b0a8
+msgid "Write migration: `YYYYMMDD_add_new_table.sql`"
+msgstr "编写迁移：`YYYYMMDD_add_new_table.sql`"
+
+#: ../../changes/_template/tasks.md:50 ad037e829ac04e60b97bdf6216ba065a
+msgid "Write rollback script"
+msgstr "编写回滚脚本"
+
+#: ../../changes/_template/tasks.md:51 32ba131480254e54b7af9b593cdfe5a1
+msgid "Test migration locally"
+msgstr "本地测试迁移"
+
+#: ../../changes/_template/tasks.md:52 dc6ce982eace49178a953e73b2cb4dad
+msgid "Review with DBA"
+msgstr "与 DBA 一起评审"
+
+#: ../../changes/_template/tasks.md:54 824334eb952345beb20ac41bbf9d5120
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**: "
+"`migrations/YYYYMMDD_add_new_table.sql`"
+msgstr ""
+"**负责人**：[姓名] **预估**：[X 小时/天] **截止**：[日期] "
+"**文件**：`migrations/YYYYMMDD_add_new_table.sql`"
+
+#: ../../changes/_template/tasks.md:59 cef5fcce8dfe4931ad7e8a0ea63515e7
+msgid "Task 2.2: Update repository layer"
+msgstr "任务 2.2：更新仓储层"
+
+#: ../../changes/_template/tasks.md:61 d51c6be48dc4491bad7c53ab590ca46a
+msgid "Create new repository interface: `NewRepository`"
+msgstr "创建新的仓储接口：`NewRepository`"
+
+#: ../../changes/_template/tasks.md:62 f6753699a3d54fe48655c01018e6af83
+msgid "Implement repository: `newRepositoryImpl`"
+msgstr "实现仓储：`newRepositoryImpl`"
+
+#: ../../changes/_template/tasks.md:63 ../../changes/_template/tasks.md:81
+#: ../../changes/_template/tasks.md:95 65b0b862c1aa489fb5dfeb2c9eef9a53
+#: 7a9d362af108466782051750683bcf55 cc3e84a6e3124896afad156c33a2b0d5
+msgid "Add unit tests"
+msgstr "添加单元测试"
+
+#: ../../changes/_template/tasks.md:64 ../../changes/_template/tasks.md:96
+#: 06ff73efadba48de9c24eaef5f58e83c d35ad0572fe944f8b4e662c3ea294b04
+msgid "Add integration tests"
+msgstr "添加集成测试"
+
+#: ../../changes/_template/tasks.md:66 ../../changes/_template/tasks.md:83
+#: ../../changes/_template/tasks.md:98 ../../changes/_template/tasks.md:118
+#: ../../changes/_template/tasks.md:131 1ba2cb490e934f4faabeb5f773d90752
+#: 9ff9159d935b4bee9338ac7deee37c1e c3af752a8edb41cb837076cb3e35ec6c
+#: d3e2eec6f96741f2adfa4b0d44aaf78a d72248b76e2442829f80deccdeb350a7
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**:"
+msgstr "**负责人**：[姓名] **预估**：[X 小时/天] **截止**：[日期] **文件**："
+
+#: ../../changes/_template/tasks.md:70 b839051dc124428680761e9f7f7721f6
+msgid "`internal/repository/new_repository.go`"
+msgstr "`internal/repository/new_repository.go`"
+
+#: ../../changes/_template/tasks.md:71 d522b599b905445685df6742bb8e1d80
+msgid "`internal/repository/new_repository_impl.go`"
+msgstr "`internal/repository/new_repository_impl.go`"
+
+#: ../../changes/_template/tasks.md:72 96d73f7bc678464d85cb62ed2bd5ac11
+msgid "`internal/repository/new_repository_test.go`"
+msgstr "`internal/repository/new_repository_test.go`"
+
+#: ../../changes/_template/tasks.md:74 e421d468446c44268a9e763879689c72
+msgid "Phase 3: Domain Logic"
+msgstr "阶段 3：领域逻辑"
+
+#: ../../changes/_template/tasks.md:76 e406fd2ad3e042e1b1c7d4816e8a5188
+msgid "Task 3.1: Implement domain entities"
+msgstr "任务 3.1：实现领域实体"
+
+#: ../../changes/_template/tasks.md:78 fe1443f1964d4968aab8370f0911eeae
+msgid "Create entity: `NewEntity`"
+msgstr "创建实体：`NewEntity`"
+
+#: ../../changes/_template/tasks.md:79 768e65ca73f0402fbc4a6f4b4d7185a1
+msgid "Create value objects"
+msgstr "创建值对象"
+
+#: ../../changes/_template/tasks.md:80 5d076b1e256446fabfff36c1debb34e2
+msgid "Add validation logic"
+msgstr "添加校验逻辑"
+
+#: ../../changes/_template/tasks.md:87 3b9233ca42cd4088bbe590fda7e7f2b1
+msgid "`internal/domain/entity/new_entity.go`"
+msgstr "`internal/domain/entity/new_entity.go`"
+
+#: ../../changes/_template/tasks.md:88 ebbcd202fd7045b6b54f04acca94fcfd
+msgid "`internal/domain/entity/new_entity_test.go`"
+msgstr "`internal/domain/entity/new_entity_test.go`"
+
+#: ../../changes/_template/tasks.md:90 e571928e65394cf4945c01501a7f4ec5
+msgid "Task 3.2: Implement use cases"
+msgstr "任务 3.2：实现用例"
+
+#: ../../changes/_template/tasks.md:92 64294232fa824cff9bd2a07fcc23c9bc
+msgid "Create use case: `CreateNewEntity`"
+msgstr "创建用例：`CreateNewEntity`"
+
+#: ../../changes/_template/tasks.md:93 b0e80d068c904433901762e239688ed1
+msgid "Create use case: `UpdateNewEntity`"
+msgstr "创建用例：`UpdateNewEntity`"
+
+#: ../../changes/_template/tasks.md:94 9d4124b48ff7464f87d13a31a5a9f4f8
+msgid "Create use case: `DeleteNewEntity`"
+msgstr "创建用例：`DeleteNewEntity`"
+
+#: ../../changes/_template/tasks.md:102 bb7d2d2115b345f6bedbf0486e111183
+msgid "`internal/domain/usecase/new_entity_usecase.go`"
+msgstr "`internal/domain/usecase/new_entity_usecase.go`"
+
+#: ../../changes/_template/tasks.md:103 645d98e0bad141c483fd02c68bf55450
+msgid "`internal/domain/usecase/new_entity_usecase_test.go`"
+msgstr "`internal/domain/usecase/new_entity_usecase_test.go`"
+
+#: ../../changes/_template/tasks.md:105 d665a8aef1a4452fb93a1f8cc9b5b3a3
+msgid "Phase 4: API Layer"
+msgstr "阶段 4：API 层"
+
+#: ../../changes/_template/tasks.md:107 50c1c83614bb49659b22d7bff4cfe5fd
+msgid "Task 4.1: Create API handlers"
+msgstr "任务 4.1：创建 API 处理器"
+
+#: ../../changes/_template/tasks.md:109 c66e4d2dbbb145759dc27bace2a4d83d
+msgid "Create handler: `NewEntityHandler`"
+msgstr "创建处理器：`NewEntityHandler`"
+
+#: ../../changes/_template/tasks.md:110 bec9b9bac0f14bf198b117074613acbf
+msgid "Implement `POST /api/v1/new-entities`"
+msgstr "实现 `POST /api/v1/new-entities`"
+
+#: ../../changes/_template/tasks.md:111 2475fda846604e15886c97ffd9eed008
+#, python-brace-format
+msgid "Implement `GET /api/v1/new-entities/{id}`"
+msgstr "实现 `GET /api/v1/new-entities/{id}`"
+
+#: ../../changes/_template/tasks.md:112 5790acdfae684715900606b30e460793
+#, python-brace-format
+msgid "Implement `PUT /api/v1/new-entities/{id}`"
+msgstr "实现 `PUT /api/v1/new-entities/{id}`"
+
+#: ../../changes/_template/tasks.md:113 f2fe35f13b0840d2ab5423db26ede7c8
+#, python-brace-format
+msgid "Implement `DELETE /api/v1/new-entities/{id}`"
+msgstr "实现 `DELETE /api/v1/new-entities/{id}`"
+
+#: ../../changes/_template/tasks.md:114 92b30421bd424b369e44f802eade48ac
+msgid "Add request validation"
+msgstr "添加请求校验"
+
+#: ../../changes/_template/tasks.md:115 5f6a8f6721284a81ba5d20e32725018d
+msgid "Add response formatting"
+msgstr "添加响应格式化"
+
+#: ../../changes/_template/tasks.md:116 5effd46abad549bea1eb12ca6736c8fc
+msgid "Add error handling"
+msgstr "添加错误处理"
+
+#: ../../changes/_template/tasks.md:122 218536e5db8a415abf70e9c6710f8356
+msgid "`internal/api/handler/new_entity_handler.go`"
+msgstr "`internal/api/handler/new_entity_handler.go`"
+
+#: ../../changes/_template/tasks.md:123 d3f86250b0914e758cdafddbe50ea494
+msgid "`internal/api/handler/new_entity_handler_test.go`"
+msgstr "`internal/api/handler/new_entity_handler_test.go`"
+
+#: ../../changes/_template/tasks.md:125 505619af44fc4716bf3238fd1b679806
+msgid "Task 4.2: Update router"
+msgstr "任务 4.2：更新路由"
+
+#: ../../changes/_template/tasks.md:127 99d9b5d25c5d45db80871fdcf716fca0
+msgid "Add routes for new endpoints"
+msgstr "为新端点添加路由"
+
+#: ../../changes/_template/tasks.md:128 e77f378e5bb54eeeaf14c26e73c7fa5b
+msgid "Add middleware (auth, rate limiting)"
+msgstr "添加中间件（认证、限流）"
+
+#: ../../changes/_template/tasks.md:129 31bad8d7d3e44804890f595e9db15f5e
+msgid "Update API documentation"
+msgstr "更新 API 文档"
+
+#: ../../changes/_template/tasks.md:135 abb4881c40464529b980fc2f8a3f2549
+msgid "`internal/api/router.go`"
+msgstr "`internal/api/router.go`"
+
+#: ../../changes/_template/tasks.md:136 5903ff84b38f44a2864bff555c1171dc
+msgid "`docs/api/openapi.yaml`"
+msgstr "`docs/api/openapi.yaml`"
+
+#: ../../changes/_template/tasks.md:138 775a80e503e14ac383591144db22bfc7
+msgid "Phase 5: Testing"
+msgstr "阶段 5：测试"
+
+#: ../../changes/_template/tasks.md:140 d52f83a2755d43239de6c3d3ecf1cda8
+msgid "Task 5.1: Unit tests"
+msgstr "任务 5.1：单元测试"
+
+#: ../../changes/_template/tasks.md:142 145cbcb5cef9456b9958466b953c202e
+#, python-format
+msgid "Repository layer: 100% coverage"
+msgstr "仓储层：100% 覆盖率"
+
+#: ../../changes/_template/tasks.md:143 b61637d914f34bc2b813a4b829b1c7b7
+#, python-format
+msgid "Domain layer: 100% coverage"
+msgstr "领域层：100% 覆盖率"
+
+#: ../../changes/_template/tasks.md:144 ba51215c9f974d948f6200f1a362913e
+#, python-format
+msgid "API handler: 90% coverage"
+msgstr "API 处理器：90% 覆盖率"
+
+#: ../../changes/_template/tasks.md:145 06f176762ce14449b8090cddfb31f6ad
+msgid "Run all unit tests: `make test-unit`"
+msgstr "运行所有单元测试：`make test-unit`"
+
+#: ../../changes/_template/tasks.md:151 0689d4fdd89f4ff59de5f888567b75d3
+msgid "Task 5.2: Integration tests"
+msgstr "任务 5.2：集成测试"
+
+#: ../../changes/_template/tasks.md:153 6b53688eedc74e82a4e25a1a726b3fb1
+msgid "Database integration tests"
+msgstr "数据库集成测试"
+
+#: ../../changes/_template/tasks.md:154 ec5b7b708c98458d93255205bc52396f
+msgid "External service integration tests"
+msgstr "外部服务集成测试"
+
+#: ../../changes/_template/tasks.md:155 a5616b55107e466385d9f83fc1ce40c1
+msgid "End-to-end API tests"
+msgstr "端到端 API 测试"
+
+#: ../../changes/_template/tasks.md:156 c588c30b871e4e748d888da68cb55baa
+msgid "Run all integration tests: `make test-integration`"
+msgstr "运行所有集成测试：`make test-integration`"
+
+#: ../../changes/_template/tasks.md:158 467e2f1f5ec04377a4a06c8dbcca47b9
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**: "
+"`test/integration/new_entity_test.go`"
+msgstr ""
+"**负责人**：[姓名] **预估**：[X 小时/天] **截止**：[日期] "
+"**文件**：`test/integration/new_entity_test.go`"
+
+#: ../../changes/_template/tasks.md:163 5796f3eb4aa7402498d489c00c661446
+msgid "Task 5.3: E2E tests"
+msgstr "任务 5.3：端到端测试"
+
+#: ../../changes/_template/tasks.md:165 a9228b2d805a4321a2d583533941a2e9
+msgid "Test user flow 1"
+msgstr "测试用户流程 1"
+
+#: ../../changes/_template/tasks.md:166 9f38fcc48bd44b7ba2edb5ec1e050281
+msgid "Test user flow 2"
+msgstr "测试用户流程 2"
+
+#: ../../changes/_template/tasks.md:167 ed00c15c4ffe4e63a310bfffb1ff7b58
+msgid "Test error scenarios"
+msgstr "测试错误场景"
+
+#: ../../changes/_template/tasks.md:168 f9713701373e481f8181ed69869eb5e6
+msgid "Run all E2E tests: `make test-e2e`"
+msgstr "运行所有端到端测试：`make test-e2e`"
+
+#: ../../changes/_template/tasks.md:170 c0df202279884afda6d1f970f0c714cc
+msgid ""
+"**Owner**: [Name] **Estimate**: [X hours/days] **Due**: [Date] **Files**: "
+"`test/e2e/new_entity_test.go`"
+msgstr ""
+"**负责人**：[姓名] **预估**：[X 小时/天] **截止**：[日期] "
+"**文件**：`test/e2e/new_entity_test.go`"
+
+#: ../../changes/_template/tasks.md:175 5aab042ec950434b95777822866aec45
+msgid "Task 5.4: Performance tests"
+msgstr "任务 5.4：性能测试"
+
+#: ../../changes/_template/tasks.md:177 a117d195200447ea958a57853471c810
+msgid "Load test: [X] requests/second"
+msgstr "负载测试：[X] 请求/秒"
+
+#: ../../changes/_template/tasks.md:178 4d29645c28024cb790482b146eedec87
+msgid "Stress test: Peak load"
+msgstr "压力测试：峰值负载"
+
+#: ../../changes/_template/tasks.md:179 eb0ee54023f64121a36422ada12da1f6
+msgid "Endurance test: [Y] hours"
+msgstr "耐力测试：[Y] 小时"
+
+#: ../../changes/_template/tasks.md:180 e78b6fea399d4b1b87c3a4796f519182
+msgid "Analyze results and optimize"
+msgstr "分析结果并优化"
+
+#: ../../changes/_template/tasks.md:186 28c41771a0d940ae891c6e116dcdf944
+msgid "Phase 6: Documentation"
+msgstr "阶段 6：文档"
+
+#: ../../changes/_template/tasks.md:188 863450a9f37e48bc87e3bcc94e806964
+msgid "Task 6.1: Update technical documentation"
+msgstr "任务 6.1：更新技术文档"
+
+#: ../../changes/_template/tasks.md:190 61c22a39d2df4661a15121b557232c7d
+msgid "Update API documentation: `docs/api/`"
+msgstr "更新 API 文档：`docs/api/`"
+
+#: ../../changes/_template/tasks.md:191 48e0008fb3064fc6b4575c260da3e5fc
+msgid "Update architecture diagrams"
+msgstr "更新架构图"
+
+#: ../../changes/_template/tasks.md:192 be42d24eb1ba4b26b5c7962d31f31838
+msgid "Update data model documentation"
+msgstr "更新数据模型文档"
+
+#: ../../changes/_template/tasks.md:193 aad84dbeb0804889b05fe42ea09588b6
+msgid "Create/update ADR"
+msgstr "创建/更新 ADR"
+
+#: ../../changes/_template/tasks.md:199 c034ca4780574ad3a5364ebface6301d
+msgid "Task 6.2: Update operational documentation"
+msgstr "任务 6.2：更新运维文档"
+
+#: ../../changes/_template/tasks.md:201 cde68de71b55484489cfdd1f411e7f96
+msgid "Update runbook: Add new operations"
+msgstr "更新运维手册：添加新操作"
+
+#: ../../changes/_template/tasks.md:202 252931937e254c4392388e89af1e5a7a
+msgid "Update monitoring: Add new metrics/alerts"
+msgstr "更新监控：添加新指标/告警"
+
+#: ../../changes/_template/tasks.md:203 b68cea5faff04498aad646ceb378ef08
+msgid "Update troubleshooting guide"
+msgstr "更新故障排查指南"
+
+#: ../../changes/_template/tasks.md:209 3c7ddcb1a00949e2a642f91dd2348a47
+msgid "Task 6.3: User documentation"
+msgstr "任务 6.3：用户文档"
+
+#: ../../changes/_template/tasks.md:211 ff9a2a5d75184a4f9dc58cafca91d656
+msgid "Update user guide"
+msgstr "更新用户指南"
+
+#: ../../changes/_template/tasks.md:212 dbb9a74362164b4ba341ead162c58c61
+msgid "Create migration guide (if breaking changes)"
+msgstr "创建迁移指南（如有破坏性变更）"
+
+#: ../../changes/_template/tasks.md:213 c2e0e8a461f54f42a9319d37d0848448
+msgid "Update release notes"
+msgstr "更新发布说明"
+
+#: ../../changes/_template/tasks.md:219 07917b46c5c544aba70fc725863b2407
+msgid "Phase 7: Deployment"
+msgstr "阶段 7：部署"
+
+#: ../../changes/_template/tasks.md:221 6e8b47a2c6b1438a85f2db8039ae82ee
+msgid "Task 7.1: Prepare deployment"
+msgstr "任务 7.1：准备部署"
+
+#: ../../changes/_template/tasks.md:223 0ecd29e716224b61ab665e52e34c97b9
+msgid "Create deployment checklist"
+msgstr "创建部署检查清单"
+
+#: ../../changes/_template/tasks.md:224 9b406672003d4314b70efa295fbcba27
+msgid "Prepare rollback plan"
+msgstr "准备回滚计划"
+
+#: ../../changes/_template/tasks.md:225 60bf1daa05844172baffb94a2614f142
+msgid "Set up feature flags"
+msgstr "配置功能开关"
+
+#: ../../changes/_template/tasks.md:226 68d0c8f946594636bd6918a82cb0b2f1
+msgid "Coordinate with ops team"
+msgstr "与运维团队协调"
+
+#: ../../changes/_template/tasks.md:232 80710c324f944c518260731a3f99dd4f
+msgid "Task 7.2: Deploy to staging"
+msgstr "任务 7.2：部署到预发"
+
+#: ../../changes/_template/tasks.md:234 39e4001f007c4417bb658e7ed29c95ef
+msgid "Run database migration on staging"
+msgstr "在预发运行数据库迁移"
+
+#: ../../changes/_template/tasks.md:235 8438b71d8ec84893ace3dee1397061f8
+msgid "Deploy application to staging"
+msgstr "将应用部署到预发"
+
+#: ../../changes/_template/tasks.md:236 ../../changes/_template/tasks.md:250
+#: 040570ffa1a74cef87dbb178783c5c9b b78f4ad6414b4a8d8d5d8a524f826eef
+msgid "Run smoke tests"
+msgstr "运行冒烟测试"
+
+#: ../../changes/_template/tasks.md:237 819a6d3cf6a445ea8221b7ec48831ff9
+msgid "Run full test suite on staging"
+msgstr "在预发运行完整测试套件"
+
+#: ../../changes/_template/tasks.md:238 9195dc2b8fcc426bb52c180da58ebce5
+msgid "Get stakeholder approval"
+msgstr "获得利益相关方批准"
+
+#: ../../changes/_template/tasks.md:244 3e33b19b38ec44abb1b929b6dd7e6cde
+msgid "Task 7.3: Deploy to production"
+msgstr "任务 7.3：部署到生产"
+
+#: ../../changes/_template/tasks.md:246 6ee04a164b1f456eaa9adeb31bacc572
+msgid "Schedule maintenance window (if needed)"
+msgstr "安排维护窗口（如需要）"
+
+#: ../../changes/_template/tasks.md:247 7ced305db117410187a7135e7e382fdf
+msgid "Communicate to users (if breaking changes)"
+msgstr "告知用户（如有破坏性变更）"
+
+#: ../../changes/_template/tasks.md:248 e6c954497ac543f18722ccc7b255a444
+msgid "Run database migration on production"
+msgstr "在生产运行数据库迁移"
+
+#: ../../changes/_template/tasks.md:249 655c3347c1c94b79bdc5a10b40a09738
+msgid "Deploy application to production"
+msgstr "将应用部署到生产"
+
+#: ../../changes/_template/tasks.md:251 1ac633dd22b04daf8d546e5c9302980f
+msgid "Monitor metrics and logs"
+msgstr "监控指标和日志"
+
+#: ../../changes/_template/tasks.md:252 ac602e0ce77b4df8a14344c8e2db0dee
+msgid "Confirm success with stakeholders"
+msgstr "与利益相关方确认成功"
+
+#: ../../changes/_template/tasks.md:258 1c965f2fdf844a1595ec533cc48a4471
+msgid "Phase 8: Post-Deployment"
+msgstr "阶段 8：部署后"
+
+#: ../../changes/_template/tasks.md:260 37cb27061f7b4175a8247254478aeaba
+msgid "Task 8.1: Monitor and validate"
+msgstr "任务 8.1：监控与验证"
+
+#: ../../changes/_template/tasks.md:262 2efe62e4ff48406e9e6916f256643339
+msgid "Monitor error rates for 24 hours"
+msgstr "监控错误率 24 小时"
+
+#: ../../changes/_template/tasks.md:263 06fa63eef5d842d080de809586d4424a
+msgid "Monitor performance metrics"
+msgstr "监控性能指标"
+
+#: ../../changes/_template/tasks.md:264 3c11e84f46964cc0a9b7f4e125e994bb
+msgid "Check logs for issues"
+msgstr "检查日志中的问题"
+
+#: ../../changes/_template/tasks.md:265 58cc253e2c9e4c6ba0a7dc4821168993
+msgid "Validate success criteria"
+msgstr "验证成功标准"
+
+#: ../../changes/_template/tasks.md:271 bb56f21bcd2646868e7b2ca1f4d69bc2
+msgid "Task 8.2: Clean up"
+msgstr "任务 8.2：清理"
+
+#: ../../changes/_template/tasks.md:273 1667b42e244340ff8e424cedce10c722
+msgid "Remove feature flags (after stabilization)"
+msgstr "移除功能开关（稳定后）"
+
+#: ../../changes/_template/tasks.md:274 1b4e2cef48fd4525962d0d57e72898cb
+msgid "Remove deprecated code"
+msgstr "移除废弃代码"
+
+#: ../../changes/_template/tasks.md:275 5ffdc1e3f3124d56bc093d3a5cd8eb74
+msgid "Update documentation"
+msgstr "更新文档"
+
+#: ../../changes/_template/tasks.md:276 fa47fdebfe9a41f39bd3eeba50c66167
+msgid "Close related issues"
+msgstr "关闭相关问题"
+
+#: ../../changes/_template/tasks.md:282 135141d74f47440ebc5b0b9a2aaa577b
+msgid "Dependencies"
+msgstr "依赖"
+
+#: ../../changes/_template/tasks.md:284 2792d43cea534fe880ca4f089058f7a8
+msgid "Blocking Tasks"
+msgstr "阻塞任务"
+
+#: ../../changes/_template/tasks.md:286 703df1f276fa4c3ea0c4e729f468e20b
+msgid "Task A must complete before Task B"
+msgstr "任务 A 必须在任务 B 之前完成"
+
+#: ../../changes/_template/tasks.md:287 5291e5255fba4aa699262ec5b68c1279
+msgid "Task C requires external dependency: [Description]"
+msgstr "任务 C 需要外部依赖：[描述]"
+
+#: ../../changes/_template/tasks.md:289 96a491ce3c82447c9a612127e36ec254
+msgid "External Dependencies"
+msgstr "外部依赖"
+
+#: ../../changes/_template/tasks.md:291 e7daedd888c945d889dbf901aa1cf9d6
+msgid "Dependency 1: [Description]"
+msgstr "依赖 1：[描述]"
+
+#: ../../changes/_template/tasks.md:292 ../../changes/_template/tasks.md:296
+#: 5e4dc5b75a6e414c8df64b610cb3fe89 d00e7a85d78f4d6a96e7371ce39c7dfe
+msgid "**Owner**: [Name/Team]"
+msgstr "**负责人**：[姓名/团队]"
+
+#: ../../changes/_template/tasks.md:293 ../../changes/_template/tasks.md:297
+#: 2c71c70ea3174a04b1f1356fb48af738 b59f81bc5f3c4c209259a7211daf2c8a
+msgid "**ETA**: [Date]"
+msgstr "**预计完成时间**：[日期]"
+
+#: ../../changes/_template/tasks.md:295 44f73d1b614e49abb673723720923ebd
+msgid "Dependency 2: [Description]"
+msgstr "依赖 2：[描述]"
+
+#: ../../changes/_template/tasks.md:299 d9a58b6e2bf64876a5b267a51cf116f4
+msgid "Progress Tracking"
+msgstr "进度跟踪"
+
+#: ../../changes/_template/tasks.md:301 c1b3d9ea914c42538e7af28fc3b81790
+msgid "Summary"
+msgstr "摘要"
+
+#: ../../changes/_template/tasks.md:303 94e857a6b41e4f6dbc1d43a50e4011de
+msgid "**Total tasks**: [Number]"
+msgstr "**总任务数**：[数字]"
+
+#: ../../changes/_template/tasks.md:304 131647fdf57d4327ab1a21ac4b713a19
+msgid "**Completed**: [Number]"
+msgstr "**已完成**：[数字]"
+
+#: ../../changes/_template/tasks.md:305 3e592b4cf97049bdba5f7220ef84f0e3
+msgid "**In progress**: [Number]"
+msgstr "**进行中**：[数字]"
+
+#: ../../changes/_template/tasks.md:306 13187b2f56c442cda1b83aa4764a125a
+msgid "**Blocked**: [Number]"
+msgstr "**被阻塞**：[数字]"
+
+#: ../../changes/_template/tasks.md:307 a8659311b6ac4c54ac180bc375c800ad
+msgid "**Not started**: [Number]"
+msgstr "**未开始**：[数字]"
+
+#: ../../changes/_template/tasks.md:309 35a6acf57f42466ebff52e26a76f3e21
+msgid "Timeline"
+msgstr "时间线"
+
+#: ../../changes/_template/tasks.md:318 be193ba95c4547e88d5384c198825a22
+msgid "Status Updates"
+msgstr "状态更新"
+
+#: ../../changes/_template/tasks.md:320 ../../changes/_template/tasks.md:325
+#: 6d2e7643c3fb4b49a40fa7a9b688e344 d5529694d24e4741af8ed69ce8e57e3e
+msgid "**[Date]**:"
+msgstr "**[日期]**："
+
+#: ../../changes/_template/tasks.md:321 ../../changes/_template/tasks.md:326
+#: 39456783e71445b6a2e93ba2f93f83c8 d5eeb6c6e2914971ab44002889cc7d32
+msgid "Completed: [Tasks]"
+msgstr "已完成：[任务]"
+
+#: ../../changes/_template/tasks.md:322 ../../changes/_template/tasks.md:327
+#: 6d5a5d2d75eb4b98ae399cd8a9aeea8f cc1cc58015cd44588cf068cf7cd5fb26
+msgid "In progress: [Tasks]"
+msgstr "进行中：[任务]"
+
+#: ../../changes/_template/tasks.md:323 ../../changes/_template/tasks.md:328
+#: a0b45c519a4e4daba75530f499f158b2 f9ad26eb49de45539ede73949af2cfb4
+msgid "Blockers: [Issues]"
+msgstr "阻塞项：[问题]"
+
+#: ../../changes/_template/tasks.md:330 7be52f529e084c289865a8a2bc6e62ef
+msgid "Risks"
+msgstr "风险"
+
+#: ../../changes/_template/tasks.md:332 684219e0715f4902bc4e887294cf8cd4
+msgid "Risk 1: [Description]"
+msgstr "风险 1：[描述]"
+
+#: ../../changes/_template/tasks.md:334 ../../changes/_template/tasks.md:341
+#: 529f2faefa2f4f01b4ec47b92ce51e64 a4f44d6460f74801983cf4a2fe3be752
+msgid "**Impact**: High | Medium | Low"
+msgstr "**影响**：高 | 中 | 低"
+
+#: ../../changes/_template/tasks.md:335 ../../changes/_template/tasks.md:342
+#: 14c2ebc51ef742b3a827e8e0055e7996 adb3f921f59640edbc84af4182662800
+msgid "**Probability**: High | Medium | Low"
+msgstr "**发生概率**：高 | 中 | 低"
+
+#: ../../changes/_template/tasks.md:336 ../../changes/_template/tasks.md:343
+#: 4c35b992d54f43b0b9bad8e822749b4f b6fe73d195104b3b93076ceb7c92c96c
+msgid "**Mitigation**: [Strategy]"
+msgstr "**缓解**：[策略]"
+
+#: ../../changes/_template/tasks.md:337 ../../changes/_template/tasks.md:344
+#: ../../changes/_template/tasks.md:351 5600918d6fc542b5ab83d93f24af7b16
+#: 9ce145caec7c4f92a4abe862c6ca4c6b d4514318d90141c185e538a4909f338f
+msgid "**Owner**: [Name]"
+msgstr "**负责人**：[姓名]"
+
+#: ../../changes/_template/tasks.md:339 dbb1a409a93d41c99c9738b275c4197b
+msgid "Risk 2: [Description]"
+msgstr "风险 2：[描述]"
+
+#: ../../changes/_template/tasks.md:346 741213ec8f58437ca3fd75d2f0da0287
+msgid "Issues"
+msgstr "问题"
+
+#: ../../changes/_template/tasks.md:348 2e6337b8c26c43f9b105a4c077f698dc
+msgid "Issue 1: [Description]"
+msgstr "问题 1：[描述]"
+
+#: ../../changes/_template/tasks.md:350 ece9d0cacaf34ba6aa6313abb31f287b
+msgid "**Status**: Open | Blocked | Resolved"
+msgstr "**状态**：打开 | 被阻塞 | 已解决"
+
+#: ../../changes/_template/tasks.md:352 4549f8f83d854c488718a23d11d9f30e
+msgid "**Resolution**: [How it was resolved]"
+msgstr "**解决办法**：[如何解决的]"
+
+#: ../../changes/_template/tasks.md:354 6d849cbc4fec49498bbbf8b5eda501aa
+msgid "References"
+msgstr "参考"
+
+#: ../../changes/_template/tasks.md:358 15bb13b76ef841de85a3f4fc974e30b8
+msgid "Issue tracker: [Link]"
+msgstr "问题跟踪器：[链接]"
+
+#: ../../changes/_template/tasks.md:359 9b68f70e1fe14be9b181286fed4b2d55
+msgid "Pull requests: [Links]"
+msgstr "合并请求：[链接]"
+
+#: ../../changes/_template/tasks.md:363 4343034a86c841679d8165a1f6e5687d
+msgid "**Progress**: [X]% Complete **Next Review**: [Date]"
+msgstr "**进度**：[X]% 完成 **下次评审**：[日期]"

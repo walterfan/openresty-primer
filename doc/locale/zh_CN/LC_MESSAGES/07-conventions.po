@@ -1,0 +1,509 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:18+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../07-conventions.md:39 e4228fc7060f4f1382f83b4347ce4608
+msgid "07. Conventions"
+msgstr "07. 开发规范"
+
+#: ../../07-conventions.md:43 0af46e48da4c4e42b3924630c5e50c6c
+msgid ""
+"Lua code that runs inside OpenResty/ngx_lua follows Nginx-style "
+"configuration on the deployment side and the Lua/OpenResty conventions "
+"summarised here on the code side. The DNS-failure caller rules below are "
+"verified against the nginx 1.31.1 / ngx_lua 0.10.31rc5 code in this tree; "
+"the style, cosocket, and config guidance follows the API7 OpenResty coding "
+"style guide, the API7 cosocket guide, the OpenResty FAQ, and the `lua-nginx-"
+"module` README."
+msgstr ""
+"运行在 OpenResty/ngx_lua 中的 Lua 代码，在部署端遵循 Nginx 风格配置，在代码端遵循本文总结的 Lua/OpenResty "
+"约定。下面的 DNS 失败调用方规则已对照本源码树中 nginx 1.31.1 / ngx_lua 0.10.31rc5 "
+"的代码核实；风格、cosocket 与配置指引则参考 API7 OpenResty 编码风格指南、API7 cosocket 指南、OpenResty "
+"FAQ 以及 `lua-nginx-module` README。"
+
+#: ../../07-conventions.md:50 3ed455773d6a430a826a7e1ccd27e69c
+msgid "Style and Tooling"
+msgstr "风格与工具"
+
+#: ../../07-conventions.md:52 f535a6366dd042cd9a9fec6c496d8de9
+msgid "**Indentation**: 4 spaces. No tabs."
+msgstr "**缩进**：4 个空格，不使用制表符。"
+
+#: ../../07-conventions.md:53 f9cd4506509e40c59a2e5bb561271af3
+msgid "**Spacing**: one space on both sides of operators (`local i = 1`)."
+msgstr "**空格**：运算符两侧各留一个空格（`local i = 1`）。"
+
+#: ../../07-conventions.md:54 c98a36c4520241c5b7549b01605cb8a6
+msgid "**No trailing semicolons**; keep statements on their own lines."
+msgstr "**不写行尾分号**；每条语句独占一行。"
+
+#: ../../07-conventions.md:55 05e50999689549ebbe4a550faef3262e
+msgid ""
+"**Blank lines**: separate functions with two blank lines; separate "
+"`if`/`elseif` branches with one."
+msgstr "**空行**：函数之间用两个空行分隔；`if`/`elseif` 分支之间用一个空行分隔。"
+
+#: ../../07-conventions.md:57 0886fc05edeb47efb58cc683a88a74b1
+msgid ""
+"**Line length**: keep lines under ~80 characters; wrap and align "
+"continuation lines under the opening parenthesis."
+msgstr "**行长**：每行控制在约 80 字符以内；换行时在新行开头对齐到左括号之后。"
+
+#: ../../07-conventions.md:59 800cb7eb698148868bf391e23fe41354
+msgid "**Detect style automatically**: run `luacheck` and `lj-releng` in CI:"
+msgstr "**自动检查风格**：在 CI 中运行 `luacheck` 和 `lj-releng`："
+
+#: ../../07-conventions.md:64 073f0f754c4842fbb7771c970f456861
+msgid ""
+"**Localize everything**: `local ngx = ngx`, `local require = require`, and "
+"`local timer_at = ngx.timer.at` before use; cache heavily used library "
+"functions in locals."
+msgstr ""
+"**全部本地化**：使用前先 `local ngx = ngx`、`local require = require`、`local timer_at ="
+" ngx.timer.at`；把高频调用的库函数缓存在局部变量中。"
+
+#: ../../07-conventions.md:68 defd976ef02245cc80f86d57bf43aa8a
+msgid "Naming and Layout"
+msgstr "命名与布局"
+
+#: ../../07-conventions.md:70 7d1cf58d1e79427493ac9a0d02e8c31b
+msgid "**Variables and functions**: `snake_case`. Constants: `ALL_CAPS`."
+msgstr "**变量与函数**：使用 `snake_case`。常量：全部大写（`ALL_CAPS`）。"
+
+#: ../../07-conventions.md:71 a50d7c9856234855b1a017dfc318244b
+msgid ""
+"**Modules**: one conceptual module per file; always load with the local "
+"form: `local foo = require(\"foo\")` (never a bare `require(\"foo\")` - the "
+"bare call leaks a global that is cleared at the end of the request)."
+msgstr ""
+"**模块**：每个文件一个概念模块；始终用局部形式加载：`local foo = require(\"foo\")`（绝不要裸调用 "
+"`require(\"foo\")` —— 裸调用会泄漏一个在请求结束时被清空的全局变量）。"
+
+#: ../../07-conventions.md:74 c0321cc1a25a4dd083f41d11afda1589
+msgid ""
+"**Tables**: pre-allocate with `local new_tab = require(\"table.new\"); local"
+" t = new_tab(100, 0)` for large tables. Never store `nil` in an array; use "
+"`ngx.null` when a JSON \"null\" is intended."
+msgstr ""
+"**表**：对大表使用 `local new_tab = require(\"table.new\"); local t = new_tab(100, "
+"0)` 预分配。绝不要在数组中存放 `nil`；需要 JSON 的 \"null\" 时使用 `ngx.null`。"
+
+#: ../../07-conventions.md:78 14c3138242774234b24f04321b5cb255
+msgid "Error Handling"
+msgstr "错误处理"
+
+#: ../../07-conventions.md:80 52a57031ab79443c90a2d4e918d26f72
+msgid ""
+"Always branch on the error values that ngx_lua returns, and make your own "
+"functions return `false, \"error string\"`:"
+msgstr "务必对 ngx_lua 返回的错误值进行分支处理，并让自己的函数返回 `false, \"错误字符串\"`："
+
+#: ../../07-conventions.md:91 4630822426e44f54ac94e36f3209ba0e
+msgid "Classify DNS failures before choosing a status or a retry"
+msgstr "在选择状态码或重试之前，先对 DNS 失败进行分类"
+
+#: ../../07-conventions.md 3164d4104ceb4c4db716c4915a4d0b84
+msgid "Lua `err` contains"
+msgstr "Lua `err` 包含"
+
+#: ../../07-conventions.md 4df4efa62ae9435dac634866ff8243e7
+msgid "Suggested HTTP status"
+msgstr "建议的 HTTP 状态码"
+
+#: ../../07-conventions.md e0d2ac0d2cea4cb0a12ae5e4f351747b
+msgid "Retry in this request"
+msgstr "本次请求内重试"
+
+#: ../../07-conventions.md 29c1f90847cc46d998a01bef25d8a25b
+msgid "`Operation timed out`"
+msgstr "`Operation timed out`"
+
+#: ../../07-conventions.md f006e24e57f94915b2ace4aaabcdb690
+msgid "504"
+msgstr "504"
+
+#: ../../07-conventions.md 391d5d993ccd4b54a5b8109e548af5a9
+msgid "Yes, bounded"
+msgstr "是，有上限"
+
+#: ../../07-conventions.md efd31228f9f14bfeac6a88eb3e43da00
+msgid "`Server failure`"
+msgstr "`Server failure`"
+
+#: ../../07-conventions.md ac5af814cf31441993a894b52c38fb49
+#: dd229c17c2a9475ab4fe372dfe5e0146 f7e969cdf698486b8cea88231430bd66
+msgid "502"
+msgstr "502"
+
+#: ../../07-conventions.md f2e21df862ed49c0a57d079a0c6c8d88
+msgid "`Host not found`"
+msgstr "`Host not found`"
+
+#: ../../07-conventions.md 0120b11e6dab4f21924eb80d075b8c60
+msgid "No. The name is NXDOMAIN for this answer."
+msgstr "否。对于该应答，此名称是 NXDOMAIN。"
+
+#: ../../07-conventions.md cf70e2fd78b84020b5b1a01c10d619e7
+msgid "`Operation refused`"
+msgstr "`Operation refused`"
+
+#: ../../07-conventions.md 2d2fa211dfe34791a2c4334ae9c60223
+msgid "No"
+msgstr "否"
+
+#: ../../07-conventions.md c701ddee12414e9dab2eee1181b90707
+msgid "`Format error` or `Unimplemented`"
+msgstr "`Format error` 或 `Unimplemented`"
+
+#: ../../07-conventions.md 21d6163c03ca44d787c40bab9af5c8f0
+msgid "`no resolver defined`"
+msgstr "`no resolver defined`"
+
+#: ../../07-conventions.md 3d03c0de3395411c88c8debc5692b57e
+msgid "500"
+msgstr "500"
+
+#: ../../07-conventions.md 772c1bfaa9a64c7b81548e699e3edb2b
+msgid "No. The worker configuration is wrong."
+msgstr "否。worker 配置有误。"
+
+#: ../../07-conventions.md 3aa85d0d8ad34d01af5c1053b6e4d8f2
+msgid "`could not be resolved` with no code"
+msgstr "`could not be resolved` 且不带代码"
+
+#: ../../07-conventions.md 43a1803c7ea8417daa21d59bdbbcb3ed
+msgid "No, until the cause is known"
+msgstr "否，直到原因明确为止"
+
+#: ../../07-conventions.md:103 90ed23edb8ca4988969de85385a2c119
+msgid ""
+"`proxy_pass` already returns 502 for both a missing resolver and a timeout. "
+"The 500 and 504 rows apply only when Lua chooses the status."
+msgstr "`proxy_pass` 对缺少 resolver 和超时都返回 502。500 和 504 行仅在 Lua 自行选择状态码时适用。"
+
+#: ../../07-conventions.md:106 99d9d1e0b9964aaabe890a9a8dba0b2f
+msgid "Retry rules for Lua HTTP callers:"
+msgstr "Lua HTTP 调用方的重试规则："
+
+#: ../../07-conventions.md:108 f147a2c055314e649c8cb42055c20340
+msgid ""
+"Cap attempts. The ingested note uses three tries with delays `0`, `0.05`, "
+"and `0.2` seconds."
+msgstr "限制尝试次数。所摄取的笔记使用三次尝试，延迟分别为 `0`、`0.05` 和 `0.2` 秒。"
+
+#: ../../07-conventions.md:110 a67a22814f204579933d1963ead3ebe5
+msgid ""
+"Stop on `Host not found`, `Operation refused`, and `no resolver defined`."
+msgstr "遇到 `Host not found`、`Operation refused` 和 `no resolver defined` 时停止。"
+
+#: ../../07-conventions.md:111 1bb0e14e21f24430a4fa4be42e4ca31e
+msgid ""
+"Keep the attempt counter on the current request. Do not store it in a shared"
+" dict across requests."
+msgstr "将尝试计数器保存在当前请求上。不要存放在跨请求共享的字典中。"
+
+#: ../../07-conventions.md:113 0b772780a75040d6a62146adabf2d826
+msgid ""
+"Set a connect timeout on the cosocket so a DNS timeout is not the only "
+"deadline."
+msgstr "在 cosocket 上设置连接超时，使 DNS 超时不成为唯一的期限。"
+
+#: ../../07-conventions.md:115 f3d008182baa4d7bb48482b160b00bfa
+msgid ""
+"Connecting by a resolved address requires the original hostname on the "
+"`Host` header and on TLS SNI. Verifying a certificate against the bare IP "
+"will fail."
+msgstr "通过解析后的地址连接时，`Host` 头和 TLS SNI 上需要保留原始主机名。对照裸 IP 校验证书会失败。"
+
+#: ../../07-conventions.md:118 db54ce0d03b6404c8a9451f3087b9159
+msgid "Cosockets and Connection Pools"
+msgstr "Cosocket 与连接池"
+
+#: ../../07-conventions.md:120 f4e2c9a7d1eb419c956c9c79cf665aa3
+msgid ""
+"Cosockets are the sanctioned way to talk to backends from Lua; use them "
+"instead of `ngx.location.capture` where a `lua-resty-*` library fits."
+msgstr ""
+"Cosocket 是从 Lua 访问后端的推荐方式；只要某个 `lua-resty-*` 库适用，就用它而不是 "
+"`ngx.location.capture`。"
+
+#: ../../07-conventions.md:123 1d248d80563d441a9e54cdef66571bd6
+msgid ""
+"**Create one cosocket per request** (`ngx.socket.tcp()`). A cosocket has "
+"exactly the lifetime of the handler that created it - never share it across "
+"requests or pass it into `ngx.timer.*` callbacks."
+msgstr ""
+"**每个请求创建一个 cosocket**（`ngx.socket.tcp()`）。cosocket "
+"的生命周期与创建它的处理器完全一致——绝不能跨请求共享，也不能传入 `ngx.timer.*` 回调。"
+
+#: ../../07-conventions.md:126 2c36723d77644bddaab2514214c54090
+msgid ""
+"**Set timeouts before I/O**, separately for connect, send, and read with "
+"`settimeout(ms)` or `settimeouts(connect_ms, send_ms, read_ms)`:"
+msgstr ""
+"**I/O 之前设置超时**，用 `settimeout(ms)` 或 `settimeouts(connect_ms, send_ms, "
+"read_ms)` 分别为连接、发送和读取设置："
+
+#: ../../07-conventions.md:132 e23a1bf4458f4fd785e169bbe8c0722d
+msgid ""
+"**Return idle connections to the pool** with `sock:setkeepalive()` instead "
+"of closing them; the pool is chosen by the destination address and optional "
+"`pool` name."
+msgstr ""
+"**用 `sock:setkeepalive()` 把空闲连接归还连接池**，而不是关闭它们；连接池按目标地址和可选的 `pool` 名称选择。"
+
+#: ../../07-conventions.md:135 94372e02cd734ed8952ec28742a70917
+msgid ""
+"**Default tuning knobs** (nginx.conf): `lua_socket_connect_timeout`, "
+"`lua_socket_send_timeout`, `lua_socket_read_timeout` (all default 60 s), "
+"`lua_socket_pool_size` (default 30), and `lua_socket_keepalive_timeout` "
+"(default 60 s)."
+msgstr ""
+"**默认调优参数**（nginx.conf）：`lua_socket_connect_timeout`、`lua_socket_send_timeout`、`lua_socket_read_timeout`（均默认"
+" 60 秒）、`lua_socket_pool_size`（默认 30）、`lua_socket_keepalive_timeout`（默认 60 "
+"秒）。"
+
+#: ../../07-conventions.md:139 ad7cff064e5a48539416e85235eaf11b
+msgid ""
+"**Full duplex is allowed**: a reader and a writer light thread may operate "
+"on the same cosocket, but two light threads must not both read (or write, or"
+" connect) it at once."
+msgstr ""
+"**允许全双工**：一个读 light thread 和一个写 light thread 可以同时操作同一个 cosocket，但两个 light "
+"thread 不能同时读（或写、或连接）它。"
+
+#: ../../07-conventions.md:143 85e9b5255d3145ecb55c50942866b9d0
+msgid "Configuration and Secrets"
+msgstr "配置与密钥"
+
+#: ../../07-conventions.md:145 002471da735146e2a7ad8b55a893b12a
+msgid ""
+"Recommended `http` settings for the DNS path. Confirm the addresses for each"
+" environment before use."
+msgstr "DNS 路径建议的 `http` 配置。使用前请确认各环境的地址。"
+
+#: ../../07-conventions.md:158 6dc8b89d66794f8d85a002ec82148bb4
+msgid "Declare `resolver`. Without it, hostname connects fail immediately."
+msgstr "声明 `resolver`。没有它，主机名连接会立即失败。"
+
+#: ../../07-conventions.md:159 380e8558ce4d4a7b987335d6cf515109
+msgid ""
+"Use at least two nameservers so a missing UDP reply can move on. A SERVFAIL "
+"answer does not move on."
+msgstr "至少使用两个域名服务器，以便在缺少 UDP 应答时继续。SERVFAIL 应答不会继续。"
+
+#: ../../07-conventions.md:161 3c10b9225de449a48fc2f1d88f9c10a2
+msgid ""
+"`valid=30s` caps how long a successful answer is kept. The code default is "
+"the record TTL when `valid` is omitted."
+msgstr "`valid=30s` 限制成功应答的保留时长。省略 `valid` 时代码默认使用记录 TTL。"
+
+#: ../../07-conventions.md:163 e7fbe4f43b2c4a07be85ccbf6e1ddebb
+msgid ""
+"`ipv6=off` skips AAAA when the network has no IPv6 path. The resolver "
+"default is IPv6 on."
+msgstr "当网络没有 IPv6 路径时，`ipv6=off` 跳过 AAAA。解析器默认开启 IPv6。"
+
+#: ../../07-conventions.md:165 7bdc047a6ef14ceeb33a1a326805b834
+msgid ""
+"`resolver_timeout 5s` replaces the 30 second default. The 5 second resend "
+"interval is compiled in and is a different timer."
+msgstr "`resolver_timeout 5s` 替换 30 秒默认值。5 秒重发间隔是编译进来的，属于不同的定时器。"
+
+#: ../../07-conventions.md:167 041079e177924ae89c78d5e8f0ea9aad
+msgid ""
+"Keep cosocket keepalive shorter than `valid` when backends change address. A"
+" pooled connection keeps the old address after DNS changes."
+msgstr "当后端地址会变化时，让 cosocket keepalive 短于 `valid`。连接池中的连接在 DNS 变化后仍保留旧地址。"
+
+#: ../../07-conventions.md:169 ec4b71a6a36a499c8ef8a14bf3d22cca
+msgid ""
+"`lua_socket_log_errors off` avoids a second error-log line after Lua has "
+"already handled the cosocket error (the directive defaults to `on`)."
+msgstr ""
+"`lua_socket_log_errors off` 可避免在 Lua 已处理 cosocket 错误后再多记一行错误日志（该指令默认为 `on`）。"
+
+#: ../../07-conventions.md:171 8b595c3fd075476f832c4190ab005e26
+msgid ""
+"Never put credentials in Lua source. Keep tokens in environment variables "
+"listed in the `env` directive, or in a secrets store, and load them at start"
+" with `init_by_lua*`."
+msgstr ""
+"绝不要把凭据写进 Lua 源码。把 token 放在 `env` 指令列出的环境变量或密钥存储中，并在启动时用 `init_by_lua*` 加载。"
+
+#: ../../07-conventions.md:175 26d4575cdc69431a8c9f74d67a2c3741
+msgid "Testing and Review Expectations"
+msgstr "测试与评审预期"
+
+#: ../../07-conventions.md:177 9da21fc0311c45d69d45d3fd73d3931d
+msgid "Require a linter/CI gate: `luacheck -q lua` and `lj-releng lua/*.lua`."
+msgstr "要求 lint/CI 关卡：`luacheck -q lua` 和 `lj-releng lua/*.lua`。"
+
+#: ../../07-conventions.md:178 c946d5fd790b4dc7a8913a05a7359dfa
+msgid ""
+"When changing `ngx_resolver.c` or the cosocket resolve handler, cover: "
+"missing resolver, NXDOMAIN, timeout, and a CNAME chain that hits "
+"`NGX_RESOLVER_MAX_RECURSION`."
+msgstr ""
+"更改 `ngx_resolver.c` 或 cosocket 解析处理器时，覆盖：缺少 resolver、NXDOMAIN、超时，以及命中 "
+"`NGX_RESOLVER_MAX_RECURSION` 的 CNAME 链。"
+
+#: ../../07-conventions.md:181 437b7d6988a14d4696db61f560e4d8a5
+msgid ""
+"Add a paired success and failure test for each new cosocket path (happy path"
+" plus timeout / `Connection refused` / `Host not found`)."
+msgstr ""
+"为每条新的 cosocket 路径成对添加成功与失败测试（正常路径加超时 / `Connection refused` / `Host not "
+"found`）。"
+
+#: ../../07-conventions.md:184 3add5fa58cd246d493d5a00330be122f
+msgid "Anti-Patterns"
+msgstr "反模式"
+
+#: ../../07-conventions.md:186 df5d6f9be8c946c98ba4aec5cf927d18
+msgid "Using global variables or a bare `require(\"x\")` at module top level."
+msgstr "在模块顶层使用全局变量或裸调用 `require(\"x\")`。"
+
+#: ../../07-conventions.md:187 2e71486169ab4dc5b61a142defd1872d
+msgid ""
+"Calling `getaddrinfo`, shelling out to `dig`, or any blocking call (`io.*`, "
+"`os.execute`, plain LuaSocket) inside a request - it stalls every request on"
+" that worker."
+msgstr ""
+"在请求内调用 `getaddrinfo`、通过 shell 调用 `dig`，或任何阻塞调用（`io.*`、`os.execute`、原生 "
+"LuaSocket）——会卡住该 worker 上的所有请求。"
+
+#: ../../07-conventions.md:190 dd4d8bf6c59b4f469a890a62327e07f0
+msgid "Retrying NXDOMAIN, REFUSED, or a missing resolver."
+msgstr "重试 NXDOMAIN、REFUSED 或缺少 resolver 的情况。"
+
+#: ../../07-conventions.md:191 97b3b739f4da47829d1bda63acadb39e
+msgid "Unbounded retries against the same nameservers."
+msgstr "对相同的域名服务器进行无上限的重试。"
+
+#: ../../07-conventions.md:192 486d00f060f242bd92d86882b4f4a18c
+msgid "Using an IP URL for HTTPS without the original name as SNI."
+msgstr "在 HTTPS 中使用 IP URL 而不把原始名称作为 SNI。"
+
+#: ../../07-conventions.md:193 9c51c9f6041d4e49b6da2d3c6f1b9a05
+msgid ""
+"Assuming SERVFAIL tries the next nameserver. In this tree it fails the "
+"waiters."
+msgstr "假设 SERVFAIL 会尝试下一个域名服务器。在本源码树中它会让等待者失败。"
+
+#: ../../07-conventions.md:195 d8c3a8a295c245ec8c5ee3db214e511b
+msgid "Splicing strings in a hot loop; use `table.concat`."
+msgstr "在热循环中用 `..` 拼接字符串；改用 `table.concat`。"
+
+#: ../../07-conventions.md:196 a3f7a941888b4f0e898eae27512f9166
+msgid ""
+"Sharing a cosocket (or a light thread) across requests or into a timer "
+"callback."
+msgstr "跨请求共享 cosocket（或 light thread），或把它传入定时器回调。"
+
+#: ../../07-conventions.md:199 0746dbed880b45429b96b77fdc21fbe4
+msgid "Sources"
+msgstr "参考来源"
+
+#: ../../07-conventions.md:201 fdded26b39a44434b1fee1d7fdbaa30d
+msgid ""
+"[API7: OpenResty Coding Style Guide](https://api7.ai/learning-"
+"center/openresty/openresty-coding-style-guide)"
+msgstr ""
+"[API7：OpenResty 编码风格指南](https://api7.ai/learning-center/openresty/openresty-"
+"coding-style-guide)"
+
+#: ../../07-conventions.md:202 4af64766a4f04d41bb21b6e1660694d3
+msgid ""
+"[API7: The Core of OpenResty - Cosocket](https://api7.ai/learning-"
+"center/openresty/the-core-of-openresty-cosocket)"
+msgstr ""
+"[API7：OpenResty 的核心 - Cosocket](https://api7.ai/learning-"
+"center/openresty/the-core-of-openresty-cosocket)"
+
+#: ../../07-conventions.md:203 9e024b183d714d7fbba9d1061efb81ed
+msgid "[OpenResty FAQ](https://openresty.org/en/faq.html)"
+msgstr "[OpenResty 常见问题](https://openresty.org/en/faq.html)"
+
+#: ../../07-conventions.md:204 61ce7aef072c47b5aa0036eaf9cd00f2
+msgid ""
+"[lua-nginx-module README](https://github.com/openresty/lua-nginx-module)"
+msgstr ""
+"[lua-nginx-module README](https://github.com/openresty/lua-nginx-module)"
+
+#: ../../07-conventions.md:206 05a5e4d6057f472fb4077546b1f86524
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../07-conventions.md:208 b47730512d2e49d394ce6592310f72af
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../07-conventions.md:209 07d418c165604079a7abc3e281634dec
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../07-conventions.md:210 ef768660224744619b088cb1f79f8dce
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../07-conventions.md:211 a30a591d161c47dcb5b37511d0f5b65d
+msgid "[Observability](11-observability.md)"
+msgstr "[可观测性](11-observability.md)"
+
+#~ msgid ""
+#~ "The error-handling rules below are the recommended caller behavior from the "
+#~ "ingested DNS note. They are not an existing lint rule in this repository. "
+#~ "Nginx upstream does not implement the 504 mapping."
+#~ msgstr ""
+#~ "以下错误处理规则来自所摄取的 DNS 笔记中对调用方的建议。它们并不是本仓库中已有的 lint 规则。Nginx 上游并不实现 504 映射。"
+
+#~ msgid "[NEEDS INPUT: formatter, linter, and commit rules for this repository]"
+#~ msgstr "[需要补充：本仓库的格式化器、linter 和提交规则]"
+
+#~ msgid "[NEEDS INPUT: module layout rules beyond the DNS path]"
+#~ msgstr "[需要补充：DNS 路径之外的模块布局规则]"
+
+#~ msgid ""
+#~ "`openresty/bundle/lua-resty-dns-0.23/` is available when the caller must "
+#~ "pick nameservers or record types in Lua. That path does not use the "
+#~ "`ngx_resolver` cache. Do not keep a `resty.dns.resolver` object in a module-"
+#~ "level variable; the library readme says concurrent requests will race."
+#~ msgstr ""
+#~ "当调用方必须在 Lua 中指定域名服务器或记录类型时，可使用 `openresty/bundle/lua-resty-dns-0.23/`。该路径不使用"
+#~ " `ngx_resolver` 缓存。不要在模块级变量中保存 `resty.dns.resolver` 对象；库的 README "
+#~ "说明并发请求会发生竞争。"
+
+#~ msgid "Logging and Diagnostics"
+#~ msgstr "日志与诊断"
+
+#~ msgid ""
+#~ "Log the DNS `err` string at `ngx.WARN` on a retry and `ngx.ERR` on the final"
+#~ " failure. The string contains the hostname, not credentials."
+#~ msgstr "重试时以 `ngx.WARN` 记录 DNS `err` 字符串，最终失败时以 `ngx.ERR` 记录。该字符串包含主机名而非凭据。"
+
+#~ msgid "Do not log query payloads or tokens while debugging a DNS failure."
+#~ msgstr "调试 DNS 失败时不要记录查询负载或 token。"
+
+#~ msgid "[NEEDS INPUT: required test commands for resolver changes]"
+#~ msgstr "[需要补充：解析器变更所需的测试命令]"
+
+#~ msgid "Calling `getaddrinfo` or shelling out to `dig` inside a request."
+#~ msgstr "在请求内调用 `getaddrinfo` 或通过 shell 调用 `dig`。"

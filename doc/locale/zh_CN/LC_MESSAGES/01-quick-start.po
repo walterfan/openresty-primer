@@ -1,0 +1,365 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:14+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../01-quick-start.md:36 6d7f9ec1820e4404b87bf65819f5d993
+msgid "01. Quick Start"
+msgstr "01. 快速上手"
+
+#: ../../01-quick-start.md:40 73091772bc434ee2be2758bc36afddb5
+msgid ""
+"This page gets you to a first successful OpenResty run quickly, following "
+"the official [OpenResty Getting Started "
+"guide](https://openresty.org/en/getting-started.html)."
+msgstr ""
+"本页按照官方 [OpenResty 入门指南](https://openresty.org/en/getting-started.html) "
+"让你快速完成 OpenResty 的第一次成功运行。"
+
+#: ../../01-quick-start.md:43 db82470262e74c62b1228fbd9961f994
+msgid "Prerequisites"
+msgstr "前置条件"
+
+#: ../../01-quick-start.md 4141eae6182d4913a2b732b61165957e
+msgid "Tool"
+msgstr "工具"
+
+#: ../../01-quick-start.md 4bbd7bb04f0a4b94b5898ab9a6a7656b
+msgid "Minimum version"
+msgstr "最低版本"
+
+#: ../../01-quick-start.md ddc7d1b2ed964542934b3ab591460efc
+msgid "Check command"
+msgstr "检查命令"
+
+#: ../../01-quick-start.md bc861893c6e8422ab59b101cc57079b0
+msgid "Install notes"
+msgstr "安装说明"
+
+#: ../../01-quick-start.md d338a26a0ffa47969e3a0035b2e4bc9a
+msgid "OpenResty"
+msgstr "OpenResty"
+
+#: ../../01-quick-start.md 1a8129663f98486c90d86df2e98bd3fe
+msgid "Latest stable (e.g. 1.31.x)"
+msgstr "最新稳定版（例如 1.31.x）"
+
+#: ../../01-quick-start.md 68b8f36585ee41799ebf8b7f5d2a636e
+msgid "`openresty -v` (or `nginx -v`)"
+msgstr "`openresty -v`（或 `nginx -v`）"
+
+#: ../../01-quick-start.md 76bc67a1bea04258b042d8da5ed9f730
+msgid "Official pre-built packages, Homebrew, or build from source"
+msgstr "官方预编译包、Homebrew 或从源码构建"
+
+#: ../../01-quick-start.md 85554263edfd4dbaa1d1722ec877eee7
+msgid "curl"
+msgstr "curl"
+
+#: ../../01-quick-start.md 35bc876a23c04119b449d7dcc0ba4879
+msgid "any"
+msgstr "任意版本"
+
+#: ../../01-quick-start.md 78de8a1ac1864948879e0f4984797650
+msgid "`curl --version`"
+msgstr "`curl --version`"
+
+#: ../../01-quick-start.md 94d173ab809240b8bdeb9955feb5f25e
+msgid "macOS ships it; Linux install via package manager"
+msgstr "macOS 自带；Linux 通过包管理器安装"
+
+#: ../../01-quick-start.md 456b279a9add4cd58cf1c72eb5ff371e
+msgid "`resty` CLI"
+msgstr "`resty` 命令行工具"
+
+#: ../../01-quick-start.md 7be0ad84c5ee47ef8c54f7840600b1f8
+msgid "Shipped with OpenResty"
+msgstr "随 OpenResty 一起发布"
+
+#: ../../01-quick-start.md bb3077ccf620461295988c18876fb8b7
+msgid "`resty -e 'print(1)'`"
+msgstr "`resty -e 'print(1)'`"
+
+#: ../../01-quick-start.md e7d315a3957d47dfb418d35d334a25e1
+msgid ""
+"In `PATH` by default with official packages; otherwise add "
+"`/usr/local/openresty/bin` to `PATH`"
+msgstr "使用官方包时默认在 `PATH` 中；否则请把 `/usr/local/openresty/bin` 加入 `PATH`"
+
+#: ../../01-quick-start.md eb05bacca2e4482f992efd02175e2731
+msgid "pcre/zlib/openssl dev headers"
+msgstr "pcre/zlib/openssl 开发头文件"
+
+#: ../../01-quick-start.md 54d6661326f743618d72d63076b198fd
+msgid "as required"
+msgstr "按需安装"
+
+#: ../../01-quick-start.md 7fee77b8167249fd9644b434e1ec1b91
+msgid "-"
+msgstr "-"
+
+#: ../../01-quick-start.md bd51c476acab418281bca89db3bcd30e
+msgid "Only when building from source"
+msgstr "仅从源码构建时需要"
+
+#: ../../01-quick-start.md:52 12cca7e4cf574694893ce626fb5f447a
+msgid "Install OpenResty"
+msgstr "安装 OpenResty"
+
+#: ../../01-quick-start.md:54 3b6520070b89416aa687090be099634f
+msgid ""
+"On Linux, use the official [pre-built "
+"packages](https://openresty.org/en/linux-packages.html) when your "
+"distribution is supported. With the official package, the binary is "
+"`openresty`; replace every `nginx` command on this page with `openresty`."
+msgstr ""
+"在 Linux 上，如果你的发行版受支持，请使用官方[预编译包](https://openresty.org/en/linux-"
+"packages.html)。使用官方包时，可执行文件是 `openresty`；请把本页中所有的 `nginx` 命令替换为 `openresty`。"
+
+#: ../../01-quick-start.md:58 42e171151ce84aceb9600b01b87e3674
+msgid "On macOS, the quickest path is Homebrew:"
+msgstr "在 macOS 上，最快的方式是使用 Homebrew："
+
+#: ../../01-quick-start.md:64 e8ab873efaa146f09390092ac758bac7
+msgid ""
+"Otherwise, download the [source "
+"tarball](https://openresty.org/en/download.html) and follow the "
+"[Installation guide](https://openresty.org/en/installation.html)."
+msgstr ""
+"否则，请下载[源码包](https://openresty.org/en/download.html)并按照[安装指南](https://openresty.org/en/installation.html)进行安装。"
+
+#: ../../01-quick-start.md:67 47be36e8fe7f4d2bb4fb4d3bb116f1aa
+msgid "If `resty` is not on your `PATH`, export it (default prefix assumed):"
+msgstr "如果 `resty` 不在你的 `PATH` 中，请导出它（假设使用默认前缀）："
+
+#: ../../01-quick-start.md:73 5b9bc97851944aca99cb26998e80ca5c
+msgid "Verify the installation with the simplest program possible:"
+msgstr "用最简单的程序验证安装："
+
+#: ../../01-quick-start.md:80 17c979daf0494e3e901a59ddae53fa67
+msgid "Run a \"hello, world\" HTTP Server"
+msgstr "运行一个 “hello, world” HTTP 服务器"
+
+#: ../../01-quick-start.md:82 825b4c8c6bf04b9ab5760fcc52d46cda
+msgid ""
+"OpenResty is just an enhanced Nginx, so a working server is a working "
+"`nginx.conf`. Create a scratch directory and the config:"
+msgstr "OpenResty 只是增强版的 Nginx，因此一个可用的服务器就是一份可用的 `nginx.conf`。先创建临时目录和配置："
+
+#: ../../01-quick-start.md:89 a65f3c1110074b6d91c92593d43fb899
+msgid "Add `~/work/conf/nginx.conf`:"
+msgstr "添加 `~/work/conf/nginx.conf`："
+
+#: ../../01-quick-start.md:112 9e27d223e6b345a3a8180d8226895167
+msgid ""
+"Start the server from the scratch directory (prefix points Nginx at "
+"`~/work`, relative paths like `logs/` and `conf/` resolve against it):"
+msgstr ""
+"从临时目录启动服务器（prefix 让 Nginx 以 `~/work` 为基准，像 `logs/`、`conf/` 这样的相对路径都相对它解析）："
+
+#: ../../01-quick-start.md:122 42ee956676c4416d88c5d1575af3c606
+msgid "What \"working\" looks like:"
+msgstr "“运行正常”的标志："
+
+#: ../../01-quick-start.md:124 19ae3e0a9f5741e896c731cdd38d1b55
+msgid "`nginx -p ... -c ...` exits without an error and the process stays up."
+msgstr "`nginx -p ... -c ...` 无报错退出，进程持续运行。"
+
+#: ../../01-quick-start.md:125 bed7b71b39a9403283cb546715c55582
+msgid "The service answers (in a browser or with curl):"
+msgstr "服务有响应（浏览器或 curl 均可）："
+
+#: ../../01-quick-start.md:130 d246cf6e236b4a6b8642191d6180ac66
+msgid ""
+"Errors, if any, appear on stderr or in `logs/error.log` under `~/work`."
+msgstr "如有错误，会输出到 stderr 或位于 `~/work` 下的 `logs/error.log` 中。"
+
+#: ../../01-quick-start.md:132 e1af1581c4c844e1b6b7d6d7bf55b9b6
+msgid "Run Tests / Validate"
+msgstr "运行测试 / 验证"
+
+#: ../../01-quick-start.md:134 8c6a9785f567416d9351441d50e27132
+msgid "Basic smoke checks for a fresh install:"
+msgstr "对新安装的基本冒烟检查："
+
+#: ../../01-quick-start.md:142 3a5bbe67cfa3482b85912cb341055f4c
+msgid "Build for Production"
+msgstr "构建生产版本"
+
+#: ../../01-quick-start.md:144 1102038c9b1b45d9858af7b13a3ea908
+msgid ""
+"The scratch server above is for exploration only. For a production build, "
+"build OpenResty from source (or use the official packages) per the "
+"[Installation guide](https://openresty.org/en/installation.html): unpack the"
+" tarball, `./configure --prefix=/usr/local/openresty`, `make`, `make "
+"install`. Expected install prefix: `/usr/local/openresty/` by default."
+msgstr ""
+"上面的临时服务器仅供试验。生产构建请按照[安装指南](https://openresty.org/en/installation.html)从源码构建 "
+"OpenResty（或使用官方包）：解压源码包，`./configure "
+"--prefix=/usr/local/openresty`，`make`，`make "
+"install`。默认安装前缀为：`/usr/local/openresty/`。"
+
+#: ../../01-quick-start.md:150 2e071f5f23714142a870d9f3c16b5623
+msgid "Common Issues"
+msgstr "常见问题"
+
+#: ../../01-quick-start.md dab90e14b061417cbfcfd70ebaef7b7e
+msgid "Symptom"
+msgstr "症状"
+
+#: ../../01-quick-start.md 26ccfb9a01004f4992f19584d28e120d
+msgid "Likely cause"
+msgstr "可能的原因"
+
+#: ../../01-quick-start.md 479fc3c60bcd424bbe42f21cab1a1f5b
+msgid "Fix"
+msgstr "解决办法"
+
+#: ../../01-quick-start.md 3dc6c8d3878e42399fd3ff3aca85979f
+msgid "`resty: command not found`"
+msgstr "`resty: command not found`"
+
+#: ../../01-quick-start.md e7a3c550bbad44e9b13fa6251f27e51e
+msgid "`/usr/local/openresty/bin` not on `PATH`"
+msgstr "`/usr/local/openresty/bin` 不在 `PATH` 中"
+
+#: ../../01-quick-start.md a0f133615ca942f59d157bf38758b762
+msgid "`export PATH=/usr/local/openresty/bin:$PATH`"
+msgstr "`export PATH=/usr/local/openresty/bin:$PATH`"
+
+#: ../../01-quick-start.md 3601b85b428d42139143652a1a397bc2
+msgid "`nginx: command not found`"
+msgstr "`nginx: command not found`"
+
+#: ../../01-quick-start.md c44e897a86684f0cb647992d120fd7be
+msgid "Nginx `sbin` not on `PATH`"
+msgstr "Nginx 的 `sbin` 不在 `PATH` 中"
+
+#: ../../01-quick-start.md 29f079098a5e4609a180b4469f0fd9b1
+msgid "`export PATH=/usr/local/openresty/nginx/sbin:$PATH`"
+msgstr "`export PATH=/usr/local/openresty/nginx/sbin:$PATH`"
+
+#: ../../01-quick-start.md 32261c904b1c4869852537034d04ee2d
+msgid "`bind() to 0.0.0.0:8080 failed (98: Address already in use)`"
+msgstr "`bind() to 0.0.0.0:8080 failed (98: Address already in use)`"
+
+#: ../../01-quick-start.md ee7d36ac035f4fd8b3743e1816b93c7c
+msgid "Port 8080 busy"
+msgstr "8080 端口被占用"
+
+#: ../../01-quick-start.md 76ca121c9cb949acb0e7f1eb47721589
+msgid "Pick another `listen` port or free 8080"
+msgstr "换一个 `listen` 端口，或释放 8080"
+
+#: ../../01-quick-start.md 2651b0c057bf4f04a4eb5bffbdd414dd
+msgid "`could not open error log file`"
+msgstr "`could not open error log file`"
+
+#: ../../01-quick-start.md e7cf81fc38c344d3bdf30dc0efb4895f
+msgid "Started from the wrong cwd"
+msgstr "从错误的当前目录启动"
+
+#: ../../01-quick-start.md 74c38171da19403ea53c70fdd51c9dae
+msgid "Run `nginx` with `-p` pointing at the scratch dir"
+msgstr "用 `-p` 指向临时目录来运行 `nginx`"
+
+#: ../../01-quick-start.md e7307bbeef4a4309b4e99dd9d38c980a
+msgid "`curl` gets a persistent 502/empty body"
+msgstr "`curl` 持续得到 502/空响应体"
+
+#: ../../01-quick-start.md e320d4dc93ac405fad361adb4f9a06af
+msgid "Server started before config was valid"
+msgstr "配置生效前服务器就已启动"
+
+#: ../../01-quick-start.md 9d8e392f74624d0c9af84ed9ec2817ae
+msgid "Check `logs/error.log`; run `nginx -t -p pwd/ -c conf/nginx.conf`"
+msgstr "检查 `logs/error.log`；运行 `nginx -t -p pwd/ -c conf/nginx.conf`"
+
+#: ../../01-quick-start.md:160 8bde711d5c364cb0aeaa72bf03df5f94
+msgid "Next Steps"
+msgstr "下一步"
+
+#: ../../01-quick-start.md:162 5cb81286d4064060b77729b47fdee585
+msgid "[Architecture](02-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../01-quick-start.md:163 dd4b393287044e97ad950926b611e9c0
+msgid "[Tech Stack](03-tech-stack.md)"
+msgstr "[技术栈](03-tech-stack.md)"
+
+#: ../../01-quick-start.md:164 128f688ace4b42faa67088206304a810
+msgid "[lua-nginx-module Directive Reference](08-lua-nginx-module.md)"
+msgstr "[lua-nginx-module 指令参考](08-lua-nginx-module.md)"
+
+#: ../../01-quick-start.md:165 59497a9da42a49a49af482494e74d289
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#~ msgid ""
+#~ "**Template note**: This page should get a new developer or AI agent to a "
+#~ "first successful local run quickly."
+#~ msgstr "**模板说明**：本页应帮助新开发者或 AI 代理快速完成首次成功的本地运行。"
+
+#~ msgid "[Runtime 1]"
+#~ msgstr "[运行时 1]"
+
+#~ msgid "[version]"
+#~ msgstr "[版本]"
+
+#~ msgid "[install source]"
+#~ msgstr "[安装来源]"
+
+#~ msgid "[Runtime 2]"
+#~ msgstr "[运行时 2]"
+
+#~ msgid "[Tooling 3]"
+#~ msgstr "[工具 3]"
+
+#~ msgid "Clone and Install"
+#~ msgstr "克隆与安装"
+
+#~ msgid "Run Locally"
+#~ msgstr "本地运行"
+
+#~ msgid "[Expected service, app, or UI starts]"
+#~ msgstr "[预期服务、应用或 UI 启动]"
+
+#~ msgid "[Expected port, window, or endpoint]"
+#~ msgstr "[预期端口、窗口或端点]"
+
+#~ msgid "[Expected basic smoke action]"
+#~ msgstr "[预期的基本冒烟操作]"
+
+#~ msgid "Expected output location:"
+#~ msgstr "预期输出位置："
+
+#~ msgid "`[build output path]`"
+#~ msgstr "`[构建输出路径]`"
+
+#~ msgid "[Issue 1]"
+#~ msgstr "[问题 1]"
+
+#~ msgid "[Cause]"
+#~ msgstr "[原因]"
+
+#~ msgid "[Fix]"
+#~ msgstr "[解决办法]"
+
+#~ msgid "[Issue 2]"
+#~ msgstr "[问题 2]"

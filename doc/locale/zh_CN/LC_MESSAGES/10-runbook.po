@@ -1,0 +1,474 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:29+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../10-runbook.md:35 39d30601a97040b58f135949af075295
+msgid "10. Runbook"
+msgstr "10. 运维手册"
+
+#: ../../10-runbook.md:39 bf01dde130364989851ceb7594a923bd
+msgid ""
+"Common operational and debugging steps for OpenResty/ngx_lua. The DNS-"
+"specific troubleshooting below is verified against nginx 1.31.1 / ngx_lua "
+"0.10.31rc5 in this tree; the build/run steps cover this repository's "
+"documentation site."
+msgstr ""
+"OpenResty/ngx_lua 的常见运维与调试步骤。下面的 DNS 专项排障已对照本源码树中的 nginx 1.31.1 / ngx_lua "
+"0.10.31rc5 核实；构建/运行步骤针对本仓库的文档站点。"
+
+#: ../../10-runbook.md:43 8834790cc9164260900ec2aba5ac8385
+msgid "Prerequisites"
+msgstr "前置条件"
+
+#: ../../10-runbook.md 2e75921c02374df0850ba1b2b31a0d89
+msgid "Tool"
+msgstr "工具"
+
+#: ../../10-runbook.md 22f6780fd53946ed8b2b4f8978429eec
+msgid "Minimum version"
+msgstr "最低版本"
+
+#: ../../10-runbook.md 61cf1b62a1754a9f94f688a021090b8a
+msgid "Check command"
+msgstr "检查命令"
+
+#: ../../10-runbook.md 0cedfe16dc384d44890e143825a20d42
+msgid "OpenResty"
+msgstr "OpenResty"
+
+#: ../../10-runbook.md eb044f59a4e24cf8b093519ffa46b6df
+msgid "Latest stable (e.g. 1.31.x)"
+msgstr "最新稳定版（例如 1.31.x）"
+
+#: ../../10-runbook.md e5f37d219f194d728bb8c76ecec60875
+msgid "`openresty -v`"
+msgstr "`openresty -v`"
+
+#: ../../10-runbook.md 7db9c0001ed848df9012acc00078aa12
+msgid "resty (resty-cli)"
+msgstr "resty（resty-cli）"
+
+#: ../../10-runbook.md e1f15e36d2f544888c7698bff34f541b
+msgid "shipped with OpenResty"
+msgstr "随 OpenResty 一起发布"
+
+#: ../../10-runbook.md b36e532080064d97bb9e12259954c40f
+msgid "`resty -e 'print(1)'`"
+msgstr "`resty -e 'print(1)'`"
+
+#: ../../10-runbook.md bb131c33f44c41059f93635f730bd98a
+msgid "dig"
+msgstr "dig"
+
+#: ../../10-runbook.md c253de3d8d5648aea096a881eaccf2bb
+msgid "any recent (>= 9.11)"
+msgstr "任意较新版本（>= 9.11）"
+
+#: ../../10-runbook.md 6ebcffa1ab31494c8d9096f409ee09df
+msgid "`dig -v`"
+msgstr "`dig -v`"
+
+#: ../../10-runbook.md ed81db9b02b24ee89896ee5076323957
+msgid "curl"
+msgstr "curl"
+
+#: ../../10-runbook.md a37384440e954c0fa666f9447cf7bf51
+msgid "any recent (>= 7.x)"
+msgstr "任意较新版本（>= 7.x）"
+
+#: ../../10-runbook.md 36fbefaf3a1248519850a2b163842634
+msgid "`curl --version`"
+msgstr "`curl --version`"
+
+#: ../../10-runbook.md:52 9dc8a74a8d5e4e3c9553a8f0131f1712
+msgid "Setup"
+msgstr "搭建"
+
+#: ../../10-runbook.md:54 d45c078cf1504837827d8d71698c0e57
+msgid ""
+"For this repository the \"build to run\" is the docs site: `make deps` then "
+"`make serve`. For a live OpenResty server to diagnose against, follow [Quick"
+" Start](01-quick-start.md): install OpenResty and start the hello-world "
+"`nginx.conf` with `nginx -p \\`pwd\\`/ -c conf/nginx.conf`."
+msgstr ""
+"对本仓库而言，“要运行的构建”是文档站点：`make deps` 然后 `make serve`。若要运行一个可供诊断的 OpenResty "
+"服务器，请按[快速上手](01-quick-start.md)：安装 OpenResty，并用 `nginx -p \\`pwd\\`/ -c "
+"conf/nginx.conf` 启动 hello-world `nginx.conf`。"
+
+#: ../../10-runbook.md:59 d1c77aa7ae374319908924dcf8a6c9e2
+msgid ""
+"Confirm the running config contains a `resolver` directive in the `http` or "
+"location block that performs the connect:"
+msgstr "确认运行中的配置在 `http` 或执行连接的 location 块中包含 `resolver` 指令："
+
+#: ../../10-runbook.md:67 3546867121554d208090f42e5eb5aac0
+msgid ""
+"Replace the example addresses with the environment's recursive resolvers."
+msgstr "将示例地址替换为当前环境使用的递归解析器。"
+
+#: ../../10-runbook.md:69 0c5f175ba9794ebc9aa4c55a6da14833
+msgid "Run the Project"
+msgstr "运行项目"
+
+#: ../../10-runbook.md:71 bc408de4de87469da9db40673415333f
+msgid "Docs site: `make serve` (or `make serve-en`)."
+msgstr "文档站点：`make serve`（或 `make serve-en`）。"
+
+#: ../../10-runbook.md:72 7ca77e8166f84ea2a8db0cd733028947
+msgid ""
+"OpenResty server (per [Quick Start](01-quick-start.md)): `nginx -p "
+"\\`pwd\\`/ -c conf/nginx.conf` starting from the scratch directory."
+msgstr ""
+"OpenResty 服务器（按[快速上手](01-quick-start.md)）：从临时目录执行 `nginx -p \\`pwd\\`/ -c "
+"conf/nginx.conf`。"
+
+#: ../../10-runbook.md:74 fc5ecb1664ba42d3bb9d83d3303fa396
+msgid "One-off Lua: `resty -e 'print(\"hello, world\")'`."
+msgstr "单次执行 Lua：`resty -e 'print(\"hello, world\")'`。"
+
+#: ../../10-runbook.md:76 b5636b9dedd4477795bd829bf95d7acb
+msgid "Build and Package"
+msgstr "构建与打包"
+
+#: ../../10-runbook.md:78 a325282a238548fe905e6b8bdbe9c9a4
+msgid ""
+"Docs site: `make build` (bilingual strict build), publish with `make "
+"publish`."
+msgstr "文档站点：`make build`（双语严格构建），用 `make publish` 发布。"
+
+#: ../../10-runbook.md:79 cdf592730c3f4b6d9813e8cd7cfa87a9
+msgid ""
+"OpenResty from source: `./configure --prefix=/usr/local/openresty && make &&"
+" make install` (see [Quick Start](01-quick-start.md))."
+msgstr ""
+"OpenResty 从源码构建：`./configure --prefix=/usr/local/openresty && make && make "
+"install`（参见[快速上手](01-quick-start.md)）。"
+
+#: ../../10-runbook.md:82 2780b47c94884b488861aa499e9709a8
+msgid "Inspect Local State"
+msgstr "检查本地状态"
+
+#: ../../10-runbook.md d2d903da958843209d19bc8b45850630
+msgid "State"
+msgstr "状态"
+
+#: ../../10-runbook.md fee0cc926d89479c92010935ec3f515c
+msgid "Location"
+msgstr "位置"
+
+#: ../../10-runbook.md 1f5e266429c240d9a219ceb82ba7231b
+msgid "How to inspect"
+msgstr "如何检查"
+
+#: ../../10-runbook.md 1c4e9567e61b45e18ae119fce70704f2
+msgid "Error log"
+msgstr "错误日志"
+
+#: ../../10-runbook.md af5c26d4397a4cc2a55934c350035c98
+msgid "`error_log` path from `nginx.conf`"
+msgstr "`nginx.conf` 中的 `error_log` 路径"
+
+#: ../../10-runbook.md 6dd9298d70b24c05b3654abfd613e378
+msgid ""
+"Search for Lua errors (`lua_`, `nginx: [error]`) and DNS signs (`could not "
+"be resolved`, `no resolver defined`)"
+msgstr ""
+"搜索 Lua 错误（`lua_`、`nginx: [error]`）和 DNS 迹象（`could not be resolved`、`no "
+"resolver defined`）"
+
+#: ../../10-runbook.md c85f758d44974aefadacab1892fd46a3
+msgid "Running config"
+msgstr "运行中的配置"
+
+#: ../../10-runbook.md 004d742ce6f84bf69f5ed8bd3485ac2f
+msgid "`nginx -T`"
+msgstr "`nginx -T`"
+
+#: ../../10-runbook.md a517fd357a4944ce98897e28fa86bc8d
+msgid ""
+"Dump the effective config; confirm `resolver`, `lua_code_cache`, pool "
+"settings"
+msgstr "导出生效配置；确认 `resolver`、`lua_code_cache` 和连接池设置"
+
+#: ../../10-runbook.md f099d6d1e4e643749407d43e6599925b
+msgid "Nameserver reachability"
+msgstr "域名服务器可达性"
+
+#: ../../10-runbook.md 9e0c6bd2ca114a558f0d01619541b105
+msgid "The `resolver` addresses"
+msgstr "`resolver` 地址"
+
+#: ../../10-runbook.md 1ac97f91429b43e2a1f6a329f3453ce2
+msgid "`dig @<ns-ip> <name> A` and a UDP/53 check from the worker host"
+msgstr "`dig @<ns-ip> <name> A` 以及从 worker 主机进行 UDP/53 检查"
+
+#: ../../10-runbook.md 0f64903806e9440080fa3e774d9abdc8
+msgid "Cached answer lifetime"
+msgstr "缓存应答的生命期"
+
+#: ../../10-runbook.md 6c69130758f148b79ab96fd599a28c7f
+msgid "`resolver ... valid=`"
+msgstr "`resolver ... valid=`"
+
+#: ../../10-runbook.md 1af9a005467f46c8bf7289c804d5093f
+msgid "Compare with keepalive timeout if clients keep reaching an old address"
+msgstr "如果客户端持续访问旧地址，请与 keepalive 超时进行对比"
+
+#: ../../10-runbook.md daa7a9cdea5b4e2181896fb64ed7b6bc
+msgid "Cosocket pool"
+msgstr "Cosocket 连接池"
+
+#: ../../10-runbook.md 77605ed5f45441c8a3616cb2bd0b4939
+msgid "`lua_socket_pool_size` / `keepalive_timeout`"
+msgstr "`lua_socket_pool_size` / `keepalive_timeout`"
+
+#: ../../10-runbook.md 0baee6fd177c4ca49f0d9e7788cf3ca8
+msgid ""
+"Pool is per worker and reset on reload; watch the error log for pool/connect"
+" errors, or export Nginx status/stub_status metrics"
+msgstr "连接池按 worker 隔离，重载时重置；关注错误日志中的连接池/连接错误，或导出 Nginx status/stub_status 指标"
+
+#: ../../10-runbook.md e956ca16baa8445fb4751e4d22edf98e
+msgid "Lua code cache"
+msgstr "Lua 代码缓存"
+
+#: ../../10-runbook.md 239085756d2b4d61ad98339747926f3c
+msgid "`lua_code_cache`"
+msgstr "`lua_code_cache`"
+
+#: ../../10-runbook.md 2cf61234c6434a029ad8996e47bf2e58
+msgid "`off` only during development; production must be `on`"
+msgstr "仅在开发时用 `off`；生产必须为 `on`"
+
+#: ../../10-runbook.md:93 86c3faf9a4024384bacbe194fa84e761
+msgid "Lua and Cosocket Troubleshooting"
+msgstr "Lua 与 Cosocket 排障"
+
+#: ../../10-runbook.md:95 92f85f4e731c49c4b31c61aab9a6b86a
+msgid ""
+"**A Lua error with `bad argument`/`attempt to call` typically points to a "
+"misspelled global or a misused API** - run `luacheck` on the .lua files and "
+"confirm `local foo = require(\"foo\")` is used."
+msgstr ""
+"**出现 `bad argument`/`attempt to call` 这类 Lua 错误，通常指向拼写错误的全局变量或误用的 API**——对 "
+".lua 文件运行 `luacheck`，并确认使用 `local foo = require(\"foo\")`。"
+
+#: ../../10-runbook.md:98 1d20d830fe9842cea378fa7e7b0bbf1e
+msgid ""
+"**`attempt to yield across C-call boundary`** - a yielding API "
+"(`ngx.location.capture`, `ngx.exit`, a cosocket call) was invoked at module "
+"top level or in a phase that cannot yield. Move it into a handler function "
+"and respect the [phase rules](08-lua-nginx-module.md)."
+msgstr ""
+"**`attempt to yield across C-call boundary`**——在模块顶层或不允许让出的阶段调用了会让出的 "
+"API（`ngx.location.capture`、`ngx.exit`、cosocket "
+"调用）。把它移进处理器函数，并遵守[阶段规则](08-lua-nginx-module.md)。"
+
+#: ../../10-runbook.md:102 0d1fb0c9bdff4c4e9675ce499b8971ce
+msgid ""
+"**`socket busy reading` / `socket busy writing`** - two light threads are "
+"using the same cosocket in the same direction at once."
+msgstr ""
+"**`socket busy reading` / `socket busy writing`**——两个 light thread "
+"同时以同一方向使用同一个 cosocket。"
+
+#: ../../10-runbook.md:104 2711c9999342488891e5eaf052bd9d19
+msgid ""
+"**`no resolver defined` on cosocket connect** - see the DNS section below."
+msgstr "**cosocket 连接报 `no resolver defined`**——见下面 DNS 一节。"
+
+#: ../../10-runbook.md:105 127b33a4b4eb4846b02d6e0c92a652d2
+msgid ""
+"**A blocking call stalls all requests on a worker** - `os.execute`, `io.*`, "
+"or plain LuaSocket inside a request blocks the event loop; replace with "
+"cosocket-based APIs or `ngx.timer`."
+msgstr ""
+"**阻塞调用会让 worker 上所有请求卡住**——请求内的 `os.execute`、`io.*` 或原生 LuaSocket "
+"会阻塞事件循环；请改用基于 cosocket 的 API 或 `ngx.timer`。"
+
+#: ../../10-runbook.md:109 a69598903b184b2da71511115cf736ed
+msgid "Common Issues (DNS)"
+msgstr "常见问题（DNS）"
+
+#: ../../10-runbook.md:111 8917b0157d814b1db03700e247d0e07f
+msgid "Symptom"
+msgstr "症状"
+
+#: ../../10-runbook.md:111 3adf264312f745f78dc38c1b82284bdc
+msgid "Cause"
+msgstr "原因"
+
+#: ../../10-runbook.md:111 4537a594e40a4f0e992acd10f278dbd6
+msgid "Fix"
+msgstr "解决办法"
+
+#: ../../10-runbook.md:111 2253ed1b369b474db58c5f42a93f0ccb
+msgid "`no resolver defined to resolve`"
+msgstr "`no resolver defined to resolve`"
+
+#: ../../10-runbook.md:111 3933dc8a487e4647ac22a80a0aea7eba
+msgid "No `resolver` in the connecting location"
+msgstr "执行连接的 location 中没有 `resolver`"
+
+#: ../../10-runbook.md:111 333661baf63d403cbc3e50e6f9315dce
+msgid ""
+"Add `resolver` and reload. Cosocket will not fall back to `resolv.conf`."
+msgstr "添加 `resolver` 并重载。Cosocket 不会回退到 `resolv.conf`。"
+
+#: ../../10-runbook.md:111 2775665fb8de4715993792c43faba264
+msgid "`could not be resolved (3: Host not found)`"
+msgstr "`could not be resolved (3: Host not found)`"
+
+#: ../../10-runbook.md:111 ea5c027bfd614113996eb64bd5886d1a
+msgid "NXDOMAIN, or an empty NOERROR treated as NXDOMAIN"
+msgstr "NXDOMAIN，或被视为 NXDOMAIN 的空 NOERROR"
+
+#: ../../10-runbook.md:111 8248f32d556a4a2580c9fb8f0e324f0d
+msgid ""
+"Check spelling and that this nameserver is authoritative for the zone, "
+"including internal zones."
+msgstr "检查拼写，并确认此域名服务器对该区域（包括内部区域）具有权威性。"
+
+#: ../../10-runbook.md:111 8682a1f16efd471dadd0996fe60d4eae
+msgid "`could not be resolved (<errno>: Operation timed out)`"
+msgstr "`could not be resolved (<errno>: Operation timed out)`"
+
+#: ../../10-runbook.md:111 259a9ca0ae274011b2d63a25142d5601
+msgid "No reply before `resolver_timeout`"
+msgstr "在 `resolver_timeout` 之前没有应答"
+
+#: ../../10-runbook.md:111 2fc5300c8c344876aef6199f98b8a6e9
+msgid ""
+"Check nameserver IP, container DNS (Docker `127.0.0.11`, cluster DNS), and "
+"UDP 53. A 5 second timeout is only too short if the recursive server is "
+"slower than that."
+msgstr ""
+"检查域名服务器 IP、容器 DNS（Docker `127.0.0.11`、集群 DNS）和 UDP 53。只有当递归服务器响应慢于 5 秒时，5 "
+"秒超时才太短。"
+
+#: ../../10-runbook.md:111 88ad08cd12834bc2a6054793be72ddb6
+msgid "`could not be resolved (2: Server failure)`"
+msgstr "`could not be resolved (2: Server failure)`"
+
+#: ../../10-runbook.md:111 ce82efb81c6441ebbe8b20a894353974
+msgid "Nameserver returned SERVFAIL"
+msgstr "域名服务器返回 SERVFAIL"
+
+#: ../../10-runbook.md:111 1cccf3920f0d4a7d8f0303520bdd22f5
+msgid ""
+"The next configured nameserver is not tried for this answer. Check that "
+"server and DNSSEC failures on it."
+msgstr "该应答不会尝试下一个已配置的域名服务器。检查该服务器及其上的 DNSSEC 故障。"
+
+#: ../../10-runbook.md:111 deace27c391a4bd58b9635fdb5925e35
+msgid "`could not be resolved (5: Operation refused)`"
+msgstr "`could not be resolved (5: Operation refused)`"
+
+#: ../../10-runbook.md:111 f9358820fa6649c2986551c88d4d2cbb
+msgid "Nameserver refused the query"
+msgstr "域名服务器拒绝了查询"
+
+#: ../../10-runbook.md:111 a29eed007b7141499dd2dec426b2eb48
+msgid "Allow the worker source address on the nameserver ACL."
+msgstr "在域名服务器 ACL 上允许 worker 的源地址。"
+
+#: ../../10-runbook.md:111 be2af1cc315f4d69aaabdf0dcdb10cb7
+msgid "IP connect works, name connect fails"
+msgstr "IP 连接正常，名称连接失败"
+
+#: ../../10-runbook.md:111 da36a5504f724144bcb4a14c89606d09
+msgid "DNS path, not the backend TCP path"
+msgstr "DNS 路径问题，而非后端 TCP 路径"
+
+#: ../../10-runbook.md:111 e194947b909e4c249b28accbde0e1c60
+msgid "Use the decision tree above."
+msgstr "使用上面的判定树。"
+
+#: ../../10-runbook.md:111 2d36923ee9694dc383de4609e60a4919
+msgid "Name now points at a new address, client still uses the old one"
+msgstr "名称现在指向新地址，但客户端仍在使用旧地址"
+
+#: ../../10-runbook.md:111 8f446d52161f4cf193947481d2143c5d
+msgid "Success cache and keepalive"
+msgstr "成功缓存与 keepalive"
+
+#: ../../10-runbook.md:111 0259f2dacd014b2ca65e522de4b71d00
+msgid "Lower `valid=` and the keepalive timeout together."
+msgstr "同时调低 `valid=` 和 keepalive 超时。"
+
+#: ../../10-runbook.md:136 e5a8108a29494da493eaed2510a5a0d3
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../10-runbook.md:138 05b3b5082f214b76817f0e916b779800
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../10-runbook.md:139 06407412a6414e82889bfccc9cecda36
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#: ../../10-runbook.md:140 a313891ed4f040daa0f364ae153542b6
+msgid "[Observability](11-observability.md)"
+msgstr "[可观测性](11-observability.md)"
+
+#: ../../10-runbook.md:141 a853eec621ee4bcaa23af2382c60d758
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#~ msgid "[NEEDS INPUT: pinned version]"
+#~ msgstr "[需要补充：固定版本]"
+
+#~ msgid ""
+#~ "[NEEDS INPUT: how this OpenResty build is configured and started locally]"
+#~ msgstr "[需要补充：此 OpenResty 构建如何本地配置和启动]"
+
+#~ msgid "[NEEDS INPUT: start command]"
+#~ msgstr "[需要补充：启动命令]"
+
+#~ msgid "[NEEDS INPUT: build command]"
+#~ msgstr "[需要补充：构建命令]"
+
+#~ msgid ""
+#~ "Operational steps for DNS failures on HTTP cosocket and upstream connects. "
+#~ "Build and install commands for this tree are not part of the ingested note."
+#~ msgstr "HTTP cosocket 和上游连接发生 DNS 失败时的运维步骤。本源码树的构建和安装命令不包含在所摄取的笔记中。"
+
+#~ msgid "Verification Commands"
+#~ msgstr "验证命令"
+
+#~ msgid ""
+#~ "Use the configured nameserver, not the laptop's default resolver. From the "
+#~ "same network namespace as the worker, check that UDP 53 to that address is "
+#~ "allowed."
+#~ msgstr "使用所配置的域名服务器，而不是笔记本的默认解析器。在 worker 所属的同一网络命名空间中，检查到该地址的 UDP 53 是否被允许。"
+
+#~ msgid "Debugging Notes"
+#~ msgstr "调试笔记"
+
+#~ msgid ""
+#~ "**Upstream**: A resolve failure is logged as `could not be resolved` and "
+#~ "returned as 502, including timeouts."
+#~ msgstr "**上游**：解析失败会记录为 `could not be resolved` 并返回 502，包括超时。"
+
+#~ msgid ""
+#~ "**Data or persistence**: Resolver state is per worker and disappears on "
+#~ "reload. A reload also drops pooled connections."
+#~ msgstr "**数据或持久化**：解析器状态按 worker 隔离，重载后消失。重载也会断开连接池中的连接。"

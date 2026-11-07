@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../14-ffi.md:29 7019a0ea28654884b3d5cf4d24c17c3b
+msgid "14. OpenResty FFI (Foreign Function Interface)"
+msgstr "14. OpenResty FFI（外部函数接口）"
+
+#: ../../14-ffi.md:33 b5c79726748f410fbfdb1c2f8b3d0958
+msgid ""
+"In OpenResty, FFI (Foreign Function Interface) primarily means **LuaJIT "
+"FFI**: it lets Lua code call external C functions and manipulate C data "
+"structures directly. Because the classic Nginx Lua API is implemented on top"
+" of the standard Lua C API (which stops the just-in-time compiler from "
+"optimizing the calls), OpenResty relies heavily on FFI-based rewrites to get"
+" maximum performance and avoid JIT-compilation barriers. See "
+"[appendix-03-lua](appendix-03-lua.md) for the Lua/LuaJIT fundamentals this "
+"page builds on."
+msgstr ""
+"在 OpenResty 中，FFI（外部函数接口，Foreign Function Interface）主要是指 **LuaJIT FFI**：它让 "
+"Lua 代码能直接调用外部 C 函数并操作 C 数据结构。由于经典的 Nginx Lua API 是建立在标准 Lua C API "
+"之上（这会阻止即时编译器优化这些调用），OpenResty 大量依赖基于 FFI 的重写来获得最高性能并绕开 JIT 编译障碍。本页所依据的 "
+"Lua/LuaJIT 基础见[附录-03 Lua](appendix-03-lua.md)。"
+
+#: ../../14-ffi.md:42 5d9e0ac2d06d41c29e68bd0a809f3a09
+msgid "1. lua-resty-core (Built-in FFI Ecosystem)"
+msgstr "1. lua-resty-core（内建的 FFI 生态）"
+
+#: ../../14-ffi.md:44 906236fb71cb452ea5e50f1a1024896a
+msgid ""
+"OpenResty bundles [lua-resty-core](https://github.com/openresty/lua-resty-"
+"core) by default. This library re-implements many core Nginx Lua APIs (such "
+"as URI parsing, regex, base64 encoding, and shared dictionaries) using "
+"LuaJIT FFI."
+msgstr ""
+"OpenResty 默认捆绑 [lua-resty-core](https://github.com/openresty/lua-resty-"
+"core)。该库用 LuaJIT FFI 重新实现了许多核心的 Nginx Lua API（例如 URI 解析、正则、base64 编码和共享字典）。"
+
+#: ../../14-ffi.md:48 6d420d56190e4f749174aa876fa92272
+msgid ""
+"The benefit: your code can run fully inside LuaJIT's compiled machine code "
+"without falling back to the slower interpreted mode, because the rewritten "
+"APIs are just FFI calls that the JIT can compile, instead of C-function "
+"callbacks that force an interpreter round-trip."
+msgstr ""
+"好处是：你的代码可以完全运行在 LuaJIT 编译后的机器码中，不必回退到较慢的解释模式——因为重写后的 API 只是 JIT 可编译的 FFI "
+"调用，而不是迫使解释器来回切换的 C 函数回调。"
+
+#: ../../14-ffi.md:53 c76312af760f474184d477c58f6831cc
+msgid "2. Basic Usage Example"
+msgstr "2. 基本用法示例"
+
+#: ../../14-ffi.md:55 8afbec8d22e74a589d08d81520b935e7
+msgid ""
+"Use the native `ffi` module to load standard C libraries or custom shared "
+"libraries (`.so`) into your Nginx workers:"
+msgstr "用原生的 `ffi` 模块把标准 C 库或自定义共享库（`.so`）加载进你的 Nginx worker："
+
+#: ../../14-ffi.md:72 f22c155bc95f4ea893f504d5c993a7c2
+msgid "3. FFI Best Practices in OpenResty"
+msgstr "3. OpenResty 中的 FFI 最佳实践"
+
+#: ../../14-ffi.md:74 b46d50fc817c4cc5be6db77c19fd1e98
+msgid ""
+"When writing high-concurrency code inside Nginx, FFI needs special care:"
+msgstr "在 Nginx 内编写高并发代码时，FFI 需要特别小心："
+
+#: ../../14-ffi.md:76 dab4e32793914cc1acbe81ffb22251f3
+msgid ""
+"**Avoid blocking calls.** Standard C functions are synchronous. Calling a C "
+"function that blocks (for example heavy disk I/O or a synchronous network "
+"call) freezes the entire Nginx worker thread and destroys OpenResty's "
+"asynchronous advantage."
+msgstr ""
+"**避免阻塞调用。** 标准 C 函数是同步的。调用会阻塞的 C 函数（例如重度的磁盘 I/O 或同步网络调用）会冻结整个 Nginx worker "
+"线程，摧毁 OpenResty 的异步优势。"
+
+#: ../../14-ffi.md:80 230f155605724158a354974f6bdf14da
+msgid ""
+"**Keep `ffi.cdef` at the module (global) level.** Never run `ffi.cdef` "
+"inside a request handler such as `content_by_lua_block`; it is a heavyweight"
+" initialization operation. Define it at the top of your Lua module so it "
+"runs once during the Nginx configuration/loading phase, not per request."
+msgstr ""
+"**把 `ffi.cdef` 放在模块（全局）级别。** 绝不要在 `content_by_lua_block` 之类的请求处理器里执行 "
+"`ffi.cdef`；它是重量级的初始化操作。请在 Lua 模块顶部定义，使它只在 Nginx 配置/加载阶段运行一次，而不是每个请求都执行。"
+
+#: ../../14-ffi.md:84 6b76c05fdf9b4ff684eebd4f14a6110b
+msgid ""
+"**Manage C memory deliberately.** Be careful with `ffi.new()` allocations. "
+"For large structs allocated frequently, rely on LuaJIT's garbage collector, "
+"or manage them manually with `ffi.gc()` or an explicit C `free` function, to"
+" avoid memory leaks."
+msgstr ""
+"**谨慎管理 C 内存。** 注意 `ffi.new()` 的分配。对于频繁分配的大结构体，依赖 LuaJIT 的垃圾回收器，或用 `ffi.gc()`"
+" 或显式的 C `free` 函数手动管理，以避免内存泄漏。"
+
+#: ../../14-ffi.md:89 cb4c9a8ef63f4fc4b84c450b067cfdda
+msgid "4. Advanced: Multi-Language FFI (lua-resty-ffi)"
+msgstr "4. 进阶：跨语言 FFI（lua-resty-ffi）"
+
+#: ../../14-ffi.md:91 a01dc044a2e24748be8ff7298acbf8be
+msgid ""
+"To move beyond C, the third-party [lua-resty-"
+"ffi](https://github.com/urbanairship/lua-resty-ffi) provides a generic, non-"
+"blocking API for hybrid programming. It uses Nginx thread pools to safely "
+"offload heavy work to mainstream languages without blocking the primary "
+"event loop:"
+msgstr ""
+"要突破 C 的限制，第三方 [lua-resty-ffi](https://github.com/urbanairship/lua-resty-ffi)"
+" 为混合编程提供了通用的非阻塞 API。它利用 Nginx 线程池，把繁重工作安全地卸载给主流语言，而不阻塞主事件循环："
+
+#: ../../14-ffi.md 16e2c42984b64f11910cf0f11a969566
+msgid "Supported language"
+msgstr "支持的语言"
+
+#: ../../14-ffi.md c8017b78a4614f6597926d03dd0466bd
+msgid "Typical use case via lua-resty-ffi"
+msgstr "通过 lua-resty-ffi 的典型用法"
+
+#: ../../14-ffi.md 527e2ca2733e4c8e9c3eaa0fa6791e03
+msgid "Go / Rust"
+msgstr "Go / Rust"
+
+#: ../../14-ffi.md 71f8d67debe64d1cb164cab688614eab
+msgid ""
+"Offloading CPU-bound tasks, heavy cryptography, or using complex gRPC/Kafka "
+"clients"
+msgstr "卸载 CPU 密集型任务、重度加密，或使用复杂的 gRPC/Kafka 客户端"
+
+#: ../../14-ffi.md 842e84f810844dfeb6012419e365c807
+msgid "Python / Java"
+msgstr "Python / Java"
+
+#: ../../14-ffi.md 6e9acc6db8284ba1beb9021e6c3b583f
+msgid ""
+"Integrating machine learning models or legacy enterprise SDKs directly into "
+"Nginx gateways"
+msgstr "把机器学习模型或遗留企业 SDK 直接集成进 Nginx 网关"
+
+#: ../../14-ffi.md:102 0ca9392dd2784bafa57a2f6a815c8914
+msgid "References"
+msgstr "参考"
+
+#: ../../14-ffi.md:104 4919f5d83cd54de5bae816b524356abe
+msgid "[LuaJIT FFI library](https://luajit.org/ext_ffi.html)"
+msgstr "[LuaJIT FFI 库](https://luajit.org/ext_ffi.html)"
+
+#: ../../14-ffi.md:105 9f119d530f404cd5bddde4a6f6d07ca3
+msgid "[lua-resty-core](https://github.com/openresty/lua-resty-core)"
+msgstr "[lua-resty-core](https://github.com/openresty/lua-resty-core)"
+
+#: ../../14-ffi.md:106 23c4275ff9dd4df2bef8ec78da122f0c
+msgid "[lua-resty-ffi](https://github.com/urbanairship/lua-resty-ffi)"
+msgstr "[lua-resty-ffi](https://github.com/urbanairship/lua-resty-ffi)"
+
+#: ../../14-ffi.md:107 51309f77c13940e4950888e3038d10da
+msgid "[Lua and LuaJIT Key Points](appendix-03-lua.md)"
+msgstr "[Lua 与 LuaJIT 要点](appendix-03-lua.md)"

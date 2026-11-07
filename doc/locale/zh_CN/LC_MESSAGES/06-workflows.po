@@ -1,0 +1,637 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:23+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../06-workflows.md:25 49101b84ad5b49718bf1230964f15ade
+msgid "06. Workflows"
+msgstr "06. 工作流"
+
+#: ../../06-workflows.md:29 f9f5d968276f4d13a0bab5f0fedface3
+msgid ""
+"Ingested from `OpenResty HTTP请求中DNS解析失败处理完整解析与建议.md` and checked against "
+"nginx 1.31.1 and ngx_lua 0.10.31rc5 in this tree. Where that note disagrees "
+"with the code, this page follows the code."
+msgstr ""
+"内容取自 `OpenResty HTTP请求中DNS解析失败处理完整解析与建议.md`，并与本源码树中的 nginx 1.31.1 和 ngx_lua "
+"0.10.31rc5 核对。当该笔记与代码不一致时，本页以代码为准。"
+
+#: ../../06-workflows.md:31 3ac707c15389482485c7653fb0b505ce
+msgid "Workflow Index"
+msgstr "工作流索引"
+
+#: ../../06-workflows.md:33 17f72eb0ad9c4b9db3f81b4035852448
+msgid "[HTTP request DNS resolution and failure](#workflow-1)"
+msgstr "[HTTP 请求 DNS 解析与失败](#workflow-1)"
+
+#: ../../06-workflows.md:35 fc4d2ddf51a24601a036bd6f8001bddf
+msgid ""
+"Other request paths are documented below (docs build/publish and "
+"translation); broader runtime request paths are out of scope for now."
+msgstr "其余请求路径在下面记录（文档构建/发布与翻译）；更广泛的运行时请求路径暂不在范围内。"
+
+#: ../../06-workflows.md:39 63424fd1d5f843c5969a75c97532aef1
+msgid "Workflow 1"
+msgstr "工作流 1"
+
+#: ../../06-workflows.md:41 ../../06-workflows.md:126
+#: ../../06-workflows.md:150 66808f46ebc344548b9603ce77582f55
+#: 8d66e63c3d2a42529e239c3b00887a8c f57dc998b8df43ce903914b57de61562
+msgid "Trigger and Goal"
+msgstr "触发条件与目标"
+
+#: ../../06-workflows.md:43 97cd02b640884a3a8c01c818149cf829
+msgid ""
+"**Trigger**: Lua or an HTTP upstream connects to a hostname that is not "
+"already an address literal."
+msgstr "**触发条件**：Lua 或 HTTP 上游连接到一个并非地址字面量的主机名。"
+
+#: ../../06-workflows.md:44 b97b6bfe0c224586803afe68049277ca
+msgid ""
+"**Goal**: Turn that name into one or more addresses, then continue the TCP "
+"connect. On failure, surface a stable error string to Lua, or finalize the "
+"upstream request."
+msgstr "**目标**：将该名字转换为一个或多个地址，然后继续 TCP 连接。失败时，向 Lua 暴露稳定的错误字符串，或终结上游请求。"
+
+#: ../../06-workflows.md:46 6ec312c3c6f143b1ad8d56c04f9b4fa6
+msgid ""
+"`lua-resty-http` is not vendored in this repository. It only creates a "
+"cosocket and calls `connect()`. DNS itself is Nginx `ngx_resolver`."
+msgstr ""
+"`lua-resty-http` 未随本仓库 vendored。它只创建 cosocket 并调用 `connect()`。DNS 本身由 Nginx "
+"`ngx_resolver` 处理。"
+
+#: ../../06-workflows.md:48 ../../06-workflows.md:133
+#: ../../06-workflows.md:157 04e1b978fa784d5c9524cf961c5607be
+#: 417718522f364ac18cdec2928ea69b3a 8af0550af0ed407c939d8e4a9f90feba
+msgid "Main Flow"
+msgstr "主流程"
+
+#: ../../06-workflows.md:68 373c6c90699d42a592e6793ef2a434ea
+msgid ""
+"The resolve runs on the Nginx event loop. The Lua coroutine yields in "
+"`connect()` and resumes in `ngx_http_lua_socket_resolve_handler`."
+msgstr ""
+"解析运行在 Nginx 事件循环上。Lua 协程在 `connect()` 中挂起，并在 "
+"`ngx_http_lua_socket_resolve_handler` 中恢复。"
+
+#: ../../06-workflows.md:70 ../../06-workflows.md:142
+#: 56b2c521d15d4284a882fccba12a6f57 6c2eee1663a04caab8124e5bbcbb8edb
+msgid "Key Steps"
+msgstr "关键步骤"
+
+#: ../../06-workflows.md:72 5bdcc1cce16e473cbd4ec485e3e7e9e0
+msgid ""
+"`ngx_http_lua_socket_tcp_connect` parses the host. If "
+"`u->resolved->sockaddr` is already set, it connects and does not call the "
+"resolver. See "
+"`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c`."
+msgstr ""
+"`ngx_http_lua_socket_tcp_connect` 解析主机。如果 `u->resolved->sockaddr` "
+"已设置，则直接连接而不调用解析器。参见 "
+"`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c`。"
+
+#: ../../06-workflows.md:73 2ccf25d018ec42249c6c606ebf94c9fa
+msgid ""
+"Otherwise it calls `ngx_resolve_start(clcf->resolver, ...)`. "
+"`NGX_NO_RESOLVER` means the location has no `resolver` directive. Cosocket "
+"does not read `/etc/resolv.conf` and does not call `getaddrinfo()`."
+msgstr ""
+"否则它会调用 `ngx_resolve_start(clcf->resolver, ...)`。`NGX_NO_RESOLVER` 表示该 "
+"location 没有 `resolver` 指令。Cosocket 不读取 `/etc/resolv.conf`，也不调用 "
+"`getaddrinfo()`。"
+
+#: ../../06-workflows.md:74 a3c4794a657f4b5a88ed2c41aa2bf728
+msgid ""
+"`ngx_resolve_name` looks up the name rbtree. A live cache entry returns "
+"immediately. A miss builds a DNS query, sends it, and arms "
+"`resolver_timeout` on that context (`ngx_resolver_set_timeout`)."
+msgstr ""
+"`ngx_resolve_name` 查找名称红黑树。命中的缓存条目立即返回。未命中则构建 DNS 查询并发送，同时在该上下文上设置 "
+"`resolver_timeout`（`ngx_resolver_set_timeout`）。"
+
+#: ../../06-workflows.md:75 1d54f899a0c04621ae911967bd19f06b
+msgid ""
+"`ngx_resolver_process_response` checks the header, then "
+"`ngx_resolver_process_a` handles A and AAAA answers, CNAME chains, and non-"
+"zero RCODEs."
+msgstr ""
+"`ngx_resolver_process_response` 检查报头，然后 `ngx_resolver_process_a` 处理 A 和 AAAA"
+" 应答、CNAME 链以及非零 RCODE。"
+
+#: ../../06-workflows.md:76 57153fa0d6ab48588f476f842e12bedb
+msgid ""
+"Every context on `rn->waiting` shares one in-flight query. On a terminal "
+"RCODE the code walks that list, sets `ctx->state`, and calls each handler. "
+"There is no function named `ngx_resolver_fail_waiting`."
+msgstr ""
+"`rn->waiting` 上的每个上下文共享一次进行中的查询。遇到终态 RCODE 时，代码遍历该列表，设置 `ctx->state` "
+"并调用每个处理器。不存在名为 `ngx_resolver_fail_waiting` 的函数。"
+
+#: ../../06-workflows.md:77 3f0f48b29bd7484c9322073aaab56ca7
+msgid ""
+"The cosocket handler turns `ctx->state` into a Lua `nil, err` pair. "
+"`proxy_pass` and other upstream hostname resolves use "
+"`ngx_http_upstream_resolve_handler` instead."
+msgstr ""
+"cosocket 处理器将 `ctx->state` 转换为 Lua 的 `nil, err` 对。`proxy_pass` 和其他上游主机名解析改用 "
+"`ngx_http_upstream_resolve_handler`。"
+
+#: ../../06-workflows.md:79 68ec105503fe44b191eb4ba729344d0a
+msgid "Error and Edge Cases"
+msgstr "错误与边界情况"
+
+#: ../../06-workflows.md:50 5b6ce04ff9ad4f8cb2a19ad6126d72e5
+msgid "Case"
+msgstr "情形"
+
+#: ../../06-workflows.md:50 e411f325281249aab71aa59e4ceb6455
+msgid "Where handled"
+msgstr "处理位置"
+
+#: ../../06-workflows.md:50 1475cfe6b6a446ff90a7fdea00afe5a6
+msgid "Expected outcome"
+msgstr "预期结果"
+
+#: ../../06-workflows.md:50 ad3c2caa762c4b49882f47a909c3f7fb
+msgid "No `resolver` directive"
+msgstr "没有 `resolver` 指令"
+
+#: ../../06-workflows.md:50 50c8a6af6bcb4cb9950d62aaa141b4d8
+msgid ""
+"`ngx_http_lua_socket_tcp.c` when `ngx_resolve_start` returns "
+"`NGX_NO_RESOLVER`"
+msgstr ""
+"`ngx_resolve_start` 返回 `NGX_NO_RESOLVER` 时的 `ngx_http_lua_socket_tcp.c`"
+
+#: ../../06-workflows.md:50 ea251098f39b4a85a8e33dc1ffab539b
+msgid ""
+"Immediate Lua error `no resolver defined to resolve \"<host>\"`. Upstream "
+"logs the same text and finalizes with 502."
+msgstr "Lua 立即报错 `no resolver defined to resolve \"<host>\"`。上游记录相同文本并以 502 终结。"
+
+#: ../../06-workflows.md:50 ada2b30aca514a27802961f8aaa37404
+msgid "`ngx_resolve_name` returns an error before a query is outstanding"
+msgstr "`ngx_resolve_name` 在查询发出前返回错误"
+
+#: ../../06-workflows.md:50 994db2f5ce6a4b09ba1030d4019332c8
+msgid "same file, after `ngx_resolve_name`"
+msgstr "同一文件，位于 `ngx_resolve_name` 之后"
+
+#: ../../06-workflows.md:50 9554706b4dc2462d82e92855fd23c2a9
+msgid ""
+"Lua error `\"<host> could not be resolved\"` with no numeric code. Upstream "
+"finalizes with 500."
+msgstr "Lua 报错 `\"<host> could not be resolved\"`，无数字代码。上游以 500 终结。"
+
+#: ../../06-workflows.md:50 23e266cb25be43a4b9e557e57a3cd027
+msgid "UDP send fails"
+msgstr "UDP 发送失败"
+
+#: ../../06-workflows.md:50 3005cc375b37453485cbf8ec455d7463
+msgid "`ngx_resolve_name_locked` in `ngx_resolver.c`"
+msgstr "`ngx_resolver.c` 中的 `ngx_resolve_name_locked`"
+
+#: ../../06-workflows.md:50 93da01fb374345b78a2c032159ce909d
+msgid "One immediate resend on the next nameserver."
+msgstr "在下一个域名服务器上立即重发一次。"
+
+#: ../../06-workflows.md:50 fba858a9ee374567a2a5aa4fbc32076c
+msgid "No reply before the per-query resend time"
+msgstr "在每次查询的重发时间之前没有应答"
+
+#: ../../06-workflows.md:50 e5da3690053f4befb6651dcff90e827d
+msgid "`ngx_resolver_resend`"
+msgstr "`ngx_resolver_resend`"
+
+#: ../../06-workflows.md:50 a6a7398bbb9140e6ae2a6bc387042949
+msgid ""
+"If `rn->waiting` is still set, `last_connection` advances and the query is "
+"sent again. `resend_timeout` is 5 seconds, set in `ngx_resolver_create`."
+msgstr ""
+"如果 `rn->waiting` 仍被设置，则推进 `last_connection` 并再次发送查询。`resend_timeout` 为 5 秒，在"
+" `ngx_resolver_create` 中设置。"
+
+#: ../../06-workflows.md:50 ba21c74ee4e04f0a806d9ef8e7354b7a
+msgid "`resolver_timeout` fires"
+msgstr "`resolver_timeout` 触发"
+
+#: ../../06-workflows.md:50 c64785845bb849c686eb6627f180f589
+msgid "`ngx_resolver_timeout_handler`"
+msgstr "`ngx_resolver_timeout_handler`"
+
+#: ../../06-workflows.md:50 ece93e3518014bec871af31850109ab0
+msgid ""
+"That context gets `NGX_RESOLVE_TIMEDOUT` (`NGX_ETIMEDOUT`, 110 on Linux) and"
+" its handler runs. Default merge value is 30000 ms in "
+"`ngx_http_core_module.c`."
+msgstr ""
+"该上下文获得 `NGX_RESOLVE_TIMEDOUT`（`NGX_ETIMEDOUT`，Linux 上为 "
+"110），其处理器运行。`ngx_http_core_module.c` 中合并后的默认值为 30000 ms。"
+
+#: ../../06-workflows.md:50 44186bac98e04c7f9b4e19c089fb2fbf
+msgid "RCODE SERVFAIL, NXDOMAIN, NOTIMP, or REFUSED"
+msgstr "RCODE SERVFAIL、NXDOMAIN、NOTIMP 或 REFUSED"
+
+#: ../../06-workflows.md:50 fcfd43b3ce764849bb394d889751ac6a
+msgid "`ngx_resolver_process_a` when `code` is non-zero"
+msgstr "`code` 非零时的 `ngx_resolver_process_a`"
+
+#: ../../06-workflows.md:50 126649f7124b43c8a69321a3f246b103
+msgid ""
+"Every waiter fails immediately with that code. The name node is removed from"
+" the rbtree. This build does not rotate nameservers because of SERVFAIL."
+msgstr "所有等待者立即以该代码失败。名称节点从红黑树中移除。此构建不会因 SERVFAIL 而轮换域名服务器。"
+
+#: ../../06-workflows.md:50 d6d0602ffcf749dd8a36a3286be2ea56
+msgid "RCODE FORMERR, or a code above REFUSED"
+msgstr "RCODE FORMERR，或高于 REFUSED 的代码"
+
+#: ../../06-workflows.md:50 1ec4818ec82f4dacbc78ca64b3cd71ba
+msgid "`ngx_resolver_process_response`"
+msgstr "`ngx_resolver_process_response`"
+
+#: ../../06-workflows.md:50 5d8399bc013b4bcb95a25105bcc4bda2
+msgid ""
+"Logged as `DNS error (...)` and dropped. Waiters stay until resend or "
+"`resolver_timeout`."
+msgstr "以 `DNS error (...)` 记录并丢弃。等待者保持直到重发或 `resolver_timeout`。"
+
+#: ../../06-workflows.md:50 f5643a15a8624b54b3ffac2ff2aa3f6c
+msgid "NOERROR with an empty answer and no sibling A/AAAA"
+msgstr "NOERROR 但应答为空且没有兄弟 A/AAAA 记录"
+
+#: ../../06-workflows.md:50 3d6a03e7c5d84b639344c8f54d7bab21
+#: 89f2f8f0cebb44d2922f60b90d4883d4 fccf07d7c5c14c449635076145f87308
+msgid "`ngx_resolver_process_a`"
+msgstr "`ngx_resolver_process_a`"
+
+#: ../../06-workflows.md:50 932fe089cac44d5cac1458408d8e0f50
+msgid "Treated as `NGX_RESOLVE_NXDOMAIN`."
+msgstr "视为 `NGX_RESOLVE_NXDOMAIN`。"
+
+#: ../../06-workflows.md:50 4631a31ea1d5403ea76244ae6d1c2650
+msgid "CNAME chain"
+msgstr "CNAME 链"
+
+#: ../../06-workflows.md:50 57d0950f3532490cb9890376b0cab2b5
+msgid ""
+"`ngx_resolve_name_locked` and the CNAME branch in `ngx_resolver_process_a`"
+msgstr "`ngx_resolve_name_locked` 以及 `ngx_resolver_process_a` 中的 CNAME 分支"
+
+#: ../../06-workflows.md:50 1fa12ed32b45445698a86f0f54f8d3e4
+msgid ""
+"Followed until `NGX_RESOLVER_MAX_RECURSION` (50). Past that, waiters fail "
+"with `NGX_RESOLVE_NXDOMAIN`."
+msgstr ""
+"一直追踪到 `NGX_RESOLVER_MAX_RECURSION`（50）。超过后，等待者以 `NGX_RESOLVE_NXDOMAIN` 失败。"
+
+#: ../../06-workflows.md:50 674f6b46a7c64f57898c0bda3f2f30f7
+msgid "Transaction id mismatch"
+msgstr "事务 id 不匹配"
+
+#: ../../06-workflows.md:50 8e4441ffcbed49908edf6b60d511fbb7
+msgid ""
+"Logged as `wrong ident ... expect` and ignored. The outstanding query is not"
+" failed by that packet."
+msgstr "以 `wrong ident ... expect` 记录并忽略。未完成的查询不会被该报文判为失败。"
+
+#: ../../06-workflows.md:50 776320a80c554f66b0b8bd066b857b5f
+msgid "Label compression loop or a short packet"
+msgstr "标签压缩循环或过短报文"
+
+#: ../../06-workflows.md:50 fdfcde8a8363412dbddd5300e1787c8e
+msgid "`ngx_resolver_copy` and the short-response path"
+msgstr "`ngx_resolver_copy` 和短响应路径"
+
+#: ../../06-workflows.md:50 8bbf8ba13a094c65b67b09ec742a2403
+msgid ""
+"Logged (`compression pointers loop` limit is 128) and the packet is dropped."
+" Waiters stay until resend or timeout."
+msgstr "记录（`compression pointers loop` 上限为 128）并丢弃该报文。等待者保持直到重发或超时。"
+
+#: ../../06-workflows.md:50 740c267b59f94d1c8d5feef47c155efb
+msgid "UDP truncated (`TC`)"
+msgstr "UDP 被截断（`TC`）"
+
+#: ../../06-workflows.md:50 ae8d9a948db445c4ad793ffe9a0fa40f
+msgid "Switches that query to TCP via `ngx_resolver_send_tcp_query`."
+msgstr "通过 `ngx_resolver_send_tcp_query` 将该查询切换到 TCP。"
+
+#: ../../06-workflows.md:96 a041aee6979a4898b7ff91422231e372
+msgid ""
+"On a terminal RCODE the code sets `ctx->valid` to now plus the `resolver` "
+"`valid=` time, or 10 seconds when `valid` is 0, then frees the name node. "
+"Later lookups do not hit a stored negative entry in the rbtree."
+msgstr ""
+"遇到终态 RCODE 时，代码将 `ctx->valid` 设置为当前时间加上 `resolver` 的 `valid=` 时间；当 `valid` 为"
+" 0 时为 10 秒，然后释放名称节点。后续查询不会命中红黑树中存储的否定条目。"
+
+#: ../../06-workflows.md:98 a1106a9fed2b43c1961a6ef0b30e0440
+msgid "Data and Contracts Involved"
+msgstr "涉及的数据与契约"
+
+#: ../../06-workflows.md:100 f83e1ae6b1ce4108bba95045f410c3f4
+msgid ""
+"Lua `connect()` failure strings, built in "
+"`ngx_http_lua_socket_resolve_handler`:"
+msgstr "Lua `connect()` 失败字符串，构建于 `ngx_http_lua_socket_resolve_handler`："
+
+#: ../../06-workflows.md:50 0074ec4162a74dd2b5083cb76f5589c8
+msgid "`ctx->state`"
+msgstr "`ctx->state`"
+
+#: ../../06-workflows.md:50 2ae7a4f367d647e3989aa48b57da5fb5
+msgid "`ngx_resolver_strerror`"
+msgstr "`ngx_resolver_strerror`"
+
+#: ../../06-workflows.md:50 cedef07c0d434836b256c93f66805536
+msgid "Lua `err` shape"
+msgstr "Lua `err` 形式"
+
+#: ../../06-workflows.md:50 57826b98ea20430bb5bba68452da0f6e
+msgid "1 `NGX_RESOLVE_FORMERR`"
+msgstr "1 `NGX_RESOLVE_FORMERR`"
+
+#: ../../06-workflows.md:50 db96cf69a38045a7aeaf5d47b0714a70
+msgid "Format error"
+msgstr "Format error（格式错误）"
+
+#: ../../06-workflows.md:50 1df03052a50141bf94f847a48d309ab7
+msgid "`<host> could not be resolved (1: Format error)`"
+msgstr "`<host> could not be resolved (1: Format error)`"
+
+#: ../../06-workflows.md:50 a0d22fce17c14ed6a3b9039eeb322aa8
+msgid "2 `NGX_RESOLVE_SERVFAIL`"
+msgstr "2 `NGX_RESOLVE_SERVFAIL`"
+
+#: ../../06-workflows.md:50 c42fb94f2cc145859216f8739f08742b
+msgid "Server failure"
+msgstr "Server failure（服务器故障）"
+
+#: ../../06-workflows.md:50 940e70af101c477b9df47470d7fc8a94
+msgid "`<host> could not be resolved (2: Server failure)`"
+msgstr "`<host> could not be resolved (2: Server failure)`"
+
+#: ../../06-workflows.md:50 9f5c7249f1864b9f9e28d579cfa7d9c8
+msgid "3 `NGX_RESOLVE_NXDOMAIN`"
+msgstr "3 `NGX_RESOLVE_NXDOMAIN`"
+
+#: ../../06-workflows.md:50 80187a9e48e4438e8305492339624581
+msgid "Host not found"
+msgstr "Host not found（主机未找到）"
+
+#: ../../06-workflows.md:50 d3d45cbd9924483780bc936fd172e977
+msgid "`<host> could not be resolved (3: Host not found)`"
+msgstr "`<host> could not be resolved (3: Host not found)`"
+
+#: ../../06-workflows.md:50 ab6447115d35489bad62be8833a8cd30
+msgid "4 `NGX_RESOLVE_NOTIMP`"
+msgstr "4 `NGX_RESOLVE_NOTIMP`"
+
+#: ../../06-workflows.md:50 4c756d7514e240c8aaa5dba1d57d116e
+msgid "Unimplemented"
+msgstr "Unimplemented（未实现）"
+
+#: ../../06-workflows.md:50 8379419058ee419287c0ee8f75f4fef7
+msgid "`<host> could not be resolved (4: Unimplemented)`"
+msgstr "`<host> could not be resolved (4: Unimplemented)`"
+
+#: ../../06-workflows.md:50 e5e53ecf95684565853820049e8dbaf5
+msgid "5 `NGX_RESOLVE_REFUSED`"
+msgstr "5 `NGX_RESOLVE_REFUSED`"
+
+#: ../../06-workflows.md:50 d3c8911eeada4ada81ff431ee7440c8d
+msgid "Operation refused"
+msgstr "Operation refused（操作被拒绝）"
+
+#: ../../06-workflows.md:50 db585566da454037bacfe626997d8752
+msgid "`<host> could not be resolved (5: Operation refused)`"
+msgstr "`<host> could not be resolved (5: Operation refused)`"
+
+#: ../../06-workflows.md:50 3c625e0d2a004f34a7db2b9266725cbf
+msgid "`NGX_ETIMEDOUT`"
+msgstr "`NGX_ETIMEDOUT`"
+
+#: ../../06-workflows.md:50 c00d3e02a07a47f2982a60af1983c83b
+msgid "Operation timed out"
+msgstr "Operation timed out（操作超时）"
+
+#: ../../06-workflows.md:50 b332934251694dc0a1be60e3219f3755
+msgid "`<host> could not be resolved (<errno>: Operation timed out)`"
+msgstr "`<host> could not be resolved (<errno>: Operation timed out)`"
+
+#: ../../06-workflows.md:111 a35c6cecb0eb452089ce13bb42e60f34
+msgid ""
+"The numeric timeout value follows the host `ETIMEDOUT`. Match the text "
+"`Operation timed out`, not a fixed integer."
+msgstr "数字超时值遵循主机的 `ETIMEDOUT`。匹配文本 `Operation timed out`，而不是固定整数。"
+
+#: ../../06-workflows.md:113 05034e0c7a8f4303966d393cbed4d974
+#, python-format
+msgid ""
+"Upstream `proxy_pass` logs `%V could not be resolved (%i: %s)` and finalizes"
+" with `NGX_HTTP_BAD_GATEWAY` for every non-zero `ctx->state`, including "
+"timeout. A missing resolver is also 502. Only the immediate "
+"`ngx_resolve_name` failure path is 500."
+msgstr ""
+"上游 `proxy_pass` 记录 `%V could not be resolved (%i: %s)`，并对每个非零 "
+"`ctx->state`（包括超时）以 `NGX_HTTP_BAD_GATEWAY` 终结。缺少 resolver 也是 502。只有 "
+"`ngx_resolve_name` 立即失败的路径是 500。"
+
+#: ../../06-workflows.md:115 6715d3f317984ade90303c334ead2f82
+msgid "Code References"
+msgstr "代码引用"
+
+#: ../../06-workflows.md:117 89235c0f08234077931e4b3fbe88dcd2
+msgid ""
+"`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c` — "
+"connect, missing resolver, resolve handler"
+msgstr ""
+"`openresty/bundle/ngx_lua-0.10.31rc5/src/ngx_http_lua_socket_tcp.c` — 连接、缺少 "
+"resolver、解析处理器"
+
+#: ../../06-workflows.md:118 4d822a957c7c402c9ad27396aa6390d7
+msgid ""
+"`workspace/ngx_http_lua_socket_tcp.c` — local copy of the same cosocket path"
+msgstr "`workspace/ngx_http_lua_socket_tcp.c` — 同一 cosocket 路径的本地副本"
+
+#: ../../06-workflows.md:119 80dc1b530a254aabb1c59df5b093f161
+msgid ""
+"`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.c` — query, resend, "
+"response, timeout"
+msgstr "`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.c` — 查询、重发、响应、超时"
+
+#: ../../06-workflows.md:120 f2dcad2f69d3419e918510540b84980b
+msgid ""
+"`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.h` — RCODE constants, "
+"`NGX_RESOLVER_MAX_RECURSION`"
+msgstr ""
+"`openresty/bundle/nginx-1.31.1/src/core/ngx_resolver.h` — RCODE "
+"常量、`NGX_RESOLVER_MAX_RECURSION`"
+
+#: ../../06-workflows.md:121 100c26368ed8417ba3699b2426b69093
+msgid ""
+"`openresty/bundle/nginx-1.31.1/src/http/ngx_http_upstream.c` — "
+"`ngx_http_upstream_resolve_handler`"
+msgstr ""
+"`openresty/bundle/nginx-1.31.1/src/http/ngx_http_upstream.c` — "
+"`ngx_http_upstream_resolve_handler`"
+
+#: ../../06-workflows.md:122 9851aa8cd01f453794b9625f66ba47c9
+msgid ""
+"`openresty/bundle/nginx-1.31.1/src/http/ngx_http_core_module.c` — "
+"`resolver_timeout` default 30000 ms"
+msgstr ""
+"`openresty/bundle/nginx-1.31.1/src/http/ngx_http_core_module.c` — "
+"`resolver_timeout` 默认 30000 ms"
+
+#: ../../06-workflows.md:124 0a661987d98e4c9b82b5fa90bd66d55a
+msgid "Workflow 2 — Build and Publish the PKB Site"
+msgstr "工作流 2 —— 构建并发布知识库站点"
+
+#: ../../06-workflows.md:128 b820e149c7f6400b82ab24d3dcd1b23e
+msgid ""
+"**Trigger**: A maintainer (or CI) wants to produce the bilingual site and "
+"put it online."
+msgstr "**触发条件**：维护者（或 CI）想要生成双语站点并上线。"
+
+#: ../../06-workflows.md:130 9567ff96dd064404a62d873017b2afef
+msgid ""
+"**Goal**: From clean sources, verify a strict build and push static HTML to "
+"GitHub Pages."
+msgstr "**目标**：从干净源码出发，验证严格构建并把静态 HTML 推送到 GitHub Pages。"
+
+#: ../../06-workflows.md:135 31210919546b4fffb6b867a302914d87
+msgid ""
+"`make deps` -> `uv sync --locked` installs the pinned Sphinx toolchain."
+msgstr "`make deps` -> `uv sync --locked` 安装固定版本的 Sphinx 工具链。"
+
+#: ../../06-workflows.md:136 323593a3a2264163b63ddc6b1599ee0e
+msgid ""
+"`make build` (Sphinx `-W -n`) renders English and zh_CN into `_build/site/`."
+msgstr "`make build`（Sphinx `-W -n`）把英文和 zh_CN 渲染到 `_build/site/`。"
+
+#: ../../06-workflows.md:137 5713499914424d23a80b8ac2fbe25d26
+msgid ""
+"A landing `index.html` redirects visitors to `/en/` or `/zh/` by browser "
+"language."
+msgstr "落地页 `index.html` 根据浏览器语言把访客重定向到 `/en/` 或 `/zh/`。"
+
+#: ../../06-workflows.md:139 ddd387554605428aa3c9d25ad844f9eb
+msgid ""
+"`make publish` creates/refreshes a `gh-pages` worktree, copies "
+"`_build/site/*`, adds `.nojekyll`, commits, and pushes."
+msgstr ""
+"`make publish` 创建/刷新 `gh-pages` worktree，复制 `_build/site/*`，添加 "
+"`.nojekyll`，提交并推送。"
+
+#: ../../06-workflows.md:144 90a7cd7c2235432a927ae66febfe06b2
+msgid ""
+"`doc/Makefile html-en` / `html-zh` / `render_landing.py` drive each build."
+msgstr "`doc/Makefile html-en` / `html-zh` / `render_landing.py` 驱动每次构建。"
+
+#: ../../06-workflows.md:145 6b618389047b4871af6a00fab48e626d
+msgid ""
+"`make publish` uses `git worktree add` on `gh-pages` so the source branch is"
+" untouched."
+msgstr "`make publish` 在 `gh-pages` 上使用 `git worktree add`，因此源分支不受影响。"
+
+#: ../../06-workflows.md:148 ab1f2c463cae493c86b79c1eaf3db90e
+msgid "Workflow 3 — Refresh the Chinese (zh_CN) Translation"
+msgstr "工作流 3 —— 刷新中文本地化"
+
+#: ../../06-workflows.md:152 005f6137bcda452480069572f7b22b03
+msgid ""
+"**Trigger**: English sources changed, so the zh_CN build would otherwise "
+"fall back to English."
+msgstr "**触发条件**：英文源码变更，否则 zh_CN 构建会回退为英文。"
+
+#: ../../06-workflows.md:154 1f11b8c38a9b4f1aaed7d1691c54f7ff
+msgid ""
+"**Goal**: Re-extract msgids, merge into `.po`, translate the new strings, "
+"and compile `.mo` so the zh site matches the English source."
+msgstr "**目标**：重新提取 msgid，合并进 `.po`，翻译新字符串并编译 `.mo`，使中文站点与英文源一致。"
+
+#: ../../06-workflows.md:159 cc47b5dfa558471881ff263373acfb0d
+msgid ""
+"`sphinx-build -b gettext . _build/gettext` regenerates `.pot` catalogs."
+msgstr "`sphinx-build -b gettext . _build/gettext` 重新生成 `.pot` 目录。"
+
+#: ../../06-workflows.md:160 bd1e03ac486f4ef1bfc54e52e0c2298e
+msgid ""
+"`sphinx-intl update --pot-dir _build/gettext --locale-dir locale -l zh_CN` "
+"merges into `locale/zh_CN/LC_MESSAGES/*.po` (msgmerge semantics preserve "
+"existing translations)."
+msgstr ""
+"`sphinx-intl update --pot-dir _build/gettext --locale-dir locale -l zh_CN` "
+"合并进 `locale/zh_CN/LC_MESSAGES/*.po`（msgmerge 语义会保留已有翻译）。"
+
+#: ../../06-workflows.md:163 174262fc0525413f9012982a5e41efef
+msgid "Translate new `msgid`s, then `sphinx-intl build` compiles `.mo`."
+msgstr "翻译新的 `msgid`，然后通过 `sphinx-intl build` 编译 `.mo`。"
+
+#: ../../06-workflows.md:164 79375f60c6d342c5b5f640aac17bf22a
+msgid "`make build` renders the zh site; `make pkb-check-i18n` verifies sync."
+msgstr "`make build` 渲染中文站点；`make pkb-check-i18n` 验证同步。"
+
+#: ../../06-workflows.md:166 683eca28d0d14fc5ae1ffc986d9bf04f
+msgid "Notes"
+msgstr "说明"
+
+#: ../../06-workflows.md:168 28a08c03d7e741cfb1c2fde6066b3ab0
+msgid ""
+"Keep the English page as the single source of truth; never edit `.mo` by "
+"hand."
+msgstr "把英文页面作为唯一事实来源；绝不要手工编辑 `.mo`。"
+
+#: ../../06-workflows.md:169 1b1fe88272404055a6ab04971f129013
+msgid ""
+"The whole-module ingest page (`08-lua-nginx-module.md`) is a verbatim "
+"upstream reference and intentionally falls back to English in zh_CN."
+msgstr "整模块摄取页（`08-lua-nginx-module.md`）是上游原文的逐字引用，在 zh_CN 中刻意回退为英文。"
+
+#: ../../06-workflows.md:172 5e4d4e95a6ea4b5aaf649277295fc336
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../06-workflows.md:174 88aefa10b73a40739f4936b801999035
+msgid "[Architecture](02-architecture.md)"
+msgstr "[架构](02-architecture.md)"
+
+#: ../../06-workflows.md:175 ab944598d63c4317b01c0a9114652857
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../06-workflows.md:176 8bcfa370e6734451aea340b77503f1ab
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#: ../../06-workflows.md:177 e5dd0ea5e43b4b3aa5e72430f5242c25
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../06-workflows.md:178 bd09d6d1714c43aca20159f8793facee
+msgid "[Observability](11-observability.md)"
+msgstr "[可观测性](11-observability.md)"
+
+#~ msgid ""
+#~ "Other request paths are not documented yet. [NEEDS INPUT: additional "
+#~ "workflows to record]"
+#~ msgstr "其他请求路径尚未记录。[需要补充：需要记录的额外工作流]"

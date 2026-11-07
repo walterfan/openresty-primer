@@ -1,0 +1,591 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:29+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../05-data-and-api.md:35 e9086418cd764aef9e497a3596cd149d
+msgid "05. Data and API"
+msgstr "05. 数据与 API"
+
+#: ../../05-data-and-api.md:39 15f6d019dc224d1c8efe358c36ff4276
+msgid ""
+"This page covers the API and data contracts of OpenResty/ngx_lua as used "
+"from Lua. It is not an exhaustive reference (see [08-lua-nginx-"
+"module](08-lua-nginx-module.md) for every directive and API); here we "
+"capture the contracts that most application code depends on, including the "
+"DNS-resolution error contract as a worked example."
+msgstr ""
+"本页介绍从 Lua 使用 OpenResty/ngx_lua 时的 API 与数据契约。它不是详尽参考（每个指令和 API 见 [08-lua-"
+"nginx-module](08-lua-nginx-module.md)）；这里记录的是大多数应用代码所依赖的契约，其中把 DNS "
+"解析错误契约作为一个完整的示例。"
+
+#: ../../05-data-and-api.md:45 6d4dcec69c784416a4ba135701f22065
+msgid "The Nginx API for Lua"
+msgstr "Nginx API for Lua"
+
+#: ../../05-data-and-api.md:47 3e20b4e5979040259e5f0c38ed2eb507
+msgid ""
+"Lua code in OpenResty talks to Nginx through the `ngx.*` API - a coroutine "
+"context is created per request and the API exposes request state, output, "
+"and subsystems."
+msgstr ""
+"在 OpenResty 中，Lua 代码通过 `ngx.*` API 与 Nginx 交互——每个请求都会创建一个协程上下文，API "
+"暴露请求状态、输出和各子系统。"
+
+#: ../../05-data-and-api.md a2f88bb0de934c40bd6d6be558459631
+msgid "Area"
+msgstr "领域"
+
+#: ../../05-data-and-api.md b3f6246a4dab4f599db453687253532d
+msgid "Representative API"
+msgstr "代表性 API"
+
+#: ../../05-data-and-api.md 8a02b31f8d32449db1a2b3efe3c76ce4
+msgid "Contract notes"
+msgstr "契约说明"
+
+#: ../../05-data-and-api.md c3e7f172ace74b358e781037e5a935f7
+msgid "Request"
+msgstr "请求"
+
+#: ../../05-data-and-api.md cc06a54974f4435b862eb44e0e496596
+msgid "`ngx.var`, `ngx.req.*`, `ngx.header.*`, `ngx.ctx`"
+msgstr "`ngx.var`、`ngx.req.*`、`ngx.header.*`、`ngx.ctx`"
+
+#: ../../05-data-and-api.md e6499df65f7940a0b1db19596ee3288c
+msgid "Per-request state; `ngx.ctx` survives across phases within one request"
+msgstr "按请求隔离的状态；`ngx.ctx` 在同一请求内跨阶段存活"
+
+#: ../../05-data-and-api.md ccdce7ad92d449f38ebff39854673f22
+msgid "Output"
+msgstr "输出"
+
+#: ../../05-data-and-api.md af02a1f2bc044214a7bb936a3378fcd9
+msgid "`ngx.print`, `ngx.say`, `ngx.flush`, `ngx.eof`"
+msgstr "`ngx.print`、`ngx.say`、`ngx.flush`、`ngx.eof`"
+
+#: ../../05-data-and-api.md 6f084f6479a84bdb9086eb3e278b248c
+msgid "Write the response body; runs in content phase"
+msgstr "写入响应体；运行在 content 阶段"
+
+#: ../../05-data-and-api.md b4e4c741171448478ab5aa689780324e
+msgid "Control"
+msgstr "控制"
+
+#: ../../05-data-and-api.md 166e67c1b96145c6b5f42dde538feebe
+msgid "`ngx.exit`, `ngx.redirect`, `ngx.exec`, `ngx.location.capture*`"
+msgstr "`ngx.exit`、`ngx.redirect`、`ngx.exec`、`ngx.location.capture*`"
+
+#: ../../05-data-and-api.md 3f7e5663509c408a99d1f69e85d17b64
+msgid "Terminate or jump; `capture` runs a subrequest and can yield"
+msgstr "终止或跳转；`capture` 运行子请求并可能让出"
+
+#: ../../05-data-and-api.md c72dd6506abc4f4cb7e6fc259d6cc804
+msgid "Timers"
+msgstr "定时器"
+
+#: ../../05-data-and-api.md 27c023156ab54397a049c4cde9a54a38
+msgid "`ngx.timer.at`, `ngx.timer.every`"
+msgstr "`ngx.timer.at`、`ngx.timer.every`"
+
+#: ../../05-data-and-api.md 24ed0b14ae6448fb8036990d6fd725c4
+msgid "Run later on the same worker; must not block"
+msgstr "在同一个 worker 上稍后运行；绝不能阻塞"
+
+#: ../../05-data-and-api.md 1338678feec5420b832a8eff97c4ac3c
+msgid "Shared state"
+msgstr "共享状态"
+
+#: ../../05-data-and-api.md 1fecc13c5d884154bb08b91cb279b0fa
+msgid "`ngx.shared.DICT` (lua_shared_dict), module-level tables"
+msgstr "`ngx.shared.DICT`（lua_shared_dict）与模块级表"
+
+#: ../../05-data-and-api.md 27eb2c865d444358b7cfb1d9f43d484b
+msgid "per-worker shared memory; no cross-worker sharing"
+msgstr "按 worker 共享内存；不跨 worker 共享"
+
+#: ../../05-data-and-api.md fe94cbb58ab8489cb914387eea712fd4
+msgid "Logging"
+msgstr "日志"
+
+#: ../../05-data-and-api.md 4fec63f4252441bf95129e869ae6da07
+msgid "`ngx.log(level, ...)`"
+msgstr "`ngx.log(level, ...)`"
+
+#: ../../05-data-and-api.md 8ad24621edc843e9a06787e010723179
+msgid "Writes to the Nginx error log"
+msgstr "写入 Nginx 错误日志"
+
+#: ../../05-data-and-api.md 752507c57add40ca9d2637ef3c3e28de
+msgid "Cosocket"
+msgstr "Cosocket"
+
+#: ../../05-data-and-api.md 1587c8568bd24ed4b815daf40c23954e
+msgid "`ngx.socket.tcp`, `udp`, `stream`"
+msgstr "`ngx.socket.tcp`、`udp`、`stream`"
+
+#: ../../05-data-and-api.md 7f80713f1af442f3904da6ab9f8a8baa
+msgid "100% non-blocking; see below"
+msgstr "100% 非阻塞；见下文"
+
+#: ../../05-data-and-api.md:61 192e747fc3804ba78569d33e0e2728be
+msgid "Cosockets and the Connect Contract"
+msgstr "Cosocket 与连接契约"
+
+#: ../../05-data-and-api.md:63 7480631ef3704e10b499fe6f4360c115
+msgid ""
+"A cosocket (`ngx.socket.tcp()`) is the sanctioned way to talk to backends:"
+msgstr "从 Lua 访问后端的推荐方式就是 cosocket（`ngx.socket.tcp()`）："
+
+#: ../../05-data-and-api.md:65 b9954e5e6e2c48938b9377bc252acc9d
+msgid ""
+"`sock:connect(host, port)` returns `1` on success, or `nil` plus `err`."
+msgstr "`sock:connect(host, port)` 成功时返回 `1`，失败返回 `nil` 加 `err`。"
+
+#: ../../05-data-and-api.md:66 7850e87077914d8786f0aa7924fda12b
+msgid ""
+"It yields the current coroutine back to the event loop while the TCP connect"
+" and any hostname resolution are in flight."
+msgstr "在 TCP 连接和任何主机名解析进行期间，它会把当前协程让回事件循环。"
+
+#: ../../05-data-and-api.md:68 840d0dcd2a26428eb9162a7cb6f027c4
+msgid ""
+"Resolving a **hostname** uses Nginx `ngx_resolver` (the `resolver` "
+"directive), never the system resolver. Connecting to an **address literal** "
+"skips DNS."
+msgstr ""
+"解析**主机名**使用 Nginx 的 `ngx_resolver`（`resolver` 指令），绝不用系统解析器。连接**地址字面量**则跳过 "
+"DNS。"
+
+#: ../../05-data-and-api.md:71 d403857109b64389926736992e4bbd12
+msgid ""
+"Timeouts are set with `settimeout(ms)` / `settimeouts(connect, send, read)`;"
+" idle sockets are returned to the pool with `setkeepalive()`."
+msgstr ""
+"用 `settimeout(ms)` / `settimeouts(connect, send, read)` 设置超时；空闲套接字用 "
+"`setkeepalive()` 归还连接池。"
+
+#: ../../05-data-and-api.md:74 ce177774f3bc46ea9b71939ab9ed75f3
+msgid "HTTP Status and Error Mapping"
+msgstr "HTTP 状态码与错误映射"
+
+#: ../../05-data-and-api.md:76 3b3ace8bef8e40908e67de4d6a1181fc
+msgid ""
+"Distinguish the error the caller sees (a Lua `err` string, a cosocket `nil, "
+"err`) from the HTTP status returned to the client."
+msgstr ""
+"要把调用方看到的错误（Lua 的 `err` 字符串、cosocket 的 `nil, err`）与返回给客户端的 HTTP 状态码区分开。"
+
+#: ../../05-data-and-api.md:79 d627e7bc7e7e49ccbdf46beefa0a08d3
+msgid ""
+"`proxy_pass` to a hostname returns **502** for any resolve failure, "
+"including timeout. Only a Lua `content_by_lua*` handler can choose a "
+"different status."
+msgstr ""
+"`proxy_pass` 到主机名时，任何解析失败（包括超时）都返回 **502**。只有 Lua 的 `content_by_lua*` "
+"处理器才能选择其他状态码。"
+
+#: ../../05-data-and-api.md:81 f8467c6cdc2244c782fd1c0fd115d3b0
+msgid ""
+"Cosocket failures surface as `nil, err`; translate them to a deliberate HTTP"
+" status in Lua (see [Conventions](07-conventions.md))."
+msgstr ""
+"cosocket 失败表现为 `nil, err`；在 Lua 中把它们转成特意选择的 HTTP "
+"状态码（见[开发规范](07-conventions.md)）。"
+
+#: ../../05-data-and-api.md:84 da330f38c6824f1fba27dfb26bd95709
+msgid "Worked Example: the DNS Error Contract"
+msgstr "完整示例：DNS 错误契约"
+
+#: ../../05-data-and-api.md:86 8fc6360e98e142548305bf64d697f86b
+msgid ""
+"The DNS failure contract between `ngx_resolver`, the HTTP cosocket, and "
+"upstream is verified against nginx 1.31.1 / ngx_lua 0.10.31rc5 in this tree."
+msgstr ""
+"`ngx_resolver`、HTTP cosocket 与上游之间的 DNS 失败契约，已对照本源码树中的 nginx 1.31.1 / "
+"ngx_lua 0.10.31rc5 核实。"
+
+#: ../../05-data-and-api.md:89 31122529d8414b1a9e21bec9c1adb3c2
+msgid "Lua error strings"
+msgstr "Lua 错误字符串"
+
+#: ../../05-data-and-api.md 76ed294403524f828cb6ac4bdff12704
+msgid "Condition"
+msgstr "条件"
+
+#: ../../05-data-and-api.md c3771d97c05046dc9f9380ca1043d7e1
+msgid "`err`"
+msgstr "`err`"
+
+#: ../../05-data-and-api.md eefa44242ac144caa6c87d50ed5163a4
+msgid "No resolver"
+msgstr "缺少 resolver"
+
+#: ../../05-data-and-api.md 874613935cb34834812a654e9a555141
+msgid "`no resolver defined to resolve \"<host>\"`"
+msgstr "`no resolver defined to resolve \"<host>\"`"
+
+#: ../../05-data-and-api.md ee004230bd4e4d3b8a666ddeb2e7102f
+msgid "`ngx_resolve_name` failed immediately"
+msgstr "`ngx_resolve_name` 立即失败"
+
+#: ../../05-data-and-api.md fca1ff62a6684387bee38488f89397b5
+msgid "`<host> could not be resolved`"
+msgstr "`<host> could not be resolved`"
+
+#: ../../05-data-and-api.md cc6ead5aa2ee4f028369b0761827358b
+msgid "Resolver finished with `ctx->state`"
+msgstr "解析器以 `ctx->state` 结束"
+
+#: ../../05-data-and-api.md a25dab4d4de54016b2223befd9354605
+msgid "`<host> could not be resolved (<state>: <ngx_resolver_strerror>)`"
+msgstr "`<host> could not be resolved (<state>: <ngx_resolver_strerror>)`"
+
+#: ../../05-data-and-api.md:97 c819a356608b4baa97a0697f7e240ded
+msgid ""
+"`ngx_resolver_strerror` maps 1-5 to `Format error`, `Server failure`, `Host "
+"not found`, `Unimplemented`, and `Operation refused`. `NGX_RESOLVE_TIMEDOUT`"
+" maps to `Operation timed out`."
+msgstr ""
+"`ngx_resolver_strerror` 将 1–5 映射为 `Format error`、`Server failure`、`Host not "
+"found`、`Unimplemented` 和 `Operation refused`。`NGX_RESOLVE_TIMEDOUT` 映射为 "
+"`Operation timed out`。"
+
+#: ../../05-data-and-api.md:101 43ccf893e7e0404cb71a19173e57e0a2
+msgid "Suggested HTTP status and retry"
+msgstr "建议的 HTTP 状态码与重试"
+
+#: ../../05-data-and-api.md cfccdc6e824244aaafd0d4e16df5cc6d
+msgid "Lua `err` contains"
+msgstr "Lua `err` 包含"
+
+#: ../../05-data-and-api.md 28eb0d03eaef4da0867fe16720a58946
+msgid "HTTP status"
+msgstr "HTTP 状态码"
+
+#: ../../05-data-and-api.md 6da590dba77f44c79263babf9976c094
+msgid "Retry in this request"
+msgstr "本次请求内重试"
+
+#: ../../05-data-and-api.md 929718fa78584457868238e77c361a9b
+msgid "`Operation timed out`"
+msgstr "`Operation timed out`"
+
+#: ../../05-data-and-api.md 7ea1c846d71241d4ae70c88e965a7058
+msgid "504 (Lua choice)"
+msgstr "504（Lua 自行选择）"
+
+#: ../../05-data-and-api.md 565f18ded3a04fda9cddb88283d30821
+#: 8874f8ee416748bcb924648ffbbf5f85
+msgid "Yes, bounded"
+msgstr "是，有上限"
+
+#: ../../05-data-and-api.md 137d4af54e26418398a4852de1685e8e
+msgid "`Server failure`"
+msgstr "`Server failure`"
+
+#: ../../05-data-and-api.md 7e8817e470514294bc1f0e5c175377f4
+#: 8365c6b5c4c7493689e69e2313fb248c 971bd3a4daae420c91e2bc4eda2c8b1f
+#: c4c694263f8b48b781f65a01fbe7b124 f4a8d6e6d9a649b8accc731cef0cf884
+msgid "502"
+msgstr "502"
+
+#: ../../05-data-and-api.md 1479af9b45fa44d1ace0ad14b338f710
+msgid "`Host not found`"
+msgstr "`Host not found`"
+
+#: ../../05-data-and-api.md ecfb63a27c4042dc9a58eaf49cc817aa
+msgid "No (NXDOMAIN)"
+msgstr "否（NXDOMAIN）"
+
+#: ../../05-data-and-api.md 1a764efe2121442f8e206e82bf06f350
+msgid "`Operation refused`"
+msgstr "`Operation refused`"
+
+#: ../../05-data-and-api.md 1f1b30cbcac64c0f98e51ba024ab29c7
+#: 47399a11c9f34ac6a5e24ae1a3316350
+msgid "No"
+msgstr "否"
+
+#: ../../05-data-and-api.md 2486e107d7444a8da50466cc5f57f727
+msgid "`Format error` / `Unimplemented`"
+msgstr "`Format error` / `Unimplemented`"
+
+#: ../../05-data-and-api.md b836080ee5b5479a89b281b3189df586
+msgid "`no resolver defined`"
+msgstr "`no resolver defined`"
+
+#: ../../05-data-and-api.md 4f0466cb348a43b39635121eaf9340f2
+msgid "500"
+msgstr "500"
+
+#: ../../05-data-and-api.md 6356198d3a6d4509b951e7168b3d531c
+msgid "No (config error)"
+msgstr "否（配置错误）"
+
+#: ../../05-data-and-api.md 5a3a34e1ae6e45999983f98072d882b3
+msgid "`could not be resolved` (no code)"
+msgstr "`could not be resolved`（不带代码）"
+
+#: ../../05-data-and-api.md 43135d74ff8948dc8f01137604985a96
+msgid "No, until cause known"
+msgstr "否，直到原因明确"
+
+#: ../../05-data-and-api.md:113 dbd4fd502b244899a05ef33c66a8c936
+msgid "Key internals"
+msgstr "关键内部机制"
+
+#: ../../05-data-and-api.md f5870d7e2a794f0c98f81da4e7a9c891
+msgid "Name"
+msgstr "名称"
+
+#: ../../05-data-and-api.md e0b568e93fa44ba780dd6c6200499073
+msgid "Trigger"
+msgstr "触发条件"
+
+#: ../../05-data-and-api.md 5587f5dc1cae4dd4b1dc74e0da77d0ce
+msgid "Consumer or handler"
+msgstr "消费者或处理器"
+
+#: ../../05-data-and-api.md 0ea3d5e2865e4cfe84d53f97e6216f50
+msgid "Notes"
+msgstr "说明"
+
+#: ../../05-data-and-api.md da92d9565bc347f1bdb7cd3a3e231ec1
+msgid "`ngx_resolve_name`"
+msgstr "`ngx_resolve_name`"
+
+#: ../../05-data-and-api.md 44c974867f4b481e9657dc4e4089bbba
+msgid "Hostname connect"
+msgstr "主机名连接"
+
+#: ../../05-data-and-api.md dcc941afe98d4d68892406bd550919fe
+msgid "Resolver, then cosocket or upstream handler"
+msgstr "先解析器，再由 cosocket 或上游处理器处理"
+
+#: ../../05-data-and-api.md 955bcd567c3e48e681ddda70efbf39f9
+msgid "Yields the Lua coroutine while in flight"
+msgstr "查询进行期间让出 Lua 协程"
+
+#: ../../05-data-and-api.md 31b8aaf24dfc412182a925026c5dae8a
+msgid "`ngx_resolver_timeout_handler`"
+msgstr "`ngx_resolver_timeout_handler`"
+
+#: ../../05-data-and-api.md a5e857ef55464b609b2cc7396a6ba425
+msgid "`ctx->timeout`"
+msgstr "`ctx->timeout`"
+
+#: ../../05-data-and-api.md 5624b3a22a944e3aa28608dcd75027a9
+msgid "The ctx handler"
+msgstr "ctx 处理器"
+
+#: ../../05-data-and-api.md dfe6723de683434b8f103ccd23d3e05a
+msgid "Sets `NGX_RESOLVE_TIMEDOUT`"
+msgstr "设置 `NGX_RESOLVE_TIMEDOUT`"
+
+#: ../../05-data-and-api.md f8b57e7215c043a4963f7cfc878b5861
+msgid "`ngx_resolver_resend`"
+msgstr "`ngx_resolver_resend`"
+
+#: ../../05-data-and-api.md 58115665cd5144ffb4d4fe7fc0a3abf9
+msgid "Node `expire` with waiters"
+msgstr "仍有等待者的节点 `expire`"
+
+#: ../../05-data-and-api.md 0fdcc3f8419240c0a8dde16d76da13f8
+msgid "Next nameserver"
+msgstr "下一个域名服务器"
+
+#: ../../05-data-and-api.md 41e606e845394a16a59ff839d5674b5c
+msgid "Not used for a received SERVFAIL"
+msgstr "不用于收到的 SERVFAIL"
+
+#: ../../05-data-and-api.md:121 df5999273935460b901924bcfd5d8391
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../05-data-and-api.md:123 162efc52334641ea83126eac06e7345b
+msgid "[lua-nginx-module Directive Reference](08-lua-nginx-module.md)"
+msgstr "[lua-nginx-module 指令参考](08-lua-nginx-module.md)"
+
+#: ../../05-data-and-api.md:124 fa59089426004bb3b3e19fdfa0a4a04f
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#: ../../05-data-and-api.md:125 10591271ce4c451aa5fac65e31e27691
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#~ msgid ""
+#~ "**Schema or migration source**: [NEEDS INPUT: no schema in this DNS note]"
+#~ msgstr "**模式或迁移来源**：[需要补充：本 DNS 笔记中没有模式]"
+
+#~ msgid "**Versioning rules**: [NEEDS INPUT: no separate DNS error API version]"
+#~ msgstr "**版本规则**：[需要补充：没有独立的 DNS 错误 API 版本]"
+
+#~ msgid "Data Model Overview"
+#~ msgstr "数据模型概览"
+
+#~ msgid "Entity or table"
+#~ msgstr "实体或表"
+
+#~ msgid "Purpose"
+#~ msgstr "用途"
+
+#~ msgid "Primary owner"
+#~ msgstr "主要属主"
+
+#~ msgid "`ngx_resolver_ctx_t`"
+#~ msgstr "`ngx_resolver_ctx_t`"
+
+#~ msgid "One waiter for a name lookup"
+#~ msgstr "一次名称查询的一个等待者"
+
+#~ msgid "`ngx_resolver`"
+#~ msgstr "`ngx_resolver`"
+
+#~ msgid "`state`, `name`, `timeout`, `handler`, `next`"
+#~ msgstr "`state`、`name`、`timeout`、`handler`、`next`"
+
+#~ msgid "`ngx_resolver_node_t`"
+#~ msgstr "`ngx_resolver_node_t`"
+
+#~ msgid "Shared in-flight or cached name"
+#~ msgstr "共享的进行中或已缓存的名称"
+
+#~ msgid "Name rbtree in `ngx_resolver_t`"
+#~ msgstr "`ngx_resolver_t` 中的名称红黑树"
+
+#~ msgid "`waiting` list, query id, `last_connection`"
+#~ msgstr "`waiting` 列表、查询 id、`last_connection`"
+
+#~ msgid "What `sock:connect` returns on DNS failure"
+#~ msgstr "DNS 失败时 `sock:connect` 返回的内容"
+
+#~ msgid "See the table below"
+#~ msgstr "见下表"
+
+#~ msgid "Storage and Persistence Rules"
+#~ msgstr "存储与持久化规则"
+
+#~ msgid ""
+#~ "**Primary storage**: In-process red-black trees on `ngx_resolver_t` "
+#~ "(`name_rbtree` and the resend and expire queues). Not a database."
+#~ msgstr "**主要存储**：`ngx_resolver_t` 上的进程内红黑树（`name_rbtree` 以及重发和过期队列）。不是数据库。"
+
+#~ msgid ""
+#~ "**Schema or migration source**: the noted \"schema\" is the stable `err` "
+#~ "substring / HTTP-status mapping in this page; the PKB's own schema is the "
+#~ "MyST frontmatter contract enforced by `scripts/pkb_frontmatter.py`."
+#~ msgstr ""
+#~ "**模式或迁移来源**：本页所述的“模式”即稳定的 `err` 子串 / HTTP 状态码映射；知识库自身的模式是由 "
+#~ "`scripts/pkb_frontmatter.py` 强制的 MyST frontmatter 契约。"
+
+#~ msgid ""
+#~ "**Consistency rule**: Waiters on one node share one query. A terminal RCODE "
+#~ "fails all of them with the same `ctx->state`."
+#~ msgstr "**一致性规则**：同一节点上的等待者共享一次查询。终态 RCODE 会让它们以相同的 `ctx->state` 全部失败。"
+
+#~ msgid ""
+#~ "**Retention or cleanup rule**: Success cache lifetime is `resolver` `valid=`"
+#~ " or the answer TTL. A failed RCODE frees the node. `resend_timeout` is 5 "
+#~ "seconds. `resolver_timeout` defaults to 30 seconds."
+#~ msgstr ""
+#~ "**保留或清理规则**：成功缓存的生命期为 `resolver` 的 `valid=` 或应答的 TTL。失败的 RCODE "
+#~ "会释放该节点。`resend_timeout` 为 5 秒。`resolver_timeout` 默认为 30 秒。"
+
+#~ msgid "External Interfaces"
+#~ msgstr "外部接口"
+
+#~ msgid "Interface"
+#~ msgstr "接口"
+
+#~ msgid "Path or endpoint"
+#~ msgstr "路径或端点"
+
+#~ msgid "Input"
+#~ msgstr "输入"
+
+#~ msgid "`sock:connect(host, port)`"
+#~ msgstr "`sock:connect(host, port)`"
+
+#~ msgid "Hostname or address literal"
+#~ msgstr "主机名或地址字面量"
+
+#~ msgid "`1`, or `nil` plus `err`"
+#~ msgstr "`1`，或 `nil` 加 `err`"
+
+#~ msgid "Address literals skip DNS"
+#~ msgstr "地址字面量跳过 DNS"
+
+#~ msgid "Upstream resolve"
+#~ msgstr "上游解析"
+
+#~ msgid "`proxy_pass` to a hostname"
+#~ msgstr "`proxy_pass` 到主机名"
+
+#~ msgid "Host from the upstream URL"
+#~ msgstr "上游 URL 中的主机"
+
+#~ msgid "HTTP 502, or 500 if `ngx_resolve_name` fails immediately"
+#~ msgstr "HTTP 502；如果 `ngx_resolve_name` 立即失败则为 500"
+
+#~ msgid "Timeout is still 502 here"
+#~ msgstr "此处超时仍是 502"
+
+#~ msgid "Resolver config"
+#~ msgstr "解析器配置"
+
+#~ msgid "`resolver` and `resolver_timeout`"
+#~ msgstr "`resolver` 和 `resolver_timeout`"
+
+#~ msgid "Nameserver list, `valid=`, `ipv6=`"
+#~ msgstr "域名服务器列表、`valid=`、`ipv6=`"
+
+#~ msgid "Resolver object on the location"
+#~ msgstr "location 上的解析器对象"
+
+#~ msgid "Required before any hostname connect"
+#~ msgstr "在任何主机名连接之前必需"
+
+#~ msgid "Internal Commands and Events"
+#~ msgstr "内部命令与事件"
+
+#~ msgid "Validation and Compatibility"
+#~ msgstr "校验与兼容性"
+
+#~ msgid ""
+#~ "**Validation rules**: Callers should branch on the stable substrings in the "
+#~ "table above. The timeout integer is `ETIMEDOUT` for the build host."
+#~ msgstr "**校验规则**：调用方应基于上表中稳定的子串进行分支判断。超时整数为构建主机的 `ETIMEDOUT`。"
+
+#~ msgid ""
+#~ "**Backward compatibility expectations**: These strings come from nginx "
+#~ "1.31.1 and ngx_lua 0.10.31rc5 in this tree."
+#~ msgstr "**向后兼容预期**：这些字符串来自本源码树中的 nginx 1.31.1 和 ngx_lua 0.10.31rc5。"
+
+#~ msgid ""
+#~ "**Versioning rules**: these strings and mappings are tied to the nginx "
+#~ "1.31.1 / ngx_lua 0.10.31rc5 sources in this tree; update the pinned versions"
+#~ " in [Overview](00-overview.md) when the documented code moves."
+#~ msgstr ""
+#~ "**版本规则**：这些字符串和映射与本源码树中的 nginx 1.31.1 / ngx_lua 0.10.31rc5 "
+#~ "源码绑定；当所记录的代码变化时，请更新[概述](00-overview.md)中的固定版本。"
+
+#~ msgid "[Architecture](02-architecture.md)"
+#~ msgstr "[架构](02-architecture.md)"

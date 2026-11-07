@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:29+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../appendix-02-glossary.md:27 401606c3a0734f31a672dd318ce34e27
+msgid "Appendix-02: Glossary"
+msgstr "附录-02：术语表"
+
+#: ../../appendix-02-glossary.md:31 c8452bf3e14145c1a098a8e42e515e8b
+msgid ""
+"Terms used across this knowledge base. DNS definitions match nginx 1.31.1 in"
+" this tree; Lua/LuaJIT definitions follow the [Lua and LuaJIT "
+"appendix](appendix-03-lua.md) and the [lua-nginx-module reference](08-lua-"
+"nginx-module.md)."
+msgstr ""
+"本知识库通用的术语。DNS 定义以本源码树中的 nginx 1.31.1 为准；Lua/LuaJIT 定义遵循[附录 Lua 与 "
+"LuaJIT](appendix-03-lua.md)和 [lua-nginx-module 参考](08-lua-nginx-module.md)。"
+
+#: ../../appendix-02-glossary.md:35 b82547101ac748b3aac6a2b1db85847e
+msgid "Terms"
+msgstr "术语"
+
+#: ../../appendix-02-glossary.md 771e9c055f284cdc8de31713eeb3a4be
+msgid "Term"
+msgstr "术语"
+
+#: ../../appendix-02-glossary.md dd4a15ce19b24ccbb6263b8a72509ad0
+msgid "Meaning"
+msgstr "含义"
+
+#: ../../appendix-02-glossary.md 67c925a3e3ed4c0497fcf6c504affc00
+msgid "Notes"
+msgstr "说明"
+
+#: ../../appendix-02-glossary.md 76da7aa086c34b27bb367524c6b98724
+msgid "OpenResty"
+msgstr "OpenResty"
+
+#: ../../appendix-02-glossary.md d355644b53174ab88bf6c3e970e6fe62
+msgid "Web platform embedding LuaJIT into Nginx"
+msgstr "把 LuaJIT 嵌入 Nginx 的 Web 平台"
+
+#: ../../appendix-02-glossary.md b322c7ce69424fe0a1cbd80344e649f3
+msgid "`lua-nginx-module` is its core; not an Nginx fork"
+msgstr "`lua-nginx-module` 是它的核心；不是 Nginx 的分支"
+
+#: ../../appendix-02-glossary.md 86233ae23cb64cc0b03d7cfb93b8ca7a
+msgid "LuaJIT"
+msgstr "LuaJIT"
+
+#: ../../appendix-02-glossary.md 93c2ca2eede743db97e87f49d70a02f0
+msgid "Lua 5.1-compatible VM with a tracing JIT"
+msgstr "兼容 Lua 5.1、带追踪式 JIT 的虚拟机"
+
+#: ../../appendix-02-glossary.md 9a710051669a459bbf0591690d61b2d8
+msgid "Used by OpenResty; FFI and `bit` extensions"
+msgstr "OpenResty 所用；包含 FFI 和 `bit` 扩展"
+
+#: ../../appendix-02-glossary.md 3c453382862144de83149251a0ec391f
+msgid "ngx_lua"
+msgstr "ngx_lua"
+
+#: ../../appendix-02-glossary.md 625cc9d2e06a4a50a788275524f0b50d
+msgid "`lua-nginx-module`; embeds Lua handlers into Nginx phases"
+msgstr "`lua-nginx-module`；把 Lua 处理器嵌入 Nginx 各阶段"
+
+#: ../../appendix-02-glossary.md dc54fd8ea1374add805c151c0a0e0a00
+msgid "Also called \"the Lua module\" of OpenResty"
+msgstr "也称作 OpenResty 的 “Lua 模块”"
+
+#: ../../appendix-02-glossary.md 074b2e0b686e4aabaf2b611b00cb0e67
+msgid "Nginx API for Lua"
+msgstr "Nginx API for Lua"
+
+#: ../../appendix-02-glossary.md 01bc03f4fb474ad6b26538165dc03bec
+msgid "The `ngx.*` surface from Lua"
+msgstr "从 Lua 看到的 `ngx.*` 接口"
+
+#: ../../appendix-02-glossary.md f84b212aec8249f695f25fbe8c8d8321
+msgid "`ngx.var`, `ngx.req.*`, `ngx.location.capture`, `ngx.say`, ..."
+msgstr "`ngx.var`、`ngx.req.*`、`ngx.location.capture`、`ngx.say` 等"
+
+#: ../../appendix-02-glossary.md abea46bbf4f641508ef16e8195539032
+msgid "Cosocket"
+msgstr "Cosocket"
+
+#: ../../appendix-02-glossary.md 19cecbf40c884c668810d74e063925fc
+msgid "Nonblocking socket driven by ngx_lua on the Nginx event loop"
+msgstr "由 ngx_lua 在 Nginx 事件循环上驱动的非阻塞套接字"
+
+#: ../../appendix-02-glossary.md f5e0b71fb096406d82edd860458d912d
+msgid "`ngx.socket.tcp():connect()`"
+msgstr "`ngx.socket.tcp():connect()`"
+
+#: ../../appendix-02-glossary.md a4286925b7014a38a75d69bfec289bfd
+msgid "Light thread"
+msgstr "Light thread（轻线程）"
+
+#: ../../appendix-02-glossary.md 3e639ba12fe84c6b9bb61ead08737715
+msgid "A coroutine scheduled by ngx_lua within a request"
+msgstr "由 ngx_lua 在请求内调度的协程"
+
+#: ../../appendix-02-glossary.md 9460a6b19bf84fb0b79a95bb105c9ecd
+msgid "`ngx.thread.spawn`; cooperative, not preemptive"
+msgstr "`ngx.thread.spawn`；协作式，非抢占式"
+
+#: ../../appendix-02-glossary.md 9d344911e1654a9dba41692a58af8e82
+msgid "`lua_shared_dict`"
+msgstr "`lua_shared_dict`"
+
+#: ../../appendix-02-glossary.md 32e14b56d7da4198b372abd9018119b5
+msgid "Per-worker shared memory dictionary"
+msgstr "按 worker 共享的内存字典"
+
+#: ../../appendix-02-glossary.md 7a76b9089c8b4597ab9c80c7014d0daa
+msgid "`ngx.shared.DICT`; no cross-worker sharing"
+msgstr "`ngx.shared.DICT`；不跨 worker 共享"
+
+#: ../../appendix-02-glossary.md 1d013aff54e94810a1378424c4e67eae
+msgid "Coroutine"
+msgstr "协程"
+
+#: ../../appendix-02-glossary.md e2dfb755584148bd93aed4d96367128b
+msgid "Cooperative execution context in Lua"
+msgstr "Lua 中的协作式执行上下文"
+
+#: ../../appendix-02-glossary.md 9f00b070b5c843ca8a46b44f3b0f31b4
+msgid "Yields explicitly; integrated with Nginx's event loop"
+msgstr "显式让出；与 Nginx 事件循环集成"
+
+#: ../../appendix-02-glossary.md 27eb676d4c2f49fdb2c077f8b204cff5
+msgid "Closure"
+msgstr "闭包"
+
+#: ../../appendix-02-glossary.md 2707ed88fa06491a97e260f3b8b1fdc3
+msgid "Function capturing enclosing locals"
+msgstr "捕获外层局部变量的函数"
+
+#: ../../appendix-02-glossary.md 3738ac4722b445a8961a2e88ed74a771
+msgid "Drives module state and worker-local caches"
+msgstr "承载模块状态与 worker 本地缓存"
+
+#: ../../appendix-02-glossary.md dd58f941c8bc44c6b6ed581aafb10ada
+msgid "Metatable / metamethod"
+msgstr "元表 / 元方法"
+
+#: ../../appendix-02-glossary.md 78bc71daba784a4dacf669c08e387195
+msgid "Customizes table/userdata operations"
+msgstr "定制表/userdata 的操作"
+
+#: ../../appendix-02-glossary.md 19a713a4572d4e7aadf720d246c64d37
+msgid "`__index`, `__newindex`, `__tostring`, `__gc`"
+msgstr "`__index`、`__newindex`、`__tostring`、`__gc`"
+
+#: ../../appendix-02-glossary.md be8b42419c1340beb60404eaf1bebb50
+msgid "FFI"
+msgstr "FFI"
+
+#: ../../appendix-02-glossary.md b493b9291b6747ce94172d369e937cdd
+msgid "LuaJIT foreign-function interface to C"
+msgstr "LuaJIT 面向 C 的外部函数接口"
+
+#: ../../appendix-02-glossary.md 8bffedc9a06b4309b13b3356e9ae5f47
+msgid "`ffi.*`; crosses the C boundary"
+msgstr "`ffi.*`；跨越 C 边界"
+
+#: ../../appendix-02-glossary.md 137421be43f843d38404c7a2ba034eee
+msgid "JIT trace"
+msgstr "JIT trace"
+
+#: ../../appendix-02-glossary.md b89e8fd713504dd298dab68ae07bd4e7
+msgid "Recorded hot execution path compiled to machine code"
+msgstr "被记录并编译为机器码的热执行路径"
+
+#: ../../appendix-02-glossary.md 57d40f6d84b04144ae1e4d5f8873bd56
+msgid "LuaJIT tracing JIT"
+msgstr "LuaJIT 追踪式 JIT"
+
+#: ../../appendix-02-glossary.md 1dd4d6e0b22148d3bf9290768ff4ef28
+msgid "`resolver`"
+msgstr "`resolver`"
+
+#: ../../appendix-02-glossary.md 2066d86771c54318a739de3763cd8398
+msgid "Directive that supplies nameserver addresses to `ngx_resolver`"
+msgstr "向 `ngx_resolver` 提供域名服务器地址的指令"
+
+#: ../../appendix-02-glossary.md b4ff42992e3f439998014c46e59945d8
+msgid "Required for hostname connects. No libc fallback."
+msgstr "主机名连接必需。没有 libc 回退。"
+
+#: ../../appendix-02-glossary.md 4e9b0d63d8ff44bf9030f0657723ef91
+msgid "`resolver_timeout`"
+msgstr "`resolver_timeout`"
+
+#: ../../appendix-02-glossary.md 65111c1b477a42cc962dec534258d764
+msgid "Absolute timeout for one resolve context"
+msgstr "单个解析上下文的绝对超时"
+
+#: ../../appendix-02-glossary.md 74d13ca7071c4a1191c42585714076cd
+msgid "Default 30000 ms. Distinct from the 5 second resend interval."
+msgstr "默认 30000 ms。与 5 秒重发间隔不同。"
+
+#: ../../appendix-02-glossary.md 31e756ce6fa047bf9bf8777c7a3a1ee1
+msgid "`valid=`"
+msgstr "`valid=`"
+
+#: ../../appendix-02-glossary.md 723fe55aac18401e8f90b51363f60a9a
+msgid "Override for how long a successful answer may be cached"
+msgstr "覆盖成功应答可被缓存的时长"
+
+#: ../../appendix-02-glossary.md 0b56770e64b646d69daac61be9d48342
+msgid ""
+"Omitted means the record TTL. Not a negative-cache TTL in the name rbtree."
+msgstr "省略时表示记录 TTL。不是名称红黑树中的负缓存 TTL。"
+
+#: ../../appendix-02-glossary.md 2fdf395d56474424a6d32532ab117ff9
+msgid "RCODE"
+msgstr "RCODE"
+
+#: ../../appendix-02-glossary.md aa4a55136e004b5c802e7da8fca8263d
+msgid "Low 4 bits of the DNS response flags"
+msgstr "DNS 响应标志的低 4 位"
+
+#: ../../appendix-02-glossary.md 9d127b10e8cf417d9055912b77786912
+msgid "0 NOERROR, 1 FORMERR, 2 SERVFAIL, 3 NXDOMAIN, 4 NOTIMP, 5 REFUSED"
+msgstr "0 NOERROR，1 FORMERR，2 SERVFAIL，3 NXDOMAIN，4 NOTIMP，5 REFUSED"
+
+#: ../../appendix-02-glossary.md 57ede54cf1f24d928d710915670e5652
+msgid "`NGX_RESOLVE_TIMEDOUT`"
+msgstr "`NGX_RESOLVE_TIMEDOUT`"
+
+#: ../../appendix-02-glossary.md ad23055542da4ee696f0d6b6bb8a40db
+msgid "`ctx->state` after `resolver_timeout`"
+msgstr "`resolver_timeout` 之后的 `ctx->state`"
+
+#: ../../appendix-02-glossary.md e60c9e5c5a2748458fa9f794e0b16f87
+msgid "Same value as `ETIMEDOUT`. String is `Operation timed out`."
+msgstr "与 `ETIMEDOUT` 相同。字符串为 `Operation timed out`。"
+
+#: ../../appendix-02-glossary.md dab8d0fc5daf46dfb9f5d3251fdd9487
+msgid "`rn->waiting`"
+msgstr "`rn->waiting`"
+
+#: ../../appendix-02-glossary.md a7976856eda744079b46775f028275bc
+msgid "Linked list of contexts waiting on one name"
+msgstr "等待同一个名称的上下文链表"
+
+#: ../../appendix-02-glossary.md b0a9497fdd1d4f2095c82c9eb09c192e
+msgid "All of them fail together on a terminal RCODE"
+msgstr "遇到终态 RCODE 时它们一起失败"
+
+#: ../../appendix-02-glossary.md 79b6d1d000f946caa8fdc3f988bcc1e0
+msgid "`NGX_RESOLVER_MAX_RECURSION`"
+msgstr "`NGX_RESOLVER_MAX_RECURSION`"
+
+#: ../../appendix-02-glossary.md 206a158e908242148eab7d78f49495d4
+msgid "CNAME chase limit"
+msgstr "CNAME 追踪限制"
+
+#: ../../appendix-02-glossary.md 1c1a87bfd5a94bc096befd5f6faef281
+msgid "50. The next chase fails with NXDOMAIN."
+msgstr "50。再往下追踪会以 NXDOMAIN 失败。"
+
+#: ../../appendix-02-glossary.md 7ba588b71b0c423994358ad993994545
+msgid "Nameserver rotation"
+msgstr "域名服务器轮换"
+
+#: ../../appendix-02-glossary.md b3a32522fafc4a38bafdbac1f25208c7
+msgid "Next `resolver` address after a send failure or a resend timeout"
+msgstr "发送失败或重发超时后的下一个 `resolver` 地址"
+
+#: ../../appendix-02-glossary.md ea1b5317b9b5442e84cc37d60bf0458e
+msgid "Not triggered by SERVFAIL"
+msgstr "不由 SERVFAIL 触发"
+
+#: ../../appendix-02-glossary.md 44257a67330d446993d79ac281eeb893
+msgid "SNI"
+msgstr "SNI"
+
+#: ../../appendix-02-glossary.md 41df1201269e4086911c6d4601475f0a
+msgid "TLS server name sent during handshake"
+msgstr "握手期间发送的 TLS 服务器名称"
+
+#: ../../appendix-02-glossary.md a11400bf83094ba198673e8edb820a1f
+msgid "Must stay the original hostname when connecting to a resolved IP"
+msgstr "当连接解析出的 IP 时必须保留原始主机名"
+
+#: ../../appendix-02-glossary.md:61 e3573d000e634138bac31739f783b0e1
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../appendix-02-glossary.md:63 f6fb294d984c4a0faf860745433b17c2
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../appendix-02-glossary.md:64 647db64f56e54947b27d258f54a0efe6
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#: ../../appendix-02-glossary.md:65 21ee73bb69e145b6ab2843c6a40c180a
+msgid "[Lua and LuaJIT Key Points](appendix-03-lua.md)"
+msgstr "[Lua 与 LuaJIT 要点](appendix-03-lua.md)"
+
+#: ../../appendix-02-glossary.md:66 a0d5161bbc4442839e36062a103cc938
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#~ msgid ""
+#~ "Terms for the HTTP DNS-failure path. Definitions match nginx 1.31.1 in this "
+#~ "tree."
+#~ msgstr "HTTP DNS 失败路径相关术语。定义与本源码树中的 nginx 1.31.1 一致。"

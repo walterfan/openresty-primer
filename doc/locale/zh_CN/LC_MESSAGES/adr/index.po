@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 21:44+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../adr/index.md:26 904a8ca004d54442a984b4510187aed5
+msgid "Architecture Decision Records (ADR)"
+msgstr "架构决策记录（ADR）"
+
+#: ../../adr/index.md:28 50b58ff86c8242928b99d2106ae32381
+msgid ""
+"This directory contains Architecture Decision Records (ADRs) documenting "
+"significant architectural decisions made in this project."
+msgstr "本目录包含记录本项目重大架构决策的架构决策记录（ADR）。"
+
+#: ../../adr/index.md:30 a6b591a229d04bd98ab109e84269f48c
+msgid "What is an ADR?"
+msgstr "什么是 ADR？"
+
+#: ../../adr/index.md:32 645c5cb598474451b4a442613847fee5
+msgid ""
+"An Architecture Decision Record (ADR) is a document that captures an "
+"important architectural decision made along with its context and "
+"consequences."
+msgstr "架构决策记录（ADR）是一种记录重要架构决策及其上下文和后果的文档。"
+
+#: ../../adr/index.md:34 d8cf969415264ac0942a3d33b3e1ab39
+msgid "ADR Format"
+msgstr "ADR 格式"
+
+#: ../../adr/index.md:36 6e403d6fe4624308a488be5480d470c6
+msgid "Each ADR follows this structure:"
+msgstr "每个 ADR 遵循如下结构："
+
+#: ../../adr/index.md:38 cb37138c99784500a1dd0fa140efa44c
+msgid "**Status**: Proposed, Accepted, Deprecated, or Superseded"
+msgstr "**状态**：提议（Proposed）、已接受（Accepted）、已废弃（Deprecated）或已被取代（Superseded）"
+
+#: ../../adr/index.md:39 6177618df0c140e3b3a29ccba93cef19
+msgid "**Context**: The circumstances and constraints"
+msgstr "**上下文**：环境情况和约束"
+
+#: ../../adr/index.md:40 23a280bc8b864ccf81ced8cb132b65f9
+msgid "**Decision**: What was decided"
+msgstr "**决策**：决定了什么"
+
+#: ../../adr/index.md:41 bc25b1fe0f7a43488006f3386db6c60d
+msgid "**Alternatives**: Other options considered"
+msgstr "**备选方案**：考虑过的其他选项"
+
+#: ../../adr/index.md:42 3bb34b11fb184f9c8b045d63b059883e
+msgid ""
+"**Consequences**: The results of the decision (positive, negative, neutral)"
+msgstr "**后果**：决策带来的结果（正面、负面、中性）"
+
+#: ../../adr/index.md:44 06b7d787ea834517825d9b85aa8cee01
+msgid "How to Create an ADR"
+msgstr "如何创建 ADR"
+
+#: ../../adr/index.md:46 cb8ded6b3f5f442a9979323f18f37c5c
+msgid "Use the `/PKB-adr` command:"
+msgstr "使用 `/PKB-adr` 命令："
+
+#: ../../adr/index.md:52 ae943bb90b374bc3a2efbb3723b9f113
+msgid "ADR List"
+msgstr "ADR 列表"
+
+#: ../../adr/index.md:60 081d39525f40490cb0ed33c6e96fd321
+msgid "Index by Status"
+msgstr "按状态索引"
+
+#: ../../adr/index.md:62 b70efed80fdd4638bb9cf8863cf09594
+msgid "Accepted"
+msgstr "已接受"
+
+#: ../../adr/index.md:66 515e226091bd4770ac5b4cc407b53508
+msgid "Proposed"
+msgstr "提议"
+
+#: ../../adr/index.md:70 b7150e108263419991b520a86166162d
+msgid "Deprecated"
+msgstr "已废弃"
+
+#: ../../adr/index.md:74 4d1a28916e0a4ba480d62583b7e157bc
+msgid "References"
+msgstr "参考"
+
+#: ../../adr/index.md:76 94315b882af74eb0b35ea73b485672fa
+msgid "[ADR GitHub Organization](https://adr.github.io/)"
+msgstr "[ADR GitHub 组织](https://adr.github.io/)"
+
+#: ../../adr/index.md:77 6f85eca8028349cab9e9c21545ca8135
+msgid ""
+"[Documenting Architecture "
+"Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-"
+"decisions)"
+msgstr ""
+"[记录架构决策](https://cognitect.com/blog/2011/11/15/documenting-architecture-"
+"decisions)"

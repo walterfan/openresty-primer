@@ -1,0 +1,403 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-05 23:23+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../12-document.md:25 a7ba5a3159f34970812f7ad541f3be29
+msgid "12. Documentation Process"
+msgstr "12. 文档流程"
+
+#: ../../12-document.md:29 709fd1b8cf6147fcbe17211a52c57687
+msgid ""
+"**Template note**: This page should describe how the PKB itself is created, "
+"updated, translated, and published for the specific repo."
+msgstr "**模板说明**：本页应描述本仓库的知识库是如何创建、更新、翻译和发布的。"
+
+#: ../../12-document.md:31 fedb9c58c9914eec8fe6638bf4b6e015
+msgid "Purpose"
+msgstr "目的"
+
+#: ../../12-document.md:33 de513b51f610488bb1a2470e5f46a16e
+msgid ""
+"Explain where the PKB lives, what stack publishes it, and how humans plus AI"
+" collaborate to keep it current."
+msgstr "说明知识库所在位置、由什么技术栈发布，以及人类与 AI 如何协作使其保持最新。"
+
+#: ../../12-document.md:35 2ad1efd5c1c545c1b7472bfd050b74a6
+msgid "Source of Truth"
+msgstr "事实来源"
+
+#: ../../12-document.md:37 520730f083e74a0bb79d3b9d1e0bd83a
+msgid "**English source pages**: `doc/*.md`"
+msgstr "**英文源页面**：`doc/*.md`"
+
+#: ../../12-document.md:38 712ae68897ec462a8d5ba3e61757d219
+msgid "**Navigation root**: `doc/index.md`"
+msgstr "**导航根**：`doc/index.md`"
+
+#: ../../12-document.md:39 8a8985f9c9ff4c17b021131774b03d26
+msgid "**Translation catalogs**: `locale/zh_CN/LC_MESSAGES/`"
+msgstr "**翻译目录**：`locale/zh_CN/LC_MESSAGES/`"
+
+#: ../../12-document.md:40 7e671f01b4e5457fb0e7223b45f88bdf
+msgid "**Published output**: `doc/_build/` after `make html`"
+msgstr "**发布输出**：`make html` 后的 `doc/_build/`"
+
+#: ../../12-document.md:42 d68b618b94004dacb5304edd6e077df1
+msgid "Ingested Sources"
+msgstr "摄取的来源"
+
+#: ../../12-document.md 261eee38901d4d79bafc3971aaf4627e
+msgid "Date"
+msgstr "日期"
+
+#: ../../12-document.md 4953c0af68464d1cb967f4e30048672b
+msgid "Source"
+msgstr "来源"
+
+#: ../../12-document.md 5856289861fe4e2dafb7c78bd2b0a05a
+msgid "Pages updated"
+msgstr "更新的页面"
+
+#: ../../12-document.md 807c2a2a6eef46bab9490654a5a4ed26
+msgid "2026-10-06"
+msgstr "2026-10-06"
+
+#: ../../12-document.md c45037e6fec94d19bc274c524421f9d6
+msgid "`~/Downloads/OpenResty HTTP请求中DNS解析失败处理完整解析与建议.md`"
+msgstr "`~/Downloads/OpenResty HTTP请求中DNS解析失败处理完整解析与建议.md`"
+
+#: ../../12-document.md ddc60539285047abab7d76810446b23f
+msgid ""
+"`02-architecture.md`, `04-repo-map.md`, `05-data-and-api.md`, "
+"`06-workflows.md`, `07-conventions.md`, `10-runbook.md`, "
+"`11-observability.md`, `appendix-01-faq.md`, `appendix-02-glossary.md`"
+msgstr ""
+"`02-architecture.md`、`04-repo-map.md`、`05-data-and-"
+"api.md`、`06-workflows.md`、`07-conventions.md`、`10-runbook.md`、`11-observability.md`、`appendix-01-faq.md`、`appendix-02-glossary.md`"
+
+#: ../../12-document.md:48 ad89d0cbb8344da58e9b57fe3791b008
+msgid ""
+"That note was checked against `openresty/bundle/nginx-1.31.1` and "
+"`openresty/bundle/ngx_lua-0.10.31rc5`. Corrections are recorded in "
+"[Workflows](06-workflows.md): CNAME recursion stops at 50, and SERVFAIL does"
+" not rotate nameservers."
+msgstr ""
+"该笔记已与 `openresty/bundle/nginx-1.31.1` 和 "
+"`openresty/bundle/ngx_lua-0.10.31rc5` 核对。修正记录在[工作流](06-workflows.md)中：CNAME "
+"递归在 50 处停止，SERVFAIL 不轮换域名服务器。"
+
+#: ../../12-document.md:50 4f533462f15e4386949e9db7066fce32
+msgid "Advisory Update Loop"
+msgstr "建议式更新循环"
+
+#: ../../12-document.md:52 f717f777fa7e443d87ce831529610d38
+msgid "Describe the current update loop:"
+msgstr "描述当前的更新循环："
+
+#: ../../12-document.md:54 c5e83732f4654f00af343c33a8446c9f
+msgid "English sources or config (`doc/*.md`, `conf.py`, `scripts/`) change."
+msgstr "英文源码或配置（`doc/*.md`、`conf.py`、`scripts/`）发生变化。"
+
+#: ../../12-document.md:55 39670f82339c414785ddfb849f882e59
+msgid ""
+"`scripts/check_pkb_staleness.py` flags likely affected pages (zero tokens)."
+msgstr "`scripts/check_pkb_staleness.py` 标记可能受影响的页面（零 token）。"
+
+#: ../../12-document.md:56 b8117bd6923645bca681b65de6948628
+msgid "A human decides which English pages to refresh."
+msgstr "由人决定刷新哪些英文页面。"
+
+#: ../../12-document.md:57 efd4a6802c344338aac5862d73aa45d2
+msgid "An AI applies targeted updates (Level 1 mechanic + Level 2 synthesis)."
+msgstr "AI 应用有针对性的更新（Level 1 机械式 + Level 2 综合）。"
+
+#: ../../12-document.md:58 6bc00bc82022414b933e9ab9d209f103
+msgid "A human reviews before `make publish`."
+msgstr "在 `make publish` 之前由人评审。"
+
+#: ../../12-document.md:60 4d5a827bfbe8410f9bc3bcdf15c57a16
+msgid "Cost-Aware Update Strategy"
+msgstr "成本感知的更新策略"
+
+#: ../../12-document.md 08ed1c6dd65f46389c78f490740a6264
+msgid "Strategy"
+msgstr "策略"
+
+#: ../../12-document.md 16a8db9cd12a47c2af1fb4d88fc577fb
+msgid "Guidance"
+msgstr "指引"
+
+#: ../../12-document.md 7e0d69ebaaeb4d72bcc77c8710d11322
+msgid "Rule first, LLM second"
+msgstr "规则优先，LLM 其次"
+
+#: ../../12-document.md 1803c37c5ccb45e482439a12063b8a3c
+msgid "`scripts/check_pkb_staleness.py` before touching the LLM"
+msgstr "在动用 LLM 之前先跑 `scripts/check_pkb_staleness.py`"
+
+#: ../../12-document.md be35ae71d3fc4ad4832f67f27656d344
+msgid "Minimal context"
+msgstr "最小上下文"
+
+#: ../../12-document.md 0770c2db62cb43c68c84249e94d8c377
+msgid ""
+"only the git diff, affected page(s), and the relevant source/config snippets"
+msgstr "只提供 git diff、受影响的页面以及相关的源码/配置片段"
+
+#: ../../12-document.md e8837f1ab0594274b5c0159554bf9779
+msgid "Tiered updates"
+msgstr "分级更新"
+
+#: ../../12-document.md e979c2aa085141d2b34c9e3c7593c76b
+msgid ""
+"L1 = mechanical/zero-token; L2 = LLM-assisted synthesis; L3 = human-led "
+"rationale (ADR, product intent)"
+msgstr "L1 = 机械式/零 token；L2 = LLM 辅助综合；L3 = 人主导的决策依据（ADR、产品意图）"
+
+#: ../../12-document.md f79e7e28c17a4b4383ad5936c71f5a19
+msgid "Batch instead of thrash"
+msgstr "批量而非频繁改动"
+
+#: ../../12-document.md 8969e7fe61cb465ab11f6b4dfe337f2d
+msgid "refresh per PR or per docs release, not after every commit"
+msgstr "按 PR 或每版文档发布刷新，而不是每次提交后都刷新"
+
+#: ../../12-document.md:69 1d48fbee64be4c1cbd7aaea908ed87c3
+msgid "Deterministic Script Toolbox"
+msgstr "确定性脚本工具箱"
+
+#: ../../12-document.md:71 5b26d38de77b47a086979be747b3ccc9
+msgid "`scripts/init_pkb.sh` for PKB skeleton initialization"
+msgstr "`scripts/init_pkb.sh` 用于知识库骨架初始化"
+
+#: ../../12-document.md:72 eff704c804fb4875bbab2433689743a4
+msgid "`scripts/gen_repo_map.sh` for repo-map tree refresh"
+msgstr "`scripts/gen_repo_map.sh` 用于刷新仓库地图目录树"
+
+#: ../../12-document.md:73 ca8db12628d54047aad5c3ff91402abb
+msgid "`scripts/gen_tech_stack.py` for manifest-based version extraction"
+msgstr "`scripts/gen_tech_stack.py` 用于基于清单的版本提取"
+
+#: ../../12-document.md:74 b9c361b6c06c48f9865a681d7f541f4d
+msgid "`scripts/gen_index.py` for `index.md` regeneration"
+msgstr "`scripts/gen_index.py` 用于重新生成 `index.md`"
+
+#: ../../12-document.md:75 136d21fe503a458495f67e8072b20d11
+msgid "`scripts/check_pkb_staleness.py` for freshness checks"
+msgstr "`scripts/check_pkb_staleness.py` 用于时效性检查"
+
+#: ../../12-document.md:76 c676247d2e6844fe87b606a2ad090a70
+msgid ""
+"`scripts/check_translation_sync.py` for `zh_CN` translation sync checks"
+msgstr "`scripts/check_translation_sync.py` 用于 `zh_CN` 翻译同步检查"
+
+#: ../../12-document.md:77 8e0c07c419a7441598993306e3bac33e
+msgid "`scripts/update_doc_level1.sh` for orchestrated zero-token refreshes"
+msgstr "`scripts/update_doc_level1.sh` 用于编排零 token 的机械刷新"
+
+#: ../../12-document.md:78 911ac8ce0f4f4c869c6b06bbfa732455
+msgid ""
+"`scripts/extract_api_signatures.py` for Tauri command / REST signature "
+"extraction"
+msgstr "`scripts/extract_api_signatures.py` 用于 Tauri 命令 / REST 签名提取"
+
+#: ../../12-document.md:79 c3194fd346ef4e8ea0f4760de980f88c
+msgid "`scripts/gen_changelog.sh` for change-log drafts"
+msgstr "`scripts/gen_changelog.sh` 用于变更日志草稿"
+
+#: ../../12-document.md:80 294d4b9b20f243a482a8896dc47bc03e
+msgid "`scripts/gen_dep_graph.py` for static dependency Mermaid diagrams"
+msgstr "`scripts/gen_dep_graph.py` 用于静态依赖 Mermaid 图"
+
+#: ../../12-document.md:82 8bb1d1b783294a3bb822907409e47b24
+msgid "When documenting the toolbox, make the local rules explicit:"
+msgstr "在记录工具箱时，明确本地规则："
+
+#: ../../12-document.md:84 a6d9c2cd105349e8b3fc149becbd05b9
+msgid "script artifacts go to `_generated/` by default"
+msgstr "脚本产物默认写入 `_generated/`"
+
+#: ../../12-document.md:85 a506cdb96e974669a44eb5711711ce22
+msgid "generated files begin with `Auto-generated by ...`"
+msgstr "生成文件以 `Auto-generated by ...` 开头"
+
+#: ../../12-document.md:86 1639ffce4ca64ab39ec1ea4899718be3
+msgid "scripts do not overwrite human-maintained PKB pages"
+msgstr "脚本不覆盖由人维护的知识库页面"
+
+#: ../../12-document.md:87 2bdea11f90a04d479ecd272dc0c7ae13
+msgid "any inferred interpretation remains marked as `[NEEDS INPUT: ...]`"
+msgstr "任何推断的解释都保留为 `[NEEDS INPUT: ...]` 标记"
+
+#: ../../12-document.md:89 495171273cfe4aa697362a07c75a3728
+msgid "Three-Level Update Policy"
+msgstr "三级更新策略"
+
+#: ../../12-document.md:91 c9dd38e51bf34c6d96274dc81649446a
+msgid "**Level 1 - Automatic**: [mechanical updates that cost zero tokens]"
+msgstr "**Level 1 - 自动**：[零 token 成本的机械更新]"
+
+#: ../../12-document.md:92 f4cfa5a6275c40c69b5df904feb33039
+msgid "**Level 2 - LLM-assisted**: [targeted synthesis tasks]"
+msgstr "**Level 2 - LLM 辅助**：[有针对性的综合任务]"
+
+#: ../../12-document.md:93 8ab4c0f173894886aa5d2b1505181aea
+msgid ""
+"**Level 3 - Human-led**: [ADR, rationale, or product-direction content]"
+msgstr "**Level 3 - 人主导**：[ADR、决策依据或产品方向内容]"
+
+#: ../../12-document.md:95 509d45feddd547bab156d506efee66f4
+msgid ""
+"For Level 2 handoff, explain exactly which `_generated/` artifacts are fed "
+"into the LLM and which published PKB pages are in scope."
+msgstr "对于 Level 2 交接，请明确说明哪些 `_generated/` 产物会喂给 LLM，以及哪些已发布的知识库页面在范围内。"
+
+#: ../../12-document.md:97 8e47d7dca5984b63b4494bc99d233394
+msgid "Translation and Build"
+msgstr "翻译与构建"
+
+#: ../../12-document.md:105 3c4e960eb2ef4c2faed016d8378bc0fc
+msgid "If bilingual:"
+msgstr "如果是双语："
+
+#: ../../12-document.md:114 c904e2d4b1374a89b8d200123c1996f2
+msgid "Suggested Checklist"
+msgstr "建议的检查清单"
+
+#: ../../12-document.md:116 0eb9286ef0a74440bc6b5288816ad8a8
+msgid "Update the English source page first."
+msgstr "先更新英文源页面。"
+
+#: ../../12-document.md:117 01566c194b7640d7a35cafd28868f267
+msgid ""
+"Run the relevant deterministic scripts so `_generated/` contains fresh "
+"sidecar artifacts."
+msgstr "运行相关的确定性脚本，使 `_generated/` 包含最新的侧车产物。"
+
+#: ../../12-document.md:118 be4f1f5409ef41998d6e9a24495dc24f
+msgid ""
+"Resolve or keep any `[NEEDS INPUT: ...]` markers deliberately; do not let "
+"the script invent rationale."
+msgstr "有意地解决或保留 `[NEEDS INPUT: ...]` 标记；不要让脚本编造理由。"
+
+#: ../../12-document.md:119 eceacee098cd4d48b9b08b05f94abc84
+msgid "Refresh metadata footer."
+msgstr "刷新元数据页脚。"
+
+#: ../../12-document.md:120 5eac64375747471fb69947189d8bb95e
+msgid "Refresh translations if the English wording changed."
+msgstr "如果英文措辞有变化，则刷新翻译。"
+
+#: ../../12-document.md:121 06b6c1011a124e0295905bdcfaf1c5e5
+msgid "Rebuild the docs."
+msgstr "重新构建文档。"
+
+#: ../../12-document.md:122 fa6a51cdfdf34fb0ae05d0a65db2ff1a
+msgid "Verify links, diagrams, and navigation."
+msgstr "验证链接、图表和导航。"
+
+#: ../../12-document.md:124 a949f4645a754625b3fac9f5866a6c48
+msgid "Common Mistakes"
+msgstr "常见错误"
+
+#: ../../12-document.md f403b65eff64460ead1f97505dce6b5b
+msgid "Mistake"
+msgstr "错误"
+
+#: ../../12-document.md 57dd27be10b24b8f9aad805e2d573643
+msgid "Result"
+msgstr "结果"
+
+#: ../../12-document.md c9dd8cad0d5f46c581cb87efe3942bc7
+msgid "Fix"
+msgstr "解决办法"
+
+#: ../../12-document.md 05d501dde5ab41a280aecfeb7fb21216
+msgid "Adding a page without a toctree entry"
+msgstr "添加页面但不登记到目录树"
+
+#: ../../12-document.md a71f22cddf3343669f560f85552d7c21
+msgid "The page renders warnings and is missing from navigation"
+msgstr "该页面会产生警告且不出现在导航中"
+
+#: ../../12-document.md 068d37a417984182b6cd9ce83472b257
+msgid "Register it in `index.md` and in `scripts/gen_index.py` `SECTIONS`"
+msgstr "把它登记到 `index.md` 和 `scripts/gen_index.py` 的 `SECTIONS` 中"
+
+#: ../../12-document.md 08b0d940aa154a84b00990d5fa4cd9f7
+msgid "Running `sphinx-intl update -p .` (wrong pot-dir)"
+msgstr "运行 `sphinx-intl update -p .`（pot-dir 参数错误）"
+
+#: ../../12-document.md 498a609a9a6e4cf7b729d7b16b624c11
+msgid "It scans the whole tree and pollutes `locale/` with stray catalogs"
+msgstr "它会扫描整棵目录树，并在 `locale/` 中留下杂散的目录"
+
+#: ../../12-document.md 664628788a9a49d39d145b583fb8ad34
+msgid ""
+"Use `--pot-dir _build/gettext --locale-dir locale -l zh_CN`; delete any "
+"stray `locale/.../_build` and `.venv` catalogs"
+msgstr ""
+"改用 `--pot-dir _build/gettext --locale-dir locale -l zh_CN`；删除 "
+"`locale/.../_build` 和 `.venv` 下杂散的目录"
+
+#: ../../12-document.md:131 adfda40878a44a10a2dbb60dd2cfef63
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../12-document.md:133 54bce5398f124f0fbfa5e64d3c9cb3ed
+msgid "[Testing](09-testing.md)"
+msgstr "[测试](09-testing.md)"
+
+#: ../../12-document.md:134 c4d8438ad0594786a8c487484185c487
+msgid "[AI Guide](ai-guide.md)"
+msgstr "[AI 指南](ai-guide.md)"
+
+#~ msgid "[Source or config changes land]"
+#~ msgstr "[源码或配置变更落地]"
+
+#~ msgid "[Rule-based freshness checker identifies likely affected pages]"
+#~ msgstr "[基于规则的时效性检查器识别可能受影响的页面]"
+
+#~ msgid "[AI assists with targeted updates]"
+#~ msgstr "[AI 辅助进行有针对性的更新]"
+
+#~ msgid "[checker or script used first]"
+#~ msgstr "[首先使用的检查器或脚本]"
+
+#~ msgid "[what is fed to the model]"
+#~ msgstr "[喂给模型的内容]"
+
+#~ msgid "[how Level 1, 2, and 3 are classified]"
+#~ msgstr "[Level 1、2、3 如何分类]"
+
+#~ msgid "[PR, sprint, or release cadence]"
+#~ msgstr "[PR、冲刺或发布节奏]"
+
+#~ msgid "[Mistake 1]"
+#~ msgstr "[错误 1]"
+
+#~ msgid "[Result]"
+#~ msgstr "[结果]"
+
+#~ msgid "[Fix]"
+#~ msgstr "[解决办法]"
+
+#~ msgid "[Mistake 2]"
+#~ msgstr "[错误 2]"

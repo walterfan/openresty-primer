@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, OpenResty Primer contributors
+# This file is distributed under the same license as the openresty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openresty\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:29+0800\n"
+"PO-Revision-Date: 2026-11-05 22:20+0000\n"
+"Last-Translator: OpenResty Primer contributors\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../appendix-01-faq.md:27 85eee0bbf9a641f1ba166206a8be05b7
+msgid "Appendix-01: FAQ"
+msgstr "附录-01：常见问题"
+
+#: ../../appendix-01-faq.md:31 46d54bf9ee834ac98c80a3f3487705ab
+msgid ""
+"Frequently asked questions when writing or operating OpenResty/ngx_lua. The "
+"DNS answers are verified against nginx 1.31.1 / ngx_lua 0.10.31rc5 in this "
+"tree."
+msgstr ""
+"编写或运维 OpenResty/ngx_lua 时的常见问题。DNS 相关的回答已对照本源码树中的 nginx 1.31.1 / ngx_lua "
+"0.10.31rc5 核实。"
+
+#: ../../appendix-01-faq.md:34 6bba34f36a33423b845b617c39541d20
+msgid "Language and Runtime"
+msgstr "语言与运行时"
+
+#: ../../appendix-01-faq.md:36 bcb52c03cd57495a9d68bc5679abdda1
+msgid "Is OpenResty a fork of Nginx?"
+msgstr "OpenResty 是 Nginx 的分支吗？"
+
+#: ../../appendix-01-faq.md:38 15dfe2a8d3064bc6820ae46d931e7931
+msgid ""
+"No. OpenResty is a higher-level platform that bundles an enhanced Nginx "
+"core, an enhanced LuaJIT, vetted Lua libraries, and third-party C modules. "
+"Standard Nginx configuration knowledge carries over."
+msgstr ""
+"不是。OpenResty 是一个更高层的平台，打包了增强版 Nginx 内核、增强版 LuaJIT、经过甄选的 Lua 库和第三方 C 模块。标准的 "
+"Nginx 配置知识可以沿用。"
+
+#: ../../appendix-01-faq.md:42 0b6a9e7799e042179773d99e32ee7c5f
+msgid "Can I use any Lua 5.x code?"
+msgstr "我能直接用任意 Lua 5.x 代码吗？"
+
+#: ../../appendix-01-faq.md:44 af2d83e3ab8143829a882f2d872aded1
+msgid ""
+"OpenResty runs LuaJIT 2.1 with Lua 5.1 semantics (since ngx_lua v0.10.16 the"
+" PUC-Rio interpreter is gone). Lua 5.3/5.4 features (native bitwise "
+"operators, `//`, integer division, `table.pack`, and later library names) "
+"are not portable. See [appendix-03-lua](appendix-03-lua.md)."
+msgstr ""
+"OpenResty 运行 LuaJIT 2.1，语义为 Lua 5.1（自 ngx_lua v0.10.16 起 PUC-Rio 解释器已移除）。Lua"
+" 5.3/5.4 的特性（原生按位运算符、`//`、整除、`table.pack` 以及更新的库函数名）不可移植。参见[附录-03 "
+"Lua](appendix-03-lua.md)。"
+
+#: ../../appendix-01-faq.md:49 6c72d5eb69af4b4f90a08febe8ed4fed
+msgid "Why should I avoid Lua globals?"
+msgstr "为什么应避免 Lua 全局变量？"
+
+#: ../../appendix-01-faq.md:51 64cb6e5108e04459b693e6d3e29c893e
+msgid ""
+"In ngx_lua, globals are per-request and cleared at the end of the request, "
+"so module state must live in module tables or upvalues - and accidental "
+"globals from typos are a common source of bugs. Use `local` everywhere. See "
+"[Conventions](07-conventions.md)."
+msgstr ""
+"在 ngx_lua 中，全局变量按请求隔离并在请求结束时清空，因此模块状态必须放在模块表或 upvalue 中——而拼写错误产生的意外全局变量是常见 "
+"bug 来源。请处处使用 `local`。参见[开发规范](07-conventions.md)。"
+
+#: ../../appendix-01-faq.md:56 5942a05995034161b007ed8fbb93b6ec
+msgid "How do I share state between requests?"
+msgstr "如何在请求之间共享状态？"
+
+#: ../../appendix-01-faq.md:58 4fe0901efef84bf3b84eb3c53daeb51c
+msgid ""
+"Within one worker: `lua_shared_dict` for named shared memory, or module-"
+"level tables/upvalues (which persist for the worker lifetime). There is no "
+"direct sharing across workers; use a backend (Redis, shared dict, etc.) when"
+" cross-worker state is needed."
+msgstr ""
+"在同一个 worker 内：用 `lua_shared_dict` 做命名共享内存，或用模块级表/upvalue（在 worker "
+"生命周期内持续存在）。worker 之间没有直接共享；需要跨 worker 状态时使用后端（Redis、共享字典等）。"
+
+#: ../../appendix-01-faq.md:63 93c3f946c9984c8f8fa7e11598994d34
+msgid "Cosockets and I/O"
+msgstr "Cosocket 与 I/O"
+
+#: ../../appendix-01-faq.md:65 8244349036c04eb28f24def9e19cb774
+msgid "Why is my cosocket connect \"blocking\"?"
+msgstr "为什么我的 cosocket connect “阻塞”了？"
+
+#: ../../appendix-01-faq.md:67 4ff766866b9243bb9aafe76a83fbacab
+msgid ""
+"It is not blocking the event loop - `ngx.socket.tcp()` is 100% non-blocking "
+"and yields the coroutine. If the worker appears stalled, check for non-"
+"cosocket blocking calls (`os.execute`, `io.*`, plain LuaSocket) in the "
+"request path."
+msgstr ""
+"它并没有阻塞事件循环——`ngx.socket.tcp()` 是 100% 非阻塞的，会让出协程。如果 worker "
+"看起来卡住，请检查请求路径里是否有非 cosocket 的阻塞调用（`os.execute`、`io.*`、原生 LuaSocket）。"
+
+#: ../../appendix-01-faq.md:71 2ca3e7d86334411c950c9e2c1944a919
+msgid "Why do I get `socket busy reading` / `socket busy writing`?"
+msgstr "为什么会报 `socket busy reading` / `socket busy writing`？"
+
+#: ../../appendix-01-faq.md:73 a13f69f3a59646f38384543a1c86db58
+msgid ""
+"Two light threads are using the same cosocket in the same direction at once."
+" A cosocket allows one reader and one writer light thread, but not two "
+"readers (or two writers)."
+msgstr ""
+"两个 light thread 同时以同一方向使用同一个 cosocket。一个 cosocket 允许一个读 light thread 和一个写 "
+"light thread，但不允许两个读（或两个写）。"
+
+#: ../../appendix-01-faq.md:77 e747b036e19540fa8279523cb8365c70
+msgid ""
+"Why should I prefer `lua-resty-*` libraries over `ngx.location.capture`?"
+msgstr "为什么应优先使用 `lua-resty-*` 库而不是 `ngx.location.capture`？"
+
+#: ../../appendix-01-faq.md:79 f9b710f0e1244f89bcc61f2ba940a438
+msgid ""
+"The `lua-resty-*` clients talk to backends over cosockets directly - more "
+"flexible and memory-efficient than spawning Nginx subrequests, and they stay"
+" inside the same event loop."
+msgstr ""
+"`lua-resty-*` 客户端通过 cosocket 直接与后端通信——比起创建 Nginx 子请求更灵活、更省内存，而且保持在同一个事件循环内。"
+
+#: ../../appendix-01-faq.md:83 c91f8c551403465c95437dc00ff88e3e
+msgid "DNS and Resolution"
+msgstr "DNS 与解析"
+
+#: ../../appendix-01-faq.md:85 a623baa139d44bd2aa80537f9fa9b1d5
+msgid ""
+"Why does `connect(\"api.example.com\", 443)` fail with `no resolver defined`"
+" even though the host can resolve the name?"
+msgstr ""
+"为什么 `connect(\"api.example.com\", 443)` 会报 `no resolver "
+"defined`，尽管主机能够解析该名称？"
+
+#: ../../appendix-01-faq.md:87 be2a6ad586b1460d84625cc303b7d7f3
+msgid ""
+"Cosocket resolution uses only the Nginx `resolver` directive. It does not "
+"read `/etc/resolv.conf`. Add `resolver` in the location that calls "
+"`connect`, then reload."
+msgstr ""
+"Cosocket 解析只使用 Nginx 的 `resolver` 指令，不读取 `/etc/resolv.conf`。在调用 `connect` 的 "
+"location 中添加 `resolver`，然后重载。"
+
+#: ../../appendix-01-faq.md:91 d23b6506c40b4f0ba84b01867e905ea7
+msgid "Does a SERVFAIL answer try the next nameserver?"
+msgstr "SERVFAIL 应答会尝试下一个域名服务器吗？"
+
+#: ../../appendix-01-faq.md:93 9f261c12e8bd4927ab4ca5eb7d0ffbcc
+msgid ""
+"No. In `ngx_resolver_process_a`, SERVFAIL, NXDOMAIN, NOTIMP, and REFUSED "
+"fail every waiter on that name. The next nameserver is used when the UDP "
+"send fails, or when the 5 second resend timer fires because nobody has "
+"answered yet."
+msgstr ""
+"不会。在 `ngx_resolver_process_a` 中，SERVFAIL、NXDOMAIN、NOTIMP 和 REFUSED "
+"会使该名称上的所有等待者失败。下一个域名服务器只在 UDP 发送失败时使用，或在 5 秒重发定时器因无人应答而触发时使用。"
+
+#: ../../appendix-01-faq.md:97 da07be3022684dd4a15a5286c7bb2b4a
+msgid ""
+"Why is a DNS timeout a 502 from `proxy_pass` but sometimes described as 504?"
+msgstr "为什么 `proxy_pass` 在 DNS 超时时返回 502，有时却被描述为 504？"
+
+#: ../../appendix-01-faq.md:99 b1d40a9e858f4dba88c6302e79b3eef7
+msgid ""
+"`ngx_http_upstream_resolve_handler` finalizes every non-zero resolve state, "
+"including timeout, with `NGX_HTTP_BAD_GATEWAY`. Returning 504 for `Operation"
+" timed out` is a Lua-level choice. See [Conventions](07-conventions.md)."
+msgstr ""
+"`ngx_http_upstream_resolve_handler` 对所有非零的解析状态（包括超时）都以 "
+"`NGX_HTTP_BAD_GATEWAY` 终结。对 `Operation timed out` 返回 504 是 Lua "
+"层的选择。参见[开发规范](07-conventions.md)。"
+
+#: ../../appendix-01-faq.md:103 0f6b3c474e344a9080061dacdb6cf8c9
+msgid ""
+"The DNS record changed and clients still hit the old address. Is the "
+"resolver stuck?"
+msgstr "DNS 记录已变更，客户端仍访问旧地址。解析器卡住了吗？"
+
+#: ../../appendix-01-faq.md:105 e98016143be8460193d283229a023ce1
+msgid ""
+"A successful answer is cached until `valid=` or the TTL, and a keepalive "
+"connection keeps using the address it already connected to. Shorten both. A "
+"failed lookup does not leave a negative entry in the name rbtree."
+msgstr ""
+"成功应答会被缓存直到 `valid=` 或 TTL 到期，而 keepalive "
+"连接会继续使用它已经连接的地址。请同时缩短两者。失败的查询不会在名称红黑树中留下否定条目。"
+
+#: ../../appendix-01-faq.md:109 1f8cc43d1ee44441b05971bad59a35b5
+msgid ""
+"When should Lua call `resty.dns.resolver` instead of `connect(host, port)`?"
+msgstr "Lua 何时应调用 `resty.dns.resolver` 而不是 `connect(host, port)`？"
+
+#: ../../appendix-01-faq.md:111 3d375eda64a74dfeb250f6c5cfc9e475
+msgid ""
+"When the caller must choose nameservers, timeouts, or record types per "
+"query. The library is `openresty/bundle/lua-resty-dns-0.23/`. After "
+"resolving, connect to the address and set the original name on `Host` and "
+"TLS SNI. The module does not share the `ngx_resolver` cache."
+msgstr ""
+"当调用方必须按查询指定域名服务器、超时或记录类型时。该库位于 `openresty/bundle/lua-resty-"
+"dns-0.23/`。解析后，连接到该地址，并在 `Host` 和 TLS SNI 上设置原始名称。该模块不共享 `ngx_resolver` 缓存。"
+
+#: ../../appendix-01-faq.md:116 2f9ba1ad663f40b797955c5c4590d97f
+msgid "Related Documentation"
+msgstr "相关文档"
+
+#: ../../appendix-01-faq.md:118 02f342f8081f430d9c47402a537870e3
+msgid "[Workflows](06-workflows.md)"
+msgstr "[工作流](06-workflows.md)"
+
+#: ../../appendix-01-faq.md:119 f085488826bc4c1180507acfa343e7bd
+msgid "[Runbook](10-runbook.md)"
+msgstr "[运维手册](10-runbook.md)"
+
+#: ../../appendix-01-faq.md:120 815833f1ae174bb180e2b919bf6f23f0
+msgid "[Conventions](07-conventions.md)"
+msgstr "[开发规范](07-conventions.md)"
+
+#: ../../appendix-01-faq.md:121 38e0025d59ae49a488ca3c378bdf2f64
+msgid "[Data and API](05-data-and-api.md)"
+msgstr "[数据与 API](05-data-and-api.md)"
+
+#~ msgid ""
+#~ "Questions that come up when an HTTP connect fails during DNS resolution."
+#~ msgstr "当 HTTP 连接在 DNS 解析期间失败时经常会遇到的问题。"
+
+#~ msgid "Frequently Asked Questions"
+#~ msgstr "常见问题"
